@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Pima Cotton",
+    "breathable": true,
+    "season": "Summer/Spring",
+    "care": "Machine Wash Cold"
+  },
+  {
+    "name": "Pure Linen",
+    "breathable": true,
+    "season": "Summer",
+    "care": "Hand Wash / Low Heat Iron"
+  },
+  {
+    "name": "Raw Silk",
+    "breathable": false,
+    "season": "Festive/Winter",
+    "care": "Dry Clean Only"
+  }
+]

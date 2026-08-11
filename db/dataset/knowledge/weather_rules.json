@@ -1,0 +1,20 @@
+[
+  {
+    "season": "Summer",
+    "fabric": "100% Pima Cotton & Pure Linen",
+    "footwear": "Breathable Leather Loafers / Nagra",
+    "reasoning": "Linen and lightweight cotton promote airflow during humid Dhaka summers."
+  },
+  {
+    "season": "Monsoon",
+    "fabric": "Quick-dry Synthetic Blends & Treated Cotton",
+    "footwear": "Water-resistant rubber-sole footwear (avoid suede)",
+    "reasoning": "Suede ruins easily in rainwater; water-resistant soles ensure longevity."
+  },
+  {
+    "season": "Winter",
+    "fabric": "Heavyweight Fleece & Wool-Silk Blends",
+    "footwear": "Leather Boots / Closed Shoes",
+    "reasoning": "Layering with fleece hoodies or silk wool blazers retains heat effectively."
+  }
+]

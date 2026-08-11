@@ -1,0 +1,1302 @@
+[
+  {
+    "id": "BD-CONV-00001",
+    "category": "Casual Outing",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Casual Outing Luxury: Hi! I'm looking for a complete Luxury outfit for an upcoming Casual Outing. Hello! I'd love to assist you styling for Casual Outing. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Pure Linen in Black tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "casual outing",
+      "luxury",
+      "women",
+      "black"
+    ]
+  },
+  {
+    "id": "BD-CONV-00002",
+    "category": "Smart Office",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Smart Office Streetwear: Hi! I'm looking for a complete Streetwear outfit for an upcoming Smart Office. Hello! I'd love to assist you styling for Smart Office. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Silk Blend in Navy tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "smart office",
+      "streetwear",
+      "men",
+      "navy"
+    ]
+  },
+  {
+    "id": "BD-CONV-00003",
+    "category": "Corporate Meeting",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Corporate Meeting Vintage: Hi! I'm looking for a complete Vintage outfit for an upcoming Corporate Meeting. Hello! I'd love to assist you styling for Corporate Meeting. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Denim Twill in Grey tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "corporate meeting",
+      "vintage",
+      "women",
+      "grey"
+    ]
+  },
+  {
+    "id": "BD-CONV-00004",
+    "category": "Eid ul-Fitr",
+    "intent": "wardrobe_matching",
+    "chunk_text": "Eid ul-Fitr Old Money: Hi! I'm looking for a complete Old Money outfit for an upcoming Eid ul-Fitr. Hello! I'd love to assist you styling for Eid ul-Fitr. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Fleece Cotton in Beige tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "eid ul-fitr",
+      "old money",
+      "men",
+      "beige"
+    ]
+  },
+  {
+    "id": "BD-CONV-00005",
+    "category": "Pohela Boishakh",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Pohela Boishakh Korean: Hi! I'm looking for a complete Korean outfit for an upcoming Pohela Boishakh. Hello! I'd love to assist you styling for Pohela Boishakh. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Satin Wool in Olive tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "pohela boishakh",
+      "korean",
+      "women",
+      "olive"
+    ]
+  },
+  {
+    "id": "BD-CONV-00006",
+    "category": "Friend's Wedding",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Friend's Wedding Modern: Hi! I'm looking for a complete Modern outfit for an upcoming Friend's Wedding. Hello! I'd love to assist you styling for Friend's Wedding. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Breathable Mesh in Brown tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "friend's wedding",
+      "modern",
+      "men",
+      "brown"
+    ]
+  },
+  {
+    "id": "BD-CONV-00007",
+    "category": "Holud Ceremony",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Holud Ceremony Classic: হ্যালো! আমার Holud Ceremony এর জন্য একটা সুন্দর Classic স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! Holud Ceremony এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি Viscose Rayon উপাদান পছন্দ করি এবং Maroon রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "holud ceremony",
+      "classic",
+      "women",
+      "maroon"
+    ]
+  },
+  {
+    "id": "BD-CONV-00008",
+    "category": "Mehendi Night",
+    "intent": "wardrobe_matching",
+    "chunk_text": "Mehendi Night Formal: হ্যালো! আমার Mehendi Night এর জন্য একটা সুন্দর Formal স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! Mehendi Night এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি 100% Pima Cotton উপাদান পছন্দ করি এবং Pastel Green রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "mehendi night",
+      "formal",
+      "men",
+      "pastel green"
+    ]
+  },
+  {
+    "id": "BD-CONV-00009",
+    "category": "Wedding Reception",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Wedding Reception Traditional: হ্যালো! আমার Wedding Reception এর জন্য একটা সুন্দর Traditional স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! Wedding Reception এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি Pure Linen উপাদান পছন্দ করি এবং Cream রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "wedding reception",
+      "traditional",
+      "women",
+      "cream"
+    ]
+  },
+  {
+    "id": "BD-CONV-00010",
+    "category": "Jummah Prayer",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Jummah Prayer Bohemian: Hi! I'm looking for a complete Bohemian outfit for an upcoming Jummah Prayer. Hello! I'd love to assist you styling for Jummah Prayer. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Silk Blend in Mustard tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "jummah prayer",
+      "bohemian",
+      "men",
+      "mustard"
+    ]
+  },
+  {
+    "id": "BD-CONV-00011",
+    "category": "Date Night",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Date Night Oversized: Hi! I'm looking for a complete Oversized outfit for an upcoming Date Night. Hello! I'd love to assist you styling for Date Night. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Denim Twill in Burgundy tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "date night",
+      "oversized",
+      "women",
+      "burgundy"
+    ]
+  },
+  {
+    "id": "BD-CONV-00012",
+    "category": "Family Gathering",
+    "intent": "wardrobe_matching",
+    "chunk_text": "Family Gathering Athleisure: Hi! I'm looking for a complete Athleisure outfit for an upcoming Family Gathering. Hello! I'd love to assist you styling for Family Gathering. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Fleece Cotton in White tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "family gathering",
+      "athleisure",
+      "men",
+      "white"
+    ]
+  },
+  {
+    "id": "BD-CONV-00013",
+    "category": "Vacation",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Vacation Elegant: Hi! I'm looking for a complete Elegant outfit for an upcoming Vacation. Hello! I'd love to assist you styling for Vacation. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Satin Wool in Black tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "vacation",
+      "elegant",
+      "women",
+      "black"
+    ]
+  },
+  {
+    "id": "BD-CONV-00014",
+    "category": "Airport Fashion",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Airport Fashion Premium: Hi! I'm looking for a complete Premium outfit for an upcoming Airport Fashion. Hello! I'd love to assist you styling for Airport Fashion. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Breathable Mesh in Navy tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "airport fashion",
+      "premium",
+      "men",
+      "navy"
+    ]
+  },
+  {
+    "id": "BD-CONV-00015",
+    "category": "Gym Workout",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Gym Workout Smart Casual: Hi! I'm looking for a complete Smart Casual outfit for an upcoming Gym Workout. Hello! I'd love to assist you styling for Gym Workout. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Viscose Rayon in Grey tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "gym workout",
+      "smart casual",
+      "women",
+      "grey"
+    ]
+  },
+  {
+    "id": "BD-CONV-00016",
+    "category": "Monsoon Rainy Day",
+    "intent": "wardrobe_matching",
+    "chunk_text": "Monsoon Rainy Day Business Casual: Hi! I'm looking for a complete Business Casual outfit for an upcoming Monsoon Rainy Day. Hello! I'd love to assist you styling for Monsoon Rainy Day. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer 100% Pima Cotton in Beige tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "monsoon rainy day",
+      "business casual",
+      "men",
+      "beige"
+    ]
+  },
+  {
+    "id": "BD-CONV-00017",
+    "category": "Winter Evening Gathering",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Winter Evening Gathering Minimal: হ্যালো! আমার Winter Evening Gathering এর জন্য একটা সুন্দর Minimal স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! Winter Evening Gathering এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি Pure Linen উপাদান পছন্দ করি এবং Olive রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "winter evening gathering",
+      "minimal",
+      "women",
+      "olive"
+    ]
+  },
+  {
+    "id": "BD-CONV-00018",
+    "category": "Cultural Program",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Cultural Program Luxury: হ্যালো! আমার Cultural Program এর জন্য একটা সুন্দর Luxury স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! Cultural Program এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি Silk Blend উপাদান পছন্দ করি এবং Brown রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "cultural program",
+      "luxury",
+      "men",
+      "brown"
+    ]
+  },
+  {
+    "id": "BD-CONV-00019",
+    "category": "University Wear",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "University Wear Streetwear: হ্যালো! আমার University Wear এর জন্য একটা সুন্দর Streetwear স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! University Wear এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি Denim Twill উপাদান পছন্দ করি এবং Maroon রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "university wear",
+      "streetwear",
+      "women",
+      "maroon"
+    ]
+  },
+  {
+    "id": "BD-CONV-00020",
+    "category": "Casual Outing",
+    "intent": "wardrobe_matching",
+    "chunk_text": "Casual Outing Vintage: Hi! I'm looking for a complete Vintage outfit for an upcoming Casual Outing. Hello! I'd love to assist you styling for Casual Outing. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Fleece Cotton in Pastel Green tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "casual outing",
+      "vintage",
+      "men",
+      "pastel green"
+    ]
+  },
+  {
+    "id": "BD-CONV-00021",
+    "category": "Smart Office",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Smart Office Old Money: Hi! I'm looking for a complete Old Money outfit for an upcoming Smart Office. Hello! I'd love to assist you styling for Smart Office. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Satin Wool in Cream tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "smart office",
+      "old money",
+      "women",
+      "cream"
+    ]
+  },
+  {
+    "id": "BD-CONV-00022",
+    "category": "Corporate Meeting",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Corporate Meeting Korean: Hi! I'm looking for a complete Korean outfit for an upcoming Corporate Meeting. Hello! I'd love to assist you styling for Corporate Meeting. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Breathable Mesh in Mustard tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "corporate meeting",
+      "korean",
+      "men",
+      "mustard"
+    ]
+  },
+  {
+    "id": "BD-CONV-00023",
+    "category": "Eid ul-Fitr",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Eid ul-Fitr Modern: Hi! I'm looking for a complete Modern outfit for an upcoming Eid ul-Fitr. Hello! I'd love to assist you styling for Eid ul-Fitr. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Viscose Rayon in Burgundy tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "eid ul-fitr",
+      "modern",
+      "women",
+      "burgundy"
+    ]
+  },
+  {
+    "id": "BD-CONV-00024",
+    "category": "Pohela Boishakh",
+    "intent": "wardrobe_matching",
+    "chunk_text": "Pohela Boishakh Classic: Hi! I'm looking for a complete Classic outfit for an upcoming Pohela Boishakh. Hello! I'd love to assist you styling for Pohela Boishakh. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer 100% Pima Cotton in White tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "pohela boishakh",
+      "classic",
+      "men",
+      "white"
+    ]
+  },
+  {
+    "id": "BD-CONV-00025",
+    "category": "Friend's Wedding",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Friend's Wedding Formal: Hi! I'm looking for a complete Formal outfit for an upcoming Friend's Wedding. Hello! I'd love to assist you styling for Friend's Wedding. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Pure Linen in Black tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "friend's wedding",
+      "formal",
+      "women",
+      "black"
+    ]
+  },
+  {
+    "id": "BD-CONV-00026",
+    "category": "Holud Ceremony",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Holud Ceremony Traditional: Hi! I'm looking for a complete Traditional outfit for an upcoming Holud Ceremony. Hello! I'd love to assist you styling for Holud Ceremony. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Silk Blend in Navy tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "holud ceremony",
+      "traditional",
+      "men",
+      "navy"
+    ]
+  },
+  {
+    "id": "BD-CONV-00027",
+    "category": "Mehendi Night",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Mehendi Night Bohemian: হ্যালো! আমার Mehendi Night এর জন্য একটা সুন্দর Bohemian স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! Mehendi Night এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি Denim Twill উপাদান পছন্দ করি এবং Grey রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "mehendi night",
+      "bohemian",
+      "women",
+      "grey"
+    ]
+  },
+  {
+    "id": "BD-CONV-00028",
+    "category": "Wedding Reception",
+    "intent": "wardrobe_matching",
+    "chunk_text": "Wedding Reception Oversized: হ্যালো! আমার Wedding Reception এর জন্য একটা সুন্দর Oversized স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! Wedding Reception এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি Fleece Cotton উপাদান পছন্দ করি এবং Beige রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "wedding reception",
+      "oversized",
+      "men",
+      "beige"
+    ]
+  },
+  {
+    "id": "BD-CONV-00029",
+    "category": "Jummah Prayer",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Jummah Prayer Athleisure: হ্যালো! আমার Jummah Prayer এর জন্য একটা সুন্দর Athleisure স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! Jummah Prayer এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি Satin Wool উপাদান পছন্দ করি এবং Olive রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "jummah prayer",
+      "athleisure",
+      "women",
+      "olive"
+    ]
+  },
+  {
+    "id": "BD-CONV-00030",
+    "category": "Date Night",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Date Night Elegant: Hi! I'm looking for a complete Elegant outfit for an upcoming Date Night. Hello! I'd love to assist you styling for Date Night. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Breathable Mesh in Brown tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "date night",
+      "elegant",
+      "men",
+      "brown"
+    ]
+  },
+  {
+    "id": "BD-CONV-00031",
+    "category": "Family Gathering",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Family Gathering Premium: Hi! I'm looking for a complete Premium outfit for an upcoming Family Gathering. Hello! I'd love to assist you styling for Family Gathering. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Viscose Rayon in Maroon tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "family gathering",
+      "premium",
+      "women",
+      "maroon"
+    ]
+  },
+  {
+    "id": "BD-CONV-00032",
+    "category": "Vacation",
+    "intent": "wardrobe_matching",
+    "chunk_text": "Vacation Smart Casual: Hi! I'm looking for a complete Smart Casual outfit for an upcoming Vacation. Hello! I'd love to assist you styling for Vacation. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer 100% Pima Cotton in Pastel Green tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "vacation",
+      "smart casual",
+      "men",
+      "pastel green"
+    ]
+  },
+  {
+    "id": "BD-CONV-00033",
+    "category": "Airport Fashion",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Airport Fashion Business Casual: Hi! I'm looking for a complete Business Casual outfit for an upcoming Airport Fashion. Hello! I'd love to assist you styling for Airport Fashion. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Pure Linen in Cream tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "airport fashion",
+      "business casual",
+      "women",
+      "cream"
+    ]
+  },
+  {
+    "id": "BD-CONV-00034",
+    "category": "Gym Workout",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Gym Workout Minimal: Hi! I'm looking for a complete Minimal outfit for an upcoming Gym Workout. Hello! I'd love to assist you styling for Gym Workout. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Silk Blend in Mustard tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "gym workout",
+      "minimal",
+      "men",
+      "mustard"
+    ]
+  },
+  {
+    "id": "BD-CONV-00035",
+    "category": "Monsoon Rainy Day",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Monsoon Rainy Day Luxury: Hi! I'm looking for a complete Luxury outfit for an upcoming Monsoon Rainy Day. Hello! I'd love to assist you styling for Monsoon Rainy Day. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Denim Twill in Burgundy tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "monsoon rainy day",
+      "luxury",
+      "women",
+      "burgundy"
+    ]
+  },
+  {
+    "id": "BD-CONV-00036",
+    "category": "Winter Evening Gathering",
+    "intent": "wardrobe_matching",
+    "chunk_text": "Winter Evening Gathering Streetwear: Hi! I'm looking for a complete Streetwear outfit for an upcoming Winter Evening Gathering. Hello! I'd love to assist you styling for Winter Evening Gathering. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Fleece Cotton in White tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "winter evening gathering",
+      "streetwear",
+      "men",
+      "white"
+    ]
+  },
+  {
+    "id": "BD-CONV-00037",
+    "category": "Cultural Program",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Cultural Program Vintage: হ্যালো! আমার Cultural Program এর জন্য একটা সুন্দর Vintage স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! Cultural Program এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি Satin Wool উপাদান পছন্দ করি এবং Black রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "cultural program",
+      "vintage",
+      "women",
+      "black"
+    ]
+  },
+  {
+    "id": "BD-CONV-00038",
+    "category": "University Wear",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "University Wear Old Money: হ্যালো! আমার University Wear এর জন্য একটা সুন্দর Old Money স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! University Wear এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি Breathable Mesh উপাদান পছন্দ করি এবং Navy রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "university wear",
+      "old money",
+      "men",
+      "navy"
+    ]
+  },
+  {
+    "id": "BD-CONV-00039",
+    "category": "Casual Outing",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Casual Outing Korean: হ্যালো! আমার Casual Outing এর জন্য একটা সুন্দর Korean স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! Casual Outing এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি Viscose Rayon উপাদান পছন্দ করি এবং Grey রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "casual outing",
+      "korean",
+      "women",
+      "grey"
+    ]
+  },
+  {
+    "id": "BD-CONV-00040",
+    "category": "Smart Office",
+    "intent": "wardrobe_matching",
+    "chunk_text": "Smart Office Modern: Hi! I'm looking for a complete Modern outfit for an upcoming Smart Office. Hello! I'd love to assist you styling for Smart Office. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer 100% Pima Cotton in Beige tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "smart office",
+      "modern",
+      "men",
+      "beige"
+    ]
+  },
+  {
+    "id": "BD-CONV-00041",
+    "category": "Corporate Meeting",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Corporate Meeting Classic: Hi! I'm looking for a complete Classic outfit for an upcoming Corporate Meeting. Hello! I'd love to assist you styling for Corporate Meeting. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Pure Linen in Olive tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "corporate meeting",
+      "classic",
+      "women",
+      "olive"
+    ]
+  },
+  {
+    "id": "BD-CONV-00042",
+    "category": "Eid ul-Fitr",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Eid ul-Fitr Formal: Hi! I'm looking for a complete Formal outfit for an upcoming Eid ul-Fitr. Hello! I'd love to assist you styling for Eid ul-Fitr. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Silk Blend in Brown tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "eid ul-fitr",
+      "formal",
+      "men",
+      "brown"
+    ]
+  },
+  {
+    "id": "BD-CONV-00043",
+    "category": "Pohela Boishakh",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Pohela Boishakh Traditional: Hi! I'm looking for a complete Traditional outfit for an upcoming Pohela Boishakh. Hello! I'd love to assist you styling for Pohela Boishakh. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Denim Twill in Maroon tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "pohela boishakh",
+      "traditional",
+      "women",
+      "maroon"
+    ]
+  },
+  {
+    "id": "BD-CONV-00044",
+    "category": "Friend's Wedding",
+    "intent": "wardrobe_matching",
+    "chunk_text": "Friend's Wedding Bohemian: Hi! I'm looking for a complete Bohemian outfit for an upcoming Friend's Wedding. Hello! I'd love to assist you styling for Friend's Wedding. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Fleece Cotton in Pastel Green tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "friend's wedding",
+      "bohemian",
+      "men",
+      "pastel green"
+    ]
+  },
+  {
+    "id": "BD-CONV-00045",
+    "category": "Holud Ceremony",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Holud Ceremony Oversized: Hi! I'm looking for a complete Oversized outfit for an upcoming Holud Ceremony. Hello! I'd love to assist you styling for Holud Ceremony. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Satin Wool in Cream tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "holud ceremony",
+      "oversized",
+      "women",
+      "cream"
+    ]
+  },
+  {
+    "id": "BD-CONV-00046",
+    "category": "Mehendi Night",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Mehendi Night Athleisure: Hi! I'm looking for a complete Athleisure outfit for an upcoming Mehendi Night. Hello! I'd love to assist you styling for Mehendi Night. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Breathable Mesh in Mustard tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "mehendi night",
+      "athleisure",
+      "men",
+      "mustard"
+    ]
+  },
+  {
+    "id": "BD-CONV-00047",
+    "category": "Wedding Reception",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Wedding Reception Elegant: হ্যালো! আমার Wedding Reception এর জন্য একটা সুন্দর Elegant স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! Wedding Reception এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি Viscose Rayon উপাদান পছন্দ করি এবং Burgundy রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "wedding reception",
+      "elegant",
+      "women",
+      "burgundy"
+    ]
+  },
+  {
+    "id": "BD-CONV-00048",
+    "category": "Jummah Prayer",
+    "intent": "wardrobe_matching",
+    "chunk_text": "Jummah Prayer Premium: হ্যালো! আমার Jummah Prayer এর জন্য একটা সুন্দর Premium স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! Jummah Prayer এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি 100% Pima Cotton উপাদান পছন্দ করি এবং White রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "jummah prayer",
+      "premium",
+      "men",
+      "white"
+    ]
+  },
+  {
+    "id": "BD-CONV-00049",
+    "category": "Date Night",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Date Night Smart Casual: হ্যালো! আমার Date Night এর জন্য একটা সুন্দর Smart Casual স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! Date Night এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি Pure Linen উপাদান পছন্দ করি এবং Black রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "date night",
+      "smart casual",
+      "women",
+      "black"
+    ]
+  },
+  {
+    "id": "BD-CONV-00050",
+    "category": "Family Gathering",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Family Gathering Business Casual: Hi! I'm looking for a complete Business Casual outfit for an upcoming Family Gathering. Hello! I'd love to assist you styling for Family Gathering. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Silk Blend in Navy tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "family gathering",
+      "business casual",
+      "men",
+      "navy"
+    ]
+  },
+  {
+    "id": "BD-CONV-00051",
+    "category": "Vacation",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Vacation Minimal: Hi! I'm looking for a complete Minimal outfit for an upcoming Vacation. Hello! I'd love to assist you styling for Vacation. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Denim Twill in Grey tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "vacation",
+      "minimal",
+      "women",
+      "grey"
+    ]
+  },
+  {
+    "id": "BD-CONV-00052",
+    "category": "Airport Fashion",
+    "intent": "wardrobe_matching",
+    "chunk_text": "Airport Fashion Luxury: Hi! I'm looking for a complete Luxury outfit for an upcoming Airport Fashion. Hello! I'd love to assist you styling for Airport Fashion. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Fleece Cotton in Beige tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "airport fashion",
+      "luxury",
+      "men",
+      "beige"
+    ]
+  },
+  {
+    "id": "BD-CONV-00053",
+    "category": "Gym Workout",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Gym Workout Streetwear: Hi! I'm looking for a complete Streetwear outfit for an upcoming Gym Workout. Hello! I'd love to assist you styling for Gym Workout. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Satin Wool in Olive tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "gym workout",
+      "streetwear",
+      "women",
+      "olive"
+    ]
+  },
+  {
+    "id": "BD-CONV-00054",
+    "category": "Monsoon Rainy Day",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Monsoon Rainy Day Vintage: Hi! I'm looking for a complete Vintage outfit for an upcoming Monsoon Rainy Day. Hello! I'd love to assist you styling for Monsoon Rainy Day. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Breathable Mesh in Brown tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "monsoon rainy day",
+      "vintage",
+      "men",
+      "brown"
+    ]
+  },
+  {
+    "id": "BD-CONV-00055",
+    "category": "Winter Evening Gathering",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Winter Evening Gathering Old Money: Hi! I'm looking for a complete Old Money outfit for an upcoming Winter Evening Gathering. Hello! I'd love to assist you styling for Winter Evening Gathering. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Viscose Rayon in Maroon tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "winter evening gathering",
+      "old money",
+      "women",
+      "maroon"
+    ]
+  },
+  {
+    "id": "BD-CONV-00056",
+    "category": "Cultural Program",
+    "intent": "wardrobe_matching",
+    "chunk_text": "Cultural Program Korean: Hi! I'm looking for a complete Korean outfit for an upcoming Cultural Program. Hello! I'd love to assist you styling for Cultural Program. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer 100% Pima Cotton in Pastel Green tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "cultural program",
+      "korean",
+      "men",
+      "pastel green"
+    ]
+  },
+  {
+    "id": "BD-CONV-00057",
+    "category": "University Wear",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "University Wear Modern: হ্যালো! আমার University Wear এর জন্য একটা সুন্দর Modern স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! University Wear এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি Pure Linen উপাদান পছন্দ করি এবং Cream রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "university wear",
+      "modern",
+      "women",
+      "cream"
+    ]
+  },
+  {
+    "id": "BD-CONV-00058",
+    "category": "Casual Outing",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Casual Outing Classic: হ্যালো! আমার Casual Outing এর জন্য একটা সুন্দর Classic স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! Casual Outing এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি Silk Blend উপাদান পছন্দ করি এবং Mustard রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "casual outing",
+      "classic",
+      "men",
+      "mustard"
+    ]
+  },
+  {
+    "id": "BD-CONV-00059",
+    "category": "Smart Office",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Smart Office Formal: হ্যালো! আমার Smart Office এর জন্য একটা সুন্দর Formal স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! Smart Office এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি Denim Twill উপাদান পছন্দ করি এবং Burgundy রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "smart office",
+      "formal",
+      "women",
+      "burgundy"
+    ]
+  },
+  {
+    "id": "BD-CONV-00060",
+    "category": "Corporate Meeting",
+    "intent": "wardrobe_matching",
+    "chunk_text": "Corporate Meeting Traditional: Hi! I'm looking for a complete Traditional outfit for an upcoming Corporate Meeting. Hello! I'd love to assist you styling for Corporate Meeting. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Fleece Cotton in White tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "corporate meeting",
+      "traditional",
+      "men",
+      "white"
+    ]
+  },
+  {
+    "id": "BD-CONV-00061",
+    "category": "Eid ul-Fitr",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Eid ul-Fitr Bohemian: Hi! I'm looking for a complete Bohemian outfit for an upcoming Eid ul-Fitr. Hello! I'd love to assist you styling for Eid ul-Fitr. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Satin Wool in Black tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "eid ul-fitr",
+      "bohemian",
+      "women",
+      "black"
+    ]
+  },
+  {
+    "id": "BD-CONV-00062",
+    "category": "Pohela Boishakh",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Pohela Boishakh Oversized: Hi! I'm looking for a complete Oversized outfit for an upcoming Pohela Boishakh. Hello! I'd love to assist you styling for Pohela Boishakh. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Breathable Mesh in Navy tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "pohela boishakh",
+      "oversized",
+      "men",
+      "navy"
+    ]
+  },
+  {
+    "id": "BD-CONV-00063",
+    "category": "Friend's Wedding",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Friend's Wedding Athleisure: Hi! I'm looking for a complete Athleisure outfit for an upcoming Friend's Wedding. Hello! I'd love to assist you styling for Friend's Wedding. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Viscose Rayon in Grey tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "friend's wedding",
+      "athleisure",
+      "women",
+      "grey"
+    ]
+  },
+  {
+    "id": "BD-CONV-00064",
+    "category": "Holud Ceremony",
+    "intent": "wardrobe_matching",
+    "chunk_text": "Holud Ceremony Elegant: Hi! I'm looking for a complete Elegant outfit for an upcoming Holud Ceremony. Hello! I'd love to assist you styling for Holud Ceremony. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer 100% Pima Cotton in Beige tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "holud ceremony",
+      "elegant",
+      "men",
+      "beige"
+    ]
+  },
+  {
+    "id": "BD-CONV-00065",
+    "category": "Mehendi Night",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Mehendi Night Premium: Hi! I'm looking for a complete Premium outfit for an upcoming Mehendi Night. Hello! I'd love to assist you styling for Mehendi Night. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Pure Linen in Olive tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "mehendi night",
+      "premium",
+      "women",
+      "olive"
+    ]
+  },
+  {
+    "id": "BD-CONV-00066",
+    "category": "Wedding Reception",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Wedding Reception Smart Casual: Hi! I'm looking for a complete Smart Casual outfit for an upcoming Wedding Reception. Hello! I'd love to assist you styling for Wedding Reception. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Silk Blend in Brown tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "wedding reception",
+      "smart casual",
+      "men",
+      "brown"
+    ]
+  },
+  {
+    "id": "BD-CONV-00067",
+    "category": "Jummah Prayer",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Jummah Prayer Business Casual: হ্যালো! আমার Jummah Prayer এর জন্য একটা সুন্দর Business Casual স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! Jummah Prayer এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি Denim Twill উপাদান পছন্দ করি এবং Maroon রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "jummah prayer",
+      "business casual",
+      "women",
+      "maroon"
+    ]
+  },
+  {
+    "id": "BD-CONV-00068",
+    "category": "Date Night",
+    "intent": "wardrobe_matching",
+    "chunk_text": "Date Night Minimal: হ্যালো! আমার Date Night এর জন্য একটা সুন্দর Minimal স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! Date Night এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি Fleece Cotton উপাদান পছন্দ করি এবং Pastel Green রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "date night",
+      "minimal",
+      "men",
+      "pastel green"
+    ]
+  },
+  {
+    "id": "BD-CONV-00069",
+    "category": "Family Gathering",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Family Gathering Luxury: হ্যালো! আমার Family Gathering এর জন্য একটা সুন্দর Luxury স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! Family Gathering এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি Satin Wool উপাদান পছন্দ করি এবং Cream রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "family gathering",
+      "luxury",
+      "women",
+      "cream"
+    ]
+  },
+  {
+    "id": "BD-CONV-00070",
+    "category": "Vacation",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Vacation Streetwear: Hi! I'm looking for a complete Streetwear outfit for an upcoming Vacation. Hello! I'd love to assist you styling for Vacation. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Breathable Mesh in Mustard tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "vacation",
+      "streetwear",
+      "men",
+      "mustard"
+    ]
+  },
+  {
+    "id": "BD-CONV-00071",
+    "category": "Airport Fashion",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Airport Fashion Vintage: Hi! I'm looking for a complete Vintage outfit for an upcoming Airport Fashion. Hello! I'd love to assist you styling for Airport Fashion. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Viscose Rayon in Burgundy tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "airport fashion",
+      "vintage",
+      "women",
+      "burgundy"
+    ]
+  },
+  {
+    "id": "BD-CONV-00072",
+    "category": "Gym Workout",
+    "intent": "wardrobe_matching",
+    "chunk_text": "Gym Workout Old Money: Hi! I'm looking for a complete Old Money outfit for an upcoming Gym Workout. Hello! I'd love to assist you styling for Gym Workout. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer 100% Pima Cotton in White tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "gym workout",
+      "old money",
+      "men",
+      "white"
+    ]
+  },
+  {
+    "id": "BD-CONV-00073",
+    "category": "Monsoon Rainy Day",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Monsoon Rainy Day Korean: Hi! I'm looking for a complete Korean outfit for an upcoming Monsoon Rainy Day. Hello! I'd love to assist you styling for Monsoon Rainy Day. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Pure Linen in Black tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "monsoon rainy day",
+      "korean",
+      "women",
+      "black"
+    ]
+  },
+  {
+    "id": "BD-CONV-00074",
+    "category": "Winter Evening Gathering",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Winter Evening Gathering Modern: Hi! I'm looking for a complete Modern outfit for an upcoming Winter Evening Gathering. Hello! I'd love to assist you styling for Winter Evening Gathering. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Silk Blend in Navy tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "winter evening gathering",
+      "modern",
+      "men",
+      "navy"
+    ]
+  },
+  {
+    "id": "BD-CONV-00075",
+    "category": "Cultural Program",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Cultural Program Classic: Hi! I'm looking for a complete Classic outfit for an upcoming Cultural Program. Hello! I'd love to assist you styling for Cultural Program. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Denim Twill in Grey tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "cultural program",
+      "classic",
+      "women",
+      "grey"
+    ]
+  },
+  {
+    "id": "BD-CONV-00076",
+    "category": "University Wear",
+    "intent": "wardrobe_matching",
+    "chunk_text": "University Wear Formal: Hi! I'm looking for a complete Formal outfit for an upcoming University Wear. Hello! I'd love to assist you styling for University Wear. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Fleece Cotton in Beige tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "university wear",
+      "formal",
+      "men",
+      "beige"
+    ]
+  },
+  {
+    "id": "BD-CONV-00077",
+    "category": "Casual Outing",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Casual Outing Traditional: হ্যালো! আমার Casual Outing এর জন্য একটা সুন্দর Traditional স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! Casual Outing এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি Satin Wool উপাদান পছন্দ করি এবং Olive রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "casual outing",
+      "traditional",
+      "women",
+      "olive"
+    ]
+  },
+  {
+    "id": "BD-CONV-00078",
+    "category": "Smart Office",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Smart Office Bohemian: হ্যালো! আমার Smart Office এর জন্য একটা সুন্দর Bohemian স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! Smart Office এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি Breathable Mesh উপাদান পছন্দ করি এবং Brown রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "smart office",
+      "bohemian",
+      "men",
+      "brown"
+    ]
+  },
+  {
+    "id": "BD-CONV-00079",
+    "category": "Corporate Meeting",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Corporate Meeting Oversized: হ্যালো! আমার Corporate Meeting এর জন্য একটা সুন্দর Oversized স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! Corporate Meeting এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি Viscose Rayon উপাদান পছন্দ করি এবং Maroon রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "corporate meeting",
+      "oversized",
+      "women",
+      "maroon"
+    ]
+  },
+  {
+    "id": "BD-CONV-00080",
+    "category": "Eid ul-Fitr",
+    "intent": "wardrobe_matching",
+    "chunk_text": "Eid ul-Fitr Athleisure: Hi! I'm looking for a complete Athleisure outfit for an upcoming Eid ul-Fitr. Hello! I'd love to assist you styling for Eid ul-Fitr. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer 100% Pima Cotton in Pastel Green tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "eid ul-fitr",
+      "athleisure",
+      "men",
+      "pastel green"
+    ]
+  },
+  {
+    "id": "BD-CONV-00081",
+    "category": "Pohela Boishakh",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Pohela Boishakh Elegant: Hi! I'm looking for a complete Elegant outfit for an upcoming Pohela Boishakh. Hello! I'd love to assist you styling for Pohela Boishakh. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Pure Linen in Cream tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "pohela boishakh",
+      "elegant",
+      "women",
+      "cream"
+    ]
+  },
+  {
+    "id": "BD-CONV-00082",
+    "category": "Friend's Wedding",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Friend's Wedding Premium: Hi! I'm looking for a complete Premium outfit for an upcoming Friend's Wedding. Hello! I'd love to assist you styling for Friend's Wedding. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Silk Blend in Mustard tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "friend's wedding",
+      "premium",
+      "men",
+      "mustard"
+    ]
+  },
+  {
+    "id": "BD-CONV-00083",
+    "category": "Holud Ceremony",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Holud Ceremony Smart Casual: Hi! I'm looking for a complete Smart Casual outfit for an upcoming Holud Ceremony. Hello! I'd love to assist you styling for Holud Ceremony. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Denim Twill in Burgundy tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "holud ceremony",
+      "smart casual",
+      "women",
+      "burgundy"
+    ]
+  },
+  {
+    "id": "BD-CONV-00084",
+    "category": "Mehendi Night",
+    "intent": "wardrobe_matching",
+    "chunk_text": "Mehendi Night Business Casual: Hi! I'm looking for a complete Business Casual outfit for an upcoming Mehendi Night. Hello! I'd love to assist you styling for Mehendi Night. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Fleece Cotton in White tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "mehendi night",
+      "business casual",
+      "men",
+      "white"
+    ]
+  },
+  {
+    "id": "BD-CONV-00085",
+    "category": "Wedding Reception",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Wedding Reception Minimal: Hi! I'm looking for a complete Minimal outfit for an upcoming Wedding Reception. Hello! I'd love to assist you styling for Wedding Reception. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Satin Wool in Black tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "wedding reception",
+      "minimal",
+      "women",
+      "black"
+    ]
+  },
+  {
+    "id": "BD-CONV-00086",
+    "category": "Jummah Prayer",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Jummah Prayer Luxury: Hi! I'm looking for a complete Luxury outfit for an upcoming Jummah Prayer. Hello! I'd love to assist you styling for Jummah Prayer. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Breathable Mesh in Navy tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "jummah prayer",
+      "luxury",
+      "men",
+      "navy"
+    ]
+  },
+  {
+    "id": "BD-CONV-00087",
+    "category": "Date Night",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Date Night Streetwear: হ্যালো! আমার Date Night এর জন্য একটা সুন্দর Streetwear স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! Date Night এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি Viscose Rayon উপাদান পছন্দ করি এবং Grey রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "date night",
+      "streetwear",
+      "women",
+      "grey"
+    ]
+  },
+  {
+    "id": "BD-CONV-00088",
+    "category": "Family Gathering",
+    "intent": "wardrobe_matching",
+    "chunk_text": "Family Gathering Vintage: হ্যালো! আমার Family Gathering এর জন্য একটা সুন্দর Vintage স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! Family Gathering এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি 100% Pima Cotton উপাদান পছন্দ করি এবং Beige রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "family gathering",
+      "vintage",
+      "men",
+      "beige"
+    ]
+  },
+  {
+    "id": "BD-CONV-00089",
+    "category": "Vacation",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Vacation Old Money: হ্যালো! আমার Vacation এর জন্য একটা সুন্দর Old Money স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! Vacation এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি Pure Linen উপাদান পছন্দ করি এবং Olive রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "vacation",
+      "old money",
+      "women",
+      "olive"
+    ]
+  },
+  {
+    "id": "BD-CONV-00090",
+    "category": "Airport Fashion",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Airport Fashion Korean: Hi! I'm looking for a complete Korean outfit for an upcoming Airport Fashion. Hello! I'd love to assist you styling for Airport Fashion. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Silk Blend in Brown tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "airport fashion",
+      "korean",
+      "men",
+      "brown"
+    ]
+  },
+  {
+    "id": "BD-CONV-00091",
+    "category": "Gym Workout",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Gym Workout Modern: Hi! I'm looking for a complete Modern outfit for an upcoming Gym Workout. Hello! I'd love to assist you styling for Gym Workout. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Denim Twill in Maroon tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "gym workout",
+      "modern",
+      "women",
+      "maroon"
+    ]
+  },
+  {
+    "id": "BD-CONV-00092",
+    "category": "Monsoon Rainy Day",
+    "intent": "wardrobe_matching",
+    "chunk_text": "Monsoon Rainy Day Classic: Hi! I'm looking for a complete Classic outfit for an upcoming Monsoon Rainy Day. Hello! I'd love to assist you styling for Monsoon Rainy Day. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Fleece Cotton in Pastel Green tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "monsoon rainy day",
+      "classic",
+      "men",
+      "pastel green"
+    ]
+  },
+  {
+    "id": "BD-CONV-00093",
+    "category": "Winter Evening Gathering",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Winter Evening Gathering Formal: Hi! I'm looking for a complete Formal outfit for an upcoming Winter Evening Gathering. Hello! I'd love to assist you styling for Winter Evening Gathering. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Satin Wool in Cream tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "winter evening gathering",
+      "formal",
+      "women",
+      "cream"
+    ]
+  },
+  {
+    "id": "BD-CONV-00094",
+    "category": "Cultural Program",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Cultural Program Traditional: Hi! I'm looking for a complete Traditional outfit for an upcoming Cultural Program. Hello! I'd love to assist you styling for Cultural Program. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Breathable Mesh in Mustard tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "cultural program",
+      "traditional",
+      "men",
+      "mustard"
+    ]
+  },
+  {
+    "id": "BD-CONV-00095",
+    "category": "University Wear",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "University Wear Bohemian: Hi! I'm looking for a complete Bohemian outfit for an upcoming University Wear. Hello! I'd love to assist you styling for University Wear. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Viscose Rayon in Burgundy tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "university wear",
+      "bohemian",
+      "women",
+      "burgundy"
+    ]
+  },
+  {
+    "id": "BD-CONV-00096",
+    "category": "Casual Outing",
+    "intent": "wardrobe_matching",
+    "chunk_text": "Casual Outing Oversized: Hi! I'm looking for a complete Oversized outfit for an upcoming Casual Outing. Hello! I'd love to assist you styling for Casual Outing. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer 100% Pima Cotton in White tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "casual outing",
+      "oversized",
+      "men",
+      "white"
+    ]
+  },
+  {
+    "id": "BD-CONV-00097",
+    "category": "Smart Office",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Smart Office Athleisure: হ্যালো! আমার Smart Office এর জন্য একটা সুন্দর Athleisure স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! Smart Office এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি Pure Linen উপাদান পছন্দ করি এবং Black রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "smart office",
+      "athleisure",
+      "women",
+      "black"
+    ]
+  },
+  {
+    "id": "BD-CONV-00098",
+    "category": "Corporate Meeting",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Corporate Meeting Elegant: হ্যালো! আমার Corporate Meeting এর জন্য একটা সুন্দর Elegant স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! Corporate Meeting এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি Silk Blend উপাদান পছন্দ করি এবং Navy রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "corporate meeting",
+      "elegant",
+      "men",
+      "navy"
+    ]
+  },
+  {
+    "id": "BD-CONV-00099",
+    "category": "Eid ul-Fitr",
+    "intent": "recommend_complete_outfit",
+    "chunk_text": "Eid ul-Fitr Premium: হ্যালো! আমার Eid ul-Fitr এর জন্য একটা সুন্দর Premium স্টাইলের ড্রেস আউটফিট দরকার। আসসালামু আলাইকুম! Eid ul-Fitr এর জন্য আপনার জন্য সেরা কম্বিনেশন সিলেক্ট করে দিচ্ছি। আপনি কি সুতি নাকি সিল্কের ফ্যাব্রিক পছন্দ করবেন? আমি Denim Twill উপাদান পছন্দ করি এবং Grey রঙের শেড ভালো লাগে। দুর্দান্ত পছন্দ! আমি আপনার জন্য একটি সম্পূর্ণ আউটফিট সেট তৈরি করেছি যা পরিবেশ ও আবহাওয়ার সাথে সামঞ্জস্যপূর্ণ:",
+    "tags": [
+      "bangla",
+      "eid ul-fitr",
+      "premium",
+      "women",
+      "grey"
+    ]
+  },
+  {
+    "id": "BD-CONV-00100",
+    "category": "Pohela Boishakh",
+    "intent": "wardrobe_matching",
+    "chunk_text": "Pohela Boishakh Smart Casual: Hi! I'm looking for a complete Smart Casual outfit for an upcoming Pohela Boishakh. Hello! I'd love to assist you styling for Pohela Boishakh. To tailor this perfectly, do you prefer lightweight breathable fabrics or something more structured? I prefer Fleece Cotton in Beige tones, suitable for Bangladeshi weather. Fantastic taste! Here is a complete curated look designed specifically for your preference:",
+    "tags": [
+      "english",
+      "pohela boishakh",
+      "smart casual",
+      "men",
+      "beige"
+    ]
+  }
+]

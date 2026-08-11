@@ -1,0 +1,22 @@
+[
+  {
+    "gender": "Men",
+    "type": "Panjabi / Shirt",
+    "sizes": {
+      "S": "38 chest",
+      "M": "40 chest",
+      "L": "42 chest",
+      "XL": "44 chest"
+    }
+  },
+  {
+    "gender": "Women",
+    "type": "Kurti / Kameez",
+    "sizes": {
+      "S": "36 bust",
+      "M": "38 bust",
+      "L": "40 bust",
+      "XL": "42 bust"
+    }
+  }
+]

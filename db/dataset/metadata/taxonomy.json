@@ -1,0 +1,103 @@
+{
+  "domain": "Bangladeshi E-Commerce Fashion Stylist",
+  "version": "2.0.0",
+  "categories": {
+    "Men": [
+      "Panjabi",
+      "Shirts",
+      "T-Shirts",
+      "Polo Shirts",
+      "Jeans",
+      "Chinos",
+      "Trousers",
+      "Sherwani",
+      "Hoodies",
+      "Blazers",
+      "Shoes",
+      "Accessories"
+    ],
+    "Women": [
+      "Saree",
+      "Salwar Kameez",
+      "Three Piece",
+      "Kurti",
+      "Lehenga",
+      "Tops",
+      "Dresses",
+      "Footwear",
+      "Handbags",
+      "Jewelry"
+    ],
+    "Kids": [
+      "Boys Traditional",
+      "Girls Traditional",
+      "Boys Casual",
+      "Girls Casual",
+      "Baby Wear"
+    ]
+  },
+  "styles": [
+    "Minimal",
+    "Luxury",
+    "Streetwear",
+    "Vintage",
+    "Old Money",
+    "Korean",
+    "Modern",
+    "Classic",
+    "Formal",
+    "Traditional",
+    "Bohemian",
+    "Oversized",
+    "Athleisure",
+    "Elegant",
+    "Premium",
+    "Smart Casual",
+    "Business Casual"
+  ],
+  "occasions": [
+    "University Wear",
+    "Casual Outing",
+    "Smart Office",
+    "Corporate Meeting",
+    "Eid ul-Fitr",
+    "Pohela Boishakh",
+    "Friend's Wedding",
+    "Holud Ceremony",
+    "Mehendi Night",
+    "Wedding Reception",
+    "Jummah Prayer",
+    "Date Night",
+    "Family Gathering",
+    "Vacation",
+    "Airport Fashion",
+    "Gym Workout",
+    "Monsoon Rainy Day",
+    "Winter Evening Gathering",
+    "Cultural Program"
+  ],
+  "colors": [
+    "White",
+    "Black",
+    "Navy",
+    "Grey",
+    "Beige",
+    "Olive",
+    "Brown",
+    "Maroon",
+    "Pastel Green",
+    "Cream",
+    "Mustard",
+    "Burgundy"
+  ],
+  "materials": [
+    "100% Pima Cotton",
+    "Pure Linen",
+    "Silk Blend",
+    "Denim Twill",
+    "Fleece Cotton",
+    "Satin Wool",
+    "Breathable Mesh",
+    "Viscose Rayon"
+  ]
+}

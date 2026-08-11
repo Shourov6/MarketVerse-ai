@@ -1,0 +1,83 @@
+[
+  {
+    "gender": "Men",
+    "cat": "Shirt",
+    "sub": "Oxford Shirt",
+    "style": [
+      "Minimal",
+      "Business Casual"
+    ]
+  },
+  {
+    "gender": "Men",
+    "cat": "Panjabi",
+    "sub": "Embroidered Silk Panjabi",
+    "style": [
+      "Traditional",
+      "Luxury"
+    ]
+  },
+  {
+    "gender": "Men",
+    "cat": "Chinos",
+    "sub": "Slim Stretch Chinos",
+    "style": [
+      "Smart Casual",
+      "Minimal"
+    ]
+  },
+  {
+    "gender": "Men",
+    "cat": "T-Shirt",
+    "sub": "Oversized Heavyweight Tee",
+    "style": [
+      "Streetwear",
+      "Korean"
+    ]
+  },
+  {
+    "gender": "Women",
+    "cat": "Saree",
+    "sub": "Katan Silk Saree",
+    "style": [
+      "Traditional",
+      "Luxury"
+    ]
+  },
+  {
+    "gender": "Women",
+    "cat": "Kurti",
+    "sub": "Cotton Block Print Kurti",
+    "style": [
+      "Minimal",
+      "Casual"
+    ]
+  },
+  {
+    "gender": "Women",
+    "cat": "Three Piece",
+    "sub": "Georgette Salwar Suit",
+    "style": [
+      "Traditional",
+      "Elegant"
+    ]
+  },
+  {
+    "gender": "Men",
+    "cat": "Blazer",
+    "sub": "Unstructured Linen Blazer",
+    "style": [
+      "Old Money",
+      "Smart Casual"
+    ]
+  },
+  {
+    "gender": "Unisex",
+    "cat": "Shoes",
+    "sub": "Minimalist Leather Loafers",
+    "style": [
+      "Smart Casual",
+      "Classic"
+    ]
+  }
+]

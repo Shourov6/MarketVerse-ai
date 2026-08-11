@@ -1,0 +1,3752 @@
+[
+  {
+    "id": "BD-QA-0501",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What Panjabi style is trending for Eid?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0502",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What color saree is traditional for Holud guests?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0503",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0504",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0505",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0506",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0507",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What color saree is best for Eid afternoon visits?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0508",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What jewelry matches a yellow Holud saree?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0509",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0510",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0511",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0512",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0513",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What Panjabi style is trending for Eid?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0514",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What color saree is traditional for Holud guests?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0515",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0516",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0517",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0518",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0519",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What color saree is best for Eid afternoon visits?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0520",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What jewelry matches a yellow Holud saree?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0521",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0522",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0523",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0524",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0525",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What Panjabi style is trending for Eid?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0526",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What color saree is traditional for Holud guests?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0527",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0528",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0529",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0530",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0531",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What color saree is best for Eid afternoon visits?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0532",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What jewelry matches a yellow Holud saree?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0533",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0534",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0535",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0536",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0537",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What Panjabi style is trending for Eid?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0538",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What color saree is traditional for Holud guests?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0539",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0540",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0541",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0542",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0543",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What color saree is best for Eid afternoon visits?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0544",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What jewelry matches a yellow Holud saree?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0545",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0546",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0547",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0548",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0549",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What Panjabi style is trending for Eid?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0550",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What color saree is traditional for Holud guests?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0551",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0552",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0553",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0554",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0555",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What color saree is best for Eid afternoon visits?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0556",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What jewelry matches a yellow Holud saree?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0557",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0558",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0559",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0560",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0561",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What Panjabi style is trending for Eid?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0562",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What color saree is traditional for Holud guests?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0563",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0564",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0565",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0566",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0567",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What color saree is best for Eid afternoon visits?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0568",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What jewelry matches a yellow Holud saree?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0569",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0570",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0571",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0572",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0573",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What Panjabi style is trending for Eid?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0574",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What color saree is traditional for Holud guests?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0575",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0576",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0577",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0578",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0579",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What color saree is best for Eid afternoon visits?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0580",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What jewelry matches a yellow Holud saree?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0581",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0582",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0583",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0584",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0585",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What Panjabi style is trending for Eid?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0586",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What color saree is traditional for Holud guests?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0587",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0588",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0589",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0590",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0591",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What color saree is best for Eid afternoon visits?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0592",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What jewelry matches a yellow Holud saree?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0593",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0594",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0595",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0596",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0597",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What Panjabi style is trending for Eid?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0598",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What color saree is traditional for Holud guests?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0599",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0600",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0601",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0602",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0603",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What color saree is best for Eid afternoon visits?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0604",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What jewelry matches a yellow Holud saree?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0605",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0606",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0607",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0608",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0609",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What Panjabi style is trending for Eid?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0610",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What color saree is traditional for Holud guests?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0611",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0612",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0613",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0614",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0615",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What color saree is best for Eid afternoon visits?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0616",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What jewelry matches a yellow Holud saree?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0617",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0618",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0619",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0620",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0621",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What Panjabi style is trending for Eid?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0622",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What color saree is traditional for Holud guests?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0623",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0624",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0625",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0626",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0627",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What color saree is best for Eid afternoon visits?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0628",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What jewelry matches a yellow Holud saree?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0629",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0630",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0631",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0632",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0633",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What Panjabi style is trending for Eid?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0634",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What color saree is traditional for Holud guests?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0635",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0636",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0637",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0638",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0639",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What color saree is best for Eid afternoon visits?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0640",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What jewelry matches a yellow Holud saree?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0641",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0642",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0643",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0644",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0645",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What Panjabi style is trending for Eid?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0646",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What color saree is traditional for Holud guests?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0647",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0648",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0649",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0650",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0651",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What color saree is best for Eid afternoon visits?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0652",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What jewelry matches a yellow Holud saree?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0653",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0654",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0655",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0656",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0657",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What Panjabi style is trending for Eid?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0658",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What color saree is traditional for Holud guests?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0659",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0660",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0661",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0662",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0663",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What color saree is best for Eid afternoon visits?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0664",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What jewelry matches a yellow Holud saree?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0665",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0666",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0667",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0668",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0669",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What Panjabi style is trending for Eid?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0670",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What color saree is traditional for Holud guests?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0671",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0672",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0673",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0674",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0675",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What color saree is best for Eid afternoon visits?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0676",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What jewelry matches a yellow Holud saree?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0677",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0678",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0679",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0680",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0681",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What Panjabi style is trending for Eid?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0682",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What color saree is traditional for Holud guests?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0683",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0684",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0685",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0686",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0687",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What color saree is best for Eid afternoon visits?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0688",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What jewelry matches a yellow Holud saree?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0689",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0690",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0691",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0692",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0693",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What Panjabi style is trending for Eid?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0694",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What color saree is traditional for Holud guests?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0695",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0696",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0697",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0698",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0699",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What color saree is best for Eid afternoon visits?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0700",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What jewelry matches a yellow Holud saree?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0701",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0702",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0703",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0704",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0705",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What Panjabi style is trending for Eid?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0706",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What color saree is traditional for Holud guests?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0707",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0708",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0709",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0710",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0711",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What color saree is best for Eid afternoon visits?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0712",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What jewelry matches a yellow Holud saree?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0713",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0714",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0715",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0716",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0717",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What Panjabi style is trending for Eid?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0718",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What color saree is traditional for Holud guests?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0719",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0720",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0721",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0722",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0723",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What color saree is best for Eid afternoon visits?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0724",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What jewelry matches a yellow Holud saree?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0725",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0726",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0727",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0728",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0729",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What Panjabi style is trending for Eid?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0730",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What color saree is traditional for Holud guests?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0731",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0732",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0733",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0734",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0735",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What color saree is best for Eid afternoon visits?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0736",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What jewelry matches a yellow Holud saree?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0737",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0738",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0739",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0740",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0741",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What Panjabi style is trending for Eid?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0742",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What color saree is traditional for Holud guests?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0743",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What traditional outfit is best for a Bangladeshi wedding reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0744",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "How to style a Katan Saree for a winter reception?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0745",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Jummah Attire",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0746",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Puja Festivities",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0747",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Eid Fashion",
+    "question": "What color saree is best for Eid afternoon visits?",
+    "reply": "For Eid morning, lightweight embroidered cotton Panjabi with white pajama and traditional leather Nagra shoes is a timeless favorite. For evening visits, silk or jacquard Panjabis with a handcrafted attar give a regal look!",
+    "keywords": [
+      "eid",
+      "panjabi",
+      "pajama",
+      "nagra",
+      "saree"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0748",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Holud & Mehendi",
+    "question": "What jewelry matches a yellow Holud saree?",
+    "reply": "Yellow, mustard, floral, and vibrant green are iconic for Gaye Holud & Mehendi! Men look great in yellow/olive cotton Panjabis with Koti jackets, while women shine in Jamdani or Katan sarees with floral jewelry.",
+    "keywords": [
+      "holud",
+      "mehendi",
+      "yellow",
+      "panjabi",
+      "jamdani"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0749",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Wedding Reception",
+    "question": "What is the recommended Jummah outfit for men?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  },
+  {
+    "id": "BD-QA-0750",
+    "category": "Traditional Bangladeshi Occasions",
+    "subCategory": "Pohela Boishakh",
+    "question": "What should I wear to a Pohela Boishakh celebration?",
+    "reply": "For Pohela Boishakh, red and white traditional sarees or embroidered white Panjabis are quintessential! For wedding receptions, rich Katan sarees or embellished Sherwanis deliver unmatched elegance.",
+    "keywords": [
+      "pohela boishakh",
+      "jummah",
+      "katan saree",
+      "sherwani",
+      "reception"
+    ],
+    "intent": "traditional_bangladeshi"
+  }
+]

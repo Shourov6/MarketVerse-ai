@@ -1,0 +1,14 @@
+[
+  {
+    "material": "Cotton",
+    "wash": "Machine wash cold",
+    "dry": "Line dry in shade",
+    "iron": "Medium heat"
+  },
+  {
+    "material": "Silk",
+    "wash": "Dry clean only",
+    "dry": "Do not wring",
+    "iron": "Steam iron only"
+  }
+]

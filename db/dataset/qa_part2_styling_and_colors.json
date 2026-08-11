@@ -1,0 +1,3752 @@
+[
+  {
+    "id": "BD-QA-0251",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "What shirt colors match with navy blue trousers?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0252",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0253",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What winter layers are comfortable for evening gatherings?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0254",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0255",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "What accessories elevate a simple casual shirt?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0256",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0257",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "Is black and brown combination fashionable?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0258",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0259",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What fabric is best for summer in Dhaka?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0260",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0261",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "Should my watch strap match my shoe color?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0262",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0263",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "What shirt colors match with navy blue trousers?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0264",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0265",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What winter layers are comfortable for evening gatherings?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0266",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0267",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "What accessories elevate a simple casual shirt?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0268",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0269",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "Is black and brown combination fashionable?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0270",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0271",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What fabric is best for summer in Dhaka?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0272",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0273",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "Should my watch strap match my shoe color?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0274",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0275",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "What shirt colors match with navy blue trousers?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0276",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0277",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What winter layers are comfortable for evening gatherings?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0278",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0279",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "What accessories elevate a simple casual shirt?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0280",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0281",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "Is black and brown combination fashionable?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0282",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0283",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What fabric is best for summer in Dhaka?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0284",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0285",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "Should my watch strap match my shoe color?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0286",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0287",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "What shirt colors match with navy blue trousers?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0288",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0289",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What winter layers are comfortable for evening gatherings?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0290",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0291",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "What accessories elevate a simple casual shirt?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0292",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0293",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "Is black and brown combination fashionable?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0294",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0295",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What fabric is best for summer in Dhaka?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0296",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0297",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "Should my watch strap match my shoe color?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0298",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0299",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "What shirt colors match with navy blue trousers?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0300",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0301",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What winter layers are comfortable for evening gatherings?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0302",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0303",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "What accessories elevate a simple casual shirt?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0304",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0305",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "Is black and brown combination fashionable?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0306",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0307",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What fabric is best for summer in Dhaka?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0308",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0309",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "Should my watch strap match my shoe color?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0310",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0311",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "What shirt colors match with navy blue trousers?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0312",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0313",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What winter layers are comfortable for evening gatherings?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0314",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0315",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "What accessories elevate a simple casual shirt?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0316",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0317",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "Is black and brown combination fashionable?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0318",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0319",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What fabric is best for summer in Dhaka?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0320",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0321",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "Should my watch strap match my shoe color?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0322",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0323",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "What shirt colors match with navy blue trousers?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0324",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0325",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What winter layers are comfortable for evening gatherings?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0326",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0327",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "What accessories elevate a simple casual shirt?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0328",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0329",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "Is black and brown combination fashionable?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0330",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0331",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What fabric is best for summer in Dhaka?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0332",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0333",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "Should my watch strap match my shoe color?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0334",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0335",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "What shirt colors match with navy blue trousers?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0336",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0337",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What winter layers are comfortable for evening gatherings?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0338",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0339",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "What accessories elevate a simple casual shirt?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0340",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0341",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "Is black and brown combination fashionable?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0342",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0343",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What fabric is best for summer in Dhaka?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0344",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0345",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "Should my watch strap match my shoe color?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0346",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0347",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "What shirt colors match with navy blue trousers?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0348",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0349",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What winter layers are comfortable for evening gatherings?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0350",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0351",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "What accessories elevate a simple casual shirt?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0352",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0353",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "Is black and brown combination fashionable?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0354",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0355",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What fabric is best for summer in Dhaka?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0356",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0357",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "Should my watch strap match my shoe color?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0358",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0359",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "What shirt colors match with navy blue trousers?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0360",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0361",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What winter layers are comfortable for evening gatherings?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0362",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0363",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "What accessories elevate a simple casual shirt?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0364",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0365",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "Is black and brown combination fashionable?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0366",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0367",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What fabric is best for summer in Dhaka?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0368",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0369",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "Should my watch strap match my shoe color?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0370",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0371",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "What shirt colors match with navy blue trousers?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0372",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0373",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What winter layers are comfortable for evening gatherings?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0374",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0375",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "What accessories elevate a simple casual shirt?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0376",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0377",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "Is black and brown combination fashionable?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0378",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0379",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What fabric is best for summer in Dhaka?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0380",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0381",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "Should my watch strap match my shoe color?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0382",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0383",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "What shirt colors match with navy blue trousers?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0384",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0385",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What winter layers are comfortable for evening gatherings?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0386",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0387",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "What accessories elevate a simple casual shirt?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0388",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0389",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "Is black and brown combination fashionable?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0390",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0391",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What fabric is best for summer in Dhaka?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0392",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0393",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "Should my watch strap match my shoe color?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0394",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0395",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "What shirt colors match with navy blue trousers?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0396",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0397",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What winter layers are comfortable for evening gatherings?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0398",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0399",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "What accessories elevate a simple casual shirt?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0400",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0401",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "Is black and brown combination fashionable?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0402",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0403",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What fabric is best for summer in Dhaka?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0404",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0405",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "Should my watch strap match my shoe color?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0406",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0407",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "What shirt colors match with navy blue trousers?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0408",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0409",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What winter layers are comfortable for evening gatherings?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0410",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0411",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "What accessories elevate a simple casual shirt?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0412",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0413",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "Is black and brown combination fashionable?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0414",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0415",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What fabric is best for summer in Dhaka?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0416",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0417",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "Should my watch strap match my shoe color?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0418",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0419",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "What shirt colors match with navy blue trousers?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0420",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0421",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What winter layers are comfortable for evening gatherings?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0422",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0423",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "What accessories elevate a simple casual shirt?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0424",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0425",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "Is black and brown combination fashionable?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0426",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0427",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What fabric is best for summer in Dhaka?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0428",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0429",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "Should my watch strap match my shoe color?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0430",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0431",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "What shirt colors match with navy blue trousers?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0432",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0433",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What winter layers are comfortable for evening gatherings?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0434",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0435",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "What accessories elevate a simple casual shirt?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0436",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0437",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "Is black and brown combination fashionable?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0438",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0439",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What fabric is best for summer in Dhaka?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0440",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0441",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "Should my watch strap match my shoe color?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0442",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0443",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "What shirt colors match with navy blue trousers?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0444",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0445",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What winter layers are comfortable for evening gatherings?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0446",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0447",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "What accessories elevate a simple casual shirt?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0448",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0449",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "Is black and brown combination fashionable?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0450",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0451",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What fabric is best for summer in Dhaka?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0452",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0453",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "Should my watch strap match my shoe color?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0454",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0455",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "What shirt colors match with navy blue trousers?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0456",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0457",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What winter layers are comfortable for evening gatherings?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0458",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0459",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "What accessories elevate a simple casual shirt?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0460",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0461",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "Is black and brown combination fashionable?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0462",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0463",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What fabric is best for summer in Dhaka?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0464",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0465",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "Should my watch strap match my shoe color?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0466",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0467",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "What shirt colors match with navy blue trousers?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0468",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0469",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What winter layers are comfortable for evening gatherings?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0470",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0471",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "What accessories elevate a simple casual shirt?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0472",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0473",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "Is black and brown combination fashionable?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0474",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0475",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What fabric is best for summer in Dhaka?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0476",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0477",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "Should my watch strap match my shoe color?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0478",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0479",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "What shirt colors match with navy blue trousers?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0480",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0481",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What winter layers are comfortable for evening gatherings?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0482",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0483",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "What accessories elevate a simple casual shirt?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0484",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0485",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "Is black and brown combination fashionable?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0486",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0487",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What fabric is best for summer in Dhaka?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0488",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0489",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "Should my watch strap match my shoe color?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0490",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0491",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "What shirt colors match with navy blue trousers?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0492",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0493",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What winter layers are comfortable for evening gatherings?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0494",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0495",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Body Type Styling",
+    "question": "What accessories elevate a simple casual shirt?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0496",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Casual vs Formal",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0497",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Color Theory",
+    "question": "Is black and brown combination fashionable?",
+    "reply": "Navy blue trousers pair brilliantly with crisp white, pastel pink, light blue, or beige shirts. For white pants, dark brown or black leather shoes create a sophisticated, sharp contrast!",
+    "keywords": [
+      "navy",
+      "white pants",
+      "color match",
+      "skin tone",
+      "shoes"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0498",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Wardrobe Essentials",
+    "question": "What sunglasses suit square face shapes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0499",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Seasonal Fabrics",
+    "question": "What fabric is best for summer in Dhaka?",
+    "reply": "For Bangladesh's hot summer, 100% breathable Pima cotton and lightweight linen are ideal. During monsoon, opt for dark water-resistant fabrics and comfortable loafers or sandals!",
+    "keywords": [
+      "summer",
+      "monsoon",
+      "cotton",
+      "linen",
+      "fabric"
+    ],
+    "intent": "fashion_styling"
+  },
+  {
+    "id": "BD-QA-0500",
+    "category": "Fashion Advice & Color Pairing",
+    "subCategory": "Footwear Matching",
+    "question": "How do I choose the right belt for my formal shoes?",
+    "reply": "A classic rule of thumb: match your leather watch strap and belt with your shoe color (e.g. brown belt with brown loafers). Adding a clean minimalist watch instantly elevates any casual look!",
+    "keywords": [
+      "belt",
+      "shoes",
+      "watch",
+      "accessories",
+      "style"
+    ],
+    "intent": "fashion_styling"
+  }
+]

@@ -1,0 +1,24 @@
+{
+  "panjabi": [
+    "punjabi",
+    "punjabi suit",
+    "kurta"
+  ],
+  "saree": [
+    "shari",
+    "sari"
+  ],
+  "three_piece": [
+    "salwar kameez",
+    "shalwar kameez",
+    "3 piece"
+  ],
+  "monsoon": [
+    "rainy season",
+    "bristi"
+  ],
+  "eid": [
+    "eid ul fitr",
+    "eid festival"
+  ]
+}

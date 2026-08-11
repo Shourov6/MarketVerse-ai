@@ -1,0 +1,66 @@
+[
+  {
+    "color": "Black",
+    "matches": [
+      "White",
+      "Grey",
+      "Olive",
+      "Beige",
+      "Brown"
+    ],
+    "avoid": [
+      "Neon Green",
+      "Bright Orange"
+    ]
+  },
+  {
+    "color": "Navy Blue",
+    "matches": [
+      "White",
+      "Beige",
+      "Tan Brown",
+      "Light Grey"
+    ],
+    "avoid": [
+      "Black overload",
+      "Neon Yellow"
+    ]
+  },
+  {
+    "color": "White",
+    "matches": [
+      "Navy",
+      "Black",
+      "Olive",
+      "Maroon",
+      "Charcoal"
+    ],
+    "avoid": [
+      "Off-white clash"
+    ]
+  },
+  {
+    "color": "Olive Green",
+    "matches": [
+      "Cream",
+      "Beige",
+      "Black",
+      "White"
+    ],
+    "avoid": [
+      "Bright Purple"
+    ]
+  },
+  {
+    "color": "Cream / Off-White",
+    "matches": [
+      "Pastel Blue",
+      "Burgundy",
+      "Navy",
+      "Emerald Green"
+    ],
+    "avoid": [
+      "Neon Colors"
+    ]
+  }
+]

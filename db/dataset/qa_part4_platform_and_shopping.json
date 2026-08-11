@@ -1,0 +1,3752 @@
+[
+  {
+    "id": "BD-QA-0751",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0752",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0753",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0754",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0755",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0756",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0757",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0758",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0759",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0760",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0761",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0762",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0763",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0764",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0765",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0766",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0767",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0768",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0769",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0770",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0771",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0772",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0773",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0774",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0775",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0776",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0777",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0778",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0779",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0780",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0781",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0782",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0783",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0784",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0785",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0786",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0787",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0788",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0789",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0790",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0791",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0792",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0793",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0794",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0795",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0796",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0797",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0798",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0799",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0800",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0801",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0802",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0803",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0804",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0805",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0806",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0807",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0808",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0809",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0810",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0811",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0812",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0813",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0814",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0815",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0816",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0817",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0818",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0819",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0820",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0821",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0822",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0823",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0824",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0825",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0826",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0827",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0828",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0829",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0830",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0831",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0832",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0833",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0834",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0835",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0836",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0837",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0838",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0839",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0840",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0841",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0842",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0843",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0844",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0845",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0846",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0847",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0848",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0849",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0850",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0851",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0852",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0853",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0854",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0855",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0856",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0857",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0858",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0859",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0860",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0861",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0862",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0863",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0864",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0865",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0866",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0867",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0868",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0869",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0870",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0871",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0872",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0873",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0874",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0875",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0876",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0877",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0878",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0879",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0880",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0881",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0882",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0883",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0884",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0885",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0886",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0887",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0888",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0889",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0890",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0891",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0892",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0893",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0894",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0895",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0896",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0897",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0898",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0899",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0900",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0901",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0902",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0903",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0904",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0905",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0906",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0907",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0908",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0909",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0910",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0911",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0912",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0913",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0914",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0915",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0916",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0917",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0918",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0919",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0920",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0921",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0922",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0923",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0924",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0925",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0926",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0927",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0928",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0929",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0930",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0931",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0932",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0933",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0934",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0935",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0936",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0937",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0938",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0939",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0940",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0941",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0942",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0943",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0944",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0945",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0946",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0947",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0948",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0949",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0950",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0951",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0952",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0953",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0954",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0955",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0956",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0957",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0958",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0959",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0960",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0961",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0962",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0963",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0964",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0965",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0966",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0967",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0968",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0969",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0970",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0971",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0972",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0973",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0974",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0975",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0976",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0977",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0978",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0979",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0980",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0981",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0982",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0983",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0984",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0985",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0986",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0987",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0988",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0989",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0990",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0991",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0992",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0993",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0994",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0995",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Delivery Timelines",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0996",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Promotions & Discounts",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0997",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Cart & Checkout",
+    "question": "Are all products on StyleMate authentic?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0998",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Wishlist",
+    "question": "How do I register as a seller on this platform?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-0999",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Seller Inquiry",
+    "question": "How do I add items to my Wishlist?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  },
+  {
+    "id": "BD-QA-1000",
+    "category": "Platform Features & Shopping",
+    "subCategory": "Product Authenticity",
+    "question": "Can I buy products from multiple sellers in one order?",
+    "reply": "StyleMate is a multi-vendor platform featuring verified authentic Bangladeshi and international sellers. You can add items from multiple vendors to a single cart and checkout seamlessly!",
+    "keywords": [
+      "wishlist",
+      "multi-vendor",
+      "authentic",
+      "seller",
+      "cart"
+    ],
+    "intent": "platform_feature"
+  }
+]

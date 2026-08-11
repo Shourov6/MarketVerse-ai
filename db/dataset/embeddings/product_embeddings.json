@@ -1,0 +1,1202 @@
+[
+  {
+    "id": "SKU-000001",
+    "title": "Bengal Weaves Black Embroidered Silk Panjabi",
+    "category": "Panjabi",
+    "chunk_text": "Bengal Weaves Black Embroidered Silk Panjabi Bengal Weaves Panjabi Pure Linen Black Black Navy Traditional Luxury",
+    "tags": [
+      "black",
+      "panjabi",
+      "bengal weaves",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000002",
+    "title": "Dhaka Denim Navy Slim Stretch Chinos",
+    "category": "Chinos",
+    "chunk_text": "Dhaka Denim Navy Slim Stretch Chinos Dhaka Denim Chinos Silk Blend Navy Black Navy Smart Casual Minimal",
+    "tags": [
+      "navy",
+      "chinos",
+      "dhaka denim",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000003",
+    "title": "Heritage Loom Grey Oversized Heavyweight Tee",
+    "category": "T-Shirt",
+    "chunk_text": "Heritage Loom Grey Oversized Heavyweight Tee Heritage Loom T-Shirt Denim Twill Grey Black Navy Streetwear Korean",
+    "tags": [
+      "grey",
+      "t-shirt",
+      "heritage loom",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000004",
+    "title": "Noor Fashion Beige Katan Silk Saree",
+    "category": "Saree",
+    "chunk_text": "Noor Fashion Beige Katan Silk Saree Noor Fashion Saree Fleece Cotton Beige Black Navy Traditional Luxury",
+    "tags": [
+      "beige",
+      "saree",
+      "noor fashion",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000005",
+    "title": "Silk Route Olive Cotton Block Print Kurti",
+    "category": "Kurti",
+    "chunk_text": "Silk Route Olive Cotton Block Print Kurti Silk Route Kurti Satin Wool Olive Black Navy Minimal Casual",
+    "tags": [
+      "olive",
+      "kurti",
+      "silk route",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000006",
+    "title": "Artisan Studio Brown Georgette Salwar Suit",
+    "category": "Three Piece",
+    "chunk_text": "Artisan Studio Brown Georgette Salwar Suit Artisan Studio Three Piece Breathable Mesh Brown Black Navy Traditional Elegant",
+    "tags": [
+      "brown",
+      "three piece",
+      "artisan studio",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000007",
+    "title": "Classic Cotton Maroon Unstructured Linen Blazer",
+    "category": "Blazer",
+    "chunk_text": "Classic Cotton Maroon Unstructured Linen Blazer Classic Cotton Blazer Viscose Rayon Maroon Black Navy Old Money Smart Casual",
+    "tags": [
+      "maroon",
+      "blazer",
+      "classic cotton",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000008",
+    "title": "North Avenue Pastel Green Minimalist Leather Loafers",
+    "category": "Shoes",
+    "chunk_text": "North Avenue Pastel Green Minimalist Leather Loafers North Avenue Shoes 100% Pima Cotton Pastel Green Black Navy Smart Casual Classic",
+    "tags": [
+      "pastel green",
+      "shoes",
+      "north avenue",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000009",
+    "title": "Minimal Co. Cream Oxford Shirt",
+    "category": "Shirt",
+    "chunk_text": "Minimal Co. Cream Oxford Shirt Minimal Co. Shirt Pure Linen Cream Black Navy Minimal Business Casual",
+    "tags": [
+      "cream",
+      "shirt",
+      "minimal co.",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000010",
+    "title": "Monsoon Wear Mustard Embroidered Silk Panjabi",
+    "category": "Panjabi",
+    "chunk_text": "Monsoon Wear Mustard Embroidered Silk Panjabi Monsoon Wear Panjabi Silk Blend Mustard Black Navy Traditional Luxury",
+    "tags": [
+      "mustard",
+      "panjabi",
+      "monsoon wear",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000011",
+    "title": "Pure Linen Burgundy Slim Stretch Chinos",
+    "category": "Chinos",
+    "chunk_text": "Pure Linen Burgundy Slim Stretch Chinos Pure Linen Chinos Denim Twill Burgundy Black Navy Smart Casual Minimal",
+    "tags": [
+      "burgundy",
+      "chinos",
+      "pure linen",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000012",
+    "title": "Vertex Apparel White Oversized Heavyweight Tee",
+    "category": "T-Shirt",
+    "chunk_text": "Vertex Apparel White Oversized Heavyweight Tee Vertex Apparel T-Shirt Fleece Cotton White Black Navy Streetwear Korean",
+    "tags": [
+      "white",
+      "t-shirt",
+      "vertex apparel",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000013",
+    "title": "Urban Thread Black Katan Silk Saree",
+    "category": "Saree",
+    "chunk_text": "Urban Thread Black Katan Silk Saree Urban Thread Saree Satin Wool Black Black Navy Traditional Luxury",
+    "tags": [
+      "black",
+      "saree",
+      "urban thread",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000014",
+    "title": "Bengal Weaves Navy Cotton Block Print Kurti",
+    "category": "Kurti",
+    "chunk_text": "Bengal Weaves Navy Cotton Block Print Kurti Bengal Weaves Kurti Breathable Mesh Navy Black Navy Minimal Casual",
+    "tags": [
+      "navy",
+      "kurti",
+      "bengal weaves",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000015",
+    "title": "Dhaka Denim Grey Georgette Salwar Suit",
+    "category": "Three Piece",
+    "chunk_text": "Dhaka Denim Grey Georgette Salwar Suit Dhaka Denim Three Piece Viscose Rayon Grey Black Navy Traditional Elegant",
+    "tags": [
+      "grey",
+      "three piece",
+      "dhaka denim",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000016",
+    "title": "Heritage Loom Beige Unstructured Linen Blazer",
+    "category": "Blazer",
+    "chunk_text": "Heritage Loom Beige Unstructured Linen Blazer Heritage Loom Blazer 100% Pima Cotton Beige Black Navy Old Money Smart Casual",
+    "tags": [
+      "beige",
+      "blazer",
+      "heritage loom",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000017",
+    "title": "Noor Fashion Olive Minimalist Leather Loafers",
+    "category": "Shoes",
+    "chunk_text": "Noor Fashion Olive Minimalist Leather Loafers Noor Fashion Shoes Pure Linen Olive Black Navy Smart Casual Classic",
+    "tags": [
+      "olive",
+      "shoes",
+      "noor fashion",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000018",
+    "title": "Silk Route Brown Oxford Shirt",
+    "category": "Shirt",
+    "chunk_text": "Silk Route Brown Oxford Shirt Silk Route Shirt Silk Blend Brown Black Navy Minimal Business Casual",
+    "tags": [
+      "brown",
+      "shirt",
+      "silk route",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000019",
+    "title": "Artisan Studio Maroon Embroidered Silk Panjabi",
+    "category": "Panjabi",
+    "chunk_text": "Artisan Studio Maroon Embroidered Silk Panjabi Artisan Studio Panjabi Denim Twill Maroon Black Navy Traditional Luxury",
+    "tags": [
+      "maroon",
+      "panjabi",
+      "artisan studio",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000020",
+    "title": "Classic Cotton Pastel Green Slim Stretch Chinos",
+    "category": "Chinos",
+    "chunk_text": "Classic Cotton Pastel Green Slim Stretch Chinos Classic Cotton Chinos Fleece Cotton Pastel Green Black Navy Smart Casual Minimal",
+    "tags": [
+      "pastel green",
+      "chinos",
+      "classic cotton",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000021",
+    "title": "North Avenue Cream Oversized Heavyweight Tee",
+    "category": "T-Shirt",
+    "chunk_text": "North Avenue Cream Oversized Heavyweight Tee North Avenue T-Shirt Satin Wool Cream Black Navy Streetwear Korean",
+    "tags": [
+      "cream",
+      "t-shirt",
+      "north avenue",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000022",
+    "title": "Minimal Co. Mustard Katan Silk Saree",
+    "category": "Saree",
+    "chunk_text": "Minimal Co. Mustard Katan Silk Saree Minimal Co. Saree Breathable Mesh Mustard Black Navy Traditional Luxury",
+    "tags": [
+      "mustard",
+      "saree",
+      "minimal co.",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000023",
+    "title": "Monsoon Wear Burgundy Cotton Block Print Kurti",
+    "category": "Kurti",
+    "chunk_text": "Monsoon Wear Burgundy Cotton Block Print Kurti Monsoon Wear Kurti Viscose Rayon Burgundy Black Navy Minimal Casual",
+    "tags": [
+      "burgundy",
+      "kurti",
+      "monsoon wear",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000024",
+    "title": "Pure Linen White Georgette Salwar Suit",
+    "category": "Three Piece",
+    "chunk_text": "Pure Linen White Georgette Salwar Suit Pure Linen Three Piece 100% Pima Cotton White Black Navy Traditional Elegant",
+    "tags": [
+      "white",
+      "three piece",
+      "pure linen",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000025",
+    "title": "Vertex Apparel Black Unstructured Linen Blazer",
+    "category": "Blazer",
+    "chunk_text": "Vertex Apparel Black Unstructured Linen Blazer Vertex Apparel Blazer Pure Linen Black Black Navy Old Money Smart Casual",
+    "tags": [
+      "black",
+      "blazer",
+      "vertex apparel",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000026",
+    "title": "Urban Thread Navy Minimalist Leather Loafers",
+    "category": "Shoes",
+    "chunk_text": "Urban Thread Navy Minimalist Leather Loafers Urban Thread Shoes Silk Blend Navy Black Navy Smart Casual Classic",
+    "tags": [
+      "navy",
+      "shoes",
+      "urban thread",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000027",
+    "title": "Bengal Weaves Grey Oxford Shirt",
+    "category": "Shirt",
+    "chunk_text": "Bengal Weaves Grey Oxford Shirt Bengal Weaves Shirt Denim Twill Grey Black Navy Minimal Business Casual",
+    "tags": [
+      "grey",
+      "shirt",
+      "bengal weaves",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000028",
+    "title": "Dhaka Denim Beige Embroidered Silk Panjabi",
+    "category": "Panjabi",
+    "chunk_text": "Dhaka Denim Beige Embroidered Silk Panjabi Dhaka Denim Panjabi Fleece Cotton Beige Black Navy Traditional Luxury",
+    "tags": [
+      "beige",
+      "panjabi",
+      "dhaka denim",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000029",
+    "title": "Heritage Loom Olive Slim Stretch Chinos",
+    "category": "Chinos",
+    "chunk_text": "Heritage Loom Olive Slim Stretch Chinos Heritage Loom Chinos Satin Wool Olive Black Navy Smart Casual Minimal",
+    "tags": [
+      "olive",
+      "chinos",
+      "heritage loom",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000030",
+    "title": "Noor Fashion Brown Oversized Heavyweight Tee",
+    "category": "T-Shirt",
+    "chunk_text": "Noor Fashion Brown Oversized Heavyweight Tee Noor Fashion T-Shirt Breathable Mesh Brown Black Navy Streetwear Korean",
+    "tags": [
+      "brown",
+      "t-shirt",
+      "noor fashion",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000031",
+    "title": "Silk Route Maroon Katan Silk Saree",
+    "category": "Saree",
+    "chunk_text": "Silk Route Maroon Katan Silk Saree Silk Route Saree Viscose Rayon Maroon Black Navy Traditional Luxury",
+    "tags": [
+      "maroon",
+      "saree",
+      "silk route",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000032",
+    "title": "Artisan Studio Pastel Green Cotton Block Print Kurti",
+    "category": "Kurti",
+    "chunk_text": "Artisan Studio Pastel Green Cotton Block Print Kurti Artisan Studio Kurti 100% Pima Cotton Pastel Green Black Navy Minimal Casual",
+    "tags": [
+      "pastel green",
+      "kurti",
+      "artisan studio",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000033",
+    "title": "Classic Cotton Cream Georgette Salwar Suit",
+    "category": "Three Piece",
+    "chunk_text": "Classic Cotton Cream Georgette Salwar Suit Classic Cotton Three Piece Pure Linen Cream Black Navy Traditional Elegant",
+    "tags": [
+      "cream",
+      "three piece",
+      "classic cotton",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000034",
+    "title": "North Avenue Mustard Unstructured Linen Blazer",
+    "category": "Blazer",
+    "chunk_text": "North Avenue Mustard Unstructured Linen Blazer North Avenue Blazer Silk Blend Mustard Black Navy Old Money Smart Casual",
+    "tags": [
+      "mustard",
+      "blazer",
+      "north avenue",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000035",
+    "title": "Minimal Co. Burgundy Minimalist Leather Loafers",
+    "category": "Shoes",
+    "chunk_text": "Minimal Co. Burgundy Minimalist Leather Loafers Minimal Co. Shoes Denim Twill Burgundy Black Navy Smart Casual Classic",
+    "tags": [
+      "burgundy",
+      "shoes",
+      "minimal co.",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000036",
+    "title": "Monsoon Wear White Oxford Shirt",
+    "category": "Shirt",
+    "chunk_text": "Monsoon Wear White Oxford Shirt Monsoon Wear Shirt Fleece Cotton White Black Navy Minimal Business Casual",
+    "tags": [
+      "white",
+      "shirt",
+      "monsoon wear",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000037",
+    "title": "Pure Linen Black Embroidered Silk Panjabi",
+    "category": "Panjabi",
+    "chunk_text": "Pure Linen Black Embroidered Silk Panjabi Pure Linen Panjabi Satin Wool Black Black Navy Traditional Luxury",
+    "tags": [
+      "black",
+      "panjabi",
+      "pure linen",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000038",
+    "title": "Vertex Apparel Navy Slim Stretch Chinos",
+    "category": "Chinos",
+    "chunk_text": "Vertex Apparel Navy Slim Stretch Chinos Vertex Apparel Chinos Breathable Mesh Navy Black Navy Smart Casual Minimal",
+    "tags": [
+      "navy",
+      "chinos",
+      "vertex apparel",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000039",
+    "title": "Urban Thread Grey Oversized Heavyweight Tee",
+    "category": "T-Shirt",
+    "chunk_text": "Urban Thread Grey Oversized Heavyweight Tee Urban Thread T-Shirt Viscose Rayon Grey Black Navy Streetwear Korean",
+    "tags": [
+      "grey",
+      "t-shirt",
+      "urban thread",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000040",
+    "title": "Bengal Weaves Beige Katan Silk Saree",
+    "category": "Saree",
+    "chunk_text": "Bengal Weaves Beige Katan Silk Saree Bengal Weaves Saree 100% Pima Cotton Beige Black Navy Traditional Luxury",
+    "tags": [
+      "beige",
+      "saree",
+      "bengal weaves",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000041",
+    "title": "Dhaka Denim Olive Cotton Block Print Kurti",
+    "category": "Kurti",
+    "chunk_text": "Dhaka Denim Olive Cotton Block Print Kurti Dhaka Denim Kurti Pure Linen Olive Black Navy Minimal Casual",
+    "tags": [
+      "olive",
+      "kurti",
+      "dhaka denim",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000042",
+    "title": "Heritage Loom Brown Georgette Salwar Suit",
+    "category": "Three Piece",
+    "chunk_text": "Heritage Loom Brown Georgette Salwar Suit Heritage Loom Three Piece Silk Blend Brown Black Navy Traditional Elegant",
+    "tags": [
+      "brown",
+      "three piece",
+      "heritage loom",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000043",
+    "title": "Noor Fashion Maroon Unstructured Linen Blazer",
+    "category": "Blazer",
+    "chunk_text": "Noor Fashion Maroon Unstructured Linen Blazer Noor Fashion Blazer Denim Twill Maroon Black Navy Old Money Smart Casual",
+    "tags": [
+      "maroon",
+      "blazer",
+      "noor fashion",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000044",
+    "title": "Silk Route Pastel Green Minimalist Leather Loafers",
+    "category": "Shoes",
+    "chunk_text": "Silk Route Pastel Green Minimalist Leather Loafers Silk Route Shoes Fleece Cotton Pastel Green Black Navy Smart Casual Classic",
+    "tags": [
+      "pastel green",
+      "shoes",
+      "silk route",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000045",
+    "title": "Artisan Studio Cream Oxford Shirt",
+    "category": "Shirt",
+    "chunk_text": "Artisan Studio Cream Oxford Shirt Artisan Studio Shirt Satin Wool Cream Black Navy Minimal Business Casual",
+    "tags": [
+      "cream",
+      "shirt",
+      "artisan studio",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000046",
+    "title": "Classic Cotton Mustard Embroidered Silk Panjabi",
+    "category": "Panjabi",
+    "chunk_text": "Classic Cotton Mustard Embroidered Silk Panjabi Classic Cotton Panjabi Breathable Mesh Mustard Black Navy Traditional Luxury",
+    "tags": [
+      "mustard",
+      "panjabi",
+      "classic cotton",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000047",
+    "title": "North Avenue Burgundy Slim Stretch Chinos",
+    "category": "Chinos",
+    "chunk_text": "North Avenue Burgundy Slim Stretch Chinos North Avenue Chinos Viscose Rayon Burgundy Black Navy Smart Casual Minimal",
+    "tags": [
+      "burgundy",
+      "chinos",
+      "north avenue",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000048",
+    "title": "Minimal Co. White Oversized Heavyweight Tee",
+    "category": "T-Shirt",
+    "chunk_text": "Minimal Co. White Oversized Heavyweight Tee Minimal Co. T-Shirt 100% Pima Cotton White Black Navy Streetwear Korean",
+    "tags": [
+      "white",
+      "t-shirt",
+      "minimal co.",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000049",
+    "title": "Monsoon Wear Black Katan Silk Saree",
+    "category": "Saree",
+    "chunk_text": "Monsoon Wear Black Katan Silk Saree Monsoon Wear Saree Pure Linen Black Black Navy Traditional Luxury",
+    "tags": [
+      "black",
+      "saree",
+      "monsoon wear",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000050",
+    "title": "Pure Linen Navy Cotton Block Print Kurti",
+    "category": "Kurti",
+    "chunk_text": "Pure Linen Navy Cotton Block Print Kurti Pure Linen Kurti Silk Blend Navy Black Navy Minimal Casual",
+    "tags": [
+      "navy",
+      "kurti",
+      "pure linen",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000051",
+    "title": "Vertex Apparel Grey Georgette Salwar Suit",
+    "category": "Three Piece",
+    "chunk_text": "Vertex Apparel Grey Georgette Salwar Suit Vertex Apparel Three Piece Denim Twill Grey Black Navy Traditional Elegant",
+    "tags": [
+      "grey",
+      "three piece",
+      "vertex apparel",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000052",
+    "title": "Urban Thread Beige Unstructured Linen Blazer",
+    "category": "Blazer",
+    "chunk_text": "Urban Thread Beige Unstructured Linen Blazer Urban Thread Blazer Fleece Cotton Beige Black Navy Old Money Smart Casual",
+    "tags": [
+      "beige",
+      "blazer",
+      "urban thread",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000053",
+    "title": "Bengal Weaves Olive Minimalist Leather Loafers",
+    "category": "Shoes",
+    "chunk_text": "Bengal Weaves Olive Minimalist Leather Loafers Bengal Weaves Shoes Satin Wool Olive Black Navy Smart Casual Classic",
+    "tags": [
+      "olive",
+      "shoes",
+      "bengal weaves",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000054",
+    "title": "Dhaka Denim Brown Oxford Shirt",
+    "category": "Shirt",
+    "chunk_text": "Dhaka Denim Brown Oxford Shirt Dhaka Denim Shirt Breathable Mesh Brown Black Navy Minimal Business Casual",
+    "tags": [
+      "brown",
+      "shirt",
+      "dhaka denim",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000055",
+    "title": "Heritage Loom Maroon Embroidered Silk Panjabi",
+    "category": "Panjabi",
+    "chunk_text": "Heritage Loom Maroon Embroidered Silk Panjabi Heritage Loom Panjabi Viscose Rayon Maroon Black Navy Traditional Luxury",
+    "tags": [
+      "maroon",
+      "panjabi",
+      "heritage loom",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000056",
+    "title": "Noor Fashion Pastel Green Slim Stretch Chinos",
+    "category": "Chinos",
+    "chunk_text": "Noor Fashion Pastel Green Slim Stretch Chinos Noor Fashion Chinos 100% Pima Cotton Pastel Green Black Navy Smart Casual Minimal",
+    "tags": [
+      "pastel green",
+      "chinos",
+      "noor fashion",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000057",
+    "title": "Silk Route Cream Oversized Heavyweight Tee",
+    "category": "T-Shirt",
+    "chunk_text": "Silk Route Cream Oversized Heavyweight Tee Silk Route T-Shirt Pure Linen Cream Black Navy Streetwear Korean",
+    "tags": [
+      "cream",
+      "t-shirt",
+      "silk route",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000058",
+    "title": "Artisan Studio Mustard Katan Silk Saree",
+    "category": "Saree",
+    "chunk_text": "Artisan Studio Mustard Katan Silk Saree Artisan Studio Saree Silk Blend Mustard Black Navy Traditional Luxury",
+    "tags": [
+      "mustard",
+      "saree",
+      "artisan studio",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000059",
+    "title": "Classic Cotton Burgundy Cotton Block Print Kurti",
+    "category": "Kurti",
+    "chunk_text": "Classic Cotton Burgundy Cotton Block Print Kurti Classic Cotton Kurti Denim Twill Burgundy Black Navy Minimal Casual",
+    "tags": [
+      "burgundy",
+      "kurti",
+      "classic cotton",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000060",
+    "title": "North Avenue White Georgette Salwar Suit",
+    "category": "Three Piece",
+    "chunk_text": "North Avenue White Georgette Salwar Suit North Avenue Three Piece Fleece Cotton White Black Navy Traditional Elegant",
+    "tags": [
+      "white",
+      "three piece",
+      "north avenue",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000061",
+    "title": "Minimal Co. Black Unstructured Linen Blazer",
+    "category": "Blazer",
+    "chunk_text": "Minimal Co. Black Unstructured Linen Blazer Minimal Co. Blazer Satin Wool Black Black Navy Old Money Smart Casual",
+    "tags": [
+      "black",
+      "blazer",
+      "minimal co.",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000062",
+    "title": "Monsoon Wear Navy Minimalist Leather Loafers",
+    "category": "Shoes",
+    "chunk_text": "Monsoon Wear Navy Minimalist Leather Loafers Monsoon Wear Shoes Breathable Mesh Navy Black Navy Smart Casual Classic",
+    "tags": [
+      "navy",
+      "shoes",
+      "monsoon wear",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000063",
+    "title": "Pure Linen Grey Oxford Shirt",
+    "category": "Shirt",
+    "chunk_text": "Pure Linen Grey Oxford Shirt Pure Linen Shirt Viscose Rayon Grey Black Navy Minimal Business Casual",
+    "tags": [
+      "grey",
+      "shirt",
+      "pure linen",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000064",
+    "title": "Vertex Apparel Beige Embroidered Silk Panjabi",
+    "category": "Panjabi",
+    "chunk_text": "Vertex Apparel Beige Embroidered Silk Panjabi Vertex Apparel Panjabi 100% Pima Cotton Beige Black Navy Traditional Luxury",
+    "tags": [
+      "beige",
+      "panjabi",
+      "vertex apparel",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000065",
+    "title": "Urban Thread Olive Slim Stretch Chinos",
+    "category": "Chinos",
+    "chunk_text": "Urban Thread Olive Slim Stretch Chinos Urban Thread Chinos Pure Linen Olive Black Navy Smart Casual Minimal",
+    "tags": [
+      "olive",
+      "chinos",
+      "urban thread",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000066",
+    "title": "Bengal Weaves Brown Oversized Heavyweight Tee",
+    "category": "T-Shirt",
+    "chunk_text": "Bengal Weaves Brown Oversized Heavyweight Tee Bengal Weaves T-Shirt Silk Blend Brown Black Navy Streetwear Korean",
+    "tags": [
+      "brown",
+      "t-shirt",
+      "bengal weaves",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000067",
+    "title": "Dhaka Denim Maroon Katan Silk Saree",
+    "category": "Saree",
+    "chunk_text": "Dhaka Denim Maroon Katan Silk Saree Dhaka Denim Saree Denim Twill Maroon Black Navy Traditional Luxury",
+    "tags": [
+      "maroon",
+      "saree",
+      "dhaka denim",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000068",
+    "title": "Heritage Loom Pastel Green Cotton Block Print Kurti",
+    "category": "Kurti",
+    "chunk_text": "Heritage Loom Pastel Green Cotton Block Print Kurti Heritage Loom Kurti Fleece Cotton Pastel Green Black Navy Minimal Casual",
+    "tags": [
+      "pastel green",
+      "kurti",
+      "heritage loom",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000069",
+    "title": "Noor Fashion Cream Georgette Salwar Suit",
+    "category": "Three Piece",
+    "chunk_text": "Noor Fashion Cream Georgette Salwar Suit Noor Fashion Three Piece Satin Wool Cream Black Navy Traditional Elegant",
+    "tags": [
+      "cream",
+      "three piece",
+      "noor fashion",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000070",
+    "title": "Silk Route Mustard Unstructured Linen Blazer",
+    "category": "Blazer",
+    "chunk_text": "Silk Route Mustard Unstructured Linen Blazer Silk Route Blazer Breathable Mesh Mustard Black Navy Old Money Smart Casual",
+    "tags": [
+      "mustard",
+      "blazer",
+      "silk route",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000071",
+    "title": "Artisan Studio Burgundy Minimalist Leather Loafers",
+    "category": "Shoes",
+    "chunk_text": "Artisan Studio Burgundy Minimalist Leather Loafers Artisan Studio Shoes Viscose Rayon Burgundy Black Navy Smart Casual Classic",
+    "tags": [
+      "burgundy",
+      "shoes",
+      "artisan studio",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000072",
+    "title": "Classic Cotton White Oxford Shirt",
+    "category": "Shirt",
+    "chunk_text": "Classic Cotton White Oxford Shirt Classic Cotton Shirt 100% Pima Cotton White Black Navy Minimal Business Casual",
+    "tags": [
+      "white",
+      "shirt",
+      "classic cotton",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000073",
+    "title": "North Avenue Black Embroidered Silk Panjabi",
+    "category": "Panjabi",
+    "chunk_text": "North Avenue Black Embroidered Silk Panjabi North Avenue Panjabi Pure Linen Black Black Navy Traditional Luxury",
+    "tags": [
+      "black",
+      "panjabi",
+      "north avenue",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000074",
+    "title": "Minimal Co. Navy Slim Stretch Chinos",
+    "category": "Chinos",
+    "chunk_text": "Minimal Co. Navy Slim Stretch Chinos Minimal Co. Chinos Silk Blend Navy Black Navy Smart Casual Minimal",
+    "tags": [
+      "navy",
+      "chinos",
+      "minimal co.",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000075",
+    "title": "Monsoon Wear Grey Oversized Heavyweight Tee",
+    "category": "T-Shirt",
+    "chunk_text": "Monsoon Wear Grey Oversized Heavyweight Tee Monsoon Wear T-Shirt Denim Twill Grey Black Navy Streetwear Korean",
+    "tags": [
+      "grey",
+      "t-shirt",
+      "monsoon wear",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000076",
+    "title": "Pure Linen Beige Katan Silk Saree",
+    "category": "Saree",
+    "chunk_text": "Pure Linen Beige Katan Silk Saree Pure Linen Saree Fleece Cotton Beige Black Navy Traditional Luxury",
+    "tags": [
+      "beige",
+      "saree",
+      "pure linen",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000077",
+    "title": "Vertex Apparel Olive Cotton Block Print Kurti",
+    "category": "Kurti",
+    "chunk_text": "Vertex Apparel Olive Cotton Block Print Kurti Vertex Apparel Kurti Satin Wool Olive Black Navy Minimal Casual",
+    "tags": [
+      "olive",
+      "kurti",
+      "vertex apparel",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000078",
+    "title": "Urban Thread Brown Georgette Salwar Suit",
+    "category": "Three Piece",
+    "chunk_text": "Urban Thread Brown Georgette Salwar Suit Urban Thread Three Piece Breathable Mesh Brown Black Navy Traditional Elegant",
+    "tags": [
+      "brown",
+      "three piece",
+      "urban thread",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000079",
+    "title": "Bengal Weaves Maroon Unstructured Linen Blazer",
+    "category": "Blazer",
+    "chunk_text": "Bengal Weaves Maroon Unstructured Linen Blazer Bengal Weaves Blazer Viscose Rayon Maroon Black Navy Old Money Smart Casual",
+    "tags": [
+      "maroon",
+      "blazer",
+      "bengal weaves",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000080",
+    "title": "Dhaka Denim Pastel Green Minimalist Leather Loafers",
+    "category": "Shoes",
+    "chunk_text": "Dhaka Denim Pastel Green Minimalist Leather Loafers Dhaka Denim Shoes 100% Pima Cotton Pastel Green Black Navy Smart Casual Classic",
+    "tags": [
+      "pastel green",
+      "shoes",
+      "dhaka denim",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000081",
+    "title": "Heritage Loom Cream Oxford Shirt",
+    "category": "Shirt",
+    "chunk_text": "Heritage Loom Cream Oxford Shirt Heritage Loom Shirt Pure Linen Cream Black Navy Minimal Business Casual",
+    "tags": [
+      "cream",
+      "shirt",
+      "heritage loom",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000082",
+    "title": "Noor Fashion Mustard Embroidered Silk Panjabi",
+    "category": "Panjabi",
+    "chunk_text": "Noor Fashion Mustard Embroidered Silk Panjabi Noor Fashion Panjabi Silk Blend Mustard Black Navy Traditional Luxury",
+    "tags": [
+      "mustard",
+      "panjabi",
+      "noor fashion",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000083",
+    "title": "Silk Route Burgundy Slim Stretch Chinos",
+    "category": "Chinos",
+    "chunk_text": "Silk Route Burgundy Slim Stretch Chinos Silk Route Chinos Denim Twill Burgundy Black Navy Smart Casual Minimal",
+    "tags": [
+      "burgundy",
+      "chinos",
+      "silk route",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000084",
+    "title": "Artisan Studio White Oversized Heavyweight Tee",
+    "category": "T-Shirt",
+    "chunk_text": "Artisan Studio White Oversized Heavyweight Tee Artisan Studio T-Shirt Fleece Cotton White Black Navy Streetwear Korean",
+    "tags": [
+      "white",
+      "t-shirt",
+      "artisan studio",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000085",
+    "title": "Classic Cotton Black Katan Silk Saree",
+    "category": "Saree",
+    "chunk_text": "Classic Cotton Black Katan Silk Saree Classic Cotton Saree Satin Wool Black Black Navy Traditional Luxury",
+    "tags": [
+      "black",
+      "saree",
+      "classic cotton",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000086",
+    "title": "North Avenue Navy Cotton Block Print Kurti",
+    "category": "Kurti",
+    "chunk_text": "North Avenue Navy Cotton Block Print Kurti North Avenue Kurti Breathable Mesh Navy Black Navy Minimal Casual",
+    "tags": [
+      "navy",
+      "kurti",
+      "north avenue",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000087",
+    "title": "Minimal Co. Grey Georgette Salwar Suit",
+    "category": "Three Piece",
+    "chunk_text": "Minimal Co. Grey Georgette Salwar Suit Minimal Co. Three Piece Viscose Rayon Grey Black Navy Traditional Elegant",
+    "tags": [
+      "grey",
+      "three piece",
+      "minimal co.",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000088",
+    "title": "Monsoon Wear Beige Unstructured Linen Blazer",
+    "category": "Blazer",
+    "chunk_text": "Monsoon Wear Beige Unstructured Linen Blazer Monsoon Wear Blazer 100% Pima Cotton Beige Black Navy Old Money Smart Casual",
+    "tags": [
+      "beige",
+      "blazer",
+      "monsoon wear",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000089",
+    "title": "Pure Linen Olive Minimalist Leather Loafers",
+    "category": "Shoes",
+    "chunk_text": "Pure Linen Olive Minimalist Leather Loafers Pure Linen Shoes Pure Linen Olive Black Navy Smart Casual Classic",
+    "tags": [
+      "olive",
+      "shoes",
+      "pure linen",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000090",
+    "title": "Vertex Apparel Brown Oxford Shirt",
+    "category": "Shirt",
+    "chunk_text": "Vertex Apparel Brown Oxford Shirt Vertex Apparel Shirt Silk Blend Brown Black Navy Minimal Business Casual",
+    "tags": [
+      "brown",
+      "shirt",
+      "vertex apparel",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000091",
+    "title": "Urban Thread Maroon Embroidered Silk Panjabi",
+    "category": "Panjabi",
+    "chunk_text": "Urban Thread Maroon Embroidered Silk Panjabi Urban Thread Panjabi Denim Twill Maroon Black Navy Traditional Luxury",
+    "tags": [
+      "maroon",
+      "panjabi",
+      "urban thread",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000092",
+    "title": "Bengal Weaves Pastel Green Slim Stretch Chinos",
+    "category": "Chinos",
+    "chunk_text": "Bengal Weaves Pastel Green Slim Stretch Chinos Bengal Weaves Chinos Fleece Cotton Pastel Green Black Navy Smart Casual Minimal",
+    "tags": [
+      "pastel green",
+      "chinos",
+      "bengal weaves",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000093",
+    "title": "Dhaka Denim Cream Oversized Heavyweight Tee",
+    "category": "T-Shirt",
+    "chunk_text": "Dhaka Denim Cream Oversized Heavyweight Tee Dhaka Denim T-Shirt Satin Wool Cream Black Navy Streetwear Korean",
+    "tags": [
+      "cream",
+      "t-shirt",
+      "dhaka denim",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000094",
+    "title": "Heritage Loom Mustard Katan Silk Saree",
+    "category": "Saree",
+    "chunk_text": "Heritage Loom Mustard Katan Silk Saree Heritage Loom Saree Breathable Mesh Mustard Black Navy Traditional Luxury",
+    "tags": [
+      "mustard",
+      "saree",
+      "heritage loom",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000095",
+    "title": "Noor Fashion Burgundy Cotton Block Print Kurti",
+    "category": "Kurti",
+    "chunk_text": "Noor Fashion Burgundy Cotton Block Print Kurti Noor Fashion Kurti Viscose Rayon Burgundy Black Navy Minimal Casual",
+    "tags": [
+      "burgundy",
+      "kurti",
+      "noor fashion",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000096",
+    "title": "Silk Route White Georgette Salwar Suit",
+    "category": "Three Piece",
+    "chunk_text": "Silk Route White Georgette Salwar Suit Silk Route Three Piece 100% Pima Cotton White Black Navy Traditional Elegant",
+    "tags": [
+      "white",
+      "three piece",
+      "silk route",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000097",
+    "title": "Artisan Studio Black Unstructured Linen Blazer",
+    "category": "Blazer",
+    "chunk_text": "Artisan Studio Black Unstructured Linen Blazer Artisan Studio Blazer Pure Linen Black Black Navy Old Money Smart Casual",
+    "tags": [
+      "black",
+      "blazer",
+      "artisan studio",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000098",
+    "title": "Classic Cotton Navy Minimalist Leather Loafers",
+    "category": "Shoes",
+    "chunk_text": "Classic Cotton Navy Minimalist Leather Loafers Classic Cotton Shoes Silk Blend Navy Black Navy Smart Casual Classic",
+    "tags": [
+      "navy",
+      "shoes",
+      "classic cotton",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000099",
+    "title": "North Avenue Grey Oxford Shirt",
+    "category": "Shirt",
+    "chunk_text": "North Avenue Grey Oxford Shirt North Avenue Shirt Denim Twill Grey Black Navy Minimal Business Casual",
+    "tags": [
+      "grey",
+      "shirt",
+      "north avenue",
+      "fashion bangladesh"
+    ]
+  },
+  {
+    "id": "SKU-000100",
+    "title": "Minimal Co. Beige Embroidered Silk Panjabi",
+    "category": "Panjabi",
+    "chunk_text": "Minimal Co. Beige Embroidered Silk Panjabi Minimal Co. Panjabi Fleece Cotton Beige Black Navy Traditional Luxury",
+    "tags": [
+      "beige",
+      "panjabi",
+      "minimal co.",
+      "fashion bangladesh"
+    ]
+  }
+]

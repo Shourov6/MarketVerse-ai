@@ -1,0 +1,1102 @@
+[
+  {
+    "id": "RULE-CLR-1",
+    "condition": "When wearing Black",
+    "recommendation": "Pair with complementary shades like White, Grey, Olive, Beige, Brown.",
+    "chunk_text": "When wearing Black -> Pair with complementary shades like White, Grey, Olive, Beige, Brown. (Black creates ideal visual contrast when styled with muted or harmonizing tones.)",
+    "tags": [
+      "color",
+      "styling",
+      "black"
+    ]
+  },
+  {
+    "id": "RULE-CLR-2",
+    "condition": "When wearing Navy Blue",
+    "recommendation": "Pair with complementary shades like White, Beige, Tan Brown, Light Grey.",
+    "chunk_text": "When wearing Navy Blue -> Pair with complementary shades like White, Beige, Tan Brown, Light Grey. (Navy Blue creates ideal visual contrast when styled with muted or harmonizing tones.)",
+    "tags": [
+      "color",
+      "styling",
+      "navy blue"
+    ]
+  },
+  {
+    "id": "RULE-CLR-3",
+    "condition": "When wearing White",
+    "recommendation": "Pair with complementary shades like Navy, Black, Olive, Maroon, Charcoal.",
+    "chunk_text": "When wearing White -> Pair with complementary shades like Navy, Black, Olive, Maroon, Charcoal. (White creates ideal visual contrast when styled with muted or harmonizing tones.)",
+    "tags": [
+      "color",
+      "styling",
+      "white"
+    ]
+  },
+  {
+    "id": "RULE-CLR-4",
+    "condition": "When wearing Olive Green",
+    "recommendation": "Pair with complementary shades like Cream, Beige, Black, White.",
+    "chunk_text": "When wearing Olive Green -> Pair with complementary shades like Cream, Beige, Black, White. (Olive Green creates ideal visual contrast when styled with muted or harmonizing tones.)",
+    "tags": [
+      "color",
+      "styling",
+      "olive green"
+    ]
+  },
+  {
+    "id": "RULE-CLR-5",
+    "condition": "When wearing Cream / Off-White",
+    "recommendation": "Pair with complementary shades like Pastel Blue, Burgundy, Navy, Emerald Green.",
+    "chunk_text": "When wearing Cream / Off-White -> Pair with complementary shades like Pastel Blue, Burgundy, Navy, Emerald Green. (Cream / Off-White creates ideal visual contrast when styled with muted or harmonizing tones.)",
+    "tags": [
+      "color",
+      "styling",
+      "cream / off-white"
+    ]
+  },
+  {
+    "id": "RULE-WTR-1",
+    "condition": "During Bangladesh Summer weather",
+    "recommendation": "Choose 100% Pima Cotton & Pure Linen paired with Breathable Leather Loafers / Nagra.",
+    "chunk_text": "During Bangladesh Summer weather -> Choose 100% Pima Cotton & Pure Linen paired with Breathable Leather Loafers / Nagra. (Linen and lightweight cotton promote airflow during humid Dhaka summers.)",
+    "tags": [
+      "weather",
+      "summer",
+      "fabric"
+    ]
+  },
+  {
+    "id": "RULE-WTR-2",
+    "condition": "During Bangladesh Monsoon weather",
+    "recommendation": "Choose Quick-dry Synthetic Blends & Treated Cotton paired with Water-resistant rubber-sole footwear (avoid suede).",
+    "chunk_text": "During Bangladesh Monsoon weather -> Choose Quick-dry Synthetic Blends & Treated Cotton paired with Water-resistant rubber-sole footwear (avoid suede). (Suede ruins easily in rainwater; water-resistant soles ensure longevity.)",
+    "tags": [
+      "weather",
+      "monsoon",
+      "fabric"
+    ]
+  },
+  {
+    "id": "RULE-WTR-3",
+    "condition": "During Bangladesh Winter weather",
+    "recommendation": "Choose Heavyweight Fleece & Wool-Silk Blends paired with Leather Boots / Closed Shoes.",
+    "chunk_text": "During Bangladesh Winter weather -> Choose Heavyweight Fleece & Wool-Silk Blends paired with Leather Boots / Closed Shoes. (Layering with fleece hoodies or silk wool blazers retains heat effectively.)",
+    "tags": [
+      "weather",
+      "winter",
+      "fabric"
+    ]
+  },
+  {
+    "id": "RULE-FASH-101",
+    "condition": "If customer requests a Luxury outfit for Casual Outing in Black",
+    "recommendation": "Recommend a structured Black top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Luxury outfit for Casual Outing in Black -> Recommend a structured Black top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Casual Outing while staying true to the Luxury signature look.)",
+    "tags": [
+      "luxury",
+      "casual outing",
+      "black"
+    ]
+  },
+  {
+    "id": "RULE-FASH-102",
+    "condition": "If customer requests a Streetwear outfit for Smart Office in Navy",
+    "recommendation": "Recommend a structured Navy top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Streetwear outfit for Smart Office in Navy -> Recommend a structured Navy top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Smart Office while staying true to the Streetwear signature look.)",
+    "tags": [
+      "streetwear",
+      "smart office",
+      "navy"
+    ]
+  },
+  {
+    "id": "RULE-FASH-103",
+    "condition": "If customer requests a Vintage outfit for Corporate Meeting in Grey",
+    "recommendation": "Recommend a structured Grey top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Vintage outfit for Corporate Meeting in Grey -> Recommend a structured Grey top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Corporate Meeting while staying true to the Vintage signature look.)",
+    "tags": [
+      "vintage",
+      "corporate meeting",
+      "grey"
+    ]
+  },
+  {
+    "id": "RULE-FASH-104",
+    "condition": "If customer requests a Old Money outfit for Eid ul-Fitr in Beige",
+    "recommendation": "Recommend a structured Beige top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Old Money outfit for Eid ul-Fitr in Beige -> Recommend a structured Beige top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Eid ul-Fitr while staying true to the Old Money signature look.)",
+    "tags": [
+      "old money",
+      "eid ul-fitr",
+      "beige"
+    ]
+  },
+  {
+    "id": "RULE-FASH-105",
+    "condition": "If customer requests a Korean outfit for Pohela Boishakh in Olive",
+    "recommendation": "Recommend a structured Olive top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Korean outfit for Pohela Boishakh in Olive -> Recommend a structured Olive top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Pohela Boishakh while staying true to the Korean signature look.)",
+    "tags": [
+      "korean",
+      "pohela boishakh",
+      "olive"
+    ]
+  },
+  {
+    "id": "RULE-FASH-106",
+    "condition": "If customer requests a Modern outfit for Friend's Wedding in Brown",
+    "recommendation": "Recommend a structured Brown top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Modern outfit for Friend's Wedding in Brown -> Recommend a structured Brown top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Friend's Wedding while staying true to the Modern signature look.)",
+    "tags": [
+      "modern",
+      "friend's wedding",
+      "brown"
+    ]
+  },
+  {
+    "id": "RULE-FASH-107",
+    "condition": "If customer requests a Classic outfit for Holud Ceremony in Maroon",
+    "recommendation": "Recommend a structured Maroon top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Classic outfit for Holud Ceremony in Maroon -> Recommend a structured Maroon top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Holud Ceremony while staying true to the Classic signature look.)",
+    "tags": [
+      "classic",
+      "holud ceremony",
+      "maroon"
+    ]
+  },
+  {
+    "id": "RULE-FASH-108",
+    "condition": "If customer requests a Formal outfit for Mehendi Night in Pastel Green",
+    "recommendation": "Recommend a structured Pastel Green top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Formal outfit for Mehendi Night in Pastel Green -> Recommend a structured Pastel Green top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Mehendi Night while staying true to the Formal signature look.)",
+    "tags": [
+      "formal",
+      "mehendi night",
+      "pastel green"
+    ]
+  },
+  {
+    "id": "RULE-FASH-109",
+    "condition": "If customer requests a Traditional outfit for Wedding Reception in Cream",
+    "recommendation": "Recommend a structured Cream top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Traditional outfit for Wedding Reception in Cream -> Recommend a structured Cream top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Wedding Reception while staying true to the Traditional signature look.)",
+    "tags": [
+      "traditional",
+      "wedding reception",
+      "cream"
+    ]
+  },
+  {
+    "id": "RULE-FASH-110",
+    "condition": "If customer requests a Bohemian outfit for Jummah Prayer in Mustard",
+    "recommendation": "Recommend a structured Mustard top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Bohemian outfit for Jummah Prayer in Mustard -> Recommend a structured Mustard top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Jummah Prayer while staying true to the Bohemian signature look.)",
+    "tags": [
+      "bohemian",
+      "jummah prayer",
+      "mustard"
+    ]
+  },
+  {
+    "id": "RULE-FASH-111",
+    "condition": "If customer requests a Oversized outfit for Date Night in Burgundy",
+    "recommendation": "Recommend a structured Burgundy top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Oversized outfit for Date Night in Burgundy -> Recommend a structured Burgundy top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Date Night while staying true to the Oversized signature look.)",
+    "tags": [
+      "oversized",
+      "date night",
+      "burgundy"
+    ]
+  },
+  {
+    "id": "RULE-FASH-112",
+    "condition": "If customer requests a Athleisure outfit for Family Gathering in White",
+    "recommendation": "Recommend a structured White top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Athleisure outfit for Family Gathering in White -> Recommend a structured White top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Family Gathering while staying true to the Athleisure signature look.)",
+    "tags": [
+      "athleisure",
+      "family gathering",
+      "white"
+    ]
+  },
+  {
+    "id": "RULE-FASH-113",
+    "condition": "If customer requests a Elegant outfit for Vacation in Black",
+    "recommendation": "Recommend a structured Black top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Elegant outfit for Vacation in Black -> Recommend a structured Black top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Vacation while staying true to the Elegant signature look.)",
+    "tags": [
+      "elegant",
+      "vacation",
+      "black"
+    ]
+  },
+  {
+    "id": "RULE-FASH-114",
+    "condition": "If customer requests a Premium outfit for Airport Fashion in Navy",
+    "recommendation": "Recommend a structured Navy top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Premium outfit for Airport Fashion in Navy -> Recommend a structured Navy top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Airport Fashion while staying true to the Premium signature look.)",
+    "tags": [
+      "premium",
+      "airport fashion",
+      "navy"
+    ]
+  },
+  {
+    "id": "RULE-FASH-115",
+    "condition": "If customer requests a Smart Casual outfit for Gym Workout in Grey",
+    "recommendation": "Recommend a structured Grey top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Smart Casual outfit for Gym Workout in Grey -> Recommend a structured Grey top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Gym Workout while staying true to the Smart Casual signature look.)",
+    "tags": [
+      "smart casual",
+      "gym workout",
+      "grey"
+    ]
+  },
+  {
+    "id": "RULE-FASH-116",
+    "condition": "If customer requests a Business Casual outfit for Monsoon Rainy Day in Beige",
+    "recommendation": "Recommend a structured Beige top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Business Casual outfit for Monsoon Rainy Day in Beige -> Recommend a structured Beige top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Monsoon Rainy Day while staying true to the Business Casual signature look.)",
+    "tags": [
+      "business casual",
+      "monsoon rainy day",
+      "beige"
+    ]
+  },
+  {
+    "id": "RULE-FASH-117",
+    "condition": "If customer requests a Minimal outfit for Winter Evening Gathering in Olive",
+    "recommendation": "Recommend a structured Olive top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Minimal outfit for Winter Evening Gathering in Olive -> Recommend a structured Olive top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Winter Evening Gathering while staying true to the Minimal signature look.)",
+    "tags": [
+      "minimal",
+      "winter evening gathering",
+      "olive"
+    ]
+  },
+  {
+    "id": "RULE-FASH-118",
+    "condition": "If customer requests a Luxury outfit for Cultural Program in Brown",
+    "recommendation": "Recommend a structured Brown top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Luxury outfit for Cultural Program in Brown -> Recommend a structured Brown top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Cultural Program while staying true to the Luxury signature look.)",
+    "tags": [
+      "luxury",
+      "cultural program",
+      "brown"
+    ]
+  },
+  {
+    "id": "RULE-FASH-119",
+    "condition": "If customer requests a Streetwear outfit for University Wear in Maroon",
+    "recommendation": "Recommend a structured Maroon top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Streetwear outfit for University Wear in Maroon -> Recommend a structured Maroon top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for University Wear while staying true to the Streetwear signature look.)",
+    "tags": [
+      "streetwear",
+      "university wear",
+      "maroon"
+    ]
+  },
+  {
+    "id": "RULE-FASH-120",
+    "condition": "If customer requests a Vintage outfit for Casual Outing in Pastel Green",
+    "recommendation": "Recommend a structured Pastel Green top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Vintage outfit for Casual Outing in Pastel Green -> Recommend a structured Pastel Green top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Casual Outing while staying true to the Vintage signature look.)",
+    "tags": [
+      "vintage",
+      "casual outing",
+      "pastel green"
+    ]
+  },
+  {
+    "id": "RULE-FASH-121",
+    "condition": "If customer requests a Old Money outfit for Smart Office in Cream",
+    "recommendation": "Recommend a structured Cream top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Old Money outfit for Smart Office in Cream -> Recommend a structured Cream top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Smart Office while staying true to the Old Money signature look.)",
+    "tags": [
+      "old money",
+      "smart office",
+      "cream"
+    ]
+  },
+  {
+    "id": "RULE-FASH-122",
+    "condition": "If customer requests a Korean outfit for Corporate Meeting in Mustard",
+    "recommendation": "Recommend a structured Mustard top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Korean outfit for Corporate Meeting in Mustard -> Recommend a structured Mustard top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Corporate Meeting while staying true to the Korean signature look.)",
+    "tags": [
+      "korean",
+      "corporate meeting",
+      "mustard"
+    ]
+  },
+  {
+    "id": "RULE-FASH-123",
+    "condition": "If customer requests a Modern outfit for Eid ul-Fitr in Burgundy",
+    "recommendation": "Recommend a structured Burgundy top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Modern outfit for Eid ul-Fitr in Burgundy -> Recommend a structured Burgundy top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Eid ul-Fitr while staying true to the Modern signature look.)",
+    "tags": [
+      "modern",
+      "eid ul-fitr",
+      "burgundy"
+    ]
+  },
+  {
+    "id": "RULE-FASH-124",
+    "condition": "If customer requests a Classic outfit for Pohela Boishakh in White",
+    "recommendation": "Recommend a structured White top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Classic outfit for Pohela Boishakh in White -> Recommend a structured White top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Pohela Boishakh while staying true to the Classic signature look.)",
+    "tags": [
+      "classic",
+      "pohela boishakh",
+      "white"
+    ]
+  },
+  {
+    "id": "RULE-FASH-125",
+    "condition": "If customer requests a Formal outfit for Friend's Wedding in Black",
+    "recommendation": "Recommend a structured Black top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Formal outfit for Friend's Wedding in Black -> Recommend a structured Black top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Friend's Wedding while staying true to the Formal signature look.)",
+    "tags": [
+      "formal",
+      "friend's wedding",
+      "black"
+    ]
+  },
+  {
+    "id": "RULE-FASH-126",
+    "condition": "If customer requests a Traditional outfit for Holud Ceremony in Navy",
+    "recommendation": "Recommend a structured Navy top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Traditional outfit for Holud Ceremony in Navy -> Recommend a structured Navy top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Holud Ceremony while staying true to the Traditional signature look.)",
+    "tags": [
+      "traditional",
+      "holud ceremony",
+      "navy"
+    ]
+  },
+  {
+    "id": "RULE-FASH-127",
+    "condition": "If customer requests a Bohemian outfit for Mehendi Night in Grey",
+    "recommendation": "Recommend a structured Grey top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Bohemian outfit for Mehendi Night in Grey -> Recommend a structured Grey top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Mehendi Night while staying true to the Bohemian signature look.)",
+    "tags": [
+      "bohemian",
+      "mehendi night",
+      "grey"
+    ]
+  },
+  {
+    "id": "RULE-FASH-128",
+    "condition": "If customer requests a Oversized outfit for Wedding Reception in Beige",
+    "recommendation": "Recommend a structured Beige top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Oversized outfit for Wedding Reception in Beige -> Recommend a structured Beige top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Wedding Reception while staying true to the Oversized signature look.)",
+    "tags": [
+      "oversized",
+      "wedding reception",
+      "beige"
+    ]
+  },
+  {
+    "id": "RULE-FASH-129",
+    "condition": "If customer requests a Athleisure outfit for Jummah Prayer in Olive",
+    "recommendation": "Recommend a structured Olive top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Athleisure outfit for Jummah Prayer in Olive -> Recommend a structured Olive top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Jummah Prayer while staying true to the Athleisure signature look.)",
+    "tags": [
+      "athleisure",
+      "jummah prayer",
+      "olive"
+    ]
+  },
+  {
+    "id": "RULE-FASH-130",
+    "condition": "If customer requests a Elegant outfit for Date Night in Brown",
+    "recommendation": "Recommend a structured Brown top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Elegant outfit for Date Night in Brown -> Recommend a structured Brown top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Date Night while staying true to the Elegant signature look.)",
+    "tags": [
+      "elegant",
+      "date night",
+      "brown"
+    ]
+  },
+  {
+    "id": "RULE-FASH-131",
+    "condition": "If customer requests a Premium outfit for Family Gathering in Maroon",
+    "recommendation": "Recommend a structured Maroon top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Premium outfit for Family Gathering in Maroon -> Recommend a structured Maroon top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Family Gathering while staying true to the Premium signature look.)",
+    "tags": [
+      "premium",
+      "family gathering",
+      "maroon"
+    ]
+  },
+  {
+    "id": "RULE-FASH-132",
+    "condition": "If customer requests a Smart Casual outfit for Vacation in Pastel Green",
+    "recommendation": "Recommend a structured Pastel Green top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Smart Casual outfit for Vacation in Pastel Green -> Recommend a structured Pastel Green top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Vacation while staying true to the Smart Casual signature look.)",
+    "tags": [
+      "smart casual",
+      "vacation",
+      "pastel green"
+    ]
+  },
+  {
+    "id": "RULE-FASH-133",
+    "condition": "If customer requests a Business Casual outfit for Airport Fashion in Cream",
+    "recommendation": "Recommend a structured Cream top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Business Casual outfit for Airport Fashion in Cream -> Recommend a structured Cream top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Airport Fashion while staying true to the Business Casual signature look.)",
+    "tags": [
+      "business casual",
+      "airport fashion",
+      "cream"
+    ]
+  },
+  {
+    "id": "RULE-FASH-134",
+    "condition": "If customer requests a Minimal outfit for Gym Workout in Mustard",
+    "recommendation": "Recommend a structured Mustard top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Minimal outfit for Gym Workout in Mustard -> Recommend a structured Mustard top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Gym Workout while staying true to the Minimal signature look.)",
+    "tags": [
+      "minimal",
+      "gym workout",
+      "mustard"
+    ]
+  },
+  {
+    "id": "RULE-FASH-135",
+    "condition": "If customer requests a Luxury outfit for Monsoon Rainy Day in Burgundy",
+    "recommendation": "Recommend a structured Burgundy top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Luxury outfit for Monsoon Rainy Day in Burgundy -> Recommend a structured Burgundy top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Monsoon Rainy Day while staying true to the Luxury signature look.)",
+    "tags": [
+      "luxury",
+      "monsoon rainy day",
+      "burgundy"
+    ]
+  },
+  {
+    "id": "RULE-FASH-136",
+    "condition": "If customer requests a Streetwear outfit for Winter Evening Gathering in White",
+    "recommendation": "Recommend a structured White top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Streetwear outfit for Winter Evening Gathering in White -> Recommend a structured White top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Winter Evening Gathering while staying true to the Streetwear signature look.)",
+    "tags": [
+      "streetwear",
+      "winter evening gathering",
+      "white"
+    ]
+  },
+  {
+    "id": "RULE-FASH-137",
+    "condition": "If customer requests a Vintage outfit for Cultural Program in Black",
+    "recommendation": "Recommend a structured Black top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Vintage outfit for Cultural Program in Black -> Recommend a structured Black top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Cultural Program while staying true to the Vintage signature look.)",
+    "tags": [
+      "vintage",
+      "cultural program",
+      "black"
+    ]
+  },
+  {
+    "id": "RULE-FASH-138",
+    "condition": "If customer requests a Old Money outfit for University Wear in Navy",
+    "recommendation": "Recommend a structured Navy top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Old Money outfit for University Wear in Navy -> Recommend a structured Navy top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for University Wear while staying true to the Old Money signature look.)",
+    "tags": [
+      "old money",
+      "university wear",
+      "navy"
+    ]
+  },
+  {
+    "id": "RULE-FASH-139",
+    "condition": "If customer requests a Korean outfit for Casual Outing in Grey",
+    "recommendation": "Recommend a structured Grey top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Korean outfit for Casual Outing in Grey -> Recommend a structured Grey top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Casual Outing while staying true to the Korean signature look.)",
+    "tags": [
+      "korean",
+      "casual outing",
+      "grey"
+    ]
+  },
+  {
+    "id": "RULE-FASH-140",
+    "condition": "If customer requests a Modern outfit for Smart Office in Beige",
+    "recommendation": "Recommend a structured Beige top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Modern outfit for Smart Office in Beige -> Recommend a structured Beige top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Smart Office while staying true to the Modern signature look.)",
+    "tags": [
+      "modern",
+      "smart office",
+      "beige"
+    ]
+  },
+  {
+    "id": "RULE-FASH-141",
+    "condition": "If customer requests a Classic outfit for Corporate Meeting in Olive",
+    "recommendation": "Recommend a structured Olive top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Classic outfit for Corporate Meeting in Olive -> Recommend a structured Olive top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Corporate Meeting while staying true to the Classic signature look.)",
+    "tags": [
+      "classic",
+      "corporate meeting",
+      "olive"
+    ]
+  },
+  {
+    "id": "RULE-FASH-142",
+    "condition": "If customer requests a Formal outfit for Eid ul-Fitr in Brown",
+    "recommendation": "Recommend a structured Brown top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Formal outfit for Eid ul-Fitr in Brown -> Recommend a structured Brown top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Eid ul-Fitr while staying true to the Formal signature look.)",
+    "tags": [
+      "formal",
+      "eid ul-fitr",
+      "brown"
+    ]
+  },
+  {
+    "id": "RULE-FASH-143",
+    "condition": "If customer requests a Traditional outfit for Pohela Boishakh in Maroon",
+    "recommendation": "Recommend a structured Maroon top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Traditional outfit for Pohela Boishakh in Maroon -> Recommend a structured Maroon top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Pohela Boishakh while staying true to the Traditional signature look.)",
+    "tags": [
+      "traditional",
+      "pohela boishakh",
+      "maroon"
+    ]
+  },
+  {
+    "id": "RULE-FASH-144",
+    "condition": "If customer requests a Bohemian outfit for Friend's Wedding in Pastel Green",
+    "recommendation": "Recommend a structured Pastel Green top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Bohemian outfit for Friend's Wedding in Pastel Green -> Recommend a structured Pastel Green top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Friend's Wedding while staying true to the Bohemian signature look.)",
+    "tags": [
+      "bohemian",
+      "friend's wedding",
+      "pastel green"
+    ]
+  },
+  {
+    "id": "RULE-FASH-145",
+    "condition": "If customer requests a Oversized outfit for Holud Ceremony in Cream",
+    "recommendation": "Recommend a structured Cream top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Oversized outfit for Holud Ceremony in Cream -> Recommend a structured Cream top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Holud Ceremony while staying true to the Oversized signature look.)",
+    "tags": [
+      "oversized",
+      "holud ceremony",
+      "cream"
+    ]
+  },
+  {
+    "id": "RULE-FASH-146",
+    "condition": "If customer requests a Athleisure outfit for Mehendi Night in Mustard",
+    "recommendation": "Recommend a structured Mustard top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Athleisure outfit for Mehendi Night in Mustard -> Recommend a structured Mustard top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Mehendi Night while staying true to the Athleisure signature look.)",
+    "tags": [
+      "athleisure",
+      "mehendi night",
+      "mustard"
+    ]
+  },
+  {
+    "id": "RULE-FASH-147",
+    "condition": "If customer requests a Elegant outfit for Wedding Reception in Burgundy",
+    "recommendation": "Recommend a structured Burgundy top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Elegant outfit for Wedding Reception in Burgundy -> Recommend a structured Burgundy top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Wedding Reception while staying true to the Elegant signature look.)",
+    "tags": [
+      "elegant",
+      "wedding reception",
+      "burgundy"
+    ]
+  },
+  {
+    "id": "RULE-FASH-148",
+    "condition": "If customer requests a Premium outfit for Jummah Prayer in White",
+    "recommendation": "Recommend a structured White top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Premium outfit for Jummah Prayer in White -> Recommend a structured White top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Jummah Prayer while staying true to the Premium signature look.)",
+    "tags": [
+      "premium",
+      "jummah prayer",
+      "white"
+    ]
+  },
+  {
+    "id": "RULE-FASH-149",
+    "condition": "If customer requests a Smart Casual outfit for Date Night in Black",
+    "recommendation": "Recommend a structured Black top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Smart Casual outfit for Date Night in Black -> Recommend a structured Black top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Date Night while staying true to the Smart Casual signature look.)",
+    "tags": [
+      "smart casual",
+      "date night",
+      "black"
+    ]
+  },
+  {
+    "id": "RULE-FASH-150",
+    "condition": "If customer requests a Business Casual outfit for Family Gathering in Navy",
+    "recommendation": "Recommend a structured Navy top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Business Casual outfit for Family Gathering in Navy -> Recommend a structured Navy top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Family Gathering while staying true to the Business Casual signature look.)",
+    "tags": [
+      "business casual",
+      "family gathering",
+      "navy"
+    ]
+  },
+  {
+    "id": "RULE-FASH-151",
+    "condition": "If customer requests a Minimal outfit for Vacation in Grey",
+    "recommendation": "Recommend a structured Grey top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Minimal outfit for Vacation in Grey -> Recommend a structured Grey top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Vacation while staying true to the Minimal signature look.)",
+    "tags": [
+      "minimal",
+      "vacation",
+      "grey"
+    ]
+  },
+  {
+    "id": "RULE-FASH-152",
+    "condition": "If customer requests a Luxury outfit for Airport Fashion in Beige",
+    "recommendation": "Recommend a structured Beige top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Luxury outfit for Airport Fashion in Beige -> Recommend a structured Beige top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Airport Fashion while staying true to the Luxury signature look.)",
+    "tags": [
+      "luxury",
+      "airport fashion",
+      "beige"
+    ]
+  },
+  {
+    "id": "RULE-FASH-153",
+    "condition": "If customer requests a Streetwear outfit for Gym Workout in Olive",
+    "recommendation": "Recommend a structured Olive top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Streetwear outfit for Gym Workout in Olive -> Recommend a structured Olive top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Gym Workout while staying true to the Streetwear signature look.)",
+    "tags": [
+      "streetwear",
+      "gym workout",
+      "olive"
+    ]
+  },
+  {
+    "id": "RULE-FASH-154",
+    "condition": "If customer requests a Vintage outfit for Monsoon Rainy Day in Brown",
+    "recommendation": "Recommend a structured Brown top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Vintage outfit for Monsoon Rainy Day in Brown -> Recommend a structured Brown top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Monsoon Rainy Day while staying true to the Vintage signature look.)",
+    "tags": [
+      "vintage",
+      "monsoon rainy day",
+      "brown"
+    ]
+  },
+  {
+    "id": "RULE-FASH-155",
+    "condition": "If customer requests a Old Money outfit for Winter Evening Gathering in Maroon",
+    "recommendation": "Recommend a structured Maroon top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Old Money outfit for Winter Evening Gathering in Maroon -> Recommend a structured Maroon top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Winter Evening Gathering while staying true to the Old Money signature look.)",
+    "tags": [
+      "old money",
+      "winter evening gathering",
+      "maroon"
+    ]
+  },
+  {
+    "id": "RULE-FASH-156",
+    "condition": "If customer requests a Korean outfit for Cultural Program in Pastel Green",
+    "recommendation": "Recommend a structured Pastel Green top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Korean outfit for Cultural Program in Pastel Green -> Recommend a structured Pastel Green top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Cultural Program while staying true to the Korean signature look.)",
+    "tags": [
+      "korean",
+      "cultural program",
+      "pastel green"
+    ]
+  },
+  {
+    "id": "RULE-FASH-157",
+    "condition": "If customer requests a Modern outfit for University Wear in Cream",
+    "recommendation": "Recommend a structured Cream top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Modern outfit for University Wear in Cream -> Recommend a structured Cream top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for University Wear while staying true to the Modern signature look.)",
+    "tags": [
+      "modern",
+      "university wear",
+      "cream"
+    ]
+  },
+  {
+    "id": "RULE-FASH-158",
+    "condition": "If customer requests a Classic outfit for Casual Outing in Mustard",
+    "recommendation": "Recommend a structured Mustard top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Classic outfit for Casual Outing in Mustard -> Recommend a structured Mustard top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Casual Outing while staying true to the Classic signature look.)",
+    "tags": [
+      "classic",
+      "casual outing",
+      "mustard"
+    ]
+  },
+  {
+    "id": "RULE-FASH-159",
+    "condition": "If customer requests a Formal outfit for Smart Office in Burgundy",
+    "recommendation": "Recommend a structured Burgundy top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Formal outfit for Smart Office in Burgundy -> Recommend a structured Burgundy top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Smart Office while staying true to the Formal signature look.)",
+    "tags": [
+      "formal",
+      "smart office",
+      "burgundy"
+    ]
+  },
+  {
+    "id": "RULE-FASH-160",
+    "condition": "If customer requests a Traditional outfit for Corporate Meeting in White",
+    "recommendation": "Recommend a structured White top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Traditional outfit for Corporate Meeting in White -> Recommend a structured White top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Corporate Meeting while staying true to the Traditional signature look.)",
+    "tags": [
+      "traditional",
+      "corporate meeting",
+      "white"
+    ]
+  },
+  {
+    "id": "RULE-FASH-161",
+    "condition": "If customer requests a Bohemian outfit for Eid ul-Fitr in Black",
+    "recommendation": "Recommend a structured Black top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Bohemian outfit for Eid ul-Fitr in Black -> Recommend a structured Black top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Eid ul-Fitr while staying true to the Bohemian signature look.)",
+    "tags": [
+      "bohemian",
+      "eid ul-fitr",
+      "black"
+    ]
+  },
+  {
+    "id": "RULE-FASH-162",
+    "condition": "If customer requests a Oversized outfit for Pohela Boishakh in Navy",
+    "recommendation": "Recommend a structured Navy top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Oversized outfit for Pohela Boishakh in Navy -> Recommend a structured Navy top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Pohela Boishakh while staying true to the Oversized signature look.)",
+    "tags": [
+      "oversized",
+      "pohela boishakh",
+      "navy"
+    ]
+  },
+  {
+    "id": "RULE-FASH-163",
+    "condition": "If customer requests a Athleisure outfit for Friend's Wedding in Grey",
+    "recommendation": "Recommend a structured Grey top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Athleisure outfit for Friend's Wedding in Grey -> Recommend a structured Grey top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Friend's Wedding while staying true to the Athleisure signature look.)",
+    "tags": [
+      "athleisure",
+      "friend's wedding",
+      "grey"
+    ]
+  },
+  {
+    "id": "RULE-FASH-164",
+    "condition": "If customer requests a Elegant outfit for Holud Ceremony in Beige",
+    "recommendation": "Recommend a structured Beige top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Elegant outfit for Holud Ceremony in Beige -> Recommend a structured Beige top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Holud Ceremony while staying true to the Elegant signature look.)",
+    "tags": [
+      "elegant",
+      "holud ceremony",
+      "beige"
+    ]
+  },
+  {
+    "id": "RULE-FASH-165",
+    "condition": "If customer requests a Premium outfit for Mehendi Night in Olive",
+    "recommendation": "Recommend a structured Olive top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Premium outfit for Mehendi Night in Olive -> Recommend a structured Olive top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Mehendi Night while staying true to the Premium signature look.)",
+    "tags": [
+      "premium",
+      "mehendi night",
+      "olive"
+    ]
+  },
+  {
+    "id": "RULE-FASH-166",
+    "condition": "If customer requests a Smart Casual outfit for Wedding Reception in Brown",
+    "recommendation": "Recommend a structured Brown top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Smart Casual outfit for Wedding Reception in Brown -> Recommend a structured Brown top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Wedding Reception while staying true to the Smart Casual signature look.)",
+    "tags": [
+      "smart casual",
+      "wedding reception",
+      "brown"
+    ]
+  },
+  {
+    "id": "RULE-FASH-167",
+    "condition": "If customer requests a Business Casual outfit for Jummah Prayer in Maroon",
+    "recommendation": "Recommend a structured Maroon top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Business Casual outfit for Jummah Prayer in Maroon -> Recommend a structured Maroon top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Jummah Prayer while staying true to the Business Casual signature look.)",
+    "tags": [
+      "business casual",
+      "jummah prayer",
+      "maroon"
+    ]
+  },
+  {
+    "id": "RULE-FASH-168",
+    "condition": "If customer requests a Minimal outfit for Date Night in Pastel Green",
+    "recommendation": "Recommend a structured Pastel Green top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Minimal outfit for Date Night in Pastel Green -> Recommend a structured Pastel Green top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Date Night while staying true to the Minimal signature look.)",
+    "tags": [
+      "minimal",
+      "date night",
+      "pastel green"
+    ]
+  },
+  {
+    "id": "RULE-FASH-169",
+    "condition": "If customer requests a Luxury outfit for Family Gathering in Cream",
+    "recommendation": "Recommend a structured Cream top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Luxury outfit for Family Gathering in Cream -> Recommend a structured Cream top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Family Gathering while staying true to the Luxury signature look.)",
+    "tags": [
+      "luxury",
+      "family gathering",
+      "cream"
+    ]
+  },
+  {
+    "id": "RULE-FASH-170",
+    "condition": "If customer requests a Streetwear outfit for Vacation in Mustard",
+    "recommendation": "Recommend a structured Mustard top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Streetwear outfit for Vacation in Mustard -> Recommend a structured Mustard top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Vacation while staying true to the Streetwear signature look.)",
+    "tags": [
+      "streetwear",
+      "vacation",
+      "mustard"
+    ]
+  },
+  {
+    "id": "RULE-FASH-171",
+    "condition": "If customer requests a Vintage outfit for Airport Fashion in Burgundy",
+    "recommendation": "Recommend a structured Burgundy top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Vintage outfit for Airport Fashion in Burgundy -> Recommend a structured Burgundy top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Airport Fashion while staying true to the Vintage signature look.)",
+    "tags": [
+      "vintage",
+      "airport fashion",
+      "burgundy"
+    ]
+  },
+  {
+    "id": "RULE-FASH-172",
+    "condition": "If customer requests a Old Money outfit for Gym Workout in White",
+    "recommendation": "Recommend a structured White top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Old Money outfit for Gym Workout in White -> Recommend a structured White top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Gym Workout while staying true to the Old Money signature look.)",
+    "tags": [
+      "old money",
+      "gym workout",
+      "white"
+    ]
+  },
+  {
+    "id": "RULE-FASH-173",
+    "condition": "If customer requests a Korean outfit for Monsoon Rainy Day in Black",
+    "recommendation": "Recommend a structured Black top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Korean outfit for Monsoon Rainy Day in Black -> Recommend a structured Black top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Monsoon Rainy Day while staying true to the Korean signature look.)",
+    "tags": [
+      "korean",
+      "monsoon rainy day",
+      "black"
+    ]
+  },
+  {
+    "id": "RULE-FASH-174",
+    "condition": "If customer requests a Modern outfit for Winter Evening Gathering in Navy",
+    "recommendation": "Recommend a structured Navy top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Modern outfit for Winter Evening Gathering in Navy -> Recommend a structured Navy top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Winter Evening Gathering while staying true to the Modern signature look.)",
+    "tags": [
+      "modern",
+      "winter evening gathering",
+      "navy"
+    ]
+  },
+  {
+    "id": "RULE-FASH-175",
+    "condition": "If customer requests a Classic outfit for Cultural Program in Grey",
+    "recommendation": "Recommend a structured Grey top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Classic outfit for Cultural Program in Grey -> Recommend a structured Grey top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Cultural Program while staying true to the Classic signature look.)",
+    "tags": [
+      "classic",
+      "cultural program",
+      "grey"
+    ]
+  },
+  {
+    "id": "RULE-FASH-176",
+    "condition": "If customer requests a Formal outfit for University Wear in Beige",
+    "recommendation": "Recommend a structured Beige top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Formal outfit for University Wear in Beige -> Recommend a structured Beige top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for University Wear while staying true to the Formal signature look.)",
+    "tags": [
+      "formal",
+      "university wear",
+      "beige"
+    ]
+  },
+  {
+    "id": "RULE-FASH-177",
+    "condition": "If customer requests a Traditional outfit for Casual Outing in Olive",
+    "recommendation": "Recommend a structured Olive top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Traditional outfit for Casual Outing in Olive -> Recommend a structured Olive top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Casual Outing while staying true to the Traditional signature look.)",
+    "tags": [
+      "traditional",
+      "casual outing",
+      "olive"
+    ]
+  },
+  {
+    "id": "RULE-FASH-178",
+    "condition": "If customer requests a Bohemian outfit for Smart Office in Brown",
+    "recommendation": "Recommend a structured Brown top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Bohemian outfit for Smart Office in Brown -> Recommend a structured Brown top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Smart Office while staying true to the Bohemian signature look.)",
+    "tags": [
+      "bohemian",
+      "smart office",
+      "brown"
+    ]
+  },
+  {
+    "id": "RULE-FASH-179",
+    "condition": "If customer requests a Oversized outfit for Corporate Meeting in Maroon",
+    "recommendation": "Recommend a structured Maroon top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Oversized outfit for Corporate Meeting in Maroon -> Recommend a structured Maroon top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Corporate Meeting while staying true to the Oversized signature look.)",
+    "tags": [
+      "oversized",
+      "corporate meeting",
+      "maroon"
+    ]
+  },
+  {
+    "id": "RULE-FASH-180",
+    "condition": "If customer requests a Athleisure outfit for Eid ul-Fitr in Pastel Green",
+    "recommendation": "Recommend a structured Pastel Green top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Athleisure outfit for Eid ul-Fitr in Pastel Green -> Recommend a structured Pastel Green top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Eid ul-Fitr while staying true to the Athleisure signature look.)",
+    "tags": [
+      "athleisure",
+      "eid ul-fitr",
+      "pastel green"
+    ]
+  },
+  {
+    "id": "RULE-FASH-181",
+    "condition": "If customer requests a Elegant outfit for Pohela Boishakh in Cream",
+    "recommendation": "Recommend a structured Cream top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Elegant outfit for Pohela Boishakh in Cream -> Recommend a structured Cream top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Pohela Boishakh while staying true to the Elegant signature look.)",
+    "tags": [
+      "elegant",
+      "pohela boishakh",
+      "cream"
+    ]
+  },
+  {
+    "id": "RULE-FASH-182",
+    "condition": "If customer requests a Premium outfit for Friend's Wedding in Mustard",
+    "recommendation": "Recommend a structured Mustard top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Premium outfit for Friend's Wedding in Mustard -> Recommend a structured Mustard top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Friend's Wedding while staying true to the Premium signature look.)",
+    "tags": [
+      "premium",
+      "friend's wedding",
+      "mustard"
+    ]
+  },
+  {
+    "id": "RULE-FASH-183",
+    "condition": "If customer requests a Smart Casual outfit for Holud Ceremony in Burgundy",
+    "recommendation": "Recommend a structured Burgundy top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Smart Casual outfit for Holud Ceremony in Burgundy -> Recommend a structured Burgundy top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Holud Ceremony while staying true to the Smart Casual signature look.)",
+    "tags": [
+      "smart casual",
+      "holud ceremony",
+      "burgundy"
+    ]
+  },
+  {
+    "id": "RULE-FASH-184",
+    "condition": "If customer requests a Business Casual outfit for Mehendi Night in White",
+    "recommendation": "Recommend a structured White top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Business Casual outfit for Mehendi Night in White -> Recommend a structured White top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Mehendi Night while staying true to the Business Casual signature look.)",
+    "tags": [
+      "business casual",
+      "mehendi night",
+      "white"
+    ]
+  },
+  {
+    "id": "RULE-FASH-185",
+    "condition": "If customer requests a Minimal outfit for Wedding Reception in Black",
+    "recommendation": "Recommend a structured Black top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Minimal outfit for Wedding Reception in Black -> Recommend a structured Black top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Wedding Reception while staying true to the Minimal signature look.)",
+    "tags": [
+      "minimal",
+      "wedding reception",
+      "black"
+    ]
+  },
+  {
+    "id": "RULE-FASH-186",
+    "condition": "If customer requests a Luxury outfit for Jummah Prayer in Navy",
+    "recommendation": "Recommend a structured Navy top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Luxury outfit for Jummah Prayer in Navy -> Recommend a structured Navy top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Jummah Prayer while staying true to the Luxury signature look.)",
+    "tags": [
+      "luxury",
+      "jummah prayer",
+      "navy"
+    ]
+  },
+  {
+    "id": "RULE-FASH-187",
+    "condition": "If customer requests a Streetwear outfit for Date Night in Grey",
+    "recommendation": "Recommend a structured Grey top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Streetwear outfit for Date Night in Grey -> Recommend a structured Grey top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Date Night while staying true to the Streetwear signature look.)",
+    "tags": [
+      "streetwear",
+      "date night",
+      "grey"
+    ]
+  },
+  {
+    "id": "RULE-FASH-188",
+    "condition": "If customer requests a Vintage outfit for Family Gathering in Beige",
+    "recommendation": "Recommend a structured Beige top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Vintage outfit for Family Gathering in Beige -> Recommend a structured Beige top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Family Gathering while staying true to the Vintage signature look.)",
+    "tags": [
+      "vintage",
+      "family gathering",
+      "beige"
+    ]
+  },
+  {
+    "id": "RULE-FASH-189",
+    "condition": "If customer requests a Old Money outfit for Vacation in Olive",
+    "recommendation": "Recommend a structured Olive top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Old Money outfit for Vacation in Olive -> Recommend a structured Olive top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Vacation while staying true to the Old Money signature look.)",
+    "tags": [
+      "old money",
+      "vacation",
+      "olive"
+    ]
+  },
+  {
+    "id": "RULE-FASH-190",
+    "condition": "If customer requests a Korean outfit for Airport Fashion in Brown",
+    "recommendation": "Recommend a structured Brown top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Korean outfit for Airport Fashion in Brown -> Recommend a structured Brown top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Airport Fashion while staying true to the Korean signature look.)",
+    "tags": [
+      "korean",
+      "airport fashion",
+      "brown"
+    ]
+  },
+  {
+    "id": "RULE-FASH-191",
+    "condition": "If customer requests a Modern outfit for Gym Workout in Maroon",
+    "recommendation": "Recommend a structured Maroon top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Modern outfit for Gym Workout in Maroon -> Recommend a structured Maroon top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Gym Workout while staying true to the Modern signature look.)",
+    "tags": [
+      "modern",
+      "gym workout",
+      "maroon"
+    ]
+  },
+  {
+    "id": "RULE-FASH-192",
+    "condition": "If customer requests a Classic outfit for Monsoon Rainy Day in Pastel Green",
+    "recommendation": "Recommend a structured Pastel Green top with tailored bottoms and tonal accessories.",
+    "chunk_text": "If customer requests a Classic outfit for Monsoon Rainy Day in Pastel Green -> Recommend a structured Pastel Green top with tailored bottoms and tonal accessories. (Maintains a clean aesthetic appropriate for Monsoon Rainy Day while staying true to the Classic signature look.)",
+    "tags": [
+      "classic",
+      "monsoon rainy day",
+      "pastel green"
+    ]
+  }
+]
