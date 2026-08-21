@@ -74,7 +74,7 @@ export default function SellerDashboard() {
 
   if (!user || ((user as any).role !== "seller" && (user as any).role !== "admin")) {
     return (
-      <div className="max-w-xl mx-auto px-4 py-20 text-center">
+      <div className="max-w-xl mx-auto px-4 py-10 text-center">
         <div className="w-16 h-16 rounded-2xl bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mx-auto mb-4">
           <Package className="h-8 w-8" />
         </div>
@@ -110,6 +110,7 @@ function SellerDashboardContent() {
   const { logout } = useAuth();
   const [searchParams, setSearchParams] = useSearchParams();
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const validSellerTabs = ["overview", "products", "inventory", "orders", "analytics", "payouts", "reviews", "customers", "messages", "promotions", "settings", "profile"];
 
@@ -128,6 +129,7 @@ function SellerDashboardContent() {
     setActiveMenuState(nextMenu);
     setSearchParams({ tab: nextMenu });
     localStorage.setItem("seller_active_tab", nextMenu);
+    setIsMobileMenuOpen(false);
   };
 
   useEffect(() => {
@@ -244,7 +246,7 @@ function SellerDashboardContent() {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center py-20">
+      <div className="flex justify-center py-10">
         <Loader2 className="h-10 w-10 animate-spin text-indigo-600" />
       </div>
     );
@@ -391,9 +393,19 @@ function SellerDashboardContent() {
   };
 
   return (
-    <div className="flex h-full bg-slate-50 dark:bg-slate-950">
+    <div className="flex h-full bg-slate-50 dark:bg-slate-950 overflow-hidden relative">
+      {/* Mobile Sidebar Overlay */}
+      {isMobileMenuOpen && (
+        <div 
+          className="fixed inset-0 z-40 bg-slate-900/50 backdrop-blur-sm lg:hidden"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+
       {/* Sidebar */}
-      <aside className={`${sidebarOpen ? "w-64" : "w-20"} bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 transition-all duration-300 overflow-y-auto flex flex-col`}>
+      <aside className={`fixed lg:static inset-y-0 left-0 z-50 lg:z-auto bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 transition-all duration-300 overflow-y-auto flex flex-col ${sidebarOpen ? "w-64" : "w-20"} ${
+        isMobileMenuOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+      }`}>
         {/* Logo */}
         <div className="p-6 border-b border-slate-200 dark:border-slate-800">
           <div className="flex items-center gap-3">
@@ -551,10 +563,18 @@ function SellerDashboardContent() {
       <main className="flex-1 overflow-y-auto">
         <div className="p-8">
           {/* Header with AI Assistant */}
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <h1 className="text-3xl font-bold text-slate-900 dark:text-white capitalize">{activeMenu}</h1>
-              <p className="text-slate-500 dark:text-slate-400">Manage your {activeMenu} effectively</p>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+            <div className="flex items-center gap-4">
+              <button
+                onClick={() => setIsMobileMenuOpen(true)}
+                className="lg:hidden p-2 -ml-2 rounded-lg text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
+              >
+                <Menu className="w-6 h-6" />
+              </button>
+              <div>
+                <h1 className="text-3xl font-bold text-slate-900 dark:text-white capitalize">{activeMenu}</h1>
+                <p className="text-slate-500 dark:text-slate-400">Manage your {activeMenu} effectively</p>
+              </div>
             </div>
             <div className="flex items-center gap-3">
               <Link

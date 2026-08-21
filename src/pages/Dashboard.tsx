@@ -33,12 +33,14 @@ import {
   ExternalLink,
   Search,
   CornerDownRight,
+  Lock,
+  ShieldCheck,
 } from "lucide-react";
 
 export default function Dashboard() {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const validCustomerTabs = ["overview", "messages", "orders", "track", "wishlist", "account", "addresses", "stylist"];
+  const validCustomerTabs = ["overview", "messages", "orders", "track", "wishlist", "account", "security", "addresses", "stylist"];
 
   const getInitialTab = () => {
     const tabFromUrl = searchParams.get("tab");
@@ -48,7 +50,7 @@ export default function Dashboard() {
     return "overview";
   };
 
-  const [activeTab, setActiveTabState] = useState<"overview" | "messages" | "orders" | "track" | "wishlist" | "account" | "addresses" | "stylist">(getInitialTab);
+  const [activeTab, setActiveTabState] = useState<"overview" | "messages" | "orders" | "track" | "wishlist" | "account" | "security" | "addresses" | "stylist">(getInitialTab);
 
   const setActiveTab = (tab: any) => {
     const nextTab = validCustomerTabs.includes(tab) ? tab : "overview";
@@ -115,12 +117,19 @@ export default function Dashboard() {
   // Profile Form State
   const [profileForm, setProfileForm] = useState({
     name: "",
+    email: "",
     phone: "",
     address: "",
     city: "",
     country: "",
     gender: "",
+  });
+
+  // Security Form State
+  const [securityForm, setSecurityForm] = useState({
+    currentPassword: "",
     newPassword: "",
+    confirmPassword: "",
   });
 
   // Stylist Form State
@@ -136,15 +145,33 @@ export default function Dashboard() {
     if (user) {
       setProfileForm({
         name: (user as any)?.name || "",
+        email: (user as any)?.email || "",
         phone: (user as any)?.phone || "",
         address: (user as any)?.address || "",
         city: (user as any)?.city || "",
         country: (user as any)?.country || "Bangladesh",
         gender: (user as any)?.gender || "unspecified",
-        newPassword: "",
       });
     }
   }, [user]);
+
+  // Check for incomplete profile to prompt the user
+  useEffect(() => {
+    if (user && !authLoading) {
+      const u = user as any;
+      if (!sessionStorage.getItem("profile_completion_notified")) {
+        // If phone or address is missing, they probably just signed up with Google or Email
+        if (!u.phone || !u.address || !u.city) {
+          sessionStorage.setItem("profile_completion_notified", "true");
+          toast.info("Please complete your profile (Phone, Address, City) for seamless delivery.", { duration: 5000 });
+          if (activeTab !== "account") {
+            setActiveTab("account");
+          }
+        }
+      }
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, authLoading]);
 
   useEffect(() => {
     if (stylistProfile) {
@@ -171,6 +198,16 @@ export default function Dashboard() {
     },
     onError: (err) => {
       toast.error(err.message || "Failed to update profile");
+    },
+  });
+
+  const changePassword = trpc.auth.changePassword.useMutation({
+    onSuccess: () => {
+      toast.success("Password changed successfully!");
+      setSecurityForm({ currentPassword: "", newPassword: "", confirmPassword: "" });
+    },
+    onError: (err) => {
+      toast.error(err.message || "Failed to change password");
     },
   });
 
@@ -238,6 +275,7 @@ export default function Dashboard() {
     { key: "track" as const, label: "Track & Confirm Delivery", icon: <Truck className="h-4 w-4" /> },
     { key: "wishlist" as const, label: "Wishlist", icon: <Heart className="h-4 w-4" /> },
     { key: "account" as const, label: "Account Profile", icon: <User className="h-4 w-4" /> },
+    { key: "security" as const, label: "Security", icon: <Lock className="h-4 w-4" /> },
     { key: "addresses" as const, label: "Saved Addresses", icon: <MapPin className="h-4 w-4" /> },
     { key: "stylist" as const, label: "AI Stylist Profile", icon: <Sparkles className="h-4 w-4" /> },
   ];
@@ -253,8 +291,8 @@ export default function Dashboard() {
       )}
 
       {/* Sidebar */}
-      <aside className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 transform transition-transform duration-300 ease-in-out flex flex-col ${
-        isMobileMenuOpen ? "translate-x-0 mt-16 lg:mt-0" : "-translate-x-full lg:translate-x-0"
+      <aside className={`fixed lg:static top-[64px] lg:top-0 bottom-0 left-0 z-50 lg:z-auto w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 transform transition-transform duration-300 ease-in-out flex flex-col ${
+        isMobileMenuOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
       }`}>
         <div className="p-6 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
           <h2 className="text-xl font-bold text-slate-900 dark:text-white">Customer Portal</h2>
@@ -552,30 +590,40 @@ export default function Dashboard() {
                       type="text"
                       value={profileForm.name}
                       onChange={(e) => setProfileForm({ ...profileForm, name: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm"
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:border-indigo-500 outline-hidden"
                       placeholder="Your full name"
                     />
                   </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-500 uppercase mb-1">Email Address</label>
+                    <input
+                      type="email"
+                      value={profileForm.email}
+                      disabled
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 text-sm cursor-not-allowed"
+                      placeholder="you@example.com"
+                      title="Email cannot be changed currently"
+                    />
+                  </div>
+                </div>
 
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-semibold text-slate-500 uppercase mb-1">Phone Number (BD)</label>
                     <input
                       type="text"
                       value={profileForm.phone}
                       onChange={(e) => setProfileForm({ ...profileForm, phone: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm"
+                      className={`w-full px-4 py-2.5 rounded-xl border bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:border-indigo-500 outline-hidden ${!profileForm.phone ? 'border-amber-400/60 dark:border-amber-500/50 bg-amber-50/30' : 'border-slate-300 dark:border-slate-600'}`}
                       placeholder="01XXXXXXXXX"
                     />
                   </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div>
                     <label className="block text-xs font-semibold text-slate-500 uppercase mb-1">Gender</label>
                     <select
                       value={profileForm.gender}
                       onChange={(e) => setProfileForm({ ...profileForm, gender: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm"
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:border-indigo-500 outline-hidden"
                     >
                       <option value="unspecified">Select Gender</option>
                       <option value="male">Male</option>
@@ -583,6 +631,9 @@ export default function Dashboard() {
                       <option value="other">Other</option>
                     </select>
                   </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 
                   <div>
                     <label className="block text-xs font-semibold text-slate-500 uppercase mb-1">City</label>
@@ -617,17 +668,6 @@ export default function Dashboard() {
                   />
                 </div>
 
-                <div className="pt-2 border-t border-slate-200 dark:border-slate-700">
-                  <label className="block text-xs font-semibold text-slate-500 uppercase mb-1">Change Password (Optional)</label>
-                  <input
-                    type="password"
-                    value={profileForm.newPassword}
-                    onChange={(e) => setProfileForm({ ...profileForm, newPassword: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm"
-                    placeholder="Leave blank to keep existing password"
-                  />
-                </div>
-
                 <div className="pt-4 flex justify-end">
                   <button
                     type="submit"
@@ -639,6 +679,91 @@ export default function Dashboard() {
                   </button>
                 </div>
               </form>
+            </div>
+          )}
+
+          {/* Security Tab */}
+          {activeTab === "security" && (
+            <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6 space-y-6">
+              <div>
+                <h2 className="text-xl font-bold text-slate-900 dark:text-white">Security & Password</h2>
+                <p className="text-sm text-slate-500">Update your password to keep your account secure.</p>
+              </div>
+
+              {(user as any)?.unionId?.startsWith("google:") && !(user as any)?.hasLocalPassword ? (
+                <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-300 rounded-xl border border-indigo-100 dark:border-indigo-800/30">
+                  <p className="flex items-center gap-2 font-medium mb-1">
+                    <ShieldCheck className="h-5 w-5" />
+                    Google Authentication
+                  </p>
+                  <p className="text-sm opacity-90">
+                    You signed in using your Google account, so you don't have a separate password set here. 
+                    If you wish to set a local password, please log out and use the <strong>Forgot Password</strong> option on the login screen.
+                  </p>
+                </div>
+              ) : (
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    if (securityForm.newPassword !== securityForm.confirmPassword) {
+                      toast.error("New passwords do not match.");
+                      return;
+                    }
+                    changePassword.mutate({
+                      currentPassword: securityForm.currentPassword,
+                      newPassword: securityForm.newPassword,
+                    });
+                  }}
+                  className="max-w-md space-y-4"
+                >
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-500 uppercase mb-1">Current Password</label>
+                    <input
+                      type="password"
+                      required
+                      value={securityForm.currentPassword}
+                      onChange={(e) => setSecurityForm({ ...securityForm, currentPassword: e.target.value })}
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:border-indigo-500 outline-hidden"
+                      placeholder="Enter your current password"
+                    />
+                  </div>
+                  
+                  <div className="pt-2 border-t border-slate-200 dark:border-slate-700">
+                    <label className="block text-xs font-semibold text-slate-500 uppercase mb-1">New Password</label>
+                    <input
+                      type="password"
+                      required
+                      minLength={6}
+                      value={securityForm.newPassword}
+                      onChange={(e) => setSecurityForm({ ...securityForm, newPassword: e.target.value })}
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:border-indigo-500 outline-hidden mb-4"
+                      placeholder="At least 6 characters"
+                    />
+                    
+                    <label className="block text-xs font-semibold text-slate-500 uppercase mb-1">Confirm New Password</label>
+                    <input
+                      type="password"
+                      required
+                      minLength={6}
+                      value={securityForm.confirmPassword}
+                      onChange={(e) => setSecurityForm({ ...securityForm, confirmPassword: e.target.value })}
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:border-indigo-500 outline-hidden"
+                      placeholder="Confirm your new password"
+                    />
+                  </div>
+
+                  <div className="pt-4 flex justify-end">
+                    <button
+                      type="submit"
+                      disabled={changePassword.isPending}
+                      className="flex items-center gap-2 px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl text-sm transition-all"
+                    >
+                      {changePassword.isPending ? <Loader2 className="w-4 h-4 animate-spin" /> : <ShieldCheck className="w-4 h-4" />}
+                      Change Password
+                    </button>
+                  </div>
+                </form>
+              )}
             </div>
           )}
 

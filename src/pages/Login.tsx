@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router";
 import { trpc } from "@/providers/trpc";
-import { Loader2, Eye, EyeOff, KeyRound, CheckCircle2, ArrowRight, Sparkles, Smartphone, Lock, ShieldCheck, Zap, Store } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
+import { Loader2, Eye, EyeOff, KeyRound, CheckCircle2, ArrowRight, Sparkles, Smartphone, Lock, ShieldCheck, Zap, Store, Mail, User } from "lucide-react";
 import { toast } from "sonner";
 
 const demoAccounts = [
@@ -25,6 +26,7 @@ const demoAccounts = [
 
 export default function Login() {
   const navigate = useNavigate();
+  const { user, isAuthenticated } = useAuth();
   const [phone, setPhone] = useState(() => {
     try {
       return localStorage.getItem("marketverse_remember_phone") || "";
@@ -37,6 +39,18 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const utils = trpc.useUtils();
+
+  useEffect(() => {
+    if (isAuthenticated && user) {
+      if ((user as any).role === "seller") {
+        navigate("/seller");
+      } else if ((user as any).role === "admin") {
+        navigate("/admin");
+      } else {
+        navigate("/dashboard");
+      }
+    }
+  }, [isAuthenticated, user, navigate]);
 
   const login = trpc.auth.login.useMutation({
     onSuccess: (data) => {
@@ -67,19 +81,18 @@ export default function Login() {
         localStorage.removeItem("marketverse_remember_phone");
       } catch {}
     }
-    login.mutate({ phone, password });
+    login.mutate({ identifier: phone, password });
   };
 
-  // Google Modal State
-  const [showGoogleModal, setShowGoogleModal] = useState(false);
-  const [googleEmail, setGoogleEmail] = useState("");
-  const [googleName, setGoogleName] = useState("");
+  // Google Sign-In (real GSI)
+  const googleBtnRef = useRef<HTMLDivElement>(null);
+  const [googleLoading, setGoogleLoading] = useState(false);
 
   const googleAuthMutation = trpc.auth.googleAuth.useMutation({
     onSuccess: (data) => {
       utils.auth.me.invalidate();
-      toast.success(`Welcome back, ${data.name}! Signed in via Google.`);
-      setShowGoogleModal(false);
+      toast.success(`Welcome, ${data.name}! Signed in via Google.`);
+      setGoogleLoading(false);
       if (data.role === "seller") {
         navigate("/seller");
       } else if (data.role === "admin") {
@@ -89,23 +102,37 @@ export default function Login() {
       }
     },
     onError: (err) => {
+      setGoogleLoading(false);
       setError(err.message || "Google sign-in failed.");
     },
   });
 
-  const handleGoogleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!googleEmail.trim()) {
-      toast.error("Please enter your Google email address");
-      return;
-    }
-    const name = googleName.trim() || googleEmail.split("@")[0];
-    googleAuthMutation.mutate({
-      email: googleEmail.trim().toLowerCase(),
-      name,
-      googleId: `google_${googleEmail.trim().replace(/[^a-zA-Z0-9]/g, "_")}`,
+  useEffect(() => {
+    const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+    if (!clientId || !window.google?.accounts?.id) return;
+
+    window.google.accounts.id.initialize({
+      client_id: clientId,
+      callback: (response: { credential: string }) => {
+        if (response.credential) {
+          setGoogleLoading(true);
+          googleAuthMutation.mutate({ credential: response.credential });
+        }
+      },
+      auto_select: false,
     });
-  };
+
+    if (googleBtnRef.current) {
+      window.google.accounts.id.renderButton(googleBtnRef.current, {
+        theme: "outline",
+        size: "large",
+        width: googleBtnRef.current.offsetWidth || 400,
+        text: "continue_with",
+        logo_alignment: "left",
+      });
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Forgot Password State
   const [showForgotModal, setShowForgotModal] = useState(false);
@@ -115,13 +142,21 @@ export default function Login() {
   const [forgotNewPassword, setForgotNewPassword] = useState("");
   const [forgotConfirmPassword, setForgotConfirmPassword] = useState("");
   const [demoOtpCode, setDemoOtpCode] = useState("");
+  const [emailSentTo, setEmailSentTo] = useState("");
   const [forgotError, setForgotError] = useState("");
   const [showNewPassword, setShowNewPassword] = useState(false);
 
   const requestOtpMutation = trpc.auth.requestPasswordResetOtp.useMutation({
     onSuccess: (data) => {
-      setDemoOtpCode(data.demoOtp);
-      toast.success(`OTP Code Sent to ${data.email}! Code: ${data.demoOtp}`);
+      if (data.demoOtp) {
+        // Email failed — show fallback OTP in UI
+        setDemoOtpCode(data.demoOtp);
+        toast.warning(`Email delivery failed. Demo OTP: ${data.demoOtp}`);
+      } else {
+        setDemoOtpCode("");
+        setEmailSentTo(data.email || "");
+        toast.success(`OTP sent to ${data.email}! Check your inbox.`);
+      }
       setForgotStep(2);
       setForgotError("");
     },
@@ -155,6 +190,7 @@ export default function Login() {
       setForgotNewPassword("");
       setForgotConfirmPassword("");
       setDemoOtpCode("");
+      setEmailSentTo("");
       setForgotError("");
     },
     onError: (err) => {
@@ -284,12 +320,21 @@ export default function Login() {
               {/* Step 2: Enter OTP */}
               {forgotStep === 2 && (
                 <form onSubmit={handleForgotStep2} className="space-y-4">
+                  {/* Step 2 notice: email sent or demo OTP */}
                   {demoOtpCode ? (
                     <div className="p-3.5 rounded-xl bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20 text-amber-800 dark:text-amber-300 text-xs">
-                      <p className="font-bold mb-1">🔑 Demo Verification OTP Sent:</p>
+                      <p className="font-bold mb-1">⚠️ Email failed — fallback OTP:</p>
                       <p className="font-mono text-lg tracking-widest font-extrabold text-amber-900 dark:text-amber-200 select-all">
                         {demoOtpCode}
                       </p>
+                    </div>
+                  ) : emailSentTo ? (
+                    <div className="p-3.5 rounded-xl bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 text-emerald-800 dark:text-emerald-300 text-xs flex items-start gap-2">
+                      <Mail className="w-4 h-4 mt-0.5 shrink-0" />
+                      <div>
+                        <p className="font-bold mb-0.5">OTP emailed successfully!</p>
+                        <p>Check your inbox at <strong className="text-emerald-700 dark:text-emerald-200">{emailSentTo}</strong>. The code expires in 10 minutes.</p>
+                      </div>
                     </div>
                   ) : null}
                   <div>
@@ -397,72 +442,7 @@ export default function Login() {
         </div>
       )}
 
-      {/* Google Sign-in Modal */}
-      {showGoogleModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-md p-4">
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 w-full max-w-md rounded-3xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
-            <div className="p-6 text-center border-b border-slate-100 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900/50">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 mb-3 shadow-inner">
-                <svg className="w-6 h-6" viewBox="0 0 24 24">
-                  <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-                  <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-                  <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
-                  <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white">Sign in with Google</h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Enter your real Google email address to log into MarketVerse.</p>
-            </div>
-            <form onSubmit={handleGoogleSubmit} className="p-6 space-y-4">
-              <div>
-                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-                  Google Email Address *
-                </label>
-                <input
-                  type="email"
-                  required
-                  placeholder="e.g. yourname@gmail.com"
-                  value={googleEmail}
-                  onChange={(e) => setGoogleEmail(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-900 dark:text-white text-sm focus:border-indigo-600 outline-hidden transition-all"
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-                  Full Name (Optional)
-                </label>
-                <input
-                  type="text"
-                  placeholder="e.g. Shourov Rahman"
-                  value={googleName}
-                  onChange={(e) => setGoogleName(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-900 dark:text-white text-sm focus:border-indigo-600 outline-hidden transition-all"
-                />
-              </div>
-              <div className="flex gap-3 pt-2">
-                <button
-                  type="button"
-                  onClick={() => setShowGoogleModal(false)}
-                  className="flex-1 px-4 py-3 text-xs font-semibold rounded-xl border border-slate-300 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  disabled={googleAuthMutation.isPending}
-                  className="flex-1 px-4 py-3 text-xs font-semibold rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white transition-all shadow-lg shadow-indigo-600/20 flex items-center justify-center gap-2 disabled:opacity-50"
-                >
-                  {googleAuthMutation.isPending ? (
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                  ) : (
-                    "Continue"
-                  )}
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
+      {/* Google Sign-in — Real GSI Button */}
 
       {/* Main Split Grid Card */}
       <div className="max-w-5xl w-full grid grid-cols-1 lg:grid-cols-12 rounded-3xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800/80 backdrop-blur-2xl shadow-2xl overflow-hidden relative z-10">
@@ -542,47 +522,44 @@ export default function Login() {
             </p>
           </div>
 
-          {/* Continue with Google */}
-          <button
-            type="button"
-            onClick={() => setShowGoogleModal(true)}
-            disabled={googleAuthMutation.isPending}
-            className="w-full flex items-center justify-center gap-3 px-4 py-3.5 border border-slate-300 dark:border-slate-700/80 rounded-2xl bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 text-sm font-semibold transition-all shadow-sm cursor-pointer disabled:opacity-50 mb-6 group"
-          >
-            {googleAuthMutation.isPending ? (
-              <Loader2 className="w-4 h-4 animate-spin text-slate-400" />
+          {/* Continue with Google — real GSI rendered button */}
+          <div className="w-full mb-6">
+            {googleLoading ? (
+              <div className="w-full flex items-center justify-center gap-2 px-4 py-3.5 border border-slate-300 dark:border-slate-700/80 rounded-2xl bg-slate-50 dark:bg-slate-800/50 text-slate-500 text-sm font-semibold">
+                <Loader2 className="w-4 h-4 animate-spin" />
+                <span>Signing in with Google...</span>
+              </div>
             ) : (
-              <svg className="w-5 h-5 shrink-0 group-hover:scale-105 transition-transform" viewBox="0 0 24 24">
-                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
-                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
-              </svg>
+              <div
+                ref={googleBtnRef}
+                id="google-signin-btn"
+                className="w-full [&>div]:w-full [&>div>div]:w-full"
+                style={{ minHeight: 44 }}
+              />
             )}
-            <span>Continue with Google</span>
-          </button>
+          </div>
 
           <div className="relative my-4 mb-6">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-slate-200 dark:border-slate-800" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white dark:bg-slate-900 px-3 text-slate-500 dark:text-slate-400 font-medium">Or sign in with phone</span>
+              <span className="bg-white dark:bg-slate-900 px-3 text-slate-500 dark:text-slate-400 font-medium">Or sign in with email or phone</span>
             </div>
           </div>
 
           <form className="space-y-4" onSubmit={handleSubmit}>
             <div>
-              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">BD Mobile Number</label>
+              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Email or BD Mobile Number</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 dark:text-slate-500">
-                  <Smartphone className="w-4 h-4" />
+                  <User className="w-4 h-4" />
                 </div>
                 <input
-                  type="tel"
+                  type="text"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  placeholder="01XXXXXXXXX"
+                  placeholder="name@example.com or 01XXXXXXXXX"
                   className="w-full pl-10 pr-4 py-3 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-900 dark:text-white text-sm focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600 outline-hidden transition-all"
                   required
                 />
@@ -592,13 +569,6 @@ export default function Login() {
             <div>
               <div className="flex items-center justify-between mb-1.5">
                 <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300">Password</label>
-                <button
-                  type="button"
-                  onClick={() => setShowForgotModal(true)}
-                  className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 cursor-pointer transition-colors"
-                >
-                  Forgot password?
-                </button>
               </div>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 dark:text-slate-500">
@@ -657,12 +627,22 @@ export default function Login() {
               )}
             </button>
 
-            <p className="text-center text-xs text-slate-500 dark:text-slate-400 pt-2">
-              Don't have an account yet?{" "}
-              <Link to="/signup" className="font-semibold text-indigo-600 dark:text-indigo-400 hover:underline transition-colors">
-                Create an account
-              </Link>
-            </p>
+            <div className="flex flex-col items-center justify-center gap-3 pt-2">
+              <button
+                type="button"
+                onClick={() => setShowForgotModal(true)}
+                className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 cursor-pointer transition-colors"
+              >
+                Forgot your password?
+              </button>
+
+              <p className="text-center text-xs text-slate-500 dark:text-slate-400">
+                Don't have an account yet?{" "}
+                <Link to="/signup" className="font-semibold text-indigo-600 dark:text-indigo-400 hover:underline transition-colors">
+                  Create an account
+                </Link>
+              </p>
+            </div>
           </form>
         </div>
 

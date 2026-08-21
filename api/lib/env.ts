@@ -24,4 +24,15 @@ export const env = {
   // CORS — comma-separated list of allowed origins, e.g. "https://mystore.com"
   corsOrigin: optional("CORS_ORIGIN", "*"),
   port: parseInt(optional("PORT", "3000")),
+  // Google OAuth
+  googleClientId: optional("GOOGLE_CLIENT_ID"),
+  googleClientSecret: optional("GOOGLE_CLIENT_SECRET"),
+  // SMTP / Nodemailer
+  smtpHost: optional("SMTP_HOST", "smtp.gmail.com"),
+  smtpPort: parseInt(optional("SMTP_PORT", "465")),
+  smtpSecure: optional("SMTP_SECURE", "true") !== "false",
+  smtpUser: optional("SMTP_USER"),
+  smtpPass: optional("SMTP_PASS"),
+  smtpFrom: optional("SMTP_FROM"),
 };
+

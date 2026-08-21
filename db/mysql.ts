@@ -257,6 +257,15 @@ export function eq(left: unknown, right: unknown): SqlFragment {
   };
 }
 
+export function ne(left: unknown, right: unknown): SqlFragment {
+  const renderedLeft = renderValue(left);
+  const renderedRight = renderNullable(right);
+  return {
+    sql: `${renderedLeft.sql} != ${renderedRight.sql}`,
+    params: [...renderedLeft.params, ...renderedRight.params],
+  };
+}
+
 export function like(left: unknown, pattern: unknown): SqlFragment {
   const renderedLeft = renderValue(left);
   const renderedRight = renderNullable(pattern);

@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router";
 import { trpc } from "@/providers/trpc";
+import { useAuth } from "@/hooks/useAuth";
 import { Loader2, Eye, EyeOff, Sparkles, User, Mail, Smartphone, Lock, MapPin, Building, Globe, Store, ArrowRight, ShieldCheck, ShoppingBag, Zap } from "lucide-react";
 import { toast } from "sonner";
 
@@ -23,10 +24,23 @@ const initialForm = {
 
 export default function Signup() {
   const navigate = useNavigate();
+  const { user, isAuthenticated } = useAuth();
   const [form, setForm] = useState(initialForm);
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const utils = trpc.useUtils();
+
+  useEffect(() => {
+    if (isAuthenticated && user) {
+      if ((user as any).role === "seller") {
+        navigate("/seller");
+      } else if ((user as any).role === "admin") {
+        navigate("/admin");
+      } else {
+        navigate("/dashboard");
+      }
+    }
+  }, [isAuthenticated, user, navigate]);
 
   const signup = trpc.auth.signup.useMutation({
     onSuccess: (data) => {

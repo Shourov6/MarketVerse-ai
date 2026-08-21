@@ -9,7 +9,8 @@ import {
   Store,
   TrendingUp,
   Package,
-  } from "lucide-react";
+  ArrowRight,
+} from "lucide-react";
 
 export default function SellerStore() {
   const { id } = useParams<{ id: string }>();
@@ -28,7 +29,7 @@ export default function SellerStore() {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center py-20">
+      <div className="flex justify-center py-10">
         <Loader2 className="h-10 w-10 animate-spin text-indigo-600" />
       </div>
     );
@@ -106,7 +107,26 @@ export default function SellerStore() {
         </h2>
 
         {seller.products.length === 0 ? (
-          <p className="text-slate-500 text-center py-8">No products from this seller yet</p>
+          <div className="py-6 mb-8">
+            <div className="flex items-center gap-4 mb-4">
+              <div className="w-12 h-12 rounded-xl bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center shrink-0">
+                <Package className="w-6 h-6 text-purple-500 dark:text-purple-400" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white">No Products Listed</h3>
+                <p className="text-sm text-slate-500 dark:text-slate-400">
+                  This seller hasn't added any products to their store yet. 
+                </p>
+              </div>
+            </div>
+            <Link
+              to="/sellers"
+              className="inline-flex items-center gap-2 px-6 py-2.5 bg-purple-500 hover:bg-purple-600 text-white text-sm font-bold rounded-lg shadow-sm transition-all group"
+            >
+              Explore Other Sellers
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3.5 sm:gap-4 lg:gap-5 pb-8">
             {seller.products.map((product: any) => (

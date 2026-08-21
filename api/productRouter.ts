@@ -2,7 +2,7 @@ import { z } from "zod";
 import { createRouter, publicQuery } from "./middleware";
 import { getDb } from "./queries/connection";
 import { products, productImages, categories, sellers, inventory } from "@db/schema";
-import { eq, like, and, desc, sql, or } from "@db/mysql";
+import { eq, ne, like, and, desc, sql, or } from "@db/mysql";
 import { scoreProductForSearch } from "../src/lib/semanticSearch";
 
 export const productRouter = createRouter({
@@ -42,6 +42,9 @@ export const productRouter = createRouter({
       if (input?.trending) {
         conditions.push(eq(products.isTrending, 1));
       }
+
+      // Filter out deleted products globally
+      conditions.push(ne(products.status, "deleted"));
 
       const where = conditions.length > 0 ? and(...conditions) : undefined;
 

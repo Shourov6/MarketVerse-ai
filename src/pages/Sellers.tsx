@@ -1,13 +1,13 @@
 import { Link } from "react-router";
 import { trpc } from "@/providers/trpc";
-import { Star, Loader2, Store, Package } from "lucide-react";
+import { Star, Loader2, Store, Package, ArrowRight } from "lucide-react";
 
 export default function Sellers() {
   const { data: sellers, isLoading } = trpc.seller.list.useQuery();
 
   if (isLoading) {
     return (
-      <div className="flex justify-center py-20">
+      <div className="flex justify-center py-10">
         <Loader2 className="h-10 w-10 animate-spin text-indigo-600" />
       </div>
     );
@@ -61,9 +61,25 @@ export default function Sellers() {
       </div>
 
       {sellers?.length === 0 && (
-        <div className="text-center py-16">
-          <Store className="h-12 w-12 text-slate-300 mx-auto mb-3" />
-          <p className="text-lg text-slate-500">No sellers yet</p>
+        <div className="py-6">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="w-12 h-12 rounded-xl bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center shrink-0">
+              <Store className="w-6 h-6 text-amber-500 dark:text-amber-400" />
+            </div>
+            <div>
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white">No Sellers Found</h2>
+              <p className="text-sm text-slate-500 dark:text-slate-400">
+                There are currently no registered sellers on the platform. Stay tuned as new stores are added!
+              </p>
+            </div>
+          </div>
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 px-6 py-2.5 bg-amber-500 hover:bg-amber-600 text-white text-sm font-bold rounded-lg shadow-sm transition-all group"
+          >
+            Return to Home
+            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
       )}
     </div>

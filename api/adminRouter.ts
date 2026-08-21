@@ -13,7 +13,7 @@ import {
   notifications,
 } from "@db/schema";
 import { escalationTickets, ticketMessages } from "@db/aiSchema";
-import { eq, desc, asc, sql } from "@db/mysql";
+import { eq, ne, and, desc, asc, sql } from "@db/mysql";
 
 export const adminRouter = createRouter({
   dashboard: adminQuery.query(async () => {
@@ -182,6 +182,7 @@ export const adminRouter = createRouter({
       .from(products)
       .leftJoin(categories, eq(categories.id, products.categoryId))
       .leftJoin(sellers, eq(sellers.id, products.sellerId))
+      .where(ne(products.status, "deleted"))
       .orderBy(desc(products.createdAt));
   }),
 
@@ -383,6 +384,45 @@ export const adminRouter = createRouter({
         .update(escalationTickets)
         .set({ status: "in_progress" })
         .where(eq(escalationTickets.id, input.ticketId));
+      return { success: true };
+    }),
+
+  deleteCategory: adminQuery
+    .input(z.object({ id: z.number() }))
+    .mutation(async ({ input }) => {
+      const db = getDb();
+      // Check if active or drafted products exist in this category
+      const productsInCategory = await db
+        .select({ id: products.id })
+        .from(products)
+        .where(
+          and(
+            eq(products.categoryId, input.id),
+            ne(products.status, "deleted")
+          )
+        )
+        .limit(1);
+
+      if (productsInCategory.length > 0) {
+        throw new TRPCError({
+          code: "PRECONDITION_FAILED",
+          message: "Cannot delete category because it contains products. Move or delete the products first.",
+        });
+      }
+
+      await db.delete(categories).where(eq(categories.id, input.id));
+      return { success: true };
+    }),
+
+  deleteProduct: adminQuery
+    .input(z.object({ id: z.number() }))
+    .mutation(async ({ input }) => {
+      const db = getDb();
+      // Soft delete product so past orders don't break
+      await db
+        .update(products)
+        .set({ status: "deleted" })
+        .where(eq(products.id, input.id));
       return { success: true };
     }),
 });

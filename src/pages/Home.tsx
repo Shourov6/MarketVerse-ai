@@ -196,7 +196,7 @@ export default function Home() {
               </p>
 
               {/* Search Bar Container with Interactive Suggestive Popup */}
-              <div className="relative w-full max-w-[580px] z-50">
+              <div className="relative w-full max-w-[580px] z-40">
 
                 {/* Transparent Click-Outside Backdrop (No Blur) */}
                 {isSearchFocused && (
@@ -211,7 +211,7 @@ export default function Home() {
                     handleSearch(e);
                     setIsSearchFocused(false);
                   }}
-                  className="relative z-50 flex items-center bg-white dark:bg-slate-800 p-2 rounded-2xl shadow-md border border-slate-200/90 dark:border-slate-700 w-full focus-within:ring-2 focus-within:ring-indigo-500/50 focus-within:border-indigo-500 transition-all"
+                  className="relative z-40 flex items-center bg-white dark:bg-slate-800 p-2 rounded-2xl shadow-md border border-slate-200/90 dark:border-slate-700 w-full focus-within:ring-2 focus-within:ring-indigo-500/50 focus-within:border-indigo-500 transition-all"
                 >
                   <Search className="h-5 w-5 text-slate-400 ml-3 shrink-0" />
                   <input
@@ -245,7 +245,7 @@ export default function Home() {
 
                 {/* Suggestive Search Popup Dropdown Modal */}
                 {isSearchFocused && (
-                  <div className="absolute top-full left-0 right-0 mt-2 z-50 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/90 dark:border-slate-800 shadow-2xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                  <div className="absolute top-full left-0 right-0 mt-2 z-40 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/90 dark:border-slate-800 shadow-2xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
                     
                     {/* State 1: When user typing keyword */}
                     {searchQuery.trim().length > 0 ? (

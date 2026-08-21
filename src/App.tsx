@@ -1,5 +1,6 @@
 import { Routes, Route, useLocation } from "react-router";
 import { useEffect } from "react";
+import "./App.css";
 import { Layout } from "./components/Layout";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { Toaster } from "sonner";

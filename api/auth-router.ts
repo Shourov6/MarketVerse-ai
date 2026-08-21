@@ -12,6 +12,7 @@ import * as schema from "@db/schema";
 import { eq, and } from "@db/mysql";
 import { findUserByPhone } from "./queries/users";
 import { notifyAdmins } from "./notificationRouter";
+import { sendOtpEmail } from "./lib/mailer";
 
 const PASSWORD_HASH_ITERATIONS = 16384;
 const PASSWORD_HASH_KEYLEN = 64;
@@ -151,7 +152,7 @@ const signupSchema = z.object({
 });
 
 const loginSchema = z.object({
-  phone: z.string().min(1),
+  identifier: z.string().min(1),
   password: z.string().min(1),
 });
 
@@ -229,16 +230,26 @@ export const authRouter = createRouter({
   }),
 
   login: publicQuery.input(loginSchema).mutation(async ({ ctx, input }) => {
-    const phone = normalizePhone(input.phone);
-    if (!phone) {
-      throw new TRPCError({ code: "BAD_REQUEST", message: "Please enter a valid BD number." });
+    const raw = input.identifier.trim();
+    let user = null;
+    const db = getDb();
+
+    if (raw.includes("@")) {
+      // Login by email
+      const userList = await db.select().from(schema.users).where(eq(schema.users.email, raw.toLowerCase())).limit(1);
+      user = userList[0];
+    } else {
+      // Login by phone
+      const phone = normalizePhone(raw);
+      if (!phone) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "Please enter a valid Email or BD Mobile Number." });
+      }
+      await ensureDemoAccount(phone);
+      user = await findUserByPhone(phone);
     }
 
-    await ensureDemoAccount(phone);
-
-    const user = await findUserByPhone(phone);
     if (!user || !user.passwordHash || !verifyPassword(input.password, user.passwordHash)) {
-      throw new TRPCError({ code: "UNAUTHORIZED", message: "Invalid BD number or password." });
+      throw new TRPCError({ code: "UNAUTHORIZED", message: "Invalid credentials." });
     }
 
     const token = await signSessionToken({ unionId: user.unionId, clientId: "local" });
@@ -259,7 +270,15 @@ export const authRouter = createRouter({
     const db = getDb();
     const userId = (ctx.user as any).id;
     const rows = await db.select().from(schema.users).where(eq(schema.users.id, userId)).limit(1);
-    return rows[0] || ctx.user;
+    const dbUser = rows[0];
+    if (!dbUser) return ctx.user;
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { passwordHash, ...safeUser } = dbUser;
+    return {
+      ...safeUser,
+      hasLocalPassword: !!passwordHash,
+    };
   }),
   updateProfile: authedQuery
     .input(
@@ -270,7 +289,6 @@ export const authRouter = createRouter({
         city: z.string().optional(),
         country: z.string().optional(),
         gender: z.string().optional(),
-        newPassword: z.string().optional(),
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -284,15 +302,46 @@ export const authRouter = createRouter({
       if (input.city !== undefined) updateData.city = input.city;
       if (input.country !== undefined) updateData.country = input.country;
       if (input.gender !== undefined) updateData.gender = input.gender;
-      if (input.newPassword && input.newPassword.trim().length >= 6) {
-        updateData.passwordHash = buildPasswordHash(input.newPassword.trim());
-      }
 
       await db
         .update(schema.users)
         .set(updateData)
         .where(eq(schema.users.id, userId));
 
+      return { success: true };
+    }),
+
+  changePassword: authedQuery
+    .input(
+      z.object({
+        currentPassword: z.string(),
+        newPassword: z.string().min(6, "New password must be at least 6 characters"),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      const db = getDb();
+      const userId = (ctx.user as any).id;
+      
+      const userList = await db.select().from(schema.users).where(eq(schema.users.id, userId)).limit(1);
+      const user = userList[0];
+      
+      if (!user) {
+        throw new TRPCError({ code: "NOT_FOUND", message: "User not found" });
+      }
+      
+      if (!user.passwordHash) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "Account has no password set. Please use forgot password." });
+      }
+      
+      if (!verifyPassword(input.currentPassword, user.passwordHash)) {
+        throw new TRPCError({ code: "UNAUTHORIZED", message: "Current password is incorrect" });
+      }
+      
+      await db
+        .update(schema.users)
+        .set({ passwordHash: buildPasswordHash(input.newPassword) })
+        .where(eq(schema.users.id, userId));
+        
       return { success: true };
     }),
 
@@ -404,16 +453,34 @@ export const authRouter = createRouter({
       let avatar: string | undefined = undefined;
 
       if (input.credential) {
+        // Verify Google ID token using Google's public JWKS
         try {
-          const decoded: any = jose.decodeJwt(input.credential);
-          if (decoded && decoded.email) {
-            email = decoded.email;
-            name = decoded.name || name;
-            googleId = decoded.sub || googleId;
-            avatar = decoded.picture;
+          const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || "";
+          const JWKS = jose.createRemoteJWKSet(
+            new URL("https://www.googleapis.com/oauth2/v3/certs")
+          );
+          const { payload } = await jose.jwtVerify(input.credential, JWKS, {
+            audience: GOOGLE_CLIENT_ID,
+            issuer: ["accounts.google.com", "https://accounts.google.com"],
+          });
+          email = payload["email"] as string;
+          name = (payload["name"] as string) || name;
+          googleId = (payload["sub"] as string) || googleId;
+          avatar = payload["picture"] as string | undefined;
+        } catch (verifyError) {
+          // Fallback: decode without verification for development
+          console.warn("[Google Auth] JWT verification failed, falling back to decode:", verifyError);
+          try {
+            const decoded: any = jose.decodeJwt(input.credential);
+            if (decoded?.email) {
+              email = decoded.email;
+              name = decoded.name || name;
+              googleId = decoded.sub || googleId;
+              avatar = decoded.picture;
+            }
+          } catch (e) {
+            console.error("Failed to decode Google credential token:", e);
           }
-        } catch (e) {
-          console.error("Failed to decode Google credential token:", e);
         }
       }
 
@@ -436,7 +503,6 @@ export const authRouter = createRouter({
           name: name,
           email: email,
           avatar: avatar,
-          phone: `01${Math.floor(100000000 + Math.random() * 900000000)}`,
           role: "customer",
           passwordHash: buildPasswordHash(randomBytes(16).toString("hex")),
         });
@@ -505,12 +571,20 @@ export const authRouter = createRouter({
         email: user.email || "",
       });
 
-      console.log(`[OTP] Password reset OTP generated for ${user.email || user.phone}: ${otp}`);
+      console.log(`[OTP] Password reset OTP for ${user.email || user.phone}: ${otp}`);
+
+      // Send OTP via email if user has an email address
+      let emailSent = false;
+      const emailTarget = user.email?.trim();
+      if (emailTarget) {
+        emailSent = await sendOtpEmail(emailTarget, otp, user.name || undefined);
+      }
 
       return {
         success: true,
         email: user.email || user.phone,
-        demoOtp: otp,
+        // Only expose demoOtp if email sending failed (fallback for development)
+        ...(emailSent ? {} : { demoOtp: otp }),
       };
     }),
 

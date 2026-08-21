@@ -6,6 +6,17 @@ import { formatCurrency } from "@/lib/currency";
 import { toast } from "sonner";
 import { broadcastLiveEvent } from "@/lib/realtimeSync";
 import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import {
   LayoutDashboard,
   Users,
   Store,
@@ -126,6 +137,19 @@ export default function AdminDashboard() {
       refetchTickets();
     },
     onError: (err) => toast.error(err.message || "Failed to clear tickets"),
+  });
+
+  const deleteProductMutation = trpc.admin.deleteProduct.useMutation({
+    onSuccess: () => toast.success("Product deleted successfully"),
+    onError: (err) => toast.error(err.message || "Failed to delete product"),
+  });
+
+  const deleteCategoryMutation = trpc.admin.deleteCategory.useMutation({
+    onSuccess: () => {
+      toast.success("Category deleted successfully");
+      refetchCategories();
+    },
+    onError: (err) => toast.error(err.message || "Failed to delete category"),
   });
 
   const [categoryForm, setCategoryForm] = useState({ name: "", description: "", icon: "Package", image: "" });
@@ -284,7 +308,7 @@ export default function AdminDashboard() {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center py-20">
+      <div className="flex justify-center py-10">
         <Loader2 className="h-10 w-10 animate-spin text-indigo-600" />
       </div>
     );
@@ -357,8 +381,8 @@ export default function AdminDashboard() {
       )}
 
       {/* Sidebar */}
-      <aside className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 transform transition-transform duration-300 ease-in-out flex flex-col ${
-        isMobileMenuOpen ? "translate-x-0 mt-16 lg:mt-0" : "-translate-x-full lg:translate-x-0"
+      <aside className={`fixed lg:static inset-y-0 left-0 z-50 lg:z-auto w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 transform transition-transform duration-300 ease-in-out flex flex-col ${
+        isMobileMenuOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
       }`}>
         <div className="p-6 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
           <h2 className="text-xl font-bold text-slate-900 dark:text-white">Admin Panel</h2>
@@ -981,6 +1005,27 @@ export default function AdminDashboard() {
                             <button onClick={() => updateProductStatus.mutate({ productId: p.id, status: "active" })} className="rounded-lg bg-green-100 px-2.5 py-1 text-xs font-medium text-green-700 hover:bg-green-200">Activate</button>
                             <button onClick={() => updateProductStatus.mutate({ productId: p.id, status: "draft" })} className="rounded-lg bg-yellow-100 px-2.5 py-1 text-xs font-medium text-yellow-700 hover:bg-yellow-200">Draft</button>
                             <button onClick={() => updateProductStatus.mutate({ productId: p.id, status: "archived" })} className="rounded-lg bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-700 hover:bg-slate-200">Archive</button>
+                            <AlertDialog>
+                              <AlertDialogTrigger asChild>
+                                <button className="rounded-lg bg-red-100 px-2.5 py-1 text-xs font-medium text-red-700 hover:bg-red-200 cursor-pointer">
+                                  Delete
+                                </button>
+                              </AlertDialogTrigger>
+                              <AlertDialogContent>
+                                <AlertDialogHeader>
+                                  <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                                  <AlertDialogDescription>
+                                    This action will soft-delete the product from the storefront. Past orders and analytics will remain intact.
+                                  </AlertDialogDescription>
+                                </AlertDialogHeader>
+                                <AlertDialogFooter>
+                                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                  <AlertDialogAction onClick={() => deleteProductMutation.mutate({ id: p.id })} className="bg-red-600 text-white hover:bg-red-700">
+                                    Delete Product
+                                  </AlertDialogAction>
+                                </AlertDialogFooter>
+                              </AlertDialogContent>
+                            </AlertDialog>
                           </div>
                         </td>
                       </tr>
@@ -1222,21 +1267,45 @@ export default function AdminDashboard() {
                     >
                       View Live Banner ↗
                     </Link>
-                    <button
-                      onClick={() => {
-                        setEditingCategory(cat);
-                        setCategoryForm({
-                          name: cat.name || "",
-                          description: cat.description || "",
-                          icon: cat.icon || "Package",
-                          image: cat.image || "",
-                        });
-                        setShowCategoryModal(true);
-                      }}
-                      className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 rounded-lg text-xs font-bold transition-all cursor-pointer"
-                    >
-                      ✏️ Edit
-                    </button>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => {
+                          setEditingCategory(cat);
+                          setCategoryForm({
+                            name: cat.name || "",
+                            description: cat.description || "",
+                            icon: cat.icon || "Package",
+                            image: cat.image || "",
+                          });
+                          setShowCategoryModal(true);
+                        }}
+                        className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 rounded-lg text-xs font-bold transition-all cursor-pointer"
+                      >
+                        ✏️ Edit
+                      </button>
+                      <AlertDialog>
+                        <AlertDialogTrigger asChild>
+                          <button className="px-3 py-1.5 bg-red-100 hover:bg-red-200 dark:bg-red-900/30 dark:hover:bg-red-900/50 text-red-700 dark:text-red-400 rounded-lg text-xs font-bold transition-all cursor-pointer">
+                            <Trash2 className="w-3.5 h-3.5 inline-block -mt-0.5 mr-1" />
+                            Delete
+                          </button>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent>
+                          <AlertDialogHeader>
+                            <AlertDialogTitle>Delete Category?</AlertDialogTitle>
+                            <AlertDialogDescription>
+                              Are you sure you want to delete the "{cat.name}" category? This action cannot be undone.
+                            </AlertDialogDescription>
+                          </AlertDialogHeader>
+                          <AlertDialogFooter>
+                            <AlertDialogCancel>Cancel</AlertDialogCancel>
+                            <AlertDialogAction onClick={() => deleteCategoryMutation.mutate({ id: cat.id })} className="bg-red-600 text-white hover:bg-red-700">
+                              Delete Category
+                            </AlertDialogAction>
+                          </AlertDialogFooter>
+                        </AlertDialogContent>
+                      </AlertDialog>
+                    </div>
                   </div>
                 </div>
               ))

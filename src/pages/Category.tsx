@@ -7,6 +7,8 @@ import {
   Heart,
   Loader2,
   ChevronRight,
+  Package,
+  ArrowRight,
 } from "lucide-react";
 
 export default function Category() {
@@ -30,7 +32,7 @@ export default function Category() {
 
   if (catLoading || prodLoading) {
     return (
-      <div className="flex justify-center py-20">
+      <div className="flex justify-center py-10">
         <Loader2 className="h-10 w-10 animate-spin text-indigo-600" />
       </div>
     );
@@ -73,8 +75,25 @@ export default function Category() {
 
       {/* Products Grid */}
       {productsData?.items.length === 0 ? (
-        <div className="text-center py-16">
-          <p className="text-lg text-slate-500">No products in this category yet</p>
+        <div className="py-6 my-8">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="w-12 h-12 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 flex items-center justify-center shrink-0">
+              <Package className="w-6 h-6 text-indigo-400 dark:text-indigo-500" />
+            </div>
+            <div>
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white">No Products Here Yet</h2>
+              <p className="text-sm text-slate-500 dark:text-slate-400">
+                We are working on bringing you amazing products in this category. Check back soon!
+              </p>
+            </div>
+          </div>
+          <Link
+            to="/products"
+            className="inline-flex items-center gap-2 px-6 py-2.5 bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-bold rounded-lg shadow-sm transition-all group"
+          >
+            Browse All Products
+            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3.5 sm:gap-4 lg:gap-5">

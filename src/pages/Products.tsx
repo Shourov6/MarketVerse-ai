@@ -138,10 +138,10 @@ export default function Products() {
             {initialSearch
               ? `Results for "${initialSearch}"`
               : initialFeatured
-              ? "Featured Collection"
-              : initialTrending
-              ? "Trending Products"
-              : "Explore All Products"}
+                ? "Featured Collection"
+                : initialTrending
+                  ? "Trending Products"
+                  : "Explore All Products"}
           </h1>
           <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
             {data?.total ?? sortedProducts.length} product{sortedProducts.length === 1 ? "" : "s"} available
@@ -186,11 +186,10 @@ export default function Products() {
         <div className="flex items-center gap-2.5 flex-wrap sm:flex-nowrap">
           <button
             onClick={() => setShowFilters(!showFilters)}
-            className={`flex items-center gap-2 px-3.5 py-2.5 border rounded-xl text-xs font-bold transition-all cursor-pointer ${
-              showFilters || initialCategory
+            className={`flex items-center gap-2 px-3.5 py-2.5 border rounded-xl text-xs font-bold transition-all cursor-pointer ${showFilters || initialCategory
                 ? "bg-indigo-50 dark:bg-indigo-950/60 border-indigo-200 dark:border-indigo-800 text-indigo-600 dark:text-indigo-400"
                 : "border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800"
-            }`}
+              }`}
           >
             <SlidersHorizontal className="h-3.5 w-3.5" />
             <span>Filters {initialCategory ? "(1 active)" : ""}</span>
@@ -212,18 +211,16 @@ export default function Products() {
           <div className="flex border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-950 p-0.5">
             <button
               onClick={() => setViewMode("grid")}
-              className={`p-2 rounded-lg transition-all cursor-pointer ${
-                viewMode === "grid" ? "bg-indigo-600 text-white shadow-xs" : "text-slate-500 hover:text-slate-900 dark:hover:text-white"
-              }`}
+              className={`p-2 rounded-lg transition-all cursor-pointer ${viewMode === "grid" ? "bg-indigo-600 text-white shadow-xs" : "text-slate-500 hover:text-slate-900 dark:hover:text-white"
+                }`}
               aria-label="Grid view"
             >
               <Grid3X3 className="h-4 w-4" />
             </button>
             <button
               onClick={() => setViewMode("list")}
-              className={`p-2 rounded-lg transition-all cursor-pointer ${
-                viewMode === "list" ? "bg-indigo-600 text-white shadow-xs" : "text-slate-500 hover:text-slate-900 dark:hover:text-white"
-              }`}
+              className={`p-2 rounded-lg transition-all cursor-pointer ${viewMode === "list" ? "bg-indigo-600 text-white shadow-xs" : "text-slate-500 hover:text-slate-900 dark:hover:text-white"
+                }`}
               aria-label="List view"
             >
               <LayoutList className="h-4 w-4" />
@@ -259,11 +256,10 @@ export default function Products() {
                 if (initialSearch) params.search = initialSearch;
                 setSearchParams(params);
               }}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                !initialCategory
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${!initialCategory
                   ? "bg-indigo-600 text-white shadow-xs"
                   : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
-              }`}
+                }`}
             >
               All Categories
             </button>
@@ -275,11 +271,10 @@ export default function Products() {
                   if (initialSearch) params.search = initialSearch;
                   setSearchParams(params);
                 }}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                  initialCategory === cat.id
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${initialCategory === cat.id
                     ? "bg-indigo-600 text-white shadow-xs"
                     : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
-                }`}
+                  }`}
               >
                 {cat.name}
               </button>
@@ -290,12 +285,12 @@ export default function Products() {
 
       {/* Main Product Container */}
       {isLoading ? (
-        <div className="flex flex-col items-center justify-center py-24 gap-3">
+        <div className="flex flex-col items-center justify-center py-12 gap-3">
           <Loader2 className="h-10 w-10 animate-spin text-indigo-600" />
           <p className="text-xs font-bold text-slate-500 dark:text-slate-400">Loading catalog items...</p>
         </div>
       ) : error ? (
-        <div className="text-center py-20 space-y-4 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8">
+        <div className="text-center py-10 space-y-4 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8">
           <AlertCircle className="h-12 w-12 text-rose-500 mx-auto" />
           <p className="text-lg font-bold text-slate-900 dark:text-white">Unable to load products</p>
           <p className="text-sm text-slate-400 max-w-sm mx-auto">
@@ -309,21 +304,18 @@ export default function Products() {
           </button>
         </div>
       ) : sortedProducts.length === 0 ? (
-        <div className="text-center py-20 px-4 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-4">
-          <div className="w-16 h-16 rounded-2xl bg-indigo-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center mx-auto text-indigo-600 dark:text-indigo-400">
-            <Package className="w-8 h-8" />
-          </div>
-          <div>
-            <h3 className="text-lg font-bold text-slate-900 dark:text-white">No products found</h3>
-            <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-sm mx-auto">
-              We couldn't find any items matching your filters or search query.
-            </p>
-          </div>
+        <div className="py-8">
+          <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">No Products Found</h3>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mb-6">
+            We couldn't find any items matching your current filters or search query. Try adjusting your criteria.
+          </p>
+          
           {hasActiveFilters && (
             <button
               onClick={clearAllFilters}
-              className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-extrabold rounded-xl shadow-md transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 px-5 py-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-sm font-bold rounded-lg hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors cursor-pointer"
             >
+              <Sparkles className="h-4 w-4" />
               Clear All Filters
             </button>
           )}

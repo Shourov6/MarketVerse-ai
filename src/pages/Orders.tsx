@@ -13,6 +13,7 @@ import {
   CheckCircle,
   XCircle,
   RefreshCw,
+  ArrowRight,
 } from "lucide-react";
 
 const statusConfig: Record<string, { label: string; color: string; icon: React.ReactNode }> = {
@@ -53,7 +54,7 @@ export default function Orders() {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center py-20">
+      <div className="flex justify-center py-10">
         <Loader2 className="h-10 w-10 animate-spin text-indigo-600" />
       </div>
     );
@@ -61,28 +62,36 @@ export default function Orders() {
 
   if (!orders || orders.length === 0) {
     return (
-      <div className="max-w-7xl mx-auto px-4 py-16 text-center">
+      <div className="max-w-4xl mx-auto px-4 py-16">
         <button
           type="button"
           onClick={() => navigate(-1)}
-          className="inline-flex items-center gap-2 mb-6 text-sm text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
+          className="inline-flex items-center gap-2 mb-8 text-sm font-bold text-slate-500 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400 transition-colors cursor-pointer group"
         >
-          <ChevronLeft className="h-4 w-4" />
+          <ChevronLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
           Back
         </button>
-        <div className="inline-flex items-center justify-center h-20 w-20 bg-slate-100 dark:bg-slate-800 rounded-full mb-4">
-          <Package className="h-10 w-10 text-slate-400" />
+        
+        <div className="py-6">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="w-12 h-12 rounded-xl bg-sky-100 dark:bg-sky-900/40 flex items-center justify-center shrink-0">
+              <Package className="w-6 h-6 text-sky-600 dark:text-sky-400" />
+            </div>
+            <div>
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white">No Orders Yet</h2>
+              <p className="text-sm text-slate-500 dark:text-slate-400">
+                You haven't placed any orders yet. Start shopping and fill your history with amazing products!
+              </p>
+            </div>
+          </div>
+          <Link
+            to="/products"
+            className="inline-flex items-center gap-2 px-6 py-2.5 bg-sky-600 hover:bg-sky-700 text-white text-sm font-bold rounded-lg shadow-sm transition-all group"
+          >
+            Start Shopping
+            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
-        <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-2">No Orders Yet</h2>
-        <p className="text-slate-500 dark:text-slate-400 mb-6">
-          You have not placed any orders yet. Start shopping to see your orders here.
-        </p>
-        <Link
-          to="/products"
-          className="px-6 py-3 bg-indigo-600 text-white rounded-xl font-semibold hover:bg-indigo-700 transition-colors"
-        >
-          Start Shopping
-        </Link>
       </div>
     );
   }
