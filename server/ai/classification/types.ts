@@ -2,7 +2,7 @@
  * Classification Types
  */
 
-export type Domain = "support" | "fashion" | "voice" | "seller" | "recommendation";
+export type Domain = "support" | "fashion" | "voice" | "seller" | "recommendation" | "gadgets" | "general";
 
 export interface ClassificationResult {
   intent: string;

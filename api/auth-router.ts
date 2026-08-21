@@ -6,7 +6,7 @@ import { z } from "zod";
 import { Session } from "@contracts/constants";
 import { getSessionCookieOptions } from "./lib/cookies";
 import { createRouter, publicQuery, authedQuery } from "./middleware";
-import { signSessionToken } from "./kimi/session";
+import { signSessionToken } from "./auth/session";
 import { getDb } from "./queries/connection";
 import * as schema from "@db/schema";
 import { eq, and } from "@db/mysql";
@@ -19,18 +19,23 @@ const PASSWORD_HASH_KEYLEN = 64;
 
 const otpResetStore = new Map<string, { otp: string; expiresAt: number; userId: number; email: string }>();
 
-function normalizePhone(phone: string) {
+function normalizePhone(phone: string): string | null {
   const digits = phone.replace(/\D/g, "");
+  let normalized = "";
   if (digits.length === 13 && digits.startsWith("880")) {
-    return `0${digits.slice(3)}`;
+    normalized = `0${digits.slice(3)}`;
+  } else if (digits.length === 11 && digits.startsWith("01")) {
+    normalized = digits;
+  } else if (digits.length === 10 && digits.startsWith("1")) {
+    normalized = `0${digits}`;
+  } else {
+    return null;
   }
-  if (digits.length === 11 && digits.startsWith("01")) {
-    return digits;
+  
+  if (normalized.length === 11 && normalized.startsWith("01")) {
+    return normalized;
   }
-  if (digits.length === 10 && digits.startsWith("1")) {
-    return `0${digits}`;
-  }
-  return digits;
+  return null;
 }
 
 function buildPasswordHash(password: string) {
@@ -541,15 +546,20 @@ export const authRouter = createRouter({
     .mutation(async ({ input }) => {
       const db = getDb();
       const raw = input.identifier.trim();
-      const normalized = normalizePhone(raw);
+      const isEmail = raw.includes("@");
+      const normalized = isEmail ? null : normalizePhone(raw);
+      
+      if (!isEmail && !normalized) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "Please enter a valid BD Mobile Number." });
+      }
 
       const userList = await db
         .select()
         .from(schema.users)
         .where(
-          raw.includes("@")
+          isEmail
             ? eq(schema.users.email, raw.toLowerCase())
-            : eq(schema.users.phone, normalized)
+            : eq(schema.users.phone, normalized as string)
         )
         .limit(1);
 
@@ -593,15 +603,20 @@ export const authRouter = createRouter({
     .mutation(async ({ input }) => {
       const db = getDb();
       const raw = input.identifier.trim();
-      const normalized = normalizePhone(raw);
+      const isEmail = raw.includes("@");
+      const normalized = isEmail ? null : normalizePhone(raw);
+      
+      if (!isEmail && !normalized) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "Please enter a valid BD Mobile Number." });
+      }
 
       const userList = await db
         .select()
         .from(schema.users)
         .where(
-          raw.includes("@")
+          isEmail
             ? eq(schema.users.email, raw.toLowerCase())
-            : eq(schema.users.phone, normalized)
+            : eq(schema.users.phone, normalized as string)
         )
         .limit(1);
 
@@ -636,15 +651,20 @@ export const authRouter = createRouter({
     .mutation(async ({ input }) => {
       const db = getDb();
       const raw = input.identifier.trim();
-      const normalized = normalizePhone(raw);
+      const isEmail = raw.includes("@");
+      const normalized = isEmail ? null : normalizePhone(raw);
+      
+      if (!isEmail && !normalized) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "Please enter a valid BD Mobile Number." });
+      }
 
       const userList = await db
         .select()
         .from(schema.users)
         .where(
-          raw.includes("@")
+          isEmail
             ? eq(schema.users.email, raw.toLowerCase())
-            : eq(schema.users.phone, normalized)
+            : eq(schema.users.phone, normalized as string)
         )
         .limit(1);
 

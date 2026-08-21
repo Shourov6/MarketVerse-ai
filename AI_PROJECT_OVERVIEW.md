@@ -33,16 +33,17 @@ This is a full-stack e-commerce platform built with:
 
 ## Runtime Flow
 
-1. Vite serves the frontend locally on port 3000.
+1. Vite serves the frontend and Hono API locally on port 5173.
 2. The Hono server handles API requests and serves the app in production.
 3. tRPC routes are exposed under `/api/trpc`.
-4. The SQLite database is initialized and seeded locally using the provided scripts.
+4. MySQL 8 is initialized and seeded locally using Docker Compose or an existing MySQL server.
 
 ## Scripts
 
 Use these commands from the project root:
 
-- `npm install` – install dependencies
+- `npm run setup` – create environment, install dependencies, prepare MySQL, seed data, and start development
+- `npm install` – install dependencies manually
 - `npm run dev` – start the Vite/Hono development app
 - `npm run dev:all` – seed the database and start the app
 - `npm run build` – build the frontend and backend bundle
@@ -54,7 +55,7 @@ Use these commands from the project root:
 Copy `.env.example` to `.env` and fill in the required values.
 
 Key variables:
-- `DATABASE_URL` – SQLite path, commonly `./dev.db`
+- `DATABASE_URL` – MySQL connection URL, commonly `mysql://root:password@127.0.0.1:3306/ecommerce_db`
 - `APP_ID` and `APP_SECRET` – backend auth-related values
 - `KIMI_AUTH_URL` and `KIMI_OPEN_URL` – Kimi integration endpoints
 - `OWNER_UNION_ID` – admin role assignment on first login
@@ -63,17 +64,11 @@ Key variables:
 ## Local Setup (Windows)
 
 1. Install Node.js 18+
-2. Copy `.env.example` to `.env`
-3. Install dependencies:
-   `npm install`
-4. Seed the local database:
-   `npm run db:seed`
-5. Start the app:
-   `npm run dev`
+2. Run `npm run setup`
 
 ## Notes
 
-- The project currently uses SQLite for local development and does not rely on Docker.
+- The project uses MySQL for local development. Docker Compose is the reproducible default.
 - The schema is created automatically from the table definitions in `db/schema.ts`.
 - The seed script generates demo users, categories, sellers, products, orders, reviews, notifications, and support knowledge entries.
 

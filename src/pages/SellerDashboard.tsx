@@ -868,7 +868,10 @@ function OverviewSection({
           <QuickActionButton
             icon={<Plus className="h-5 w-5" />}
             label="Add Product"
-            onClick={setShowForm}
+            onClick={() => {
+              setActiveMenu("products");
+              setShowForm(true);
+            }}
           />
           <QuickActionButton
             icon={<TrendingUp className="h-5 w-5" />}
@@ -912,82 +915,53 @@ function ProductsSection({
   const [previousFormState, setPreviousFormState] = useState<any>(null);
   const [productSearchQuery, setProductSearchQuery] = useState("");
   const [productStatusFilter, setProductStatusFilter] = useState("all");
+  const [isGeneratingAi, setIsGeneratingAi] = useState(false);
 
-  const handleAiAutoFill = (selectedCategoryId?: string) => {
+  const suggestDetailsMutation = trpc.seller.suggestProductDetails.useMutation();
+
+  const handleAiAutoFill = async (selectedCategoryId?: string) => {
     // Save current form snapshot for instant undo capability
     setPreviousFormState({ ...form });
 
     const categoryId = selectedCategoryId || form.categoryId;
     const selectedCategoryObj = (categories || []).find((c: any) => String(c.id) === String(categoryId));
     const categoryName = selectedCategoryObj?.name || "General Product";
-    const productName = form.name.trim() || `${categoryName} Item`;
 
-    let suggestedShortDesc = "";
-    let suggestedFullDesc = "";
-    let suggestedKeywords = "";
-    let suggestedDeliveryInside = form.deliveryFeeInsideDhaka || "60";
-    let suggestedDeliveryOutside = form.deliveryFeeOutsideDhaka || "120";
-    let suggestedSku = form.sku || `MKT-${categoryName.slice(0, 3).toUpperCase()}-${Math.floor(1000 + Math.random() * 9000)}`;
+    setIsGeneratingAi(true);
+    try {
+      const result = await suggestDetailsMutation.mutateAsync({
+        productName: form.name?.trim() || undefined,
+        categoryName,
+        price: form.price ? Number(form.price) : undefined,
+      });
 
-    const catLower = categoryName.toLowerCase();
-    
-    if (catLower.includes("fashion") || catLower.includes("mens") || catLower.includes("womens") || catLower.includes("clothing") || catLower.includes("shirt") || catLower.includes("dress")) {
-      suggestedShortDesc = `Premium quality ${productName} crafted from breathable fabric, offering superior comfort, durability, and modern style.`;
-      suggestedFullDesc = `✨ ${productName} - Premium Collection
+      setForm((prevForm: any) => ({
+        ...prevForm,
+        categoryId: categoryId,
+        shortDescription: result.shortDescription || prevForm.shortDescription,
+        description: result.description || prevForm.description,
+        keywords: result.keywords || prevForm.keywords,
+        sku: result.sku || prevForm.sku,
+        deliveryFeeInsideDhaka: prevForm.deliveryFeeInsideDhaka || "60",
+        deliveryFeeOutsideDhaka: prevForm.deliveryFeeOutsideDhaka || "120",
+      }));
 
-• Material: High-grade breathable cotton blend fabric.
-• Fit & Comfort: Ergonomically tailored for effortless all-day wear.
-• Occasion: Suitable for casual outings, work, and formal events.
-• Care Instructions: Machine wash cold with like colors, tumble dry low, do not bleach.
-• Guarantee: 100% authentic product with quality verification.`;
-      suggestedKeywords = `${productName.toLowerCase()}, fashion, clothing, premium quality, comfortable fit, stylish, authentic, bd fashion`;
-    } else if (catLower.includes("electronic") || catLower.includes("headphone") || catLower.includes("watch") || catLower.includes("gadget")) {
-      suggestedShortDesc = `High-performance ${productName} featuring latest technology, sleek design, long battery life, and crystal-clear response.`;
-      suggestedFullDesc = `⚡ ${productName} - Advanced Tech Edition
-
-• Key Features: Ultra-fast processing, intuitive controls, and smart connectivity.
-• Battery & Power: Long-lasting rechargeable battery with fast-charging technology.
-• Design: Lightweight ergonomic build with premium matte finish.
-• Package Includes: ${productName}, Charging Cable, User Manual, Warranty Card.
-• Warranty: 1-Year Official Manufacturer Warranty.`;
-      suggestedKeywords = `${productName.toLowerCase()}, tech, electronics, smart gadget, high performance, official warranty, gadgets bd`;
-    } else if (catLower.includes("bag") || catLower.includes("accessory") || catLower.includes("wallet")) {
-      suggestedShortDesc = `Elegant and spacious ${productName} crafted with water-resistant material, multiple compartments, and reinforced stitching.`;
-      suggestedFullDesc = `🎒 ${productName} - Luxury Accessories
-
-• Craftsmanship: Durable water-resistant synthetic leather / heavy-duty canvas.
-• Storage: Main zipper compartment, laptop sleeve, and front organizer pockets.
-• Straps: Padded adjustable shoulder straps for maximum comfort.
-• Usage: Perfect for daily travel, office, university, and outdoor trips.`;
-      suggestedKeywords = `${productName.toLowerCase()}, bag, leather bag, travel bag, durable, stylish, daily use`;
-    } else {
-      suggestedShortDesc = `Top-rated ${productName} selected for excellence, durability, and daily reliability in the ${categoryName} category.`;
-      suggestedFullDesc = `🌟 ${productName} - ${categoryName} Special
-
-• Premium build quality designed for everyday satisfaction.
-• Tested for performance, safety, and long-lasting durability.
-• Top choice among verified buyers in ${categoryName}.
-• Fast shipping across Bangladesh with secure packaging.`;
-      suggestedKeywords = `${productName.toLowerCase()}, ${categoryName.toLowerCase()}, best deal, top quality, marketverse verified`;
+      toast.success(
+        result.source === "openai"
+          ? `✨ AI generated description & SEO tags using OpenAI!`
+          : `✨ AI generated description & keyword suggestions!`,
+        {
+          action: {
+            label: "Undo",
+            onClick: () => handleUndoAi(),
+          },
+        }
+      );
+    } catch (err: any) {
+      toast.error(err.message || "Failed to generate AI suggestions");
+    } finally {
+      setIsGeneratingAi(false);
     }
-
-    setForm((prevForm: any) => ({
-      ...prevForm,
-      categoryId: categoryId,
-      shortDescription: prevForm.shortDescription || suggestedShortDesc,
-      description: prevForm.description || suggestedFullDesc,
-      keywords: prevForm.keywords || suggestedKeywords,
-      sku: prevForm.sku || suggestedSku,
-      deliveryFeeInsideDhaka: prevForm.deliveryFeeInsideDhaka || suggestedDeliveryInside,
-      deliveryFeeOutsideDhaka: prevForm.deliveryFeeOutsideDhaka || suggestedDeliveryOutside,
-    }));
-
-    toast.success(`✨ AI generated description & keyword suggestions!`, {
-      action: {
-        label: "Undo",
-        onClick: () => handleUndoAi(),
-      },
-    });
   };
 
   const handleUndoAi = () => {
@@ -1046,11 +1020,21 @@ function ProductsSection({
                   <div className="flex items-center gap-2">
                     <button
                       type="button"
+                      disabled={isGeneratingAi}
                       onClick={() => handleAiAutoFill(form.categoryId)}
-                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-300 text-xs font-bold hover:bg-indigo-100 transition-colors border border-indigo-200 dark:border-indigo-800"
+                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-300 text-xs font-bold hover:bg-indigo-100 transition-colors border border-indigo-200 dark:border-indigo-800 disabled:opacity-60"
                     >
-                      <Sparkles className="h-3.5 w-3.5" />
-                      <span>Auto-Suggest Descriptions & Tags with AI</span>
+                      {isGeneratingAi ? (
+                        <>
+                          <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                          <span>Generating with AI...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Sparkles className="h-3.5 w-3.5" />
+                          <span>Auto-Suggest Descriptions & Tags with AI</span>
+                        </>
+                      )}
                     </button>
 
                     {previousFormState && (

@@ -57,7 +57,7 @@ export default function Profile() {
 
   if (!user) {
     return (
-      <div className="max-w-7xl mx-auto px-4 py-16 text-center">
+      <div className="w-full max-w-7xl mx-auto px-4 py-16 text-center">
         <div className="max-w-md mx-auto bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
           <User className="h-12 w-12 text-slate-400 mx-auto mb-4" />
           <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Sign In Required</h2>
@@ -74,7 +74,7 @@ export default function Profile() {
   }
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 animate-fade-up">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <div>
@@ -135,7 +135,7 @@ export default function Profile() {
 
 function ProfileOverviewTab({ user }: { user: any }) {
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm">
+    <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-sm animate-fade-up" style={{ animationDelay: '100ms' }}>
       <div className="flex items-center gap-4 mb-6">
         <div className="h-20 w-20 rounded-2xl bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-2xl font-bold text-indigo-600 dark:text-indigo-400 shadow-sm border border-indigo-200 dark:border-indigo-800">
           {user?.name?.charAt(0) || "U"}
@@ -351,7 +351,7 @@ function SellerChatsTab() {
 
   if (rawMessages.length === 0) {
     return (
-      <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-10 text-center shadow-sm">
+      <div className="glass-card rounded-3xl p-10 text-center animate-fade-up" style={{ animationDelay: '100ms' }}>
         <MessageSquare className="h-12 w-12 text-slate-300 dark:text-slate-600 mx-auto mb-3" />
         <h3 className="text-base font-bold text-slate-900 dark:text-white mb-1">No Seller Messages Yet</h3>
         <p className="text-xs text-slate-500 max-w-md mx-auto mb-6">
@@ -368,7 +368,7 @@ function SellerChatsTab() {
   }
 
   return (
-    <div className="bg-white dark:bg-slate-800/95 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-lg overflow-hidden flex flex-col md:flex-row min-h-[580px] max-h-[740px]">
+    <div className="glass-card rounded-3xl overflow-hidden flex flex-col md:flex-row min-h-[580px] max-h-[740px] animate-fade-up" style={{ animationDelay: '100ms' }}>
       {/* ==================================================================== */}
       {/* LEFT COLUMN: Unique Seller / Store List                              */}
       {/* ==================================================================== */}

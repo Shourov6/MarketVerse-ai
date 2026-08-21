@@ -205,6 +205,7 @@ export class VectorStore {
       return cached.entries;
     }
 
+    const MAX_LOAD = 5000;
     const db = getDb();
     const rows = await db
       .select({
@@ -213,7 +214,12 @@ export class VectorStore {
         metadata: (aiEmbeddings as any).metadata,
       })
       .from(aiEmbeddings)
-      .where(eq(aiEmbeddings.collection, collection));
+      .where(eq(aiEmbeddings.collection, collection))
+      .limit(MAX_LOAD);
+      
+    if (rows.length === MAX_LOAD) {
+       console.warn(`[VectorStore] Warning: Collection ${collection} reached memory safety limit of ${MAX_LOAD}. Partial search results possible. Please migrate to a dedicated Vector DB.`);
+    }
 
     const entries: IndexEntry[] = rows.map((row: any) => ({
       sourceId: row.sourceId,

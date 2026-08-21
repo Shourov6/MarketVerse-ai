@@ -7,6 +7,9 @@ import {
   sql,
 } from "./mysql.ts";
 
+// ─── Timestamps helper (MySQL millisecond timestamp) ──────────────────────────
+const NOW = sql`ROUND(UNIX_TIMESTAMP(NOW(3)) * 1000)`;
+
 // ============================================================
 // 1. USERS (extends auth users)
 // ============================================================
@@ -24,9 +27,9 @@ export const users = mysqlTable("users", {
   dateOfBirth: text("dateOfBirth"),
   passwordHash: text("password_hash"),
   role: text("role").default("customer").notNull(),
-  createdAt: integer("createdAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
-  updatedAt: integer("updatedAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
-  lastSignInAt: integer("lastSignInAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
+  createdAt: integer("createdAt").default(NOW).notNull(),
+  updatedAt: integer("updatedAt").default(NOW).notNull(),
+  lastSignInAt: integer("lastSignInAt").default(NOW).notNull(),
 });
 
 export type User = typeof users.$inferSelect;
@@ -47,8 +50,8 @@ export const sellers = mysqlTable("sellers", {
   status: text("status").default("pending").notNull(),
   rating: real("rating").default(0),
   totalSales: integer("total_sales").default(0),
-  createdAt: integer("createdAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
-  updatedAt: integer("updatedAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
+  createdAt: integer("createdAt").default(NOW).notNull(),
+  updatedAt: integer("updatedAt").default(NOW).notNull(),
 }, (table) => ({
   userIdIdx: index("seller_user_id_idx").on(table.userId),
   statusIdx: index("seller_status_idx").on(table.status),
@@ -68,7 +71,7 @@ export const categories = mysqlTable("categories", {
   image: text("image"),
   parentId: integer("parentId"),
   isActive: integer("is_active").default(1).notNull(),
-  createdAt: integer("createdAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
+  createdAt: integer("createdAt").default(NOW).notNull(),
 });
 
 export type Category = typeof categories.$inferSelect;
@@ -101,8 +104,8 @@ export const products = mysqlTable("products", {
   rating: real("rating").default(0),
   reviewCount: integer("review_count").default(0),
   soldCount: integer("sold_count").default(0),
-  createdAt: integer("createdAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
-  updatedAt: integer("updatedAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
+  createdAt: integer("createdAt").default(NOW).notNull(),
+  updatedAt: integer("updatedAt").default(NOW).notNull(),
 }, (table) => ({
   categoryIdx: index("product_category_idx").on(table.categoryId),
   sellerIdx: index("product_seller_idx").on(table.sellerId),
@@ -124,7 +127,7 @@ export const productImages = mysqlTable("product_images", {
   altText: text("alt_text"),
   isPrimary: integer("is_primary").default(0).notNull(),
   sortOrder: integer("sort_order").default(0),
-  createdAt: integer("createdAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
+  createdAt: integer("createdAt").default(NOW).notNull(),
 }, (table) => ({
   productIdx: index("image_product_idx").on(table.productId),
 }));
@@ -142,8 +145,8 @@ export const inventory = mysqlTable("inventory", {
   lowStockThreshold: integer("low_stock_threshold").default(5),
   warehouseLocation: text("warehouse_location"),
   lastRestocked: integer("last_restocked"),
-  createdAt: integer("createdAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
-  updatedAt: integer("updatedAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
+  createdAt: integer("createdAt").default(NOW).notNull(),
+  updatedAt: integer("updatedAt").default(NOW).notNull(),
 }, (table) => ({
   productIdx: index("inventory_product_idx").on(table.productId),
 }));
@@ -158,8 +161,8 @@ export const carts = mysqlTable("carts", {
   id: integer("id").primaryKey().notNull(),
   userId: integer("userId").notNull(),
   sessionId: text("session_id"),
-  createdAt: integer("createdAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
-  updatedAt: integer("updatedAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
+  createdAt: integer("createdAt").default(NOW).notNull(),
+  updatedAt: integer("updatedAt").default(NOW).notNull(),
 }, (table) => ({
   userIdx: index("cart_user_idx").on(table.userId),
 }));
@@ -175,7 +178,7 @@ export const cartItems = mysqlTable("cart_items", {
   cartId: integer("cartId").notNull(),
   productId: integer("productId").notNull(),
   quantity: integer("quantity").default(1).notNull(),
-  createdAt: integer("createdAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
+  createdAt: integer("createdAt").default(NOW).notNull(),
 }, (table) => ({
   cartIdx: index("cartitem_cart_idx").on(table.cartId),
   productIdx: index("cartitem_product_idx").on(table.productId),
@@ -209,8 +212,8 @@ export const orders = mysqlTable("orders", {
   estimatedDeliveryDays: integer("estimated_delivery_days"), // 1-2 inside city, 3-5 outside city
   estimatedDeliveryDate: integer("estimated_delivery_date"),
   notes: text("notes"),
-  createdAt: integer("createdAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
-  updatedAt: integer("updatedAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
+  createdAt: integer("createdAt").default(NOW).notNull(),
+  updatedAt: integer("updatedAt").default(NOW).notNull(),
 }, (table) => ({
   userIdx: index("order_user_idx").on(table.userId),
   statusIdx: index("order_status_idx").on(table.status),
@@ -231,7 +234,8 @@ export const orderItems = mysqlTable("order_items", {
   quantity: integer("quantity").notNull(),
   unitPrice: real("unit_price").notNull(),
   totalPrice: real("total_price").notNull(),
-  createdAt: integer("createdAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
+  isReviewed: integer("is_reviewed").default(0).notNull(),
+  createdAt: integer("createdAt").default(NOW).notNull(),
 }, (table) => ({
   orderIdx: index("orderitem_order_idx").on(table.orderId),
   productIdx: index("orderitem_product_idx").on(table.productId),
@@ -254,7 +258,7 @@ export const reviews = mysqlTable("reviews", {
   comment: text("comment"),
   isVerified: integer("is_verified").default(0).notNull(),
   helpful: integer("helpful").default(0),
-  createdAt: integer("createdAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
+  createdAt: integer("createdAt").default(NOW).notNull(),
 }, (table) => ({
   productIdx: index("review_product_idx").on(table.productId),
   userIdx: index("review_user_idx").on(table.userId),
@@ -271,7 +275,7 @@ export const wishlist = mysqlTable("wishlist", {
   id: integer("id").primaryKey().notNull(),
   userId: integer("userId").notNull(),
   productId: integer("productId").notNull(),
-  createdAt: integer("createdAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
+  createdAt: integer("createdAt").default(NOW).notNull(),
 }, (table) => ({
   userIdx: index("wishlist_user_idx").on(table.userId),
   productIdx: index("wishlist_product_idx").on(table.productId),
@@ -291,7 +295,7 @@ export const notifications = mysqlTable("notifications", {
   type: text("type").default("system").notNull(),
   isRead: integer("is_read").default(0).notNull(),
   link: text("link"),
-  createdAt: integer("createdAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
+  createdAt: integer("createdAt").default(NOW).notNull(),
 }, (table) => ({
   userIdx: index("notification_user_idx").on(table.userId),
 }));
@@ -312,8 +316,8 @@ export const supportLearning = mysqlTable("support_learning", {
   userId: integer("userId"),
   sessionId: text("session_id"),
   context: text("context"), // JSON string of context data
-  createdAt: integer("createdAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
-  updatedAt: integer("updatedAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
+  createdAt: integer("createdAt").default(NOW).notNull(),
+  updatedAt: integer("updatedAt").default(NOW).notNull(),
 }, (table) => ({
   categoryIdx: index("support_learning_category_idx").on(table.category),
   feedbackIdx: index("support_learning_feedback_idx").on(table.feedback),
@@ -339,8 +343,8 @@ export const supportKnowledge = mysqlTable("support_knowledge", {
   source: text("source").default("manual"), // 'manual', 'learned', 'imported'
   usageCount: integer("usage_count").default(0),
   lastUsed: integer("last_used"),
-  createdAt: integer("createdAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
-  updatedAt: integer("updatedAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
+  createdAt: integer("createdAt").default(NOW).notNull(),
+  updatedAt: integer("updatedAt").default(NOW).notNull(),
 }, (table) => ({
   categoryIdx: index("support_knowledge_category_idx").on(table.category),
   isActiveIdx: index("support_knowledge_active_idx").on(table.isActive),
@@ -357,8 +361,8 @@ export const chatSessions = mysqlTable("chat_sessions", {
   id: text("id").primaryKey().notNull(), // UUID
   userId: integer("userId"),
   sessionType: text("session_type").notNull(), // 'stylist', 'support'
-  createdAt: integer("createdAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
-  updatedAt: integer("updatedAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
+  createdAt: integer("createdAt").default(NOW).notNull(),
+  updatedAt: integer("updatedAt").default(NOW).notNull(),
 }, (table) => ({
   userIdIdx: index("chat_sessions_user_idx").on(table.userId),
   typeIdx: index("chat_sessions_type_idx").on(table.sessionType),
@@ -377,7 +381,7 @@ export const chatMessages = mysqlTable("chat_messages", {
   content: text("content").notNull(),
   type: text("type").default("general").notNull(), // 'general', 'outfit', 'color', etc.
   data: text("data"), // JSON string of specific widget data
-  createdAt: integer("createdAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
+  createdAt: integer("createdAt").default(NOW).notNull(),
 }, (table) => ({
   sessionIdx: index("chat_messages_session_idx").on(table.sessionId),
 }));
@@ -396,8 +400,8 @@ export const stylistProfiles = mysqlTable("stylist_profiles", {
   stylePreference: text("stylePreference"), // "classic", "minimalist", etc.
   budgetRange: text("budgetRange"), // "budget", "mid-range", "premium"
   favoriteColors: text("favoriteColors"), // string[] (JSON serialized)
-  createdAt: integer("createdAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
-  updatedAt: integer("updatedAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
+  createdAt: integer("createdAt").default(NOW).notNull(),
+  updatedAt: integer("updatedAt").default(NOW).notNull(),
 });
 
 export type StylistProfile = typeof stylistProfiles.$inferSelect;
@@ -415,7 +419,7 @@ export const coupons = mysqlTable("coupons", {
   minSpend: real("min_spend").default(0).notNull(),
   usageCount: integer("usage_count").default(0).notNull(),
   status: text("status").default("active").notNull(), // 'active' | 'expired'
-  createdAt: integer("createdAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
+  createdAt: integer("createdAt").default(NOW).notNull(),
 });
 
 export type Coupon = typeof coupons.$inferSelect;
@@ -431,7 +435,7 @@ export const sellerPayouts = mysqlTable("seller_payouts", {
   paymentMethod: text("payment_method").notNull(), // 'bank' | 'bkash' | 'nagad'
   accountDetails: text("account_details").notNull(),
   status: text("status").default("pending").notNull(), // 'pending' | 'approved' | 'rejected'
-  createdAt: integer("createdAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
+  createdAt: integer("createdAt").default(NOW).notNull(),
 });
 
 export type SellerPayout = typeof sellerPayouts.$inferSelect;
@@ -451,7 +455,7 @@ export const sellerMessages = mysqlTable("seller_messages", {
   message: text("message").notNull(),
   reply: text("reply"),
   status: text("status").default("unread").notNull(), // 'unread' | 'replied'
-  createdAt: integer("createdAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
+  createdAt: integer("createdAt").default(NOW).notNull(),
 });
 
 export type SellerMessage = typeof sellerMessages.$inferSelect;
@@ -470,7 +474,7 @@ export const userAddresses = mysqlTable("user_addresses", {
   country: text("country").notNull(),
   phone: text("phone"),
   isPrimary: integer("is_primary").default(0).notNull(),
-  createdAt: integer("createdAt").default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`).notNull(),
+  createdAt: integer("createdAt").default(NOW).notNull(),
 });
 
 export type UserAddress = typeof userAddresses.$inferSelect;

@@ -20,6 +20,7 @@ export class SellerWorkflowOrchestrator {
     message: string;
     context?: Partial<SellerContext>;
     intent?: string;
+    history?: { role: string; content: string }[];
   }): Promise<{
     structuredResponse: AIResponse;
     renderedText: string;
@@ -100,9 +101,9 @@ export class SellerWorkflowOrchestrator {
 
     structuredResponse.metadata.executionTimeMs = Date.now() - startTime;
 
-    // 3. Render via Local 3B LLM Presentation Layer
+    // 3. Render via Presentation Layer (OpenAI with Full Context + fallback to Local LLM / Synthesis)
     const renderer = getSellerLLMRenderer();
-    const renderedText = await renderer.render(structuredResponse, params.message);
+    const renderedText = await renderer.render(structuredResponse, params.message, context, params.history);
 
     return {
       structuredResponse,

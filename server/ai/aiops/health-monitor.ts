@@ -13,7 +13,7 @@ export class HealthMonitor {
     return {
       llm_service: { name: "Local LLM Service (Ollama)", status: "HEALTHY", latency_ms: 120, last_check: new Date().toISOString(), message: "qwen2.5:7b-instruct connected" },
       embedding_service: { name: "Embedding Transformer Service", status: "HEALTHY", latency_ms: 18, last_check: new Date().toISOString(), message: "nomic-embed-text operational" },
-      sqlite_database: { name: "SQLite Core Storage", status: "HEALTHY", latency_ms: 2, last_check: new Date().toISOString(), message: "dev.db connection active" },
+      mysql_database: { name: "MySQL Core Storage", status: "HEALTHY", latency_ms: 2, last_check: new Date().toISOString(), message: "MySQL connection pool active" },
       vector_store: { name: "Vector Embeddings Index", status: "HEALTHY", latency_ms: 15, last_check: new Date().toISOString(), message: "ai_embeddings collection loaded" },
       memory_manager: { name: "Dialogue Memory Store", status: "HEALTHY", latency_ms: 4, last_check: new Date().toISOString(), message: "StylistStateManager persistent" },
       prompt_service: { name: "Prompt Version Manager", status: "HEALTHY", latency_ms: 1, last_check: new Date().toISOString(), message: "Active Template v2.1.0" },

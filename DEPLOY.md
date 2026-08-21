@@ -162,8 +162,10 @@ sudo certbot --nginx -d yourdomain.com
 | `APP_ID` | No | OAuth app identifier (default: `local_app_id`) |
 | `CORS_ORIGIN` | No | Comma-separated allowed origins (default: `*`) |
 | `OWNER_UNION_ID` | No | First-login admin user ID |
-| `KIMI_AUTH_URL` | No | Kimi OAuth URL (leave blank to disable) |
-| `KIMI_OPEN_URL` | No | Kimi Open Platform URL |
+| `OPENAI_API_KEY` | Yes | OpenAI API Key (powers Seller Copilot V2 & auto-suggest) |
+| `SSLCOMMERZ_STORE_ID` | Yes | SSLCommerz Merchant Store ID |
+| `SSLCOMMERZ_STORE_PASSWORD` | Yes | SSLCommerz Merchant Store Password |
+| `SSLCOMMERZ_IS_LIVE` | No | `true` for live production, `false` for sandbox |
 
 ---
 

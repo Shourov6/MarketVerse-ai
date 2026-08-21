@@ -35,7 +35,9 @@ import {
   CornerDownRight,
   Lock,
   ShieldCheck,
+  Star,
 } from "lucide-react";
+import { ReviewModal } from "@/components/ReviewModal";
 
 export default function Dashboard() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -69,6 +71,9 @@ export default function Dashboard() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState<any | null>(null);
   const [trackingSearchQuery, setTrackingSearchQuery] = useState("");
+  const [reviewModal, setReviewModal] = useState<{ productId: number, productName: string } | null>(null);
+  const [reviewForm, setReviewForm] = useState({ rating: 5, title: "", comment: "" });
+  const [pendingReviewOrder, setPendingReviewOrder] = useState<any | null>(null);
 
   const { user, isLoading: authLoading, logout } = useAuth();
   const { data: orders, isLoading: ordersLoading, refetch: refetchOrders } = trpc.order.list.useQuery(undefined, {
@@ -112,6 +117,15 @@ export default function Dashboard() {
       refetchAddresses();
     },
     onError: (err) => toast.error(err.message || "Failed to delete address"),
+  });
+
+  const createReviewMutation = trpc.review.create.useMutation({
+    onSuccess: () => {
+      toast.success("Thank you for your review!");
+      setReviewModal(null);
+      setReviewForm({ rating: 5, title: "", comment: "" });
+    },
+    onError: (err) => toast.error(err.message || "Failed to submit review"),
   });
 
   // Profile Form State
@@ -213,11 +227,11 @@ export default function Dashboard() {
 
   const saveStylist = trpc.stylistProfile.save.useMutation({
     onSuccess: () => {
-      toast.success("AI Stylist preferences updated!");
+      toast.success("Clevora AI preferences updated!");
       refetchStylist();
     },
     onError: (err) => {
-      toast.error(err.message || "Failed to save AI Stylist preferences");
+      toast.error(err.message || "Failed to save Clevora AI preferences");
     },
   });
 
@@ -247,6 +261,18 @@ export default function Dashboard() {
     },
   });
 
+  useEffect(() => {
+    if (orders) {
+      const deliveredUnreviewed = orders.find((o: any) => 
+        o.status === "delivered" && 
+        o.items?.some((i: any) => !i.isReviewed)
+      );
+      if (deliveredUnreviewed && !pendingReviewOrder) {
+        setPendingReviewOrder(deliveredUnreviewed);
+      }
+    }
+  }, [orders]);
+
   if (authLoading || ordersLoading) {
     return (
       <div className="flex justify-center py-20">
@@ -257,7 +283,7 @@ export default function Dashboard() {
 
   if (!user) {
     return (
-      <div className="max-w-7xl mx-auto px-4 py-16 text-center">
+      <div className="w-full max-w-7xl mx-auto px-4 py-16 text-center">
         <p className="text-lg text-slate-500">Please sign in to view your dashboard.</p>
       </div>
     );
@@ -277,11 +303,11 @@ export default function Dashboard() {
     { key: "account" as const, label: "Account Profile", icon: <User className="h-4 w-4" /> },
     { key: "security" as const, label: "Security", icon: <Lock className="h-4 w-4" /> },
     { key: "addresses" as const, label: "Saved Addresses", icon: <MapPin className="h-4 w-4" /> },
-    { key: "stylist" as const, label: "AI Stylist Profile", icon: <Sparkles className="h-4 w-4" /> },
+    { key: "stylist" as const, label: "Clevora AI Preferences", icon: <Sparkles className="h-4 w-4" /> },
   ];
 
   return (
-    <div className="flex h-[calc(100vh-64px)] overflow-hidden bg-slate-50 dark:bg-slate-950/50">
+    <div className="flex h-[calc(100vh-64px)] overflow-hidden bg-slate-50 dark:bg-slate-950/50 animate-fade-in">
       {/* Mobile Sidebar Overlay */}
       {isMobileMenuOpen && (
         <div 
@@ -333,6 +359,16 @@ export default function Dashboard() {
           </button>
         </div>
       </aside>
+
+      {pendingReviewOrder && (
+        <ReviewModal 
+          order={pendingReviewOrder} 
+          onClose={() => setPendingReviewOrder(null)} 
+          onSuccess={() => {
+            refetchOrders();
+          }} 
+        />
+      )}
 
       {/* Main Content */}
       <main className="flex-1 overflow-y-auto w-full">
@@ -388,9 +424,9 @@ export default function Dashboard() {
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* Recent Orders */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-lg font-bold text-slate-900 dark:text-white">Recent Orders</h2>
+                <div className="glass-card rounded-3xl p-6 sm:p-8 animate-fade-up" style={{ animationDelay: '100ms' }}>
+                  <div className="flex items-center justify-between mb-6">
+                    <h2 className="text-xl font-black text-slate-900 dark:text-white tracking-tight">Recent Orders</h2>
                     <button onClick={() => setActiveTab("orders")} className="text-sm text-indigo-600 hover:underline flex items-center gap-1">
                       View All <ChevronRight className="h-4 w-4" />
                     </button>
@@ -435,9 +471,9 @@ export default function Dashboard() {
                 </div>
 
                 {/* Wishlist Preview */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-lg font-bold text-slate-900 dark:text-white">Wishlist Highlights</h2>
+                <div className="glass-card rounded-3xl p-6 sm:p-8 animate-fade-up" style={{ animationDelay: '200ms' }}>
+                  <div className="flex items-center justify-between mb-6">
+                    <h2 className="text-xl font-black text-slate-900 dark:text-white tracking-tight">Wishlist Highlights</h2>
                     <button onClick={() => setActiveTab("wishlist")} className="text-sm text-indigo-600 hover:underline flex items-center gap-1">
                       View All <ChevronRight className="h-4 w-4" />
                     </button>
@@ -1167,13 +1203,13 @@ export default function Dashboard() {
             </div>
           )}
 
-          {/* AI Stylist Preference Tab */}
+          {/* Clevora AI Preference Tab */}
           {activeTab === "stylist" && (
             <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6 space-y-6">
               <div>
                 <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
                   <Sparkles className="w-6 h-6 text-indigo-600" />
-                  AI Fashion Stylist Preferences
+                  Clevora AI Preferences
                 </h2>
                 <p className="text-sm text-slate-500">Configure your personal style preferences used by our AI recommendations engine.</p>
               </div>
@@ -1250,7 +1286,7 @@ export default function Dashboard() {
                     className="flex items-center gap-2 px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl text-sm transition-all"
                   >
                     {saveStylist.isPending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
-                    Save Stylist Profile
+                    Save Preferences
                   </button>
                 </div>
               </form>
@@ -1361,6 +1397,37 @@ export default function Dashboard() {
                   </div>
                 </div>
                 <span className="px-2 py-0.5 bg-emerald-600 text-white font-bold rounded text-[10px]">REFUNDED</span>
+              </div>
+            )}
+
+            {/* Order Items */}
+            {selectedOrder.items && selectedOrder.items.length > 0 && (
+              <div className="space-y-3">
+                <h4 className="text-sm font-bold text-slate-900 dark:text-white">Order Items</h4>
+                <div className="space-y-2">
+                  {selectedOrder.items.map((item: any) => (
+                    <div key={item.id} className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-700/50">
+                      <div className="flex items-center gap-3">
+                        <img src={item.imageUrl || "https://images.unsplash.com/photo-1523275335684-37898b6baf30"} alt={item.productName} className="w-12 h-12 rounded-lg object-cover" />
+                        <div>
+                          <p className="text-sm font-bold text-slate-900 dark:text-white line-clamp-1">{item.productName}</p>
+                          <p className="text-xs text-slate-500">{item.quantity} x {formatCurrency(item.unitPrice)}</p>
+                        </div>
+                      </div>
+                      <div className="flex flex-col items-end gap-2">
+                        <span className="text-sm font-bold text-slate-900 dark:text-white">{formatCurrency(item.totalPrice)}</span>
+                        {selectedOrder.status === "delivered" && (
+                          <button 
+                            onClick={() => setReviewModal({ productId: item.productId, productName: item.productName })}
+                            className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 bg-indigo-50 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800/60 rounded-md hover:bg-indigo-100 transition-colors shadow-2xs"
+                          >
+                            Leave Review
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
 
@@ -1504,6 +1571,95 @@ export default function Dashboard() {
           </div>
         </div>
       )}
+
+      {/* Leave Review Modal */}
+      {reviewModal && (
+        <div className="fixed inset-0 z-[60] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-700">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-black text-slate-900 dark:text-white">Leave a Review</h3>
+              <button onClick={() => setReviewModal(null)} className="p-1 rounded-lg text-slate-400 hover:text-slate-600">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <p className="text-xs text-slate-500 mb-6 border-b border-slate-100 dark:border-slate-700 pb-3">
+              Reviewing: <strong className="text-slate-900 dark:text-white">{reviewModal.productName}</strong>
+            </p>
+
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                createReviewMutation.mutate({
+                  productId: reviewModal.productId,
+                  rating: reviewForm.rating,
+                  title: reviewForm.title,
+                  comment: reviewForm.comment,
+                });
+              }}
+              className="space-y-4"
+            >
+              <div>
+                <label className="block text-xs font-bold uppercase text-slate-500 mb-2">Rating</label>
+                <div className="flex items-center gap-2">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <button
+                      key={star}
+                      type="button"
+                      onClick={() => setReviewForm({ ...reviewForm, rating: star })}
+                      className="p-1 transition-transform hover:scale-110"
+                    >
+                      <Star className={`w-8 h-8 ${star <= reviewForm.rating ? "fill-amber-400 text-amber-400" : "text-slate-300 dark:text-slate-600 fill-transparent"}`} />
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Review Title</label>
+                <input
+                  type="text"
+                  required
+                  maxLength={100}
+                  value={reviewForm.title}
+                  onChange={(e) => setReviewForm({ ...reviewForm, title: e.target.value })}
+                  placeholder="Summarize your experience..."
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Review Details</label>
+                <textarea
+                  required
+                  rows={4}
+                  value={reviewForm.comment}
+                  onChange={(e) => setReviewForm({ ...reviewForm, comment: e.target.value })}
+                  placeholder="What did you like or dislike about this product?"
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm resize-none custom-scrollbar"
+                />
+              </div>
+
+              <div className="pt-4 flex justify-end gap-3 border-t border-slate-100 dark:border-slate-700">
+                <button
+                  type="button"
+                  onClick={() => setReviewModal(null)}
+                  className="px-5 py-2 text-slate-600 dark:text-slate-400 text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl transition-all"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={createReviewMutation.isPending}
+                  className="flex items-center gap-2 px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-sm font-semibold transition-all disabled:opacity-50 shadow-sm"
+                >
+                  {createReviewMutation.isPending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Star className="w-4 h-4" />}
+                  Submit Review
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -1524,16 +1680,16 @@ function DashboardCard({
   const content = (
     <div 
       onClick={onClick}
-      className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:shadow-md transition-shadow cursor-pointer"
+      className="glass-card rounded-3xl p-6 hover:-translate-y-1 transition-all cursor-pointer group hover:shadow-xl hover:shadow-indigo-500/10 animate-fade-up"
     >
-      <div className="flex items-center justify-between mb-3">
-        <div className="p-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 rounded-lg">
+      <div className="flex items-center justify-between mb-4">
+        <div className="p-3 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-xl group-hover:scale-110 transition-transform">
           {icon}
         </div>
-        {(link || onClick) && <ChevronRight className="h-4 w-4 text-slate-400" />}
+        {(link || onClick) && <ChevronRight className="h-5 w-5 text-slate-400 group-hover:text-indigo-600 transition-colors" />}
       </div>
-      <p className="text-2xl font-bold text-slate-900 dark:text-white">{value}</p>
-      <p className="text-sm text-slate-500 dark:text-slate-400">{label}</p>
+      <p className="text-3xl font-black text-slate-900 dark:text-white tracking-tight mb-1">{value}</p>
+      <p className="text-sm font-semibold text-slate-500 dark:text-slate-400">{label}</p>
     </div>
   );
 

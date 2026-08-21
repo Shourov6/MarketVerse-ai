@@ -20,6 +20,9 @@ services:
     environment:
       DATABASE_URL: ${DATABASE_URL:-mysql://root:${MYSQL_ROOT_PASSWORD:-password}@db:3306/ecommerce_db}
       APP_SECRET: ${APP_SECRET}
+      APP_ID: ${APP_ID:-marketverse-production}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      CORS_ORIGIN: ${CORS_ORIGIN:-*}
       NODE_ENV: production
 
 volumes:

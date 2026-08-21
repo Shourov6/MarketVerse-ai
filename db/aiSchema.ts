@@ -24,8 +24,8 @@ import {
   sql,
 } from "./mysql.ts";
 
-// ─── Timestamps helper ────────────────────────────────────────────────────────
-const NOW = sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`;
+// ─── Timestamps helper (MySQL millisecond timestamp) ──────────────────────────
+const NOW = sql`ROUND(UNIX_TIMESTAMP(NOW(3)) * 1000)`;
 
 // ============================================================
 // 1. AI EMBEDDINGS — Unified vector store for all collections

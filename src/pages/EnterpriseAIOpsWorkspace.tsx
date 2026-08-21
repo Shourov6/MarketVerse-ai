@@ -86,7 +86,7 @@ export const EnterpriseAIOpsWorkspace: React.FC = () => {
                 { stage: "Gateway & Rate Limit Check", ms: 1, pct: "2%" },
                 { stage: "Intent Classifier", ms: 12, pct: "8%" },
                 { stage: "StylistStateManager Slot Extraction", ms: 4, pct: "3%" },
-                { stage: "SQLite Vector Search", ms: 24, pct: "15%" },
+                { stage: "MySQL Vector / Full-Text Search", ms: 24, pct: "15%" },
                 { stage: "ContextBuilder Assembly", ms: 2, pct: "2%" },
                 { stage: "LLM Generation (Ollama qwen2.5)", ms: 2800, pct: "65%" },
                 { stage: "Enterprise Ranker & Rationale", ms: 8, pct: "5%" },
@@ -135,7 +135,7 @@ export const EnterpriseAIOpsWorkspace: React.FC = () => {
               Subsystem Health Matrix (10 Services)
             </h3>
             <div className="space-y-3 text-xs">
-              {["Local LLM Service", "Embedding Transformer", "SQLite Core", "Vector Embeddings", "Dialogue Memory Manager", "Prompt Manager", "Analytics Pipeline", "RAG Engine", "Enterprise Ranker", "Security Guardrails"].map((sys) => (
+              {["Local LLM Service", "Embedding Transformer", "MySQL Database Engine", "Vector Embeddings", "Dialogue Memory Manager", "Prompt Manager", "Analytics Pipeline", "RAG Engine", "Enterprise Ranker", "Security Guardrails"].map((sys) => (
                 <div key={sys} className="flex justify-between items-center bg-slate-950 p-2.5 rounded-lg border border-slate-800">
                   <span className="text-slate-300 font-medium">{sys}</span>
                   <span className="bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] px-2 py-0.5 rounded font-bold">HEALTHY</span>

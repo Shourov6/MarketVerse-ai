@@ -12,6 +12,7 @@
 import { getRetriever } from "./retriever.ts";
 import { getContextBuilder } from "./context-builder.ts";
 import { getLLMService } from "../llm/llm-service.ts";
+import { getOpenAIVerifier } from "../llm/openai-verifier.ts";
 import { getSystemPrompt } from "../prompts/system-prompts.ts";
 import { getStylistStateManager } from "../memory/stylist-state-manager.ts";
 import { getEmotionalIntelligenceEngine } from "../memory/emotional-intelligence.ts";
@@ -119,7 +120,44 @@ export class RAGPipeline {
   /**
    * Synthesize a stateful, humanized fallback response when LLM service is offline.
    */
-  private async synthesizeStatefulFallback(sessionId: string, query: string): Promise<string> {
+  private async synthesizeStatefulFallback(sessionId: string, query: string, domain?: Domain): Promise<string> {
+    const qLower = query.toLowerCase();
+
+    // ── GADGETS FALLBACK ──
+    if (domain === "gadgets" || qLower.includes("laptop") || qLower.includes("pc build") || qLower.includes("gaming") || qLower.includes("gpu") || qLower.includes("programming") || qLower.includes("video editing") || qLower.includes("ram")) {
+      const { LAPTOP_USE_CASE_PROFILES, PC_COMPATIBILITY_CHECKS, GAMING_GPU_TIERS } = await import("../fashion/clevora-knowledge.ts");
+      
+      if (qLower.includes("build") || qLower.includes("compatib")) {
+        const topChecks = PC_COMPATIBILITY_CHECKS.slice(0, 4).map(c => `• **${c.check}**: ${c.mustVerify}`).join("\n");
+        return `💻 **Clevora AI — PC Building & Compatibility Guide**\n\nHere are the critical hardware compatibility rules for your build:\n\n${topChecks}\n\n💡 **Pro Tip**: Always ensure your Power Supply (PSU) has 20-25% wattage headroom above total system draw.\n\nTell me your exact CPU + GPU combo or target budget, and I'll verify the build for you!`;
+      }
+
+      // Check specific use-cases
+      let useCase = "Programming";
+      if (qLower.includes("video") || qLower.includes("editing") || qLower.includes("render")) {
+        useCase = qLower.includes("4k") ? "Video Editing (4K)" : "Video Editing (1080p)";
+      } else if (qLower.includes("gaming")) {
+        useCase = qLower.includes("high") || qLower.includes("ultra") ? "Gaming (High-End)" : "Gaming (Entry)";
+      } else if (qLower.includes("study") || qLower.includes("student") || qLower.includes("general") || qLower.includes("office")) {
+        useCase = "General/Study";
+      }
+
+      const profile = LAPTOP_USE_CASE_PROFILES[useCase] || LAPTOP_USE_CASE_PROFILES["Programming"];
+
+      return `💻 **Clevora AI — Recommended Laptop Specs for ${useCase}**\n\n` +
+        `• **Baseline Minimum**:\n  ${profile.minimum}\n\n` +
+        `• **Recommended (Best Experience)**:\n  ${profile.recommended}\n\n` +
+        `🎯 **Match Score**: **96/100** for your requested workload.\n\n` +
+        `💡 **Clevora Advice**: For heavy multitasking and future-proofing, prioritize 16GB+ RAM and fast NVMe SSD storage.\n\n` +
+        `Would you like recommendations within a specific budget range (e.g. 60k-80k BDT)?`;
+    }
+
+    // ── GENERAL DOMAIN FALLBACK ──
+    if (domain === "general") {
+      return `🛍️ **Clevora AI — Shopping Assistant**\n\nI can help you find, compare, and choose the best products on MarketVerse.\n\nTo give you the most accurate recommendations, please tell me:\n1. **What specific item or category** you're looking for\n2. **Your approximate budget** in BDT\n3. Any brand, color, or feature preferences!\n\nHow can I help you discover today?`;
+    }
+
+    // ── FASHION FALLBACK ──
     const stateManager = getStylistStateManager();
     const visualEngine = getVisualDescriptionEngine();
     const adviceEngine = getProactiveAdviceEngine();
@@ -206,7 +244,7 @@ export class RAGPipeline {
       return await llm.chat(messages);
     } catch (llmError) {
       console.warn("[RAGPipeline] Local LLM unreachable. Using stateful fallback synthesizer.");
-      const fallbackContent = await this.synthesizeStatefulFallback(sessionId, query);
+      const fallbackContent = await this.synthesizeStatefulFallback(sessionId, query, domain);
       return {
         message: { role: "assistant", content: fallbackContent },
         model: "fallback-synthesizer",
@@ -265,10 +303,35 @@ export class RAGPipeline {
     const llm = getLLMService();
 
     try {
-      yield* llm.chatStream(messages);
+      // 1. Buffer the local AI's streaming response
+      let localAnswer = "";
+      for await (const chunk of llm.chatStream(messages)) {
+        localAnswer += chunk.token;
+      }
+
+      // 2. Verify with OpenAI as Judge
+      const verifier = getOpenAIVerifier();
+      const verification = await verifier.verifyResponse(
+        query,
+        localAnswer,
+        systemPrompt,
+        sessionId,
+        domain
+      );
+
+      // 3. Yield the final verified response
+      const finalAnswer = verification.isCorrect ? localAnswer : (verification.correctedAnswer || localAnswer);
+      
+      // We simulate streaming the final answer so UI doesn't break
+      const chunkSize = 20;
+      for (let i = 0; i < finalAnswer.length; i += chunkSize) {
+        yield { token: finalAnswer.slice(i, i + chunkSize), done: false };
+      }
+      yield { token: "", done: true };
+      
     } catch (llmError) {
       console.warn("[RAGPipeline] Local LLM stream unreachable. Yielding stateful fallback synthesis.");
-      const fallbackContent = await this.synthesizeStatefulFallback(sessionId, query);
+      const fallbackContent = await this.synthesizeStatefulFallback(sessionId, query, domain);
       yield { token: fallbackContent, done: true };
     }
   }

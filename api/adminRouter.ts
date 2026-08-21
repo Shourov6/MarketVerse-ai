@@ -276,6 +276,15 @@ export const adminRouter = createRouter({
             isRead: 0,
             link: "/dashboard?tab=orders",
           });
+        } else if (input.status === "delivered") {
+          await db.insert(notifications).values({
+            userId: order.userId,
+            title: `Package Delivered! 📦 #${order.orderNumber}`,
+            message: `Your order #${order.orderNumber} has arrived. Please leave a review for your items!`,
+            type: "order",
+            isRead: 0,
+            link: "/dashboard?tab=orders",
+          });
         } else {
           await db.insert(notifications).values({
             userId: order.userId,

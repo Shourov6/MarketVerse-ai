@@ -1,10 +1,36 @@
 import { z } from "zod";
 import { createRouter, publicQuery, authedQuery } from "./middleware";
 import { getDb } from "./queries/connection";
-import { reviews, users } from "@db/schema";
+import { reviews, users, products, orderItems } from "@db/schema";
 import { eq, desc, sql } from "@db/mysql";
 
 export const reviewRouter = createRouter({
+  listRecent: publicQuery
+    .input(z.object({ limit: z.number().optional().default(6) }))
+    .query(async ({ input }) => {
+      const db = getDb();
+      return db
+        .select({
+          id: reviews.id,
+          rating: reviews.rating,
+          title: reviews.title,
+          comment: reviews.comment,
+          isVerified: reviews.isVerified,
+          helpful: reviews.helpful,
+          createdAt: reviews.createdAt,
+          userName: users.name,
+          userAvatar: users.avatar,
+          productId: reviews.productId,
+          productName: products.name,
+          productSlug: products.slug,
+        })
+        .from(reviews)
+        .leftJoin(users, eq(users.id, reviews.userId))
+        .leftJoin(products, eq(products.id, reviews.productId))
+        .orderBy(desc(reviews.createdAt))
+        .limit(input.limit);
+    }),
+
   listByProduct: publicQuery
     .input(z.object({ productId: z.number() }))
     .query(async ({ input }) => {
@@ -48,6 +74,39 @@ export const reviewRouter = createRouter({
         comment: input.comment,
         isVerified: true,
       });
+
+      return { success: true };
+    }),
+
+  createOrderReview: authedQuery
+    .input(
+      z.object({
+        productId: z.number(),
+        orderId: z.number(),
+        orderItemId: z.number(),
+        rating: z.number().min(1).max(5),
+        title: z.string().min(1).max(255),
+        comment: z.string().min(1),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      const db = getDb();
+      const userId = (ctx.user as any).id;
+
+      await db.insert(reviews).values({
+        productId: input.productId,
+        orderId: input.orderId,
+        userId,
+        rating: input.rating,
+        title: input.title,
+        comment: input.comment,
+        isVerified: 1,
+      });
+
+      await db
+        .update(orderItems)
+        .set({ isReviewed: 1 })
+        .where(eq(orderItems.id, input.orderItemId));
 
       return { success: true };
     }),

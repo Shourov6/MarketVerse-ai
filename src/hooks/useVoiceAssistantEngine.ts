@@ -370,8 +370,13 @@ export function useVoiceAssistantEngine({
   // ── Single Master STT Provider Listener ────────────────────────────────────
 
   const startSttListening = useCallback(() => {
-    if (!isSpeechRecognitionSupported) {
+    if (!isSpeechRecognitionSupported || isHttpIp || !isMediaDevicesSupported) {
       transitionTo("ERROR");
+      setLastError({
+        code: "unsupported",
+        message: "Voice input is unavailable in this browser or context. Use text input or a Chrome/Edge browser with microphone permission enabled.",
+        timestamp: Date.now(),
+      });
       return;
     }
 
@@ -653,8 +658,14 @@ export function useVoiceAssistantEngine({
 
   const activateAssistant = useCallback(
     async (greetingText?: string) => {
-      if (isHttpIp) {
+      if (isHttpIp || !isSpeechRecognitionSupported || !isMediaDevicesSupported) {
+        setMicPermission("unsupported");
         transitionTo("ERROR");
+        setLastError({
+          code: "unsupported",
+          message: "Voice assistant is unavailable in this browser. Use text commands or open the app in Chrome/Edge with microphone permission enabled.",
+          timestamp: Date.now(),
+        });
         return;
       }
 
@@ -666,7 +677,12 @@ export function useVoiceAssistantEngine({
         } catch {
           setMicPermission("denied");
           transitionTo("ERROR");
-          speak("Microphone access is blocked. Please allow microphone access in Chrome site settings.", { nextState: "ERROR" });
+          setLastError({
+            code: "not-allowed",
+            message: "Microphone access is blocked. Please allow microphone access in Chrome/Edge site settings or type a command instead.",
+            timestamp: Date.now(),
+          });
+          speak("Microphone access is blocked. Please allow microphone access in Chrome site settings or type a command instead.", { nextState: "ERROR" });
           return;
         }
       }
@@ -684,7 +700,7 @@ export function useVoiceAssistantEngine({
         startSttListening();
       }
     },
-    [isHttpIp, isMediaDevicesSupported, micPermission, resetInactivityTimer, speak, startSttListening, transitionTo]
+    [isHttpIp, isMediaDevicesSupported, isSpeechRecognitionSupported, micPermission, resetInactivityTimer, speak, startSttListening, transitionTo]
   );
 
   // ── Deactivate Assistant (Transition to AWAKENER / OFF) ─────────────────────

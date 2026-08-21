@@ -68,7 +68,9 @@ export class ConversationManager {
     let effectiveDomain: any = classification.domain;
     let effectiveIntent = classification.intent;
 
-    if (domain === "fashion" || activeState.occasion || (modifier.action !== "none" && modifier.action !== "reset_conversation")) {
+    if (domain === "gadgets" || domain === "general" || domain === "seller" || domain === "support") {
+      effectiveDomain = domain;
+    } else if (domain === "fashion" || activeState.occasion || (modifier.action !== "none" && modifier.action !== "reset_conversation")) {
       effectiveDomain = "fashion";
       if (modifier.action !== "none" && modifier.action !== "reset_conversation") {
         effectiveIntent = "outfit_recommendation";
@@ -104,11 +106,31 @@ export class ConversationManager {
       console.log(`[RUNTIME-TRACE] [ConversationManager] Invoking Enterprise Seller Workflow Orchestrator...`);
       const { getSellerWorkflowOrchestrator } = await import("../seller/seller-workflow-orchestrator.ts");
       const orchestrator = getSellerWorkflowOrchestrator();
+
+      // Retrieve recent conversation history for full context
+      let history: { role: string; content: string }[] = [];
+      try {
+        const { getDb } = await import("../../../api/queries/connection.js");
+        const { chatMessages } = await import("@db/schema");
+        const { eq, desc } = await import("@db/mysql");
+        const db = getDb();
+        const past = await db
+          .select({ role: chatMessages.role, content: chatMessages.content })
+          .from(chatMessages)
+          .where(eq(chatMessages.sessionId, sessionId))
+          .orderBy(desc(chatMessages.createdAt))
+          .limit(8);
+        history = past.reverse().map((m: any) => ({ role: m.role || "user", content: m.content || "" }));
+      } catch {
+        // history fetch is non-blocking
+      }
+
       const sellerResult = await orchestrator.processQuery({
         sessionId,
         message,
         context: req.context || {},
         intent: effectiveIntent,
+        history,
       });
 
       const msgId = await sessions.addMessage(sessionId, "assistant", sellerResult.renderedText, {
@@ -295,7 +317,9 @@ export class ConversationManager {
     let effectiveDomain: any = classification.domain;
     let effectiveIntent = classification.intent;
 
-    if (domain === "fashion" || activeState.occasion || (modifier.action !== "none" && modifier.action !== "reset_conversation")) {
+    if (domain === "gadgets" || domain === "general" || domain === "seller" || domain === "support") {
+      effectiveDomain = domain;
+    } else if (domain === "fashion" || activeState.occasion || (modifier.action !== "none" && modifier.action !== "reset_conversation")) {
       effectiveDomain = "fashion";
       if (modifier.action !== "none" && modifier.action !== "reset_conversation") {
         effectiveIntent = "outfit_recommendation";

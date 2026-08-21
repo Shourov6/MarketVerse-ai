@@ -41,6 +41,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
     location.pathname === "/admin" ||
     location.pathname.startsWith("/seller/") ||
     location.pathname.startsWith("/admin/");
+    
+  const isAuthRoute = location.pathname === "/login" || location.pathname === "/signup";
 
   const { data: cartData } = trpc.cart.get.useQuery(undefined, {
     enabled: isAuthenticated,
@@ -138,7 +140,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     { label: "Categories", path: "/categories" },
     { label: "Products", path: "/products" },
     { label: "Sellers", path: "/sellers" },
-    { label: "AI Fashion Stylist", path: "/fashion-stylist" },
+    { label: "Clevora AI", path: "/fashion-stylist" },
   ];
 
   const isActive = (path: string) => {
@@ -156,18 +158,21 @@ export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className={isDashboardRoute ? "h-screen flex flex-col overflow-hidden" : "min-h-screen flex flex-col"}>
       {/* Top Announcement Bar */}
-      <div className="bg-[#5438DC] text-white text-center text-xs py-2.5 px-4 font-medium tracking-wide">
-        <span>
-          Free shipping on orders over BDT 5,000 | AI-Powered Recommendations | Voice Navigation Available
-        </span>
-      </div>
+      {!isAuthRoute && (
+        <div className="bg-[#5438DC] text-white text-center text-xs py-2.5 px-4 font-medium tracking-wide">
+          <span>
+            Free shipping on orders over BDT 5,000 | AI-Powered Recommendations | Voice Navigation Available
+          </span>
+        </div>
+      )}
 
       {/* Header */}
-      <header
-        className={`sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur border-b border-slate-100 dark:border-slate-800 transition-all ${
-          scrolled ? "shadow-md" : ""
-        }`}
-      >
+      {!isAuthRoute && (
+        <header
+          className={`sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur border-b border-slate-100 dark:border-slate-800 transition-all ${
+            scrolled ? "shadow-md" : ""
+          }`}
+        >
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -432,145 +437,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
           </div>
         </div>
 
-        {/* Floating Search Modal Overlay */}
-        {searchOpen && (
-          <div
-            className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-md flex items-start justify-center pt-16 sm:pt-24 px-4 animate-in fade-in duration-200"
-            onClick={() => setSearchOpen(false)}
-          >
-            <div
-              ref={searchModalRef}
-              className="relative w-full max-w-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Floating Top Search Bar */}
-              <form onSubmit={handleSearch} className="p-4 sm:p-5 flex items-center gap-3 border-b border-slate-100 dark:border-slate-800">
-                <Search className="h-5 w-5 text-slate-400 shrink-0" />
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search products, brands, categories..."
-                  className="flex-1 bg-transparent text-slate-900 dark:text-white placeholder:text-slate-400 text-base sm:text-lg font-medium focus:outline-none"
-                  aria-label="Search products"
-                  autoFocus
-                />
-                {searchQuery && (
-                  <button
-                    type="button"
-                    onClick={() => setSearchQuery("")}
-                    className="p-1 rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-white"
-                  >
-                    <X className="h-4 w-4" />
-                  </button>
-                )}
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer"
-                >
-                  Search
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setSearchOpen(false)}
-                  className="p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
-                >
-                  <X className="h-5 w-5" />
-                </button>
-              </form>
-
-              {/* Live Search Results / Quick Category Chips */}
-              <div className="p-4 max-h-[60vh] overflow-y-auto space-y-4 custom-scrollbar">
-                {searchQuery.trim() ? (
-                  <div>
-                    <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 px-1">
-                      <span>Matching Products</span>
-                      <span>{searchResultData?.items?.length || 0} found</span>
-                    </div>
-
-                    {isSearchLoading ? (
-                      <div className="py-8 text-center text-slate-400 flex items-center justify-center gap-2 text-xs">
-                        <Loader2 className="h-4 w-4 animate-spin text-indigo-600" />
-                        <span>Searching MarketVerse...</span>
-                      </div>
-                    ) : searchResultData?.items && searchResultData.items.length > 0 ? (
-                      <div className="space-y-2">
-                        {searchResultData.items.map((prod: any) => (
-                          <div
-                            key={prod.id}
-                            onClick={() => {
-                              setSearchOpen(false);
-                              setSearchQuery("");
-                              navigate(`/product/${prod.slug}`);
-                            }}
-                            className="flex items-center justify-between p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 border border-slate-100 dark:border-slate-800 hover:border-indigo-200 dark:hover:border-indigo-800 transition-all cursor-pointer group"
-                          >
-                            <div className="flex items-center gap-3.5 min-w-0">
-                              <img
-                                src={prod.imageUrl || "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200"}
-                                alt={prod.name}
-                                className="h-12 w-12 rounded-xl object-cover shrink-0 border border-slate-200 dark:border-slate-700"
-                              />
-                              <div className="min-w-0">
-                                <p className="font-bold text-sm text-slate-900 dark:text-white truncate group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                                  {prod.name}
-                                </p>
-                                <p className="text-xs text-slate-500 truncate">
-                                  {prod.categoryName || "Marketplace Item"}
-                                </p>
-                              </div>
-                            </div>
-                            <span className="font-mono font-bold text-sm text-indigo-600 dark:text-indigo-400 shrink-0 ml-3">
-                              {formatCurrency(prod.price)}
-                            </span>
-                          </div>
-                        ))}
-                        <button
-                          onClick={handleSearch}
-                          className="w-full py-2.5 mt-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-xl text-xs font-bold transition-all text-center cursor-pointer"
-                        >
-                          View All Results for "{searchQuery}" ➔
-                        </button>
-                      </div>
-                    ) : (
-                      <div className="py-8 text-center text-slate-400 text-xs">
-                        No products matched "{searchQuery}"
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <div className="space-y-4">
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2 px-1">Popular Searches</p>
-                      <div className="flex flex-wrap gap-2">
-                        {[
-                          "Headphones",
-                          "Smartwatch",
-                          "Running Shoes",
-                          "Automotive",
-                          "Panjabi",
-                          "Sunglasses",
-                          "Keyboard",
-                          "Yoga Mat",
-                        ].map((tag) => (
-                          <button
-                            key={tag}
-                            onClick={() => {
-                              setSearchQuery(tag);
-                            }}
-                            className="px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-900/50 text-slate-700 dark:text-slate-300 hover:text-indigo-600 text-xs font-semibold border border-slate-200/60 dark:border-slate-700 transition-all cursor-pointer"
-                          >
-                            🔍 {tag}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
@@ -597,6 +463,147 @@ export function Layout({ children }: { children: React.ReactNode }) {
           </div>
         )}
       </header>
+      )}
+
+      {/* Floating Search Modal Overlay */}
+      {searchOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-slate-950/70 backdrop-blur-md flex items-start justify-center pt-[120px] sm:pt-[140px] px-4 animate-in fade-in duration-200"
+          onClick={() => setSearchOpen(false)}
+        >
+          <div
+            ref={searchModalRef}
+            className="relative w-full max-w-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Floating Top Search Bar */}
+            <form onSubmit={handleSearch} className="p-4 sm:p-5 flex items-center gap-3 border-b border-slate-100 dark:border-slate-800">
+              <Search className="h-5 w-5 text-slate-400 shrink-0" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search products, brands, categories..."
+                className="flex-1 bg-transparent text-slate-900 dark:text-white placeholder:text-slate-400 text-base sm:text-lg font-medium focus:outline-none"
+                aria-label="Search products"
+                autoFocus
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery("")}
+                  className="p-1 rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-white"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              )}
+              <button
+                type="submit"
+                className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer"
+              >
+                Search
+              </button>
+              <button
+                type="button"
+                onClick={() => setSearchOpen(false)}
+                className="p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </form>
+
+            {/* Live Search Results / Quick Category Chips */}
+            <div className="p-4 max-h-[60vh] overflow-y-auto space-y-4 custom-scrollbar">
+              {searchQuery.trim() ? (
+                <div>
+                  <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 px-1">
+                    <span>Matching Products</span>
+                    <span>{searchResultData?.items?.length || 0} found</span>
+                  </div>
+
+                  {isSearchLoading ? (
+                    <div className="py-8 text-center text-slate-400 flex items-center justify-center gap-2 text-xs">
+                      <Loader2 className="h-4 w-4 animate-spin text-indigo-600" />
+                      <span>Searching MarketVerse...</span>
+                    </div>
+                  ) : searchResultData?.items && searchResultData.items.length > 0 ? (
+                    <div className="space-y-2">
+                      {searchResultData.items.map((prod: any) => (
+                        <div
+                          key={prod.id}
+                          onClick={() => {
+                            setSearchOpen(false);
+                            setSearchQuery("");
+                            navigate(`/product/${prod.slug}`);
+                          }}
+                          className="flex items-center justify-between p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 border border-slate-100 dark:border-slate-800 hover:border-indigo-200 dark:hover:border-indigo-800 transition-all cursor-pointer group"
+                        >
+                          <div className="flex items-center gap-3.5 min-w-0">
+                            <img
+                              src={prod.imageUrl || "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200"}
+                              alt={prod.name}
+                              className="h-12 w-12 rounded-xl object-cover shrink-0 border border-slate-200 dark:border-slate-700"
+                            />
+                            <div className="min-w-0">
+                              <p className="font-bold text-sm text-slate-900 dark:text-white truncate group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                                {prod.name}
+                              </p>
+                              <p className="text-xs text-slate-500 truncate">
+                                {prod.categoryName || "Marketplace Item"}
+                              </p>
+                            </div>
+                          </div>
+                          <span className="font-mono font-bold text-sm text-indigo-600 dark:text-indigo-400 shrink-0 ml-3">
+                            {formatCurrency(prod.price)}
+                          </span>
+                        </div>
+                      ))}
+                      <button
+                        onClick={handleSearch}
+                        className="w-full py-2.5 mt-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-xl text-xs font-bold transition-all text-center cursor-pointer"
+                      >
+                        View All Results for "{searchQuery}" ➔
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="py-8 text-center text-slate-400 text-xs">
+                      No products matched "{searchQuery}"
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2 px-1">Popular Searches</p>
+                    <div className="flex flex-wrap gap-2">
+                      {[
+                        "Headphones",
+                        "Smartwatch",
+                        "Running Shoes",
+                        "Automotive",
+                        "Panjabi",
+                        "Sunglasses",
+                        "Keyboard",
+                        "Yoga Mat",
+                      ].map((tag) => (
+                        <button
+                          key={tag}
+                          onClick={() => {
+                            setSearchQuery(tag);
+                          }}
+                          className="px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-900/50 text-slate-700 dark:text-slate-300 hover:text-indigo-600 text-xs font-semibold border border-slate-200/60 dark:border-slate-700 transition-all cursor-pointer"
+                        >
+                          🔍 {tag}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Main Content */}
       {isDashboardRoute ? (
@@ -609,8 +616,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
         </main>
       )}
 
-      {/* Footer — hidden on dashboard routes and support */}
-      {!isDashboardRoute && location.pathname !== '/support' && (
+      {/* Footer — hidden on dashboard routes, auth routes, and support */}
+      {!isDashboardRoute && !isAuthRoute && location.pathname !== '/support' && (
       <footer className="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">

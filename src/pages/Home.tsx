@@ -146,7 +146,7 @@ export default function Home() {
     }))
     .sort((a: any, b: any) => (b.mlScore || 0) - (a.mlScore || 0))
     .slice(0, 6);
-
+  const { data: recentReviews = [] } = trpc.review.listRecent.useQuery({ limit: 6 });
   const utils = trpc.useUtils();
   const addToCart = trpc.cart.add.useMutation({
     onSuccess: () => utils.cart.get.invalidate(),
@@ -174,7 +174,7 @@ export default function Home() {
 
             {/* Left Column: 50% width */}
             <div className="w-full lg:w-[48%] flex flex-col justify-center space-y-6 z-10">
-              
+
               {/* AI Powered Badge */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-indigo-50/90 dark:bg-indigo-900/40 border border-indigo-200/80 dark:border-indigo-800 rounded-full text-indigo-700 dark:text-indigo-300 text-xs font-bold tracking-wide w-fit shadow-2xs">
                 <Zap className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400" />
@@ -246,7 +246,7 @@ export default function Home() {
                 {/* Suggestive Search Popup Dropdown Modal */}
                 {isSearchFocused && (
                   <div className="absolute top-full left-0 right-0 mt-2 z-40 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/90 dark:border-slate-800 shadow-2xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
-                    
+
                     {/* State 1: When user typing keyword */}
                     {searchQuery.trim().length > 0 ? (
                       <div className="p-4 space-y-4 max-h-[420px] overflow-y-auto custom-scrollbar">
@@ -444,7 +444,7 @@ export default function Home() {
 
             {/* Right Column: 52% width with Large 3D Image & Overlaid Floating Cards */}
             <div className="w-full lg:w-[52%] relative flex items-center justify-center min-h-[480px] lg:min-h-[580px]">
-              
+
               {/* Background Ambient Glows */}
               <div className="absolute w-[500px] h-[500px] bg-purple-400/25 rounded-full blur-[130px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none -z-10" />
               <div className="absolute w-[500px] h-[500px] bg-blue-400/20 rounded-full blur-[130px] top-1/3 left-1/3 -translate-x-1/2 -translate-y-1/2 pointer-events-none -z-10" />
@@ -459,7 +459,7 @@ export default function Home() {
 
                 {/* 5 Feature Cards Floating Directly Over Right Side of Image */}
                 <div className="absolute -right-2 lg:-right-4 top-1/2 -translate-y-1/2 z-20 hidden sm:flex flex-col gap-3.5">
-                  
+
                   {/* 1. Voice Search */}
                   <div className="glass-feature-card p-3.5 flex items-center gap-3">
                     <div className="p-2 rounded-xl bg-purple-100/90 dark:bg-purple-900/60 text-purple-600 dark:text-purple-300 shrink-0 shadow-2xs">
@@ -595,28 +595,32 @@ export default function Home() {
       {/* ML Recommendations */}
       <section className="py-14 sm:py-20 bg-gradient-to-br from-[#F5F0FF] via-[#FAF5FF] to-[#EEF2FF] dark:from-slate-950 dark:via-purple-950/30 dark:to-indigo-950/40 relative overflow-hidden" aria-label="ML recommendations">
         <div className="absolute top-0 right-0 w-96 h-96 bg-purple-300/20 dark:bg-purple-900/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10">
             <div className="flex items-center gap-3.5">
               <div className="p-3 bg-gradient-to-tr from-purple-600 to-indigo-600 text-white rounded-2xl shadow-lg shadow-purple-500/25 shrink-0">
                 <Sparkles className="h-6 w-6 animate-pulse" />
               </div>
               <div>
-                <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 text-[11px] font-extrabold uppercase tracking-wider mb-1">
+                <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 text-[10px] font-bold uppercase tracking-wider mb-1">
                   <Zap className="h-3 w-3 text-purple-600 dark:text-purple-400" />
                   AI Engine Powered
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
                   ML Curated Picks
                 </h2>
-                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium">
+                <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                   Personalized algorithms ranking products by intent, popularity, and individual style fit.
                 </p>
               </div>
             </div>
           </div>
 
-          {!featuredLoading && mlRecommendations.length > 0 ? (
+          {featuredLoading ? (
+            <div className="flex justify-center py-12">
+              <Loader2 className="h-8 w-8 animate-spin text-purple-600" />
+            </div>
+          ) : mlRecommendations.length > 0 ? (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3.5 sm:gap-4 lg:gap-5">
               {mlRecommendations.map((product: any) => (
                 <ProductCard
@@ -630,7 +634,7 @@ export default function Home() {
             </div>
           ) : (
             <div className="flex justify-center py-12">
-              <Loader2 className="h-8 w-8 animate-spin text-purple-600" />
+              <p className="text-sm font-medium text-slate-500">More curated picks coming soon!</p>
             </div>
           )}
         </div>
@@ -638,14 +642,14 @@ export default function Home() {
 
       {/* Featured Products */}
       <section className="py-14 sm:py-20 bg-white dark:bg-slate-900 border-t border-b border-slate-100 dark:border-slate-800/80" aria-label="Featured products">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-end justify-between mb-10">
             <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 text-[11px] font-bold uppercase tracking-wider mb-1">
+              <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 text-[10px] font-bold uppercase tracking-wider mb-1">
                 <Star className="h-3 w-3 text-amber-500 fill-amber-500" />
                 Handpicked Quality
               </div>
-              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
                 Featured Products
               </h2>
             </div>
@@ -679,14 +683,14 @@ export default function Home() {
 
       {/* Trending Products */}
       <section className="py-14 sm:py-20 bg-gradient-to-b from-[#FFFDF8] via-[#FFF8F0] to-[#F8F6FF] dark:from-slate-950 dark:via-slate-900/90 dark:to-slate-950" aria-label="Trending products">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-end justify-between mb-10">
             <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-orange-100 dark:bg-orange-950/60 text-orange-700 dark:text-orange-300 text-[11px] font-bold uppercase tracking-wider mb-1">
-                <Flame className="h-3.5 w-3.5 text-orange-600 dark:text-orange-400" />
+              <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-orange-100 dark:bg-orange-950/60 text-orange-700 dark:text-orange-300 text-[10px] font-bold uppercase tracking-wider mb-1">
+                <Flame className="h-3 w-3 text-orange-600 dark:text-orange-400" />
                 Hot Demand
               </div>
-              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
                 Trending Now
               </h2>
             </div>
@@ -718,12 +722,91 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Premium Customer Reviews Section */}
+      <section className="py-20 sm:py-32 bg-slate-50 dark:bg-slate-900 relative overflow-hidden" aria-label="Customer reviews">
+        {/* Decorative background elements */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-px bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent" />
+        <div className="absolute -top-48 -right-48 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-48 -left-48 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="inline-block py-1 px-3 rounded-full bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 text-xs font-bold tracking-wider uppercase mb-4 border border-indigo-100 dark:border-indigo-800">
+              Wall of Love
+            </span>
+            <h2 className="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-6">
+              Loved by <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Thousands</span>
+            </h2>
+            <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg">
+              Join our growing community of smart shoppers who have revolutionized their shopping experience with Clevora AI.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {recentReviews.length > 0 ? (
+              recentReviews.map((review: any, index: number) => {
+                const colorSchemes = [
+                  "from-indigo-500 to-purple-500",
+                  "from-emerald-500 to-teal-500",
+                  "from-rose-500 to-orange-500",
+                  "from-blue-500 to-cyan-500",
+                  "from-fuchsia-500 to-pink-500",
+                  "from-amber-500 to-orange-500"
+                ];
+                const textColors = [
+                  "text-indigo-600 dark:text-indigo-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-400",
+                  "text-emerald-600 dark:text-emerald-400 group-hover:text-emerald-600 dark:group-hover:text-emerald-400",
+                  "text-rose-600 dark:text-rose-400 group-hover:text-rose-600 dark:group-hover:text-rose-400",
+                  "text-blue-600 dark:text-blue-400 group-hover:text-blue-600 dark:group-hover:text-blue-400",
+                  "text-fuchsia-600 dark:text-fuchsia-400 group-hover:text-fuchsia-600 dark:group-hover:text-fuchsia-400",
+                  "text-amber-600 dark:text-amber-400 group-hover:text-amber-600 dark:group-hover:text-amber-400"
+                ];
+                const bgColors = colorSchemes[index % colorSchemes.length];
+                const txColor = textColors[index % textColors.length];
+
+                return (
+                  <div key={review.id} className="group relative bg-white dark:bg-slate-800/80 p-8 rounded-3xl shadow-lg shadow-slate-200/50 dark:shadow-none border border-slate-200/80 dark:border-slate-700/80 hover:border-indigo-400 dark:hover:border-indigo-500/50 transition-all duration-300 hover:-translate-y-2 backdrop-blur-xl">
+                    <div className={`absolute -top-4 -right-4 h-24 w-24 bg-gradient-to-br ${bgColors} rounded-full opacity-0 group-hover:opacity-10 transition-opacity duration-500 blur-2xl`} />
+                    <div className="flex items-center gap-1.5 mb-6">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className={`h-5 w-5 ${i < review.rating ? "text-amber-500 fill-amber-500" : "text-slate-300"} group-hover:scale-110 transition-transform duration-300 delay-[${i * 50}ms]`} style={{ transitionDelay: `${i * 50}ms` }} />
+                      ))}
+                    </div>
+                    <p className="text-slate-700 dark:text-slate-300 mb-8 text-lg leading-relaxed italic font-medium relative z-10">
+                      "{review.comment}"
+                    </p>
+                    <div className="flex items-center gap-4">
+                      <div className={`relative h-12 w-12 rounded-full bg-gradient-to-tr ${bgColors} p-0.5 shadow-md`}>
+                        <div className={`h-full w-full rounded-full bg-white dark:bg-slate-800 flex items-center justify-center ${txColor} font-bold text-lg`}>
+                          {review.userName ? review.userName.substring(0, 2).toUpperCase() : "U"}
+                        </div>
+                      </div>
+                      <div>
+                        <div className={`text-base font-bold text-slate-900 dark:text-white transition-colors`}>{review.userName || "Anonymous User"}</div>
+                        <div className="text-sm text-slate-500 flex items-center gap-1">
+                          <Shield className="h-3.5 w-3.5 text-emerald-500" />
+                          {review.isVerified ? "Verified Buyer" : "Customer"}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })
+            ) : (
+              <div className="col-span-full py-12 text-center text-slate-500 dark:text-slate-400 italic">
+                Be the first to leave a review! Your experience will be featured here.
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
       {/* Features Section */}
       <section className="py-16 sm:py-24 bg-gradient-to-br from-slate-900 via-indigo-950 to-purple-950 text-white relative overflow-hidden" aria-label="Platform features">
         <div className="absolute -top-24 -left-24 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl pointer-events-none" />
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="px-3.5 py-1 rounded-full bg-white/10 text-indigo-200 text-xs font-extrabold uppercase tracking-wider border border-white/15">
               Next-Gen E-Commerce

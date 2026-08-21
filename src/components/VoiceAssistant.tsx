@@ -6,6 +6,7 @@ import {
   extractPhoneFromSpeech,
   resolveVoiceProductSelection,
   type VoiceProductItem,
+  normalizeVoiceActionDecision,
 } from "./voiceAssistantHelpers";
 import { deriveLocalAction } from "../lib/localNlp";
 import { useVoiceAssistantEngine } from "../hooks/useVoiceAssistantEngine";
@@ -31,7 +32,7 @@ function getPageDescription(pathname: string): string {
     case "/support":
       return "You are on the Customer Support page. You can ask for help with orders, shipping, or returns.";
     case "/fashion-stylist":
-      return "You are on the AI Fashion Stylist page. You can ask for outfit recommendations and style advice.";
+      return "You are on the Clevora AI page. You can ask for outfit recommendations, tech advice, and general shopping help.";
     case "/ai-assistant":
       return "You are on the AI Assistant page. You can chat with the assistant for personalized shopping help.";
     default:
@@ -57,7 +58,7 @@ function getPageGreeting(pathname: string): string {
     case "/support":
       return "Hello! I'm Dev. How can I help you with your order, delivery, or returns today?";
     case "/fashion-stylist":
-      return "Hello! Welcome to the AI Fashion Stylist. Tell me what outfit or occasion you want advice on.";
+      return "Hello! Welcome to Clevora AI. Tell me what product or occasion you want advice on.";
     case "/profile":
       return "Hello! You are on your profile. Say 'see my orders' or 'open cart' to navigate.";
     default:
@@ -92,7 +93,7 @@ function resolveTargetPage(text: string): { path: string; name: string } | null 
     return { path: "/support", name: "Customer Support" };
   }
   if (/\b(fashion stylist|ai stylist|stylist|fashion advice|dress advice)\b/i.test(lower)) {
-    return { path: "/fashion-stylist", name: "AI Fashion Stylist" };
+    return { path: "/fashion-stylist", name: "Clevora AI" };
   }
   if (/\b(ai assistant|assistant|seller ai|chat assistant)\b/i.test(lower)) {
     return { path: "/ai-assistant", name: "AI Assistant" };
@@ -142,6 +143,7 @@ export function VoiceAssistant() {
 
   const processVoiceCommandRef = useRef<(text: string) => void>(() => {});
   const lastSpokenResponseRef = useRef("");
+  const aiCommandRequestRef = useRef<AbortController | null>(null);
 
   // ── Master Engine Hook ────────────────────────────────────────────────────
   const {
@@ -189,11 +191,135 @@ export function VoiceAssistant() {
 
   // ── Core NLP Command Processor ───────────────────────────────────────────
   const processVoiceCommand = useCallback(
-    (rawTranscriptText: string) => {
+    async (rawTranscriptText: string) => {
       const cleaned = cleanTranscript(rawTranscriptText);
       if (!cleaned) return;
 
       console.log("[VoiceAssistant] Processing command:", cleaned);
+
+      const runAiIntentRouting = async () => {
+        if (aiCommandRequestRef.current) aiCommandRequestRef.current.abort();
+        const controller = new AbortController();
+        aiCommandRequestRef.current = controller;
+
+        try {
+          const response = await fetch("/api/ai/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            signal: controller.signal,
+            body: JSON.stringify({
+              message: cleaned,
+              sessionId: `voice-${Date.now()}`,
+              domain: "support",
+              context: {
+                page: location.pathname,
+                pageDescription: getPageDescription(location.pathname),
+                productList: productItems.slice(0, 8),
+                routeHints: {
+                  productPath: "/products",
+                  cartPath: "/cart",
+                  ordersPath: "/orders",
+                  supportPath: "/support",
+                  stylistPath: "/fashion-stylist",
+                },
+                userIntent: "voice-assistant-command",
+                currentTranscript: cleaned,
+              },
+            }),
+          });
+
+          if (!response.ok) {
+            throw new Error(`AI voice routing failed (${response.status})`);
+          }
+
+          const data = await response.json();
+          const decision = normalizeVoiceActionDecision(data?.data?.structuredResponse || data?.structuredResponse || data?.data?.action || data?.action || null);
+
+          if (decision.intent && decision.intent !== "help") {
+            const normalized = decision.intent.toLowerCase();
+            const effectiveQuery = decision.searchQuery || cleaned.replace(/^(search for|search|find|look for|khujo|dekhao)\s*/i, "").trim();
+
+            if (normalized === "navigate" && decision.targetPage) {
+              const target = decision.targetPage.startsWith("/") ? decision.targetPage : `/${decision.targetPage.replace(/^\//, "")}`;
+              playAudioCue("SUCCESS");
+              speak(decision.responseText || `Opening ${decision.targetPage}.`, {
+                onEnd: () => navigate(target),
+              });
+              return true;
+            }
+
+            if (normalized === "search") {
+              const query = decision.searchQuery || effectiveQuery;
+              if (query) {
+                playAudioCue("SUCCESS");
+                speak(decision.responseText || `Searching for ${query}.`, {
+                  onEnd: () => navigate(`/products?search=${encodeURIComponent(query)}`),
+                });
+                return true;
+              }
+            }
+
+            if (normalized === "select_option" && decision.selectedProduct) {
+              sessionStorage.setItem("voice_checkout_product", JSON.stringify(decision.selectedProduct));
+              localStorage.setItem("voice_checkout_product", JSON.stringify(decision.selectedProduct));
+              playAudioCue("SUCCESS");
+              speak(decision.responseText || `Selected ${decision.selectedProduct.name}. Opening Voice Checkout.`, {
+                onEnd: () => navigate("/voice-checkout"),
+              });
+              return true;
+            }
+
+            if (normalized === "checkout") {
+              playAudioCue("SUCCESS");
+              speak(decision.responseText || "Opening Voice Checkout.", {
+                onEnd: () => navigate("/voice-checkout"),
+              });
+              return true;
+            }
+
+            if (normalized === "read_products") {
+              if (productItems.length === 0) {
+                speak(decision.responseText || "No products found on this page. Say 'search' followed by a product name to find items.", {
+                  nextState: "LISTENING",
+                });
+              } else {
+                const nextIdx = (lastReadProductIndex + 1) % productItems.length;
+                const item = productItems[nextIdx];
+                setLastReadProductIndex(nextIdx);
+                speak(decision.responseText || `Option ${nextIdx + 1}: ${item.name} for ${item.price} Taka. Say 'select ${nextIdx + 1}' to buy, or 'next' to hear the next item.`, {
+                  nextState: "LISTENING",
+                });
+              }
+              return true;
+            }
+
+            if (normalized === "conversational" || normalized === "greeting" || normalized === "capabilities" || normalized === "shopping_advice") {
+              speak(decision.responseText || `I heard: "${cleaned}". I can help you shop, search products, and navigate MarketVerse.`, {
+                nextState: "LISTENING",
+              });
+              return true;
+            }
+          }
+
+          throw new Error("No supported AI action decision returned");
+        } catch (error) {
+          if ((error as Error)?.name === "AbortError") return;
+          console.warn("[VoiceAssistant] AI routing fallback triggered:", error);
+          return false;
+        }
+      };
+
+      const aiHandled = await runAiIntentRouting();
+      if (aiHandled) return;
+
+      // Keep the local fallback as a safety net if AI does not return a recognized action.
+      const localAction = deriveLocalAction(cleaned, "voice");
+      if (localAction.intent === "unknown" && !/\b(search|open|cart|order|help|products|home|checkout|stop|repeat|page|select)\b/i.test(cleaned)) {
+        speak(`I heard: "${cleaned}". You can say 'search shoes', 'open cart', 'see my orders', or 'help' for options.`, {
+          nextState: "LISTENING",
+        });
+        return;
+      }
 
       // Handle active confirmations (Yes / No)
       if (pendingConfirmation) {
@@ -238,9 +364,7 @@ export function VoiceAssistant() {
       }
 
       // Action routing via Local NLP
-      const action = deriveLocalAction(cleaned, "voice");
-
-      switch (action.intent) {
+      switch (localAction.intent) {
         case "stop":
           playAudioCue("CHIME");
           deactivateAssistant("Dev paused.");
@@ -308,7 +432,7 @@ export function VoiceAssistant() {
         }
 
         case "search": {
-          const query = action.searchQuery || cleaned.replace(/^(search for|search|find|look for|khujo)\s*/i, "").trim();
+          const query = localAction.searchQuery || cleaned.replace(/^(search for|search|find|look for|khujo)\s*/i, "").trim();
           if (query) {
             playAudioCue("SUCCESS");
             speak(`Searching for ${query}.`, {
@@ -433,9 +557,22 @@ export function VoiceAssistant() {
   const handleToggleAssistant = () => {
     if (isActive) {
       deactivateAssistant("Dev paused.");
-    } else {
-      activateAssistant(getPageGreeting(location.pathname));
+      return;
     }
+
+    if (!diagnostics.speechRecognitionSupported || diagnostics.micPermission === "denied" || diagnostics.micPermission === "unsupported" || diagnostics.isSecureContext === false) {
+      const fallbackCommand = window.prompt(
+        "Voice assistant is unavailable in this browser or microphone access is blocked. Type a command instead, for example: 'search shoes' or 'open cart'.",
+        "search shoes"
+      );
+
+      if (fallbackCommand && fallbackCommand.trim()) {
+        processVoiceCommand(fallbackCommand.trim());
+      }
+      return;
+    }
+
+    activateAssistant(getPageGreeting(location.pathname));
   };
 
   const isSupportPage = location.pathname === "/support";

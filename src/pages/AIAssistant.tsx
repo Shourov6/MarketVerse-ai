@@ -41,12 +41,7 @@ interface ChatMessage {
   structuredResponse?: any;
 }
 
-const SAMPLE_PRESETS = [
-  { name: "Wireless Earbuds Pro", category: "electronics", price: 3500, stock: 3 },
-  { name: "Linen Summer Blazer", category: "fashion", price: 6500, stock: 12 },
-  { name: "Organic Green Tea Blend", category: "food", price: 850, stock: 2 },
-  { name: "Smart Fitness Watch", category: "electronics", price: 4200, stock: 0 },
-];
+
 
 const ENGINE_ACTIONS = [
   { icon: FileText, label: "Generate Description", prompt: "Write a product description", color: "indigo" },
@@ -186,13 +181,7 @@ export default function AIAssistant() {
     toast.success("Conversation history cleared.");
   };
 
-  const handleSelectPreset = (preset: typeof SAMPLE_PRESETS[0]) => {
-    setProductName(preset.name);
-    setCategory(preset.category);
-    setPrice(preset.price);
-    setStock(preset.stock);
-    toast.success(`Context updated to "${preset.name}"`);
-  };
+
 
   const handleSelectRealProduct = (product: any) => {
     if (!product) return;
@@ -234,12 +223,15 @@ export default function AIAssistant() {
   const sellerProducts = (dashboardData as any)?.products || [];
 
   return (
-    <div className="h-full w-full min-h-0 overflow-hidden flex bg-white dark:bg-[#0F0F1A]">
+    <div className="h-full w-full min-h-0 overflow-hidden flex bg-slate-50 dark:bg-slate-950 relative">
+      {/* Background Glows */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-indigo-500/10 dark:bg-indigo-500/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 dark:bg-purple-500/15 rounded-full blur-3xl pointer-events-none" />
 
       {/* ── Left Sidebar ── */}
-      <aside className="w-80 flex-shrink-0 border-r border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-[#13131F] flex flex-col min-h-0 overflow-hidden">
+      <aside className="w-80 flex-shrink-0 border-r border-slate-200/60 dark:border-slate-800/60 bg-white/60 dark:bg-slate-900/40 backdrop-blur-xl flex flex-col min-h-0 overflow-hidden z-10 relative">
         {/* Top Branding */}
-        <div className="p-5 border-b border-slate-200 dark:border-white/5">
+        <div className="p-5 border-b border-slate-200/60 dark:border-slate-800/60">
           <Link to="/seller" className="flex items-center gap-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-sm mb-4 group">
             <ArrowLeft className="h-4 w-4 group-hover:-translate-x-0.5 transition-transform" />
             Back to Seller Hub
@@ -259,7 +251,7 @@ export default function AIAssistant() {
         </div>
 
         {/* Product Context Panel */}
-        <div className="p-4 border-b border-slate-200 dark:border-white/5">
+        <div className="p-4 border-b border-slate-200/60 dark:border-slate-800/60 bg-white/40 dark:bg-slate-800/20">
           <div className="flex items-center justify-between mb-3">
             <h3 className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
               <Package className="h-3.5 w-3.5 text-indigo-500" />
@@ -280,7 +272,7 @@ export default function AIAssistant() {
                     const found = sellerProducts.find((p: any) => p.id === Number(e.target.value));
                     if (found) handleSelectRealProduct(found);
                   }}
-                  className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-white/10 bg-white dark:bg-white/5 text-slate-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all cursor-pointer"
+                  className="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700/50 bg-white/80 dark:bg-slate-800/50 text-slate-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all cursor-pointer backdrop-blur-sm"
                 >
                   <option value="">-- Choose Store Item --</option>
                   {sellerProducts.map((p: any) => (
@@ -300,7 +292,7 @@ export default function AIAssistant() {
                 value={productName}
                 onChange={(e) => setProductName(e.target.value)}
                 placeholder="e.g., Wireless Headphones"
-                className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-white/8 bg-white dark:bg-white/5 text-slate-900 dark:text-white text-sm placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all"
+                className="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700/50 bg-white/80 dark:bg-slate-800/50 text-slate-900 dark:text-white text-sm placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all backdrop-blur-sm"
               />
             </div>
 
@@ -311,7 +303,7 @@ export default function AIAssistant() {
                 <select
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                  className="w-full px-2.5 py-2 rounded-lg border border-slate-200 dark:border-white/8 bg-white dark:bg-white/5 text-slate-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all"
+                  className="w-full px-2.5 py-2 rounded-xl border border-slate-200 dark:border-slate-700/50 bg-white/80 dark:bg-slate-800/50 text-slate-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all backdrop-blur-sm"
                 >
                   <option value="electronics">Electronics</option>
                   <option value="fashion">Fashion</option>
@@ -331,27 +323,12 @@ export default function AIAssistant() {
                   type="number"
                   value={price}
                   onChange={(e) => setPrice(Number(e.target.value))}
-                  className="w-full px-2.5 py-2 rounded-lg border border-slate-200 dark:border-white/8 bg-white dark:bg-white/5 text-slate-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all"
+                  className="w-full px-2.5 py-2 rounded-xl border border-slate-200 dark:border-slate-700/50 bg-white/80 dark:bg-slate-800/50 text-slate-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all backdrop-blur-sm"
                 />
               </div>
             </div>
 
-            {/* Quick Demo Preset Chips */}
-            <div>
-              <label className="block text-[11px] text-slate-400 dark:text-slate-500 mb-1.5">Quick Demo Presets</label>
-              <div className="flex flex-wrap gap-1">
-                {SAMPLE_PRESETS.map((preset) => (
-                  <button
-                    key={preset.name}
-                    onClick={() => handleSelectPreset(preset)}
-                    className="px-2 py-1 text-[11px] font-medium bg-white dark:bg-white/5 hover:bg-indigo-50 dark:hover:bg-white/10 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/8 rounded-md transition-all truncate max-w-[120px]"
-                    title={preset.name}
-                  >
-                    {preset.name}
-                  </button>
-                ))}
-              </div>
-            </div>
+
           </div>
         </div>
 
@@ -368,7 +345,7 @@ export default function AIAssistant() {
                 <button
                   key={action.label}
                   onClick={() => handleSend(action.prompt)}
-                  className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 text-left transition-all group border border-transparent hover:border-slate-200 dark:hover:border-white/5"
+                  className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-white/80 dark:hover:bg-slate-800/60 hover:shadow-sm text-left transition-all group border border-transparent hover:border-slate-200/60 dark:hover:border-slate-700/50"
                 >
                   <div className="w-7 h-7 rounded-lg bg-indigo-50 dark:bg-indigo-900/40 flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition-all flex-shrink-0">
                     <Icon className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400 group-hover:text-white transition-colors" />
@@ -406,10 +383,10 @@ export default function AIAssistant() {
       </aside>
 
       {/* ── Main Chat Area ── */}
-      <div className="flex-1 min-h-0 flex flex-col overflow-hidden bg-white dark:bg-[#0F0F1A]">
+      <div className="flex-1 min-h-0 flex flex-col overflow-hidden bg-transparent relative z-10">
 
         {/* Chat Topbar */}
-        <div className="px-6 py-4 border-b border-slate-200 dark:border-white/5 bg-slate-50/80 dark:bg-[#13131F]/50 backdrop-blur flex items-center justify-between flex-shrink-0">
+        <div className="px-6 py-4 border-b border-slate-200/60 dark:border-slate-800/60 bg-white/70 dark:bg-slate-900/60 backdrop-blur-xl flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center shadow-md">
               <MessageSquare className="h-4 w-4 text-white" />
@@ -479,8 +456,8 @@ export default function AIAssistant() {
                 {/* Bubble Content */}
                 <div className={`rounded-2xl px-5 py-4 transition-all ${
                   msg.role === "user"
-                    ? "bg-gradient-to-br from-indigo-600 to-indigo-700 text-white rounded-tr-sm shadow-md"
-                    : "bg-slate-50 dark:bg-[#1E1E2E] border border-slate-200 dark:border-white/8 text-slate-800 dark:text-slate-200 rounded-tl-sm shadow-sm"
+                    ? "bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-tr-sm shadow-lg shadow-indigo-500/25"
+                    : "bg-white/90 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200/60 dark:border-slate-700/60 text-slate-800 dark:text-slate-200 rounded-tl-sm shadow-md shadow-slate-200/20 dark:shadow-none"
                 }`}>
                   <p className="text-sm leading-relaxed whitespace-pre-line">{msg.content}</p>
                   
@@ -552,7 +529,7 @@ export default function AIAssistant() {
         </div>
 
         {/* Input Bar & Suggestion Chips */}
-        <div className="px-6 py-4 border-t border-slate-200 dark:border-white/5 bg-slate-50/80 dark:bg-[#13131F]/50 backdrop-blur flex-shrink-0">
+        <div className="px-6 py-4 border-t border-slate-200/60 dark:border-slate-800/60 bg-white/70 dark:bg-slate-900/60 backdrop-blur-xl flex-shrink-0">
           
           {/* Quick Prompts Bar */}
           <div className="flex gap-2 mb-3 overflow-x-auto pb-1 scrollbar-hide">
@@ -586,7 +563,7 @@ export default function AIAssistant() {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && !e.shiftKey && handleSend()}
                 placeholder={`Ask Copilot about "${productName}" (e.g. 'check inventory', 'rewrite for premium')...`}
-                className="w-full pl-4 pr-4 py-3.5 rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-[#1E1E2E] text-slate-900 dark:text-white text-sm placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/40 transition-all shadow-xs"
+                className="w-full pl-4 pr-4 py-3.5 rounded-xl border border-slate-200/60 dark:border-slate-700/60 bg-white/60 dark:bg-slate-900/60 backdrop-blur-md text-slate-900 dark:text-white text-sm placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/40 transition-all shadow-sm"
               />
             </div>
             <button

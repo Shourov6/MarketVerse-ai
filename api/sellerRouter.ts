@@ -981,4 +981,120 @@ export const sellerRouter = createRouter({
         throw err;
       }
     }),
+
+  suggestProductDetails: authedQuery
+    .input(
+      z.object({
+        productName: z.string().optional(),
+        categoryName: z.string(),
+        price: z.number().optional(),
+      })
+    )
+    .mutation(async ({ input }) => {
+      const apiKey = process.env.OPENAI_API_KEY || "";
+      const categoryName = input.categoryName || "General";
+      const productName = input.productName?.trim() || `${categoryName} Product`;
+      const priceText = input.price ? `Target Price: BDT ${input.price}` : "";
+      const catLower = categoryName.toLowerCase();
+      const defaultSku = `MKT-${categoryName.slice(0, 3).toUpperCase()}-${Math.floor(1000 + Math.random() * 9000)}`;
+
+      if (apiKey) {
+        try {
+          const prompt = `You are an expert e-commerce copywriter and SEO specialist for an online marketplace in Bangladesh named MarketVerse.
+Generate professional product listing details for:
+Product Name: "${productName}"
+Category: "${categoryName}"
+${priceText}
+
+Return a valid JSON object with the following fields:
+- "shortDescription": A crisp 1-2 sentence compelling summary emphasizing key benefits, comfort/utility, and style.
+- "description": A comprehensive, beautifully formatted description in Markdown containing:
+  - An engaging opening paragraph
+  - • Bulleted Key Features & Specifications (Materials, Performance, Design)
+  - • What's in the Box / Package Includes
+  - • Care / Usage Instructions or Guarantee
+- "keywords": A comma-separated string of 6-10 high-ranking search tags and SEO keywords relevant to this product and Bangladeshi shoppers (e.g. "men shirt, formal cotton, stylish bd, premium clothing").
+- "sku": A clean suggested SKU string like "${defaultSku}"
+
+Return ONLY valid JSON with keys: "shortDescription", "description", "keywords", "sku".`;
+
+          const res = await fetch("https://api.openai.com/v1/chat/completions", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${apiKey}`,
+            },
+            body: JSON.stringify({
+              model: "gpt-4o-mini",
+              messages: [{ role: "system", content: prompt }],
+              response_format: { type: "json_object" },
+              temperature: 0.7,
+            }),
+          });
+
+          if (res.ok) {
+            const data = await res.json();
+            const content = data.choices?.[0]?.message?.content;
+            if (content) {
+              const parsed = JSON.parse(content);
+              return {
+                shortDescription: parsed.shortDescription || "",
+                description: parsed.description || "",
+                keywords: parsed.keywords || "",
+                sku: parsed.sku || defaultSku,
+                source: "openai",
+              };
+            }
+          } else {
+            console.warn(`[suggestProductDetails] OpenAI returned ${res.status}: ${res.statusText}`);
+          }
+        } catch (e) {
+          console.error("[suggestProductDetails] OpenAI generation error:", e);
+        }
+      }
+
+      // Fallback: Rule-based generation
+      let suggestedShortDesc = "";
+      let suggestedFullDesc = "";
+      let suggestedKeywords = "";
+
+      if (catLower.includes("fashion") || catLower.includes("mens") || catLower.includes("womens") || catLower.includes("clothing") || catLower.includes("shirt") || catLower.includes("dress")) {
+        suggestedShortDesc = `Premium quality ${productName} crafted from breathable fabric, offering superior comfort, durability, and modern style.`;
+        suggestedFullDesc = `✨ ${productName} - Premium Collection
+
+• Material: High-grade breathable cotton blend fabric.
+• Fit & Comfort: Ergonomically tailored for effortless all-day wear.
+• Occasion: Suitable for casual outings, work, and formal events.
+• Care Instructions: Machine wash cold with like colors, tumble dry low, do not bleach.
+• Guarantee: 100% authentic product with quality verification.`;
+        suggestedKeywords = `${productName.toLowerCase()}, fashion, clothing, premium quality, comfortable fit, stylish, authentic, bd fashion`;
+      } else if (catLower.includes("electronic") || catLower.includes("headphone") || catLower.includes("watch") || catLower.includes("gadget")) {
+        suggestedShortDesc = `High-performance ${productName} featuring latest technology, sleek design, long battery life, and crystal-clear response.`;
+        suggestedFullDesc = `⚡ ${productName} - Advanced Tech Edition
+
+• Key Features: Ultra-fast processing, intuitive controls, and smart connectivity.
+• Battery & Power: Long-lasting rechargeable battery with fast-charging technology.
+• Design: Lightweight ergonomic build with premium matte finish.
+• Package Includes: ${productName}, Charging Cable, User Manual, Warranty Card.
+• Warranty: 1-Year Official Manufacturer Warranty.`;
+        suggestedKeywords = `${productName.toLowerCase()}, tech, electronics, smart gadget, high performance, official warranty, gadgets bd`;
+      } else {
+        suggestedShortDesc = `Top-rated ${productName} selected for excellence, durability, and daily reliability in the ${categoryName} category.`;
+        suggestedFullDesc = `🌟 ${productName} - ${categoryName} Special
+
+• Premium build quality designed for everyday satisfaction.
+• Tested for performance, safety, and long-lasting durability.
+• Top choice among verified buyers in ${categoryName}.
+• Fast shipping across Bangladesh with secure packaging.`;
+        suggestedKeywords = `${productName.toLowerCase()}, ${categoryName.toLowerCase()}, best deal, top quality, marketverse verified`;
+      }
+
+      return {
+        shortDescription: suggestedShortDesc,
+        description: suggestedFullDesc,
+        keywords: suggestedKeywords,
+        sku: defaultSku,
+        source: "fallback",
+      };
+    }),
 });

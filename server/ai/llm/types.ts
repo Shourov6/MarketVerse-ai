@@ -111,7 +111,7 @@ export const DEFAULT_GENERATION_CONFIG: GenerationConfig = {
   temperature: 0.5,
   topP: 0.9,
   repeatPenalty: 1.1,
-  maxTokens: 200,
+  maxTokens: 500,
   timeoutMs: 60_000,
 };
 

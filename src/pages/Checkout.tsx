@@ -117,7 +117,7 @@ export default function Checkout() {
 
   if (!cart || cart.items.length === 0) {
     return (
-      <div className="max-w-7xl mx-auto px-4 py-16 text-center">
+      <div className="w-full max-w-7xl mx-auto px-4 py-16 text-center">
         <p className="text-lg text-slate-500">Your cart is empty</p>
         <button
           onClick={() => navigate("/products")}
@@ -166,18 +166,20 @@ export default function Checkout() {
   const total = (cart?.total || 0) + shipping + tax;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
-      <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-6">Checkout</h1>
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-8 animate-fade-up">
+      <h1 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mb-8 tracking-tight">Checkout</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Checkout Form */}
         <div className="lg:col-span-2">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Shipping Information */}
-            <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6">
-              <div className="flex items-center gap-2 mb-4">
-                <Truck className="h-5 w-5 text-indigo-600" />
-                <h2 className="text-lg font-bold text-slate-900 dark:text-white">Shipping Information</h2>
+            <div className="glass-card rounded-2xl p-6 sm:p-8 animate-slide-left">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 bg-indigo-100 dark:bg-indigo-900/50 rounded-lg">
+                  <Truck className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
+                </div>
+                <h2 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">Shipping Information</h2>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -250,18 +252,18 @@ export default function Checkout() {
             </div>
 
             {/* Payment Method */}
-            <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6">
-              <div className="flex items-center gap-2 mb-4">
-                <CreditCard className="h-5 w-5 text-indigo-600" />
-                <h2 className="text-lg font-bold text-slate-900 dark:text-white">Payment Method</h2>
+            <div className="glass-card rounded-2xl p-6 sm:p-8 animate-slide-left" style={{ animationDelay: '100ms' }}>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 bg-indigo-100 dark:bg-indigo-900/50 rounded-lg">
+                  <CreditCard className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
+                </div>
+                <h2 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">Payment Method</h2>
               </div>
 
               {/* Payment Options Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {[
-                  { value: "sslcommerz", label: "SSLCommerz Gateway", icon: "💳", tag: "bKash / Nagad / Cards / Rocket (Sandbox)", badge: "Instant Pay" },
-                  { value: "bkash", label: "bKash Direct", icon: "📱", tag: "Mobile Banking Manual" },
-                  { value: "nagad", label: "Nagad Direct", icon: "💸", tag: "Mobile Banking Manual" },
+                  { value: "sslcommerz", label: "SSLCommerz Gateway", icon: "💳", tag: "bKash / Nagad / Cards / Rocket", badge: "Instant Pay" },
                   { value: "cod", label: "Cash on Delivery", icon: "💵", tag: "Pay at Doorstep" },
                 ].map((method) => (
                   <label
@@ -299,8 +301,11 @@ export default function Checkout() {
             <button
               type="submit"
               disabled={createOrder.isPending || initiateSSLCommerz.isPending}
-              className="w-full py-3.5 bg-indigo-600 text-white rounded-xl font-semibold hover:bg-indigo-700 transition-colors disabled:opacity-50 flex items-center justify-center gap-2 text-base shadow-lg shadow-indigo-600/20"
+              className="w-full py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-bold hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:hover:scale-100 flex items-center justify-center gap-2 text-lg shadow-lg hover:shadow-indigo-500/40 animate-slide-left group overflow-hidden relative"
+              style={{ animationDelay: '200ms' }}
             >
+              <div className="absolute inset-0 bg-white/20 -skew-x-12 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
+
               {createOrder.isPending || initiateSSLCommerz.isPending ? (
                 <>
                   <Loader2 className="h-5 w-5 animate-spin" />
@@ -317,8 +322,8 @@ export default function Checkout() {
 
         {/* Order Summary */}
         <div className="lg:col-span-1">
-          <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6 sticky top-24">
-            <h2 className="text-lg font-bold text-slate-900 dark:text-white mb-4">Order Summary</h2>
+          <div className="glass-card rounded-2xl p-6 sm:p-8 sticky top-24 animate-fade-up">
+            <h2 className="text-xl font-black text-slate-900 dark:text-white mb-6">Order Summary</h2>
 
             <div className="space-y-3 mb-6 max-h-64 overflow-y-auto">
               {cart.items.map((item: any) => (
@@ -360,8 +365,8 @@ export default function Checkout() {
               </div>
             </div>
 
-            <div className="mt-4 flex items-center gap-2 text-xs text-slate-500">
-              <Shield className="h-3.5 w-3.5" />
+            <div className="mt-6 flex items-center justify-center gap-2 text-xs font-medium text-slate-500 bg-slate-50 dark:bg-slate-800/50 py-2.5 rounded-lg border border-slate-100 dark:border-slate-700">
+              <Shield className="h-4 w-4 text-emerald-500" />
               Secure SSL Encrypted Transaction
             </div>
           </div>

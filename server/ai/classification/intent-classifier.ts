@@ -109,6 +109,39 @@ export class IntentClassifier {
 
     // Fast keyword pattern matching (< 1ms execution)
     const lower = text.toLowerCase().trim();
+
+    // 1. Gadgets domain fast path
+    if (
+      domainHint === "gadgets" ||
+      lower.includes("laptop") || lower.includes("pc build") || lower.includes("gaming pc") ||
+      lower.includes("gpu") || lower.includes("rtx") || lower.includes("gtx") ||
+      lower.includes("ram") || lower.includes("ssd") || lower.includes("motherboard") ||
+      lower.includes("processor") || lower.includes("intel") || lower.includes("ryzen") ||
+      lower.includes("macbook") || lower.includes("specs") || lower.includes("video editing") ||
+      lower.includes("programming") || lower.includes("coding") || lower.includes("psu") ||
+      lower.includes("cooler") || lower.includes("monitor") || lower.includes("ddr4") || lower.includes("ddr5")
+    ) {
+      return {
+        intent: lower.includes("build") || lower.includes("compatib") ? "pc_build" : "laptop_recommendation",
+        domain: "gadgets",
+        confidence: 0.98,
+        nearestExamples: [],
+        reason: "Fast keyword pattern match for gadgets domain",
+      };
+    }
+
+    // 2. General domain fast path
+    if (domainHint === "general") {
+      return {
+        intent: "product_discovery",
+        domain: "general",
+        confidence: 0.95,
+        nearestExamples: [],
+        reason: "Fast keyword pattern match for general domain",
+      };
+    }
+
+    // 3. Fashion domain fast path
     if (
       domainHint === "fashion" ||
       lower.includes("eid") || lower.includes("panjabi") || lower.includes("saree") ||

@@ -134,7 +134,7 @@ export default function ProductDetail() {
 
   if (!product) {
     return (
-      <div className="max-w-7xl mx-auto px-4 py-16 text-center">
+      <div className="w-full max-w-7xl mx-auto px-4 py-16 text-center">
         <p className="text-lg text-slate-500">Product not found</p>
         <Link to="/products" className="text-indigo-600 hover:underline mt-2 inline-block">
           Browse all products
@@ -150,7 +150,7 @@ export default function ProductDetail() {
   const allImages = product.images?.length ? product.images : [{ imageUrl: product.images?.[0]?.imageUrl || "" }];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-8 animate-fade-up">
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-slate-500 mb-6" aria-label="Breadcrumb">
         <Link to="/" className="hover:text-indigo-600">Home</Link>
@@ -167,12 +167,13 @@ export default function ProductDetail() {
       {/* Product Main */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 mb-10 items-start">
         {/* Images */}
-        <div className="md:col-span-5 flex flex-col items-center">
-          <div className="w-full max-w-sm h-[260px] sm:h-[310px] rounded-2xl overflow-hidden bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-800 shadow-sm flex items-center justify-center p-3 mb-3 transition-all">
+        <div className="md:col-span-5 flex flex-col items-center animate-slide-left">
+          <div className="w-full max-w-sm h-[260px] sm:h-[310px] rounded-3xl overflow-hidden glass-card flex items-center justify-center p-3 mb-4 transition-all hover:shadow-xl group relative">
+            <div className="absolute inset-0 bg-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
             <img
               src={allImages[selectedImage]?.imageUrl || ""}
               alt={product.name}
-              className="max-h-[240px] sm:max-h-[280px] w-auto h-auto object-contain transition-transform duration-300 hover:scale-105"
+              className="max-h-[240px] sm:max-h-[280px] w-auto h-auto object-contain transition-transform duration-500 group-hover:scale-110"
             />
           </div>
           {allImages.length > 1 && (
@@ -195,8 +196,8 @@ export default function ProductDetail() {
         </div>
 
         {/* Info */}
-        <div className="md:col-span-7">
-          <p className="text-xs font-semibold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-1">{product.categoryName}</p>
+        <div className="md:col-span-7 animate-fade-up" style={{ animationDelay: '100ms' }}>
+          <p className="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-2">{product.categoryName}</p>
           <h1 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2 leading-tight">{product.name}</h1>
 
           {/* Rating */}
@@ -316,9 +317,9 @@ export default function ProductDetail() {
                 addToCart.mutate({ productId: product.id, quantity });
                 navigate("/checkout");
               }}
-              className="flex-1 min-w-[140px] flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl text-xs font-bold transition-all bg-emerald-600 text-white hover:bg-emerald-700 active:scale-95 shadow-sm cursor-pointer"
+              className="flex-1 min-w-[140px] flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl text-sm font-bold transition-all bg-gradient-to-r from-emerald-500 to-emerald-600 text-white hover:from-emerald-600 hover:to-emerald-700 active:scale-[0.98] shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 cursor-pointer"
             >
-              <Check className="h-4 w-4" />
+              <Check className="h-5 w-5" />
               Order Now
             </button>
             <button
@@ -340,20 +341,20 @@ export default function ProductDetail() {
                 addToCart.mutate({ productId: product.id, quantity });
               }}
               disabled={addedToCart}
-              className={`flex-1 min-w-[140px] flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl text-xs font-bold transition-all shadow-sm cursor-pointer ${
+              className={`flex-1 min-w-[140px] flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl text-sm font-bold transition-all shadow-lg active:scale-[0.98] cursor-pointer group ${
                 addedToCart
-                  ? "bg-green-500 text-white"
-                  : "bg-indigo-600 text-white hover:bg-indigo-700 active:scale-95"
+                  ? "bg-gradient-to-r from-green-500 to-green-600 text-white shadow-green-500/25"
+                  : "bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-700 hover:to-purple-700 shadow-indigo-500/25 hover:shadow-indigo-500/40"
               }`}
             >
               {addedToCart ? (
                 <>
-                  <Check className="h-4 w-4" />
+                  <Check className="h-5 w-5" />
                   Added to Cart
                 </>
               ) : (
                 <>
-                  <ShoppingCart className="h-4 w-4" />
+                  <ShoppingCart className="h-5 w-5 group-hover:animate-bounce" />
                   Add to Cart
                 </>
               )}
@@ -399,9 +400,9 @@ export default function ProductDetail() {
       </div>
 
       {/* Description */}
-      <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6 mb-8">
-        <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Product Description</h2>
-        <div className="prose dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 whitespace-pre-line">
+      <div className="glass-card rounded-3xl p-6 sm:p-8 mb-10 animate-fade-up" style={{ animationDelay: '200ms' }}>
+        <h2 className="text-2xl font-black text-slate-900 dark:text-white mb-6">Product Details</h2>
+        <div className="prose dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 whitespace-pre-line text-sm sm:text-base leading-relaxed">
           {product.description}
         </div>
 
@@ -423,11 +424,13 @@ export default function ProductDetail() {
 
       {/* AI Complete the Look */}
       {completeTheLook && completeTheLook.length > 0 && (
-        <div className="mb-8">
-          <div className="flex items-center gap-2 mb-4">
-            <Sparkles className="h-5 w-5 text-indigo-600" />
-            <h2 className="text-xl font-bold text-slate-900 dark:text-white">Complete the Look</h2>
-            <span className="text-xs px-2 py-1 bg-indigo-100 text-indigo-600 rounded-full">AI Powered</span>
+        <div className="mb-12 animate-fade-up" style={{ animationDelay: '300ms' }}>
+          <div className="flex items-center gap-3 mb-6">
+            <div className="p-2 bg-indigo-100 dark:bg-indigo-900/50 rounded-lg animate-pulse-glow">
+              <Sparkles className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
+            </div>
+            <h2 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Complete the Look</h2>
+            <span className="text-[10px] uppercase font-black tracking-widest px-2.5 py-1 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-full">AI Powered</span>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {completeTheLook.map((item: any) => (
@@ -481,10 +484,10 @@ export default function ProductDetail() {
       )}
 
       {/* Reviews */}
-      <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-xl font-bold text-slate-900 dark:text-white">
-            Customer Reviews ({reviewStats?.totalReviews || 0})
+      <div className="glass-card rounded-3xl p-6 sm:p-8 mb-10 animate-fade-up" style={{ animationDelay: '500ms' }}>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+          <h2 className="text-2xl font-black text-slate-900 dark:text-white">
+            Customer Reviews <span className="text-indigo-600 dark:text-indigo-400">({reviewStats?.totalReviews || 0})</span>
           </h2>
           <button
             onClick={() => setShowReviewForm(!showReviewForm)}

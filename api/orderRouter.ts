@@ -88,6 +88,7 @@ export const orderRouter = createRouter({
             productId: (products as any).id,
             productName: (products as any).name,
             productSlug: (products as any).slug,
+            isReviewed: (orderItems as any).isReviewed,
             imageUrl: (productImages as any).imageUrl,
             sellerName: (sellers as any).businessName,
           })
@@ -130,6 +131,7 @@ export const orderRouter = createRouter({
           productId: (products as any).id,
           productName: (products as any).name,
           productSlug: (products as any).slug,
+          isReviewed: (orderItems as any).isReviewed,
           imageUrl: (productImages as any).imageUrl,
           sellerName: (sellers as any).businessName,
         })

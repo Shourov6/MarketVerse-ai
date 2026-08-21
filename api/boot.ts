@@ -7,10 +7,11 @@ import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 import { appRouter } from "./router";
 import { createContext } from "./context";
 import { env } from "./lib/env";
-import { createOAuthCallbackHandler } from "./kimi/auth";
+import { createOAuthCallbackHandler } from "./auth/auth";
 import { Paths } from "@contracts/constants";
 import { setupWSServer } from "./wsServer";
 import { getIntentClassifier } from "../server/ai/classification/intent-classifier";
+import { aiRouter } from "./aiRouter";
 import fs from "fs";
 import path from "path";
 
@@ -42,6 +43,8 @@ app.use(
 
 // ── Body size limit ───────────────────────────────────────────
 app.use(bodyLimit({ maxSize: 50 * 1024 * 1024 }));
+
+app.route("/api/ai", aiRouter);
 
 // ── Health endpoint (used by Railway / Render / uptime monitors) ──
 app.get("/health", async (c) => {

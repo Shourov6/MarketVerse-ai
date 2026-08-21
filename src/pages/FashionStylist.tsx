@@ -19,7 +19,24 @@ import {
   Star,
   Gem,
   X,
+  Smartphone,
+  ShoppingBag,
+  ArrowRight,
 } from "lucide-react";
+
+export type AssistantDomain = "fashion" | "gadgets" | "general" | null;
+export type GuidedStep = 
+  | "welcome"
+  | "fashion_start"
+  | "fashion_has_shirt"
+  | "fashion_pant_size"
+  | "fashion_has_pant"
+  | "fashion_shoes"
+  | "gadget_start"
+  | "gadget_laptop_usecase"
+  | "gadget_laptop_budget"
+  | "chat";
+
 
 interface ChatMessage {
   role: "user" | "assistant";
@@ -77,11 +94,25 @@ export default function FashionStylist() {
     }
   }, [messages]);
   
-  // Profile & Onboarding State
+  // Profile & Domain State
   const [profile, setProfile] = useState<StylistProfileContext | null>(null);
-  const [isOnboarding, setIsOnboarding] = useState(false);
-  const [onboardingStep, setOnboardingStep] = useState(0);
-  const [onboardingAnswers, setOnboardingAnswers] = useState<any>({});
+  const [domain, setDomain] = useState<AssistantDomain>(() => {
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("clevora_active_domain") as AssistantDomain;
+      if (stored && ["fashion", "gadgets", "general"].includes(stored)) return stored;
+    }
+    return null;
+  });
+  const [guidedStep, setGuidedStep] = useState<GuidedStep>(() => {
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("clevora_active_domain") as AssistantDomain;
+      if (stored === "fashion") return "fashion_start";
+      if (stored === "gadgets") return "gadget_start";
+      if (stored === "general") return "chat";
+    }
+    return "welcome";
+  });
+  const [guidedContext, setGuidedContext] = useState<any>({});
 
   // Edit Profile Modal State
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -140,13 +171,9 @@ export default function FashionStylist() {
             };
             setProfile(userProfile);
           } else {
-            // Not onboarded yet
-            setIsOnboarding(true);
-            setMessages([{
-              role: "assistant",
-              content: `Hey ${(user as any)?.name || "there"}! 👋 Before I start picking outfits for you, I'd love to learn a bit about your style. It'll only take a moment!\n\nFirst, how do you identify?`,
-              type: "general",
-            }]);
+            // Set default domain if they don't have one
+            setDomain(null);
+            setGuidedStep("welcome");
             return;
           }
         } catch (e) {
@@ -175,7 +202,7 @@ export default function FashionStylist() {
         setMessages([
           {
             role: "assistant",
-            content: "Hello! I'm your AI Fashion Stylist.",
+            content: "Hello! I'm Clevora AI, your intelligent shopping assistant.",
             type: "general",
           },
         ]);
@@ -238,8 +265,8 @@ export default function FashionStylist() {
           message: prompt,
           sessionId: activeSessionId,
           userId: (user as any)?.id,
-          domain: "fashion",
-          context: { currentPage: "fashion-stylist", sessionId: activeSessionId }
+          domain: domain || "general",
+          context: { currentPage: "clevora-ai", sessionId: activeSessionId, guidedContext }
         })
       });
 
@@ -280,62 +307,83 @@ export default function FashionStylist() {
     }
   };
 
-  const handleOnboardingStep = async (answer: string) => {
-    let nextStep = onboardingStep + 1;
-    let newAnswers = { ...onboardingAnswers };
-    let assistantReply = "";
-
-    if (onboardingStep === 0) {
-      newAnswers.gender = answer;
-      assistantReply = "Got it! And which age group do you fall into?";
-    } else if (onboardingStep === 1) {
-      newAnswers.ageGroup = answer;
-      assistantReply = "Perfect. Which style vibe do you naturally lean towards?";
-    } else if (onboardingStep === 2) {
-      newAnswers.stylePreference = answer;
-      assistantReply = "Nice choice! Lastly, what's your typical budget for an outfit?";
-    } else if (onboardingStep === 3) {
-      newAnswers.budgetRange = answer;
-      
-      // Save profile
-      try {
-        await trpcClient.stylistProfile.save.mutate(newAnswers);
-        const sessionRes = await trpcClient.brain.getSession.mutate({ sessionType: "stylist" });
-        if (sessionRes.ok && sessionRes.sessionId) {
-          setSessionId(sessionRes.sessionId);
-          if (typeof window !== "undefined") localStorage.setItem("marketverse_stylist_session_id", sessionRes.sessionId);
-        }
-      } catch (e) {
-        console.error("Failed to save profile or session", e);
+  const handleDomainSelect = (selectedDomain: AssistantDomain) => {
+    setDomain(selectedDomain);
+    if (typeof window !== "undefined") {
+      if (selectedDomain) {
+        localStorage.setItem("clevora_active_domain", selectedDomain);
+      } else {
+        localStorage.removeItem("clevora_active_domain");
       }
-      
-      setIsOnboarding(false);
-      setProfile({
-        name: (user as any)?.name,
-        gender: newAnswers.gender,
-        ageGroup: newAnswers.ageGroup,
-        stylePreference: newAnswers.stylePreference,
-        budgetRange: newAnswers.budgetRange,
-      });
+    }
+    setGuidedStep(selectedDomain === "fashion" ? "fashion_start" : selectedDomain === "gadgets" ? "gadget_start" : "chat");
+    setMessages([
+      {
+        role: "assistant",
+        content: `Great! Let's focus on ${selectedDomain === "fashion" ? "Fashion & Styling" : selectedDomain === "gadgets" ? "Gadgets & Tech" : "General Shopping"}. How can I help you today?`,
+        type: "general",
+      }
+    ]);
+  };
 
-      assistantReply = `All set! Thanks for sharing that with me. I've saved your profile so your recommendations will be personalized to your vibe.\n\nNow, how can I help you style your day?`;
+  const handleGuidedStep = (step: GuidedStep, answer: string, contextKey?: string) => {
+    const newContext = { ...guidedContext };
+    if (contextKey) {
+      newContext[contextKey] = answer;
+      setGuidedContext(newContext);
     }
 
-    setMessages((prev) => [
-      ...prev,
-      { role: "user", content: answer, type: "general" },
-      { role: "assistant", content: assistantReply, type: "general" },
-    ]);
+    setMessages(prev => [...prev, { role: "user", content: answer }]);
 
-    setOnboardingAnswers(newAnswers);
-    setOnboardingStep(nextStep);
+    // Define next steps
+    let nextStep = step;
+    let assistantReply = "";
+
+    switch(step) {
+      case "fashion_has_shirt":
+        assistantReply = `Your ${answer} shirt is a great choice! What's your waist size (e.g. 30, 32, 34) so I can match pants in your fit?`;
+        nextStep = "fashion_pant_size";
+        break;
+      case "fashion_pant_size":
+        nextStep = "chat";
+        setGuidedStep("chat");
+        handleSendWithPrompt(`I have a ${newContext.shirtColor || "classic"} shirt. Suggest matching pants, shoes, and watch in waist size ${answer}.`);
+        return;
+      case "fashion_has_pant":
+        nextStep = "chat";
+        setGuidedStep("chat");
+        handleSendWithPrompt(`I have ${answer} pants. What matching shirts, shoes, and accessories should I pair with them?`);
+        return;
+      case "fashion_shoes":
+        nextStep = "chat";
+        setGuidedStep("chat");
+        handleSendWithPrompt(`Suggest matching shoes and accessories for this outfit.`);
+        return;
+      case "gadget_laptop_usecase":
+        assistantReply = `Got it, you need a laptop for ${answer}. What is your target budget range?`;
+        nextStep = "gadget_laptop_budget";
+        break;
+      case "gadget_laptop_budget":
+        nextStep = "chat";
+        setGuidedStep("chat");
+        handleSendWithPrompt(`Suggest a laptop for ${newContext.usecase || "general use"} with budget ${answer}. Include recommended specs and key considerations.`);
+        return;
+      default:
+        nextStep = "chat";
+        setGuidedStep("chat");
+        handleSendWithPrompt(answer);
+        return;
+    }
+
+    setMessages(prev => [...prev, { role: "assistant", content: assistantReply, type: "general" }]);
+    setGuidedStep(nextStep);
   };
 
   if (!user) {
     return (
-      <div className="max-w-7xl mx-auto px-4 py-16 text-center">
+      <div className="w-full max-w-7xl mx-auto px-4 py-16 text-center">
         <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Please Log In</h2>
-        <p className="text-slate-500 dark:text-slate-400 mb-4">Sign in to access your AI Fashion Stylist</p>
+        <p className="text-slate-500 dark:text-slate-400 mb-4">Sign in to access Clevora AI</p>
         <button onClick={() => navigate("/login")} className="px-6 py-3 bg-indigo-600 text-white rounded-xl font-semibold">
           Sign In
         </button>
@@ -344,26 +392,26 @@ export default function FashionStylist() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 space-y-3">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 space-y-3 animate-fade-up">
       {/* Hero Header */}
       <div className="overflow-hidden bg-slate-900/95 dark:bg-slate-950/95 backdrop-blur-xl text-white p-3.5 sm:p-4 rounded-2xl shadow-lg border border-indigo-500/30">
         <div className="absolute top-0 right-0 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-3">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-gradient-to-tr from-purple-600 to-indigo-600 text-white rounded-xl shadow-md shadow-purple-500/30 shrink-0">
-              <Sparkles className="h-5 w-5 text-amber-300 animate-pulse" />
+            <div className="p-2 bg-gradient-to-tr from-indigo-600 to-purple-600 text-white rounded-xl shadow-md shadow-indigo-500/30 shrink-0">
+              <Bot className="h-6 w-6 text-indigo-100" />
             </div>
             <div>
               <div className="flex items-center gap-2 mb-0.5">
                 <h1 className="text-lg sm:text-xl font-black tracking-tight text-white">
-                  StyleMate AI
+                  Clevora AI
                 </h1>
-                <span className="px-2 py-0.5 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-black text-[9px] rounded-full uppercase tracking-wider shadow-xs">
-                  Personal Stylist
+                <span className="px-2 py-0.5 bg-gradient-to-r from-indigo-400 to-indigo-500 text-slate-950 font-black text-[9px] rounded-full uppercase tracking-wider shadow-xs">
+                  Intelligent Assistant
                 </span>
               </div>
               <p className="text-indigo-200/90 text-xs font-medium">
-                Personalized complete looks & traditional Bangladeshi fashion
+                Your guide to Fashion, Gadgets, and more.
               </p>
             </div>
           </div>
@@ -395,7 +443,7 @@ export default function FashionStylist() {
 
       {/* Main Glass Chat Window (Fits Viewport Perfectly) */}
       <div className="w-full">
-        <div className="flex flex-col bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-xl h-[calc(100vh-215px)] min-h-[480px] max-h-[620px] overflow-hidden">
+        <div className="glass-card rounded-3xl overflow-hidden flex flex-col h-[calc(100vh-215px)] min-h-[480px] max-h-[620px] animate-fade-up" style={{ animationDelay: '100ms' }}>
           
           {/* Top Status Bar */}
           <div className="px-6 py-3.5 border-b border-slate-200/80 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-950/50 flex items-center justify-between">
@@ -405,16 +453,61 @@ export default function FashionStylist() {
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
               </span>
               <span className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                Stylist Studio Active
+                Clevora Active
               </span>
             </div>
-            <span className="text-[11px] font-semibold text-slate-400">
-              Season: <strong className="text-indigo-600 dark:text-indigo-400 capitalize">{getCurrentSeason()}</strong>
-            </span>
+            {domain && (
+              <div className="flex items-center gap-2">
+                <span className="text-[11px] font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                  {domain}
+                </span>
+                <button
+                  onClick={() => {
+                    setDomain(null);
+                    setGuidedStep("welcome");
+                    if (typeof window !== "undefined") {
+                      localStorage.removeItem("clevora_active_domain");
+                    }
+                  }}
+                  className="text-xs font-semibold text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 underline cursor-pointer transition-colors"
+                >
+                  ← Change Category
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Messages Viewport */}
           <div ref={chatContainerRef} className="flex-1 overflow-y-auto p-5 sm:p-6 space-y-5 scroll-smooth custom-scrollbar">
+            
+            {!domain && guidedStep === "welcome" ? (
+              <div className="flex flex-col items-center justify-center h-full space-y-6 text-center animate-in fade-in zoom-in duration-300">
+                <div className="w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-3xl shadow-2xl flex items-center justify-center mb-4 transform rotate-12 hover:rotate-0 transition-transform">
+                  <Bot className="w-10 h-10 text-white" />
+                </div>
+                <div className="space-y-2">
+                  <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Hi! I'm Clevora</h2>
+                  <p className="text-slate-500 dark:text-slate-400 max-w-sm mx-auto">
+                    Your intelligent shopping assistant. I'll help you discover, compare, and choose products that match your needs.
+                  </p>
+                </div>
+                <div className="pt-4 space-y-2">
+                  <p className="text-sm font-semibold text-slate-600 dark:text-slate-300">What are you shopping for today?</p>
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                    <button onClick={() => handleDomainSelect("fashion")} className="flex items-center gap-2 px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-indigo-500 hover:shadow-md rounded-2xl font-semibold text-slate-700 dark:text-slate-200 transition-all">
+                      <span className="text-xl">👕</span> Fashion
+                    </button>
+                    <button onClick={() => handleDomainSelect("gadgets")} className="flex items-center gap-2 px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-indigo-500 hover:shadow-md rounded-2xl font-semibold text-slate-700 dark:text-slate-200 transition-all">
+                      <span className="text-xl">📱</span> Gadgets
+                    </button>
+                    <button onClick={() => handleDomainSelect("general")} className="flex items-center gap-2 px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-indigo-500 hover:shadow-md rounded-2xl font-semibold text-slate-700 dark:text-slate-200 transition-all">
+                      <span className="text-xl">🛍️</span> General
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <>
             {messages.map((msg, i) => (
               <div key={i} className={`flex gap-3.5 ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
                 {msg.role === "assistant" && (
@@ -505,16 +598,79 @@ export default function FashionStylist() {
             {isLoading && (
               <div className="flex items-center gap-3 p-3 text-slate-500 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 w-fit">
                 <Loader2 className="h-4 w-4 animate-spin text-indigo-600" />
-                <span className="text-xs font-semibold">StyleMate AI is styling your look...</span>
+                <span className="text-xs font-semibold">Clevora AI is thinking...</span>
               </div>
+            )}
+            </>
             )}
           </div>
 
           {/* Input & Quick Chips */}
           <div className="border-t border-slate-200/80 dark:border-slate-800 p-4 sm:p-5 bg-white dark:bg-slate-900 space-y-3">
-            {!isOnboarding && (
-              <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar text-xs">
-                {[
+            {domain === "fashion" && guidedStep === "fashion_start" && (
+              <div className="flex flex-wrap gap-2 justify-center py-2 animate-in fade-in slide-in-from-bottom-2">
+                <button onClick={() => setGuidedStep("fashion_has_shirt")} className="px-4 py-2 bg-indigo-50 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300 rounded-xl text-sm font-semibold hover:bg-indigo-100 transition-colors">I have a shirt → find pant</button>
+                <button onClick={() => setGuidedStep("fashion_has_pant")} className="px-4 py-2 bg-indigo-50 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300 rounded-xl text-sm font-semibold hover:bg-indigo-100 transition-colors">I have pant → find shirt</button>
+                <button onClick={() => quickAction("I have shirt and pant, suggest matching shoes")} className="px-4 py-2 bg-indigo-50 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300 rounded-xl text-sm font-semibold hover:bg-indigo-100 transition-colors">Suggest shoes</button>
+                <button onClick={() => quickAction("I have shirt and pant, suggest matching watch")} className="px-4 py-2 bg-indigo-50 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300 rounded-xl text-sm font-semibold hover:bg-indigo-100 transition-colors">Suggest watch</button>
+              </div>
+            )}
+
+            {domain === "fashion" && guidedStep === "fashion_has_shirt" && (
+              <div className="flex flex-col gap-2 pt-2 pb-1">
+                <p className="text-xs text-center font-medium text-slate-500">What color is your shirt?</p>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  {["White", "Light Blue", "Navy", "Black", "Grey", "Beige", "Olive", "Maroon"].map(c => (
+                    <button key={c} onClick={() => handleGuidedStep("fashion_has_shirt", c, "shirtColor")} className="px-3 py-1.5 border rounded-lg text-sm hover:border-indigo-500 transition-colors">{c}</button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {domain === "fashion" && guidedStep === "fashion_has_pant" && (
+              <div className="flex flex-col gap-2 pt-2 pb-1">
+                <p className="text-xs text-center font-medium text-slate-500">What color is your pant?</p>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  {["Black", "Navy", "Grey", "Beige/Khaki", "White", "Olive"].map(c => (
+                    <button key={c} onClick={() => handleGuidedStep("fashion_has_pant", c, "pantColor")} className="px-3 py-1.5 border rounded-lg text-sm hover:border-indigo-500 transition-colors">{c}</button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {domain === "gadgets" && guidedStep === "gadget_start" && (
+              <div className="flex flex-wrap gap-2 justify-center py-2 animate-in fade-in slide-in-from-bottom-2">
+                <button onClick={() => setGuidedStep("gadget_laptop_usecase")} className="px-4 py-2 bg-indigo-50 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300 rounded-xl text-sm font-semibold hover:bg-indigo-100 transition-colors">Laptop for Programming</button>
+                <button onClick={() => setGuidedStep("gadget_laptop_usecase")} className="px-4 py-2 bg-indigo-50 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300 rounded-xl text-sm font-semibold hover:bg-indigo-100 transition-colors">Laptop for Video Editing</button>
+                <button onClick={() => quickAction("I want to build a gaming PC")} className="px-4 py-2 bg-indigo-50 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300 rounded-xl text-sm font-semibold hover:bg-indigo-100 transition-colors">Gaming PC Build</button>
+              </div>
+            )}
+
+            {domain === "gadgets" && guidedStep === "gadget_laptop_usecase" && (
+              <div className="flex flex-col gap-2 pt-2 pb-1">
+                <p className="text-xs text-center font-medium text-slate-500">Select Primary Use Case</p>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  {["General/Study", "Programming", "Graphic Design", "HD Video Editing", "Gaming"].map(u => (
+                    <button key={u} onClick={() => handleGuidedStep("gadget_laptop_usecase", u, "usecase")} className="px-3 py-1.5 border rounded-lg text-sm hover:border-indigo-500 transition-colors">{u}</button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {domain === "gadgets" && guidedStep === "gadget_laptop_budget" && (
+              <div className="flex flex-col gap-2 pt-2 pb-1">
+                <p className="text-xs text-center font-medium text-slate-500">What is your budget?</p>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  {["Under 50,000 BDT", "50k - 80k BDT", "80k - 120k BDT", "No limit"].map(b => (
+                    <button key={b} onClick={() => handleGuidedStep("gadget_laptop_budget", b, "budget")} className="px-3 py-1.5 border rounded-lg text-sm hover:border-indigo-500 transition-colors">{b}</button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {domain && guidedStep === "chat" && (
+              <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar text-xs mb-2">
+                {domain === "fashion" ? [
                   "Gym Workout Outfit",
                   "Eid Panjabi Look",
                   "Office Business Casual",
@@ -527,51 +683,44 @@ export default function FashionStylist() {
                   >
                     ✨ {chip}
                   </button>
-                ))}
+                )) : domain === "gadgets" ? [
+                  "Best laptop for students",
+                  "Gaming PC build 100k BDT",
+                  "MacBook vs Windows",
+                  "Video editing laptop specs",
+                ].map((chip) => (
+                  <button
+                    key={chip}
+                    onClick={() => quickAction(chip)}
+                    className="shrink-0 px-3.5 py-1.5 bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/60 dark:hover:bg-emerald-900 text-emerald-700 dark:text-emerald-300 rounded-full text-xs font-semibold border border-emerald-200/60 dark:border-emerald-800/60 transition-all shadow-2xs cursor-pointer"
+                  >
+                    💻 {chip}
+                  </button>
+                )) : domain === "general" ? [
+                  "Wireless earbuds under 3000 BDT",
+                  "Trending gadgets & accessories",
+                  "Gift ideas under 5000 BDT",
+                  "Compare best sellers",
+                ].map((chip) => (
+                  <button
+                    key={chip}
+                    onClick={() => quickAction(chip)}
+                    className="shrink-0 px-3.5 py-1.5 bg-amber-50 hover:bg-amber-100 dark:bg-amber-950/60 dark:hover:bg-amber-900 text-amber-700 dark:text-amber-300 rounded-full text-xs font-semibold border border-amber-200/60 dark:border-amber-800/60 transition-all shadow-2xs cursor-pointer"
+                  >
+                    🛍️ {chip}
+                  </button>
+                )) : null}
               </div>
             )}
 
-            {isOnboarding ? (
-              <div className="flex flex-wrap justify-center gap-2.5 py-2">
-                {onboardingStep === 0 && (
-                  <>
-                    <button onClick={() => handleOnboardingStep("Male")} className="px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl text-xs font-bold transition-all shadow-sm">Male</button>
-                    <button onClick={() => handleOnboardingStep("Female")} className="px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl text-xs font-bold transition-all shadow-sm">Female</button>
-                    <button onClick={() => handleOnboardingStep("Non-binary")} className="px-5 py-2.5 bg-indigo-100 text-indigo-700 dark:bg-slate-800 dark:text-indigo-300 rounded-xl text-xs font-bold transition-all">Non-binary</button>
-                    <button onClick={() => handleOnboardingStep("Prefer not to say")} className="px-5 py-2.5 bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 rounded-xl text-xs font-bold transition-all">Prefer not to say</button>
-                  </>
-                )}
-                {onboardingStep === 1 && (
-                  <>
-                    <button onClick={() => handleOnboardingStep("18-24")} className="px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl text-xs font-bold transition-all shadow-sm">18-24</button>
-                    <button onClick={() => handleOnboardingStep("25-34")} className="px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl text-xs font-bold transition-all shadow-sm">25-34</button>
-                    <button onClick={() => handleOnboardingStep("35-44")} className="px-5 py-2.5 bg-indigo-100 text-indigo-700 dark:bg-slate-800 dark:text-indigo-300 rounded-xl text-xs font-bold transition-all">35-44</button>
-                    <button onClick={() => handleOnboardingStep("45+")} className="px-5 py-2.5 bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 rounded-xl text-xs font-bold transition-all">45+</button>
-                  </>
-                )}
-                {onboardingStep === 2 && (
-                  <>
-                    {["Classic", "Minimalist", "Bohemian", "Modern", "Edgy", "Sporty"].map(style => (
-                      <button key={style} onClick={() => handleOnboardingStep(style)} className="px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl text-xs font-bold transition-all shadow-sm">{style}</button>
-                    ))}
-                  </>
-                )}
-                {onboardingStep === 3 && (
-                  <>
-                    <button onClick={() => handleOnboardingStep("Budget")} className="px-5 py-2.5 bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 rounded-xl text-xs font-bold transition-all">Budget</button>
-                    <button onClick={() => handleOnboardingStep("Mid-range")} className="px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl text-xs font-bold transition-all shadow-sm">Mid-range</button>
-                    <button onClick={() => handleOnboardingStep("Premium")} className="px-5 py-2.5 bg-gradient-to-r from-amber-500 to-amber-600 text-white rounded-xl text-xs font-bold transition-all shadow-sm">Premium</button>
-                  </>
-                )}
-              </div>
-            ) : (
+            {domain && (guidedStep === "chat" || guidedStep === "fashion_start" || guidedStep === "gadget_start" || guidedStep === "fashion_pant_size") && (
               <div className="flex gap-2.5 items-center">
                 <input
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && handleSend()}
-                  placeholder="Ask StyleMate AI (e.g. 'Eid panjabi look' or 'business casual outfit')..."
+                  placeholder={`Ask Clevora AI...`}
                   className="flex-1 px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm font-medium text-slate-900 dark:text-white"
                 />
                 <button

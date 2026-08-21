@@ -1,25 +1,21 @@
-# Local bootstrap and Docker
+# Local Bootstrap
 
-This repository includes helper files to make a fresh machine able to run the project with minimal steps.
-
-Bootstrap scripts (one-time) — creates `.env`, installs dependencies, runs DB seed and starts the dev server:
-
-- Unix/macOS:
-```bash
-./scripts/bootstrap.sh
-```
-
-- Windows (PowerShell):
-```powershell
-pwsh ./scripts/bootstrap.ps1
-```
-
-Docker Compose (production image)
+Use the canonical cross-platform setup command from the repository root:
 
 ```bash
-docker compose up --build
+npm run setup
 ```
 
-Notes
-- The bootstrap scripts prompt for a local MySQL root password and write `DATABASE_URL` to `.env`.
-- Production Docker Compose expects `APP_SECRET` and optional `MYSQL_ROOT_PASSWORD` in your environment or in an `.env` file for `docker compose`.
+It creates a local `.env`, installs the locked dependencies, starts MySQL with Docker Compose when available, waits for the database, seeds it, and starts the development server at `http://localhost:5173`.
+
+`npm run dev` alone only starts Vite. It does not install Node.js, Docker, MySQL, Ollama, or model weights.
+
+Requirements:
+
+- Node.js 20 or newer
+- Docker Desktop with Compose, or an existing MySQL 8 server
+- Ollama for the local LLM path; setup pulls `qwen2.5:3b-instruct` and `nomic-embed-text` when Ollama is installed
+
+If Docker is unavailable, set `DATABASE_URL` in `.env` to your MySQL server and run the same command. Add `OPENAI_API_KEY` to `.env` to enable API-backed AI features.
+
+See `DEVELOPER_GUIDE.md` for the project structure, environment reference, daily commands, and troubleshooting.

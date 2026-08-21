@@ -119,7 +119,7 @@ export default function Products() {
   const hasActiveFilters = Boolean(initialSearch || initialCategory || initialFeatured || initialTrending);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-8 animate-fade-up">
       {/* Header & Breadcrumb */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
         <div>
@@ -160,7 +160,7 @@ export default function Products() {
       </div>
 
       {/* Control Bar: Search + Filter Toggle + Sort + View Mode */}
-      <div className="flex flex-wrap items-center justify-between gap-3 mb-6 p-2 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-xs">
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-6 p-2 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm sticky top-20 z-40">
         <div className="flex-1 min-w-[220px]">
           <div className="relative">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
@@ -304,18 +304,21 @@ export default function Products() {
           </button>
         </div>
       ) : sortedProducts.length === 0 ? (
-        <div className="py-8">
-          <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">No Products Found</h3>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mb-6">
+        <div className="py-16 text-center animate-fade-up">
+          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-slate-100 dark:bg-slate-800/50 mb-6 animate-pulse-glow">
+            <Search className="w-10 h-10 text-slate-400 dark:text-slate-500" />
+          </div>
+          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">No Products Found</h3>
+          <p className="text-slate-500 dark:text-slate-400 max-w-md mx-auto mb-8">
             We couldn't find any items matching your current filters or search query. Try adjusting your criteria.
           </p>
           
           {hasActiveFilters && (
             <button
               onClick={clearAllFilters}
-              className="inline-flex items-center gap-2 px-5 py-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-sm font-bold rounded-lg hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors cursor-pointer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold rounded-xl hover:scale-105 hover:shadow-lg transition-all cursor-pointer"
             >
-              <Sparkles className="h-4 w-4" />
+              <X className="h-4 w-4" />
               Clear All Filters
             </button>
           )}
@@ -354,7 +357,7 @@ export default function Products() {
                   key={product.id}
                   data-product-name={product.name}
                   data-product-price={formatCurrency(product.price)}
-                  className="group bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 hover:border-indigo-300 dark:hover:border-indigo-500/50 hover:shadow-lg transition-all duration-300 p-4 sm:p-5 flex flex-col sm:flex-row gap-4 sm:gap-6 items-start sm:items-center"
+                  className={`group bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 hover:border-indigo-300 dark:hover:border-indigo-500/50 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 p-4 sm:p-5 flex flex-col sm:flex-row gap-4 sm:gap-6 items-start sm:items-center animate-scale-in stagger-${(index % 6) + 1}`}
                 >
                   <Link
                     to={`/product/${product.slug}`}
@@ -447,7 +450,7 @@ export default function Products() {
                 key={product.id}
                 data-product-name={product.name}
                 data-product-price={formatCurrency(product.price)}
-                className="group bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 hover:border-indigo-400/80 dark:hover:border-indigo-500/60 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"
+                className={`group bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 hover:border-indigo-400/80 dark:hover:border-indigo-500/60 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between overflow-hidden animate-scale-in stagger-${(index % 6) + 1}`}
               >
                 <div>
                   {/* Image Container */}

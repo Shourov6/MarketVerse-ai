@@ -118,6 +118,30 @@ export function cleanTranscript(text: string): string {
   return cleaned;
 }
 
+export interface VoiceActionDecision {
+  intent: string;
+  searchQuery?: string;
+  targetPage?: string;
+  selectedProduct?: { id: number; name: string; slug: string; price?: string };
+  responseText?: string;
+  confidence?: number;
+  reason?: string;
+}
+
+export function normalizeVoiceActionDecision(input: Partial<VoiceActionDecision> | null | undefined): VoiceActionDecision {
+  const source = input || {};
+  const intent = String(source.intent || "help").toLowerCase();
+  return {
+    intent,
+    searchQuery: source.searchQuery?.trim() || undefined,
+    targetPage: source.targetPage?.trim() || undefined,
+    selectedProduct: source.selectedProduct,
+    responseText: source.responseText?.trim() || undefined,
+    confidence: typeof source.confidence === "number" ? source.confidence : 0.5,
+    reason: source.reason?.trim() || undefined,
+  };
+}
+
 export function convertBengaliDigitsToStandard(text: string): string {
   const bnToEn: Record<string, string> = {
     "০": "0", "১": "1", "২": "2", "৩": "3", "৪": "4",

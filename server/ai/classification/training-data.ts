@@ -248,6 +248,45 @@ export const INTENT_TRAINING_DATA: TrainingExample[] = [
   { domain: "recommendation", intent: "personalized_recommendations", text: "show me personalized picks" },
 
   // ═══════════════════════════════════════════════════════════════
+  // GADGETS DOMAIN
+  // ═══════════════════════════════════════════════════════════════
+
+  // laptop_recommendation
+  { domain: "gadgets", intent: "laptop_recommendation", text: "what laptop should I buy for programming?" },
+  { domain: "gadgets", intent: "laptop_recommendation", text: "suggest a laptop for video editing under 80000 taka" },
+  { domain: "gadgets", intent: "laptop_recommendation", text: "best budget laptop for university students" },
+  { domain: "gadgets", intent: "laptop_recommendation", text: "recommend a gaming laptop with RTX graphics" },
+  { domain: "gadgets", intent: "laptop_recommendation", text: "should I buy MacBook Air M2 or ThinkPad for coding?" },
+  { domain: "gadgets", intent: "laptop_recommendation", text: "programming er jonno bhalo laptop ki ache?" },
+  { domain: "gadgets", intent: "laptop_recommendation", text: "ভিডিও এডিটিং এর জন্য ল্যাপটপ সাজেস্ট করুন" },
+
+  // pc_build
+  { domain: "gadgets", intent: "pc_build", text: "I want to build a gaming PC with 100k BDT budget" },
+  { domain: "gadgets", intent: "pc_build", text: "is Ryzen 5 7600 compatible with B650 motherboard?" },
+  { domain: "gadgets", intent: "pc_build", text: "check compatibility for my PC build parts" },
+  { domain: "gadgets", intent: "pc_build", text: "what power supply do I need for RTX 4070?" },
+  { domain: "gadgets", intent: "pc_build", text: "best custom PC build for 4K video editing" },
+  { domain: "gadgets", intent: "pc_build", text: "gaming PC banate chai, budget 70k" },
+
+  // tech_comparison
+  { domain: "gadgets", intent: "tech_comparison", text: "MacBook vs Windows laptop for software engineering" },
+  { domain: "gadgets", intent: "tech_comparison", text: "RTX 3060 vs RTX 4060 which one is better?" },
+  { domain: "gadgets", intent: "tech_comparison", text: "DDR4 vs DDR5 RAM difference for gaming" },
+  { domain: "gadgets", intent: "tech_comparison", text: "what specs do I need for DaVinci Resolve 4K editing?" },
+
+  // ═══════════════════════════════════════════════════════════════
+  // GENERAL DOMAIN
+  // ═══════════════════════════════════════════════════════════════
+
+  // product_discovery
+  { domain: "general", intent: "product_discovery", text: "help me find a gift for my friend" },
+  { domain: "general", intent: "product_discovery", text: "what are the best electronics deals today?" },
+  { domain: "general", intent: "product_discovery", text: "recommend some home appliances under 10000 BDT" },
+  { domain: "general", intent: "product_discovery", text: "I'm looking for wireless earbuds with good mic" },
+  { domain: "general", intent: "product_discovery", text: "amar budget 5000, bhalo smart watch suggest koro" },
+  { domain: "general", intent: "product_discovery", text: "ভালো হেডফোন খুঁজছি" },
+
+  // ═══════════════════════════════════════════════════════════════
   // TYPO-TOLERANT EXAMPLES
   // ═══════════════════════════════════════════════════════════════
   { domain: "recommendation", intent: "category_browse", text: "show all catagory" },

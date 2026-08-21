@@ -316,7 +316,7 @@ export default function AdminDashboard() {
 
   if (!user || (user as any).role !== "admin") {
     return (
-      <div className="max-w-7xl mx-auto px-4 py-16 text-center">
+      <div className="w-full max-w-7xl mx-auto px-4 py-16 text-center">
         <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Admin Access Required</h2>
         <p className="text-slate-500 mb-4">You need admin privileges to access this panel.</p>
         <button onClick={() => navigate("/")} className="px-6 py-3 bg-indigo-600 text-white rounded-xl font-semibold">

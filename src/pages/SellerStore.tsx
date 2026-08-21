@@ -37,14 +37,14 @@ export default function SellerStore() {
 
   if (!seller) {
     return (
-      <div className="max-w-7xl mx-auto px-4 py-16 text-center">
+      <div className="w-full max-w-7xl mx-auto px-4 py-16 text-center">
         <p className="text-lg text-slate-500">Seller not found</p>
       </div>
     );
   }
 
   return (
-    <div>
+    <div className="animate-fade-in">
       {/* Seller Banner */}
       <div className="relative h-48 sm:h-64 overflow-hidden">
         <img
@@ -55,10 +55,10 @@ export default function SellerStore() {
         <div className="absolute inset-0 bg-black/40" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 -mt-16 relative z-10">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 -mt-16 relative z-10">
         {/* Seller Info Card */}
-        <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6 mb-8 shadow-lg">
-          <div className="flex flex-col sm:flex-row items-start gap-4">
+        <div className="glass-card rounded-3xl p-6 sm:p-8 mb-8 animate-fade-up" style={{ animationDelay: '100ms' }}>
+          <div className="flex flex-col sm:flex-row items-start gap-6">
             <div className="h-20 w-20 rounded-xl bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-2xl font-bold text-indigo-600 shrink-0">
               {seller.logo ? (
                 <img src={seller.logo} alt={seller.businessName} className="h-full w-full object-cover rounded-xl" />
@@ -83,26 +83,32 @@ export default function SellerStore() {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-3 gap-4 mb-8">
-          <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 text-center">
-            <Package className="h-6 w-6 text-indigo-600 mx-auto mb-2" />
-            <p className="text-xl font-bold text-slate-900 dark:text-white">{seller.stats.totalProducts}</p>
-            <p className="text-xs text-slate-500">Products</p>
+        <div className="grid grid-cols-3 gap-4 sm:gap-6 mb-10 animate-fade-up" style={{ animationDelay: '200ms' }}>
+          <div className="glass-card rounded-2xl p-6 text-center hover:-translate-y-1 transition-transform cursor-default">
+            <div className="p-3 bg-indigo-500/10 text-indigo-600 rounded-xl inline-block mb-3">
+              <Package className="h-6 w-6" />
+            </div>
+            <p className="text-2xl font-black text-slate-900 dark:text-white">{seller.stats.totalProducts}</p>
+            <p className="text-xs font-semibold text-slate-500 mt-1 uppercase tracking-wider">Products</p>
           </div>
-          <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 text-center">
-            <TrendingUp className="h-6 w-6 text-green-600 mx-auto mb-2" />
-            <p className="text-xl font-bold text-slate-900 dark:text-white">{seller.stats.totalSold}</p>
-            <p className="text-xs text-slate-500">Items Sold</p>
+          <div className="glass-card rounded-2xl p-6 text-center hover:-translate-y-1 transition-transform cursor-default">
+            <div className="p-3 bg-green-500/10 text-green-600 rounded-xl inline-block mb-3">
+              <TrendingUp className="h-6 w-6" />
+            </div>
+            <p className="text-2xl font-black text-slate-900 dark:text-white">{seller.stats.totalSold}</p>
+            <p className="text-xs font-semibold text-slate-500 mt-1 uppercase tracking-wider">Items Sold</p>
           </div>
-          <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 text-center">
-            <Store className="h-6 w-6 text-purple-600 mx-auto mb-2" />
-            <p className="text-xl font-bold text-slate-900 dark:text-white">{formatCurrency(seller.stats.totalRevenue)}</p>
-            <p className="text-xs text-slate-500">Revenue</p>
+          <div className="glass-card rounded-2xl p-6 text-center hover:-translate-y-1 transition-transform cursor-default">
+            <div className="p-3 bg-purple-500/10 text-purple-600 rounded-xl inline-block mb-3">
+              <Store className="h-6 w-6" />
+            </div>
+            <p className="text-2xl font-black text-slate-900 dark:text-white">{formatCurrency(seller.stats.totalRevenue)}</p>
+            <p className="text-xs font-semibold text-slate-500 mt-1 uppercase tracking-wider">Revenue</p>
           </div>
         </div>
 
         {/* Products */}
-        <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4">
+        <h2 className="text-2xl font-black text-slate-900 dark:text-white mb-6 animate-fade-up" style={{ animationDelay: '300ms' }}>
           Products from {seller.businessName}
         </h2>
 
@@ -128,17 +134,17 @@ export default function SellerStore() {
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3.5 sm:gap-4 lg:gap-5 pb-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 pb-12 animate-fade-up" style={{ animationDelay: '400ms' }}>
             {seller.products.map((product: any) => (
               <div
                 key={product.id}
-                className="group bg-white dark:bg-slate-800 rounded-xl shadow-sm hover:shadow-lg transition-all overflow-hidden border border-slate-100 dark:border-slate-700"
+                className="group glass-card rounded-2xl transition-all overflow-hidden hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-500/10"
               >
-                <Link to={`/product/${product.slug}`} className="block relative aspect-square overflow-hidden bg-slate-100 dark:bg-slate-700">
+                <Link to={`/product/${product.slug}`} className="block relative aspect-square overflow-hidden bg-slate-100 dark:bg-slate-700/50">
                   <img
                     src={product.imageUrl || ""}
                     alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     loading="lazy"
                   />
                 </Link>
@@ -156,19 +162,19 @@ export default function SellerStore() {
                       <span className="text-xs text-slate-400">({product.reviewCount || 0})</span>
                     </div>
                   ) : null}
-                  <div className="flex items-center justify-between">
-                    <span className="font-bold text-slate-900 dark:text-white">{formatCurrency(product.price)}</span>
-                    <div className="flex gap-1">
+                  <div className="flex items-center justify-between mt-3 pt-3 border-t border-slate-200/50 dark:border-slate-700/50">
+                    <span className="text-lg font-black text-slate-900 dark:text-white">{formatCurrency(product.price)}</span>
+                    <div className="flex gap-1.5">
                       <button
                         onClick={() => addToWishlist.mutate({ productId: product.id })}
-                        className="p-1.5 text-slate-400 hover:text-red-500 transition-colors"
+                        className="p-2 rounded-xl bg-slate-100 dark:bg-slate-700/50 text-slate-500 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 transition-colors"
                         aria-label="Add to wishlist"
                       >
                         <Heart className="h-4 w-4" />
                       </button>
                       <button
                         onClick={() => addToCart.mutate({ productId: product.id })}
-                        className="p-1.5 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+                        className="p-2 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:scale-105 active:scale-95 transition-all shadow-md shadow-indigo-500/25"
                         aria-label="Add to cart"
                       >
                         <ShoppingCart className="h-4 w-4" />

@@ -31,14 +31,14 @@ export interface StylistProfileContext {
 export function generateFashionResponse(result: FashionNlpResult, profile?: StylistProfileContext | null): string {
   const { intent, occasion, colors, season, style } = result;
 
-  const greeting = profile?.name ? `Hey ${profile.name}! 👋 Welcome to StyleMate AI.` : "Hi! 👋 Welcome to StyleMate AI.";
+  const greeting = profile?.name ? `Hey ${profile.name}! 👋 Welcome to Clevora AI.` : "Hi! 👋 Welcome to Clevora AI.";
 
   switch (intent) {
     case "greeting":
       return randomPick([
         `${greeting} I'm here to help you build the perfect outfit. What are you shopping for today?\n\n(Men's Fashion, Women's Fashion, Traditional Wear, Eid, Wedding, Office, Casual)`,
-        `Salam & Hello! ✨ Welcome to StyleMate AI — your personal fashion stylist! What occasion are you getting ready for today?`,
-        `Hello! 👋 Welcome to StyleMate AI! I'm ready to curate your perfect outfit for today. What are you shopping for?`,
+        `Salam & Hello! ✨ Welcome to Clevora AI — your intelligent shopping assistant! What occasion are you getting ready for today?`,
+        `Hello! 👋 Welcome to Clevora AI! I'm ready to curate your perfect outfit for today. What are you shopping for?`,
       ]);
 
     case "thanks":
@@ -119,7 +119,7 @@ export function generateFashionResponse(result: FashionNlpResult, profile?: Styl
     default:
       return randomPick([
         `${greeting}\n\nWhat are you shopping for today?\n• Men's Fashion\n• Women's Fashion\n• Traditional Wear\n• Casual / Office / Wedding / Eid`,
-        `${greeting} I am your AI Fashion Stylist! Feel free to ask me for outfit recommendations, color matching, or mix-and-match advice.`,
+        `${greeting} I am Clevora AI, your intelligent shopping assistant! Feel free to ask me for outfit recommendations, tech advice, or general shopping help.`,
       ]);
   }
 }

@@ -1,3 +1,14 @@
+/**
+ * MarketVerse Enterprise MySQL Database Driver & ORM Layer
+ * 
+ * Provides high-performance, type-safe MySQL database operations powered by `mysql2/promise`.
+ * Features:
+ *  - Automatic Connection Pooling with keep-alive & auto-reconnect
+ *  - Type-safe Drizzle-compatible Table/Column Schema builder
+ *  - Automatic table creation & schema synchronization on startup
+ *  - Thread-safe transactions, raw query access, and parameterized statement escaping
+ */
+
 import mysql from "mysql2/promise";
 import { env } from "../api/lib/env.ts";
 
