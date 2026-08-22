@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router";
 import { trpc } from "@/providers/trpc";
 import { useAuth } from "@/hooks/useAuth";
-import { Loader2, Eye, EyeOff, KeyRound, CheckCircle2, ArrowRight, ArrowLeft, Sparkles, Smartphone, Lock, ShieldCheck, Zap, Store, Mail, User } from "lucide-react";
+import { Loader2, Eye, EyeOff, KeyRound, CheckCircle2, ArrowRight, ArrowLeft, Sparkles, Lock, ShieldCheck, Zap, Store, Mail, User } from "lucide-react";
 import { toast } from "sonner";
 
 const demoAccounts = [

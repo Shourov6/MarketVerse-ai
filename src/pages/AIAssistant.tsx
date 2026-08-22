@@ -90,7 +90,7 @@ export default function AIAssistant() {
   const [productName, setProductName] = useState("Wireless Bluetooth Headphones");
   const [category, setCategory] = useState("electronics");
   const [price, setPrice] = useState<number>(4500);
-  const [stock, setStock] = useState<number>(4);
+  const [stock] = useState<number>(4);
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [sessionId, setSessionId] = useState<string | null>(null);
 

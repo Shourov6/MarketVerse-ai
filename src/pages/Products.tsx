@@ -12,7 +12,6 @@ import {
   Grid3X3,
   LayoutList,
   AlertCircle,
-  Package,
   Mic,
   X,
   Store,

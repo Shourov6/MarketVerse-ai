@@ -9,8 +9,7 @@
  * 5. update_shipping_address
  * 6. payment_status
  * 7. refund_status
- * 8. coupon_validation
- * 9. stock_check
+ * 8. stock_check
  * 10. invoice_download
  * 11. warranty_lookup
  * 12. seller_contact
@@ -61,9 +60,6 @@ export class SupportToolDispatcher {
       case "payment_issue":
       case "refund_status":
         return this.handlePaymentRefundStatus(db, orderId, userId);
-
-      case "coupon_validation":
-        return this.handleCouponValidation(query);
 
       case "stock_check":
         return this.handleStockCheck(db, query);
@@ -272,15 +268,6 @@ export class SupportToolDispatcher {
         totalAmount: orderData.totalAmount,
       },
       message: `Payment status for Order #${orderData.orderNumber}: ${orderData.paymentStatus.toUpperCase()}. Refunds process within 3-5 business days.`,
-    };
-  }
-
-  private async handleCouponValidation(_query: string): Promise<ToolExecutionResult> {
-    return {
-      success: true,
-      toolName: "coupon_validation",
-      data: { code: "WELCOME10", discountPercent: 10, valid: true, minOrder: 1000 },
-      message: "Coupons are valid on orders above BDT 1,000. Use code WELCOME10 for 10% off at checkout.",
     };
   }
 

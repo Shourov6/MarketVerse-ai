@@ -12,7 +12,7 @@ import type { AITool, ToolContext, ToolResult } from "./tool-types.ts";
 export class KnowledgeSearchTool implements AITool {
   name = "knowledge_search";
   description = "Search the support knowledge base for FAQs, policies, and shipping info.";
-  triggers = ["shipping_info", "payment_methods", "account_help", "product_info", "discount_coupon", "style_guidance", "seasonal_trends"];
+  triggers = ["shipping_info", "payment_methods", "account_help", "product_info", "style_guidance", "seasonal_trends"];
 
   async execute(query: string, _context: ToolContext): Promise<ToolResult> {
     const retriever = getRetriever();

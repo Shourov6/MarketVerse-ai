@@ -89,11 +89,11 @@ export class SuccessIntelligenceEngine {
     }
 
     // 6. Checkout / Cart Stage
-    if (currentPath?.includes("checkout") || intent === "coupon_validation" || lower.includes("checkout") || lower.includes("coupon")) {
+    if (currentPath?.includes("checkout") || lower.includes("checkout")) {
       return {
         stage: "Checkout",
         confidence: 0.94,
-        stageGuidance: "Customer in checkout stage. Validate promo codes and highlight free shipping thresholds.",
+        stageGuidance: "Customer in checkout stage. Highlight shipping thresholds and final order details.",
       };
     }
 

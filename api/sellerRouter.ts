@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { createRouter, publicQuery, authedQuery } from "./middleware";
 import { getDb } from "./queries/connection";
-import { sellers, products, productImages, orders, orderItems, categories, inventory, reviews, notifications, users, coupons, sellerPayouts, sellerMessages } from "@db/schema";
+import { sellers, products, productImages, orders, orderItems, categories, inventory, reviews, notifications, users, sellerPayouts, sellerMessages } from "@db/schema";
 import { eq, desc, and, sql } from "@db/mysql";
 import { notifyAdmins } from "./notificationRouter";
 
@@ -278,7 +278,7 @@ export const sellerRouter = createRouter({
         : null;
 
       if (normalizedImages) {
-        if (imageList.length === 0) {
+        if (!imageList || imageList.length === 0) {
           throw new Error("Minimum 1 product image photo is mandatory!");
         }
 
@@ -634,47 +634,6 @@ export const sellerRouter = createRouter({
         paymentMethod: input.paymentMethod,
         accountDetails: input.accountDetails,
         status: "pending",
-      });
-
-      return { success: true };
-    }),
-
-  // Coupons
-  listCoupons: authedQuery.query(async ({ ctx }) => {
-    const db = getDb();
-    const userId = (ctx.user as any).id;
-    const seller = await getSellerByUserId(userId);
-    if (!seller) return [];
-
-    return db
-      .select()
-      .from(coupons)
-      .where(eq(coupons.sellerId, seller.id))
-      .orderBy(desc(coupons.createdAt));
-  }),
-
-  createCoupon: authedQuery
-    .input(
-      z.object({
-        code: z.string().min(3),
-        discountType: z.enum(["percentage", "fixed"]),
-        discountValue: z.number().min(1),
-        minSpend: z.number().optional().default(0),
-      })
-    )
-    .mutation(async ({ ctx, input }) => {
-      const db = getDb();
-      const userId = (ctx.user as any).id;
-      const seller = await getSellerByUserId(userId);
-      if (!seller) throw new Error("Seller profile not found");
-
-      await db.insert(coupons).values({
-        sellerId: seller.id,
-        code: input.code.toUpperCase(),
-        discountType: input.discountType,
-        discountValue: input.discountValue,
-        minSpend: input.minSpend || 0,
-        status: "active",
       });
 
       return { success: true };

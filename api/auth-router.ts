@@ -106,6 +106,8 @@ const demoAccounts: DemoAccount[] = [
 
 async function ensureDemoAccount(phone: string) {
   const normalizedDemoPhone = normalizePhone(phone);
+  if (!normalizedDemoPhone) return;
+
   const demo = demoAccounts.find((account) => account.phone === normalizedDemoPhone);
   if (!demo) return;
 

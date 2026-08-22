@@ -99,12 +99,6 @@ export const INTENT_TRAINING_DATA: TrainingExample[] = [
   { domain: "support", intent: "complaint", text: "product ta nosto asche, ki khorob!" },
   { domain: "support", intent: "complaint", text: "পণ্যটি নষ্ট অবস্থায় এসেছে" },
 
-  // discount_coupon
-  { domain: "support", intent: "discount_coupon", text: "do you have any promo codes?" },
-  { domain: "support", intent: "discount_coupon", text: "how do I apply a discount?" },
-  { domain: "support", intent: "discount_coupon", text: "my coupon code isn't working" },
-  { domain: "support", intent: "discount_coupon", text: "is there any sale going on?" },
-
   // cart_help
   { domain: "support", intent: "cart_help", text: "I can't add this to my cart" },
   { domain: "support", intent: "cart_help", text: "my cart is empty after login" },

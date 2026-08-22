@@ -408,25 +408,7 @@ export type StylistProfile = typeof stylistProfiles.$inferSelect;
 export type InsertStylistProfile = typeof stylistProfiles.$inferInsert;
 
 // ============================================================
-// 19. COUPONS / PROMOTIONS
-// ============================================================
-export const coupons = mysqlTable("coupons", {
-  id: integer("id").primaryKey().notNull(),
-  sellerId: integer("sellerId").notNull(),
-  code: text("code").notNull(),
-  discountType: text("discount_type").notNull(), // 'percentage' | 'fixed'
-  discountValue: real("discount_value").notNull(),
-  minSpend: real("min_spend").default(0).notNull(),
-  usageCount: integer("usage_count").default(0).notNull(),
-  status: text("status").default("active").notNull(), // 'active' | 'expired'
-  createdAt: integer("createdAt").default(NOW).notNull(),
-});
-
-export type Coupon = typeof coupons.$inferSelect;
-export type InsertCoupon = typeof coupons.$inferInsert;
-
-// ============================================================
-// 20. SELLER PAYOUTS
+// 19. SELLER PAYOUTS
 // ============================================================
 export const sellerPayouts = mysqlTable("seller_payouts", {
   id: integer("id").primaryKey().notNull(),

@@ -135,10 +135,10 @@ export function ReviewModal({ order, onClose, onSuccess }: { order: any; onClose
                 </button>
                 <button
                   type="submit"
-                  disabled={submitReview.isLoading}
+                  disabled={submitReview.isPending}
                   className="flex-1 px-4 py-3 rounded-xl font-semibold text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 transition-colors"
                 >
-                  {submitReview.isLoading ? "Submitting..." : "Submit Review"}
+                  {submitReview.isPending ? "Submitting..." : "Submit Review"}
                 </button>
               </div>
             </form>

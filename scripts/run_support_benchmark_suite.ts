@@ -72,10 +72,10 @@ async function runSupportBenchmarkSuite() {
       expectedContent: "Payment",
     },
     {
-      name: "Coupon Validation Code",
-      query: "My promo code WELCOME10 is not working",
-      expectedIntent: "coupon_validation",
-      expectedContent: "WELCOME10",
+      name: "Checkout Help",
+      query: "I need help with my checkout and shipping total",
+      expectedIntent: "unknown",
+      expectedContent: "checkout",
     },
     {
       name: "Hostile Human Escalation Fast-Path",

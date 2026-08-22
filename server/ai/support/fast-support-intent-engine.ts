@@ -16,7 +16,6 @@ export type SupportIntent =
   | "exchange_item"
   | "refund_status"
   | "payment_issue"
-  | "coupon_validation"
   | "update_shipping_address"
   | "delivery_delay"
   | "warranty_lookup"
@@ -157,15 +156,7 @@ export class FastSupportIntentEngine {
       return { intent: "payment_issue", confidence: 0.96, extractedOrderId, extractedTicketId, language, matchedRule: "payment_issue" };
     }
 
-    // 8. Coupon / Discount Code Problems
-    if (
-      lower.includes("promo code") || lower.includes("discount code") || lower.includes("coupon code") ||
-      matchesKeywords(lower, ["coupon", "cupon", "promo", "voucher", "discount"])
-    ) {
-      return { intent: "coupon_validation", confidence: 0.96, extractedOrderId, extractedTicketId, language, matchedRule: "coupon_validation" };
-    }
-
-    // 9. Track Order / Shipping Location
+    // 8. Track Order / Shipping Location
     if (
       extractedOrderId ||
       lower.includes("where is my order") || lower.includes("order status") || lower.includes("track order") ||

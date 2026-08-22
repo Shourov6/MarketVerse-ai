@@ -50,11 +50,6 @@ export interface SupportDecisionResult {
     status: string;
     userMessage: string;
   };
-  coupon?: {
-    code: string;
-    discount: string;
-    valid: boolean;
-  };
   nextActions: Array<{ label: string; actionQuery: string; icon?: string }>;
   tone: "positive" | "empathetic" | "neutral" | "urgent";
   rawFallbackText: string;

@@ -26,7 +26,6 @@ import {
   Star,
   Users,
   MessageSquare,
-  Gift,
   Settings,
   User,
   Menu,
@@ -85,7 +84,7 @@ export default function SellerDashboard() {
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <button
-            onClick={() => demoSellerLogin.mutate({ phone: "01700000001", password: "seller123" })}
+            onClick={() => demoSellerLogin.mutate({ identifier: "01700000001", password: "seller123" })}
             className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 active:scale-95"
           >
             <Sparkles className="h-4 w-4" />
@@ -112,7 +111,7 @@ function SellerDashboardContent() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const validSellerTabs = ["overview", "products", "inventory", "orders", "analytics", "payouts", "reviews", "customers", "messages", "promotions", "settings", "profile"];
+  const validSellerTabs = ["overview", "products", "inventory", "orders", "analytics", "payouts", "reviews", "customers", "messages", "settings", "profile"];
 
   const getInitialTab = () => {
     const tabFromUrl = searchParams.get("tab");
@@ -122,7 +121,7 @@ function SellerDashboardContent() {
     return "overview";
   };
 
-  const [activeMenu, setActiveMenuState] = useState<"overview" | "products" | "inventory" | "orders" | "analytics" | "payouts" | "reviews" | "customers" | "messages" | "promotions" | "settings" | "profile">(getInitialTab);
+  const [activeMenu, setActiveMenuState] = useState<"overview" | "products" | "inventory" | "orders" | "analytics" | "payouts" | "reviews" | "customers" | "messages" | "settings" | "profile">(getInitialTab);
 
   const setActiveMenu = (menu: any) => {
     const nextMenu = validSellerTabs.includes(menu) ? menu : "overview";
@@ -508,17 +507,6 @@ function SellerDashboardContent() {
             sidebarOpen={sidebarOpen}
           />
           
-          {/* Marketing Section */}
-          {sidebarOpen && <p className="px-3 py-2 text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mt-6">Marketing</p>}
-          
-          <SidebarLink
-            icon={<Gift className="h-5 w-5" />}
-            label="Promotions"
-            active={activeMenu === "promotions"}
-            onClick={() => setActiveMenu("promotions")}
-            sidebarOpen={sidebarOpen}
-          />
-          
           {/* Settings Section */}
           {sidebarOpen && <p className="px-3 py-2 text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mt-6">Account</p>}
           
@@ -635,9 +623,6 @@ function SellerDashboardContent() {
 
           {/* Messages Tab */}
           {activeMenu === "messages" && <MessagesSection messages={dashboard?.messages} />}
-
-          {/* Promotions Tab */}
-          {activeMenu === "promotions" && <PromotionsSection promotions={dashboard?.promotions} />}
 
           {/* Settings Tab */}
           {activeMenu === "settings" && <SettingsSection dashboard={dashboard} settingsForm={settingsForm} setSettingsForm={setSettingsForm} onSave={handleSaveProfile} isSaving={updateProfile.isPending} />}
@@ -882,11 +867,6 @@ function OverviewSection({
             icon={<DollarSign className="h-5 w-5" />}
             label="Check Payouts"
             onClick={() => setActiveMenu("payouts")}
-          />
-          <QuickActionButton
-            icon={<Gift className="h-5 w-5" />}
-            label="Manage Promotions"
-            onClick={() => setActiveMenu("promotions")}
           />
         </div>
       </div>
@@ -2981,136 +2961,6 @@ function MessagesSection({ messages: _initialMessages }: any) {
           )}
         </div>
       </div>
-    </div>
-  );
-}
-
-// Promotions Section
-function PromotionsSection({ promotions: _initialPromos }: any) {
-  const { data: couponsList, refetch } = trpc.seller.listCoupons.useQuery();
-  const [showModal, setShowModal] = useState(false);
-  const [couponForm, setCouponForm] = useState({ code: "", discountType: "percentage" as "percentage" | "fixed", discountValue: "10", minSpend: "0" });
-
-  const createCoupon = trpc.seller.createCoupon.useMutation({
-    onSuccess: () => {
-      toast.success("Coupon code created!");
-      setShowModal(false);
-      setCouponForm({ code: "", discountType: "percentage", discountValue: "10", minSpend: "0" });
-      refetch();
-    },
-    onError: (err) => {
-      toast.error(err.message || "Failed to create coupon");
-    },
-  });
-
-  const list = couponsList || [];
-
-  return (
-    <div className="space-y-6">
-      <div className="rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-800 flex items-center justify-between shadow-sm">
-        <div>
-          <h2 className="text-lg font-bold text-slate-900 dark:text-white">Store Discount Coupons</h2>
-          <p className="text-sm text-slate-500">Create custom promo codes and flash discount campaigns.</p>
-        </div>
-        <button
-          onClick={() => setShowModal(true)}
-          className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-indigo-700 transition-all"
-        >
-          <Plus className="h-4 w-4" />
-          Create Promo Coupon
-        </button>
-      </div>
-
-      <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm">
-        {list.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {list.map((coupon: any) => (
-              <div key={coupon.id} className="rounded-xl border border-indigo-100 dark:border-indigo-900/40 bg-indigo-50/30 dark:bg-indigo-900/10 p-5 space-y-2 relative">
-                <span className="absolute top-4 right-4 text-xs font-bold bg-emerald-600 text-white px-2.5 py-0.5 rounded-full uppercase">Active</span>
-                <p className="font-mono text-lg font-bold text-indigo-600 dark:text-indigo-400 tracking-wider">{coupon.code}</p>
-                <p className="text-sm font-bold text-slate-900 dark:text-white">
-                  {coupon.discountType === "percentage" ? `${coupon.discountValue}% OFF` : `${formatCurrency(coupon.discountValue)} OFF`}
-                </p>
-                <p className="text-xs text-slate-500">Min Order: {formatCurrency(coupon.minSpend || 0)}</p>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-12">
-            <Gift className="h-12 w-12 text-slate-300 dark:text-slate-600 mx-auto mb-3" />
-            <p className="text-slate-500">No active coupons created yet.</p>
-          </div>
-        )}
-      </div>
-
-      {showModal && (
-        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-slate-800 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white">Create Promo Coupon</h3>
-              <button onClick={() => setShowModal(false)} className="text-slate-400 hover:text-slate-600">
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            <div>
-              <label className="block text-xs font-semibold text-slate-500 uppercase mb-1">Coupon Code</label>
-              <input
-                type="text"
-                value={couponForm.code}
-                onChange={(e) => setCouponForm({ ...couponForm, code: e.target.value.toUpperCase() })}
-                className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-mono text-sm font-bold"
-                placeholder="E.G. EID2026"
-              />
-            </div>
-
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <label className="block text-xs font-semibold text-slate-500 uppercase mb-1">Discount Type</label>
-                <select
-                  value={couponForm.discountType}
-                  onChange={(e) => setCouponForm({ ...couponForm, discountType: e.target.value as any })}
-                  className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm"
-                >
-                  <option value="percentage">Percentage (%)</option>
-                  <option value="fixed">Fixed Amount (BDT)</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-slate-500 uppercase mb-1">Discount Value</label>
-                <input
-                  type="number"
-                  value={couponForm.discountValue}
-                  onChange={(e) => setCouponForm({ ...couponForm, discountValue: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-xs font-semibold text-slate-500 uppercase mb-1">Minimum Order Amount (BDT)</label>
-              <input
-                type="number"
-                value={couponForm.minSpend}
-                onChange={(e) => setCouponForm({ ...couponForm, minSpend: e.target.value })}
-                className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm"
-              />
-            </div>
-
-            <div className="flex justify-end gap-3 pt-3">
-              <button onClick={() => setShowModal(false)} className="px-4 py-2 text-sm text-slate-600">Cancel</button>
-              <button
-                onClick={() => createCoupon.mutate({ code: couponForm.code, discountType: couponForm.discountType, discountValue: Number(couponForm.discountValue), minSpend: Number(couponForm.minSpend) })}
-                disabled={createCoupon.isPending || !couponForm.code.trim()}
-                className="px-5 py-2 bg-indigo-600 text-white font-semibold rounded-xl text-sm hover:bg-indigo-700 disabled:opacity-50"
-              >
-                {createCoupon.isPending ? "Creating..." : "Save Coupon"}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

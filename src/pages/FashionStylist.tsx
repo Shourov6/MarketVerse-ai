@@ -19,9 +19,6 @@ import {
   Star,
   Gem,
   X,
-  Smartphone,
-  ShoppingBag,
-  ArrowRight,
 } from "lucide-react";
 
 export type AssistantDomain = "fashion" | "gadgets" | "general" | null;
@@ -215,13 +212,6 @@ export default function FashionStylist() {
   const [input, setInput] = useState("");
   const [copiedText, setCopiedText] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  function getCurrentSeason(): string {
-    const month = new Date().getMonth();
-    if (month >= 2 && month <= 4) return "spring";
-    if (month >= 5 && month <= 7) return "summer";
-    if (month >= 8 && month <= 10) return "autumn";
-    return "winter";
-  }
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);

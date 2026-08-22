@@ -125,7 +125,7 @@ export class RAGPipeline {
 
     // ── GADGETS FALLBACK ──
     if (domain === "gadgets" || qLower.includes("laptop") || qLower.includes("pc build") || qLower.includes("gaming") || qLower.includes("gpu") || qLower.includes("programming") || qLower.includes("video editing") || qLower.includes("ram")) {
-      const { LAPTOP_USE_CASE_PROFILES, PC_COMPATIBILITY_CHECKS, GAMING_GPU_TIERS } = await import("../fashion/clevora-knowledge.ts");
+      const { LAPTOP_USE_CASE_PROFILES, PC_COMPATIBILITY_CHECKS } = await import("../fashion/clevora-knowledge.ts");
       
       if (qLower.includes("build") || qLower.includes("compatib")) {
         const topChecks = PC_COMPATIBILITY_CHECKS.slice(0, 4).map(c => `• **${c.check}**: ${c.mustVerify}`).join("\n");

@@ -5,13 +5,12 @@
  *  - Shipping / Courier Delay Alerts
  *  - Expiring Return Window Warnings
  *  - Low Stock Cart Alerts
- *  - Expiring Coupon Reminders
  *  - Warranty Expiration Warnings
  */
 
 export interface PredictiveAlert {
   id: string;
-  type: "delay_warning" | "return_expiry" | "stock_scarcity" | "coupon_expiry" | "warranty_warning";
+  type: "delay_warning" | "return_expiry" | "stock_scarcity" | "warranty_warning";
   severity: "info" | "warning" | "urgent";
   title: string;
   message: string;
@@ -22,7 +21,7 @@ export interface PredictiveAlert {
 export class PredictiveAssistanceEngine {
   generateAlerts(
     orderData?: any,
-    stage?: string,
+    _stage?: string,
     _ticketData?: any
   ): PredictiveAlert[] {
     const alerts: PredictiveAlert[] = [];
@@ -50,19 +49,6 @@ export class PredictiveAssistanceEngine {
         message: `Your return window for Order #${orderData.orderNumber} expires in 3 days. Free doorstep pickup is available.`,
         actionLabel: "Initiate Return",
         actionQuery: "return item",
-      });
-    }
-
-    // 3. Expiring Coupon Reminder
-    if (stage === "Checkout" || stage === "Cart Building") {
-      alerts.push({
-        id: "alert_coupon_1",
-        type: "coupon_expiry",
-        severity: "urgent",
-        title: "🔥 Special Discount Active",
-        message: "Use code WELCOME10 at checkout to save 10% on orders above BDT 1,000.",
-        actionLabel: "Apply Code WELCOME10",
-        actionQuery: "validate WELCOME10",
       });
     }
 
