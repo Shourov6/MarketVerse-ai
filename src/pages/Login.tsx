@@ -96,6 +96,7 @@ export default function Login() {
   // Google Sign-In (real GSI)
   const googleBtnRef = useRef<HTMLDivElement>(null);
   const [googleLoading, setGoogleLoading] = useState(false);
+  const [googleReady, setGoogleReady] = useState(false);
 
   const googleAuthMutation = trpc.auth.googleAuth.useMutation({
     onSuccess: (data) => {
@@ -118,28 +119,72 @@ export default function Login() {
 
   useEffect(() => {
     const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
-    if (!clientId || !window.google?.accounts?.id) return;
-
-    window.google.accounts.id.initialize({
-      client_id: clientId,
-      callback: (response: { credential: string }) => {
-        if (response.credential) {
-          setGoogleLoading(true);
-          googleAuthMutation.mutate({ credential: response.credential });
-        }
-      },
-      auto_select: false,
-    });
-
-    if (googleBtnRef.current) {
-      window.google.accounts.id.renderButton(googleBtnRef.current, {
-        theme: "outline",
-        size: "large",
-        width: googleBtnRef.current.offsetWidth || 400,
-        text: "continue_with",
-        logo_alignment: "left",
-      });
+    if (!clientId) {
+      console.error("[GoogleSignIn] VITE_GOOGLE_CLIENT_ID is not set — Google Sign-In will not be available.");
+      return;
     }
+
+    let cancelled = false;
+    let pollTimer: ReturnType<typeof setInterval> | null = null;
+    let timeoutTimer: ReturnType<typeof setTimeout> | null = null;
+
+    const initializeGoogle = () => {
+      if (cancelled || !window.google?.accounts?.id) return;
+
+      try {
+        window.google.accounts.id.initialize({
+          client_id: clientId,
+          callback: (response: { credential: string }) => {
+            if (response.credential) {
+              setGoogleLoading(true);
+              googleAuthMutation.mutate({ credential: response.credential });
+            }
+          },
+          auto_select: false,
+        });
+
+        if (googleBtnRef.current) {
+          window.google.accounts.id.renderButton(googleBtnRef.current, {
+            theme: "outline",
+            size: "large",
+            width: googleBtnRef.current.offsetWidth || 400,
+            text: "continue_with",
+            logo_alignment: "left",
+          });
+        }
+
+        setGoogleReady(true);
+      } catch (err) {
+        console.error("[GoogleSignIn] Failed to initialize Google Sign-In:", err);
+      }
+    };
+
+    // If the Google script has already loaded, initialize immediately.
+    if (window.google?.accounts?.id) {
+      initializeGoogle();
+    } else {
+      // Otherwise poll for the script to finish loading asynchronously.
+      pollTimer = setInterval(() => {
+        if (window.google?.accounts?.id) {
+          if (pollTimer) clearInterval(pollTimer);
+          initializeGoogle();
+        }
+      }, 200);
+
+      // Give up after 5 seconds and log an error for debugging.
+      timeoutTimer = setTimeout(() => {
+        if (pollTimer) clearInterval(pollTimer);
+        if (!window.google?.accounts?.id) {
+          console.error("[GoogleSignIn] Google Identity Services script did not load within 5s.");
+        }
+      }, 5000);
+    }
+
+    return () => {
+      cancelled = true;
+      if (pollTimer) clearInterval(pollTimer);
+      if (timeoutTimer) clearTimeout(timeoutTimer);
+    };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -548,12 +593,20 @@ export default function Login() {
                 <span>Signing in with Google...</span>
               </div>
             ) : (
-              <div
-                ref={googleBtnRef}
-                id="google-signin-btn"
-                className="w-full [&>div]:w-full [&>div>div]:w-full"
-                style={{ minHeight: 44 }}
-              />
+              <>
+                {!googleReady && (
+                  <div className="w-full flex items-center justify-center gap-2 px-4 py-3.5 border border-slate-200 dark:border-slate-800 rounded-2xl bg-slate-50 dark:bg-slate-800/30 text-slate-400 text-xs font-medium mb-2">
+                    <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                    <span>Loading Google Sign-In...</span>
+                  </div>
+                )}
+                <div
+                  ref={googleBtnRef}
+                  id="google-signin-btn"
+                  className="w-full [&>div]:w-full [&>div>div]:w-full"
+                  style={{ minHeight: 44 }}
+                />
+              </>
             )}
           </div>
 
