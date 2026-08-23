@@ -117,8 +117,8 @@ export default function Login() {
   });
 
   useEffect(() => {
-    const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
-    if (!clientId) return;
+    const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID ||
+      "866747784677-80ilkuld0l6k8j65h3ds9j5shbq3j8t0.apps.googleusercontent.com";
 
     let cancelled = false;
     let attempts = 0;
