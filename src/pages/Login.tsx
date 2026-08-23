@@ -118,20 +118,34 @@ export default function Login() {
 
   useEffect(() => {
     const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
-    if (!clientId || !window.google?.accounts?.id) return;
+    if (!clientId) return;
 
-    window.google.accounts.id.initialize({
-      client_id: clientId,
-      callback: (response: { credential: string }) => {
-        if (response.credential) {
-          setGoogleLoading(true);
-          googleAuthMutation.mutate({ credential: response.credential });
+    let cancelled = false;
+    let attempts = 0;
+    const maxAttempts = 50;
+
+    const renderGoogleButton = () => {
+      if (cancelled || !googleBtnRef.current) return;
+
+      if (!window.google?.accounts?.id) {
+        if (attempts < maxAttempts) {
+          attempts += 1;
+          window.setTimeout(renderGoogleButton, 100);
         }
-      },
-      auto_select: false,
-    });
+        return;
+      }
 
-    if (googleBtnRef.current) {
+      window.google.accounts.id.initialize({
+        client_id: clientId,
+        callback: (response: { credential: string }) => {
+          if (response.credential) {
+            setGoogleLoading(true);
+            googleAuthMutation.mutate({ credential: response.credential });
+          }
+        },
+        auto_select: false,
+      });
+
       window.google.accounts.id.renderButton(googleBtnRef.current, {
         theme: "outline",
         size: "large",
@@ -139,7 +153,13 @@ export default function Login() {
         text: "continue_with",
         logo_alignment: "left",
       });
-    }
+    };
+
+    renderGoogleButton();
+
+    return () => {
+      cancelled = true;
+    };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
