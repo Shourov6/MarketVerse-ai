@@ -143,10 +143,6 @@ export default function ProductDetail() {
     );
   }
 
-  const discount = product.comparePrice
-    ? Math.round(((product.comparePrice - product.price) / product.comparePrice) * 100)
-    : 0;
-
   const allImages = product.images?.length ? product.images : [{ imageUrl: product.images?.[0]?.imageUrl || "" }];
 
   return (
@@ -167,71 +163,62 @@ export default function ProductDetail() {
       {/* Product Main */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 mb-10 items-start">
         {/* Images */}
-        <div className="md:col-span-5 flex flex-col items-center animate-slide-left">
-          <div className="w-full max-w-sm h-[260px] sm:h-[310px] rounded-3xl overflow-hidden glass-card flex items-center justify-center p-3 mb-4 transition-all hover:shadow-xl group relative">
-            <div className="absolute inset-0 bg-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-            <img
-              src={allImages[selectedImage]?.imageUrl || ""}
-              alt={product.name}
-              className="max-h-[240px] sm:max-h-[280px] w-auto h-auto object-contain transition-transform duration-500 group-hover:scale-110"
-            />
-          </div>
-          {allImages.length > 1 && (
-            <div className="flex gap-2 overflow-x-auto max-w-sm w-full justify-center py-1">
+        <div className="md:col-span-7 flex flex-col-reverse md:flex-row gap-4 animate-slide-left">
+          {/* Thumbnails */}
+          {allImages.length > 1 ? (
+            <div className="flex md:flex-col gap-4 overflow-x-auto md:overflow-y-auto max-h-[500px]">
               {allImages.map((img: any, i: number) => (
                 <button
                   key={i}
                   onClick={() => setSelectedImage(i)}
-                  className={`w-12 h-12 rounded-lg overflow-hidden shrink-0 border-2 transition-all p-0.5 bg-white dark:bg-slate-800 ${
-                    selectedImage === i
-                      ? "border-indigo-600 shadow-sm ring-2 ring-indigo-600/20 scale-105"
-                      : "border-slate-200 dark:border-slate-700 opacity-70 hover:opacity-100"
+                  className={`w-20 h-20 bg-[#F5F5F5] rounded flex items-center justify-center p-2 shrink-0 ${
+                    selectedImage === i ? "border-2 border-black" : "border border-transparent"
                   }`}
                 >
-                  <img src={img.imageUrl} alt={`${product.name} ${i + 1}`} className="w-full h-full object-contain rounded" />
+                  <img src={img.imageUrl} alt={`${product.name} ${i + 1}`} className="w-full h-full object-contain" />
                 </button>
               ))}
             </div>
-          )}
+          ) : null}
+
+          {/* Main Image */}
+          <div className="flex-1 bg-[#F5F5F5] rounded flex items-center justify-center p-8 min-h-[400px]">
+            <img
+              src={allImages[selectedImage]?.imageUrl || ""}
+              alt={product.name}
+              className="w-full max-h-[500px] object-contain transition-transform duration-500 hover:scale-105"
+            />
+          </div>
         </div>
 
         {/* Info */}
-        <div className="md:col-span-7 animate-fade-up" style={{ animationDelay: '100ms' }}>
-          <p className="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-2">{product.categoryName}</p>
-          <h1 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2 leading-tight">{product.name}</h1>
+        <div className="md:col-span-5 animate-fade-up" style={{ animationDelay: '100ms' }}>
+          <h1 className="text-2xl font-bold text-black dark:text-white mb-3">{product.name}</h1>
 
           {/* Rating */}
-          <div className="flex items-center gap-2 mb-3">
-            <div className="flex items-center gap-0.5">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="flex text-[#FFAD33]">
               {[1, 2, 3, 4, 5].map((s) => (
                 <Star
                   key={s}
                   className={`h-4 w-4 ${
                     s <= Math.round(product.rating || 0)
-                      ? "text-yellow-400 fill-yellow-400"
-                      : "text-slate-300"
+                      ? "fill-[#FFAD33]"
+                      : "text-gray-300"
                   }`}
                 />
               ))}
             </div>
-            <span className="text-xs font-bold text-slate-800 dark:text-slate-200">
-              {product.rating?.toFixed(1) || "0"}
+            <span className="text-sm text-gray-500">
+              ({product.reviewCount || 0} Reviews)
             </span>
-            <span className="text-xs text-slate-400">({product.reviewCount || 0} reviews)</span>
-            <span className="text-xs text-slate-400">• {product.soldCount || 0} sold</span>
+            <span className="text-sm text-gray-300">|</span>
+            <span className="text-sm text-green-500">In Stock</span>
           </div>
 
           {/* Price */}
-          <div className="flex items-baseline gap-2.5 mb-4">
-            <span className="text-2xl font-extrabold text-slate-900 dark:text-white">{formatCurrency(product.price)}</span>
-            {product.comparePrice ? (
-              <>
-                <span className="text-sm font-medium text-slate-400 line-through">{formatCurrency(product.comparePrice)}</span>
-                <span className="px-2 py-0.5 bg-red-100 text-red-600 text-[11px] font-bold rounded-md">
-                  {discount}% OFF
-                </span>
-              </>
-            ) : null}
+          <div className="text-2xl font-medium text-black dark:text-white mb-4">
+            {formatCurrency(product.price)}
           </div>
 
           {/* Short Description */}

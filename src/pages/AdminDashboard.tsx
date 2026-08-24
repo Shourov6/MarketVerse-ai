@@ -27,7 +27,6 @@ import {
   LogOut,
   BadgeCheck,
   Clock3,
-  TrendingUp,
   Sparkles,
   ArrowRight,
   Menu,
@@ -44,6 +43,7 @@ import {
   Trash2,
   Send,
 } from "lucide-react";
+import { LineChart, Line, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
 
 export default function AdminDashboard() {
   const { user, logout } = useAuth();
@@ -295,16 +295,6 @@ export default function AdminDashboard() {
     },
     onError: (err) => toast.error(err.message || "Failed to update order status"),
   });
-  const updateOrderPaymentStatus = trpc.admin.updateOrderPaymentStatus.useMutation({
-    onSuccess: () => {
-      toast.success("Order payment status updated!");
-      setExpandedOrderId(null);
-      utils.admin.dashboard.invalidate();
-      utils.admin.orders.invalidate();
-      broadcastLiveEvent("ORDER_STATUS_CHANGED");
-    },
-    onError: (err) => toast.error(err.message || "Failed to update payment status"),
-  });
 
   if (isLoading) {
     return (
@@ -381,11 +371,11 @@ export default function AdminDashboard() {
       )}
 
       {/* Sidebar */}
-      <aside className={`fixed lg:static inset-y-0 left-0 z-50 lg:z-auto w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 transform transition-transform duration-300 ease-in-out flex flex-col ${
+      <aside className={`fixed lg:static inset-y-0 left-0 z-50 lg:z-auto w-64 bg-slate-50 dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 transform transition-transform duration-300 ease-in-out flex flex-col ${
         isMobileMenuOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
       }`}>
         <div className="p-6 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
-          <h2 className="text-xl font-bold text-slate-900 dark:text-white">Admin Panel</h2>
+          <h2 className="text-xl font-bold text-[#4F46E5] dark:text-indigo-400">Admin Panel</h2>
           <button className="lg:hidden p-2 text-slate-500" onClick={() => setIsMobileMenuOpen(false)}>
             <X className="w-5 h-5" />
           </button>
@@ -401,11 +391,11 @@ export default function AdminDashboard() {
               }}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
                 activeTab === tab.key
-                  ? "bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400"
-                  : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-slate-900 dark:hover:text-white"
+                  ? "bg-[#E0E7FF] dark:bg-indigo-900/30 text-[#4F46E5] dark:text-indigo-400"
+                  : "text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 hover:text-slate-900 dark:hover:text-white"
               }`}
             >
-              <div className={activeTab === tab.key ? "text-indigo-600 dark:text-indigo-400" : "text-slate-400 dark:text-slate-500"}>
+              <div className={activeTab === tab.key ? "text-[#4F46E5] dark:text-indigo-400" : "text-slate-400 dark:text-slate-500"}>
                 {tab.icon}
               </div>
               {tab.label}
@@ -445,13 +435,28 @@ export default function AdminDashboard() {
 
           {/* Stats Cards (Overview only) */}
           {activeTab === "overview" && (
-            <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3 mb-8">
-              <AdminStatCard icon={<Users className="h-5 w-5" />} label="Users" value={stats.totalUsers} color="blue" />
-              <AdminStatCard icon={<Store className="h-5 w-5" />} label="Sellers" value={stats.totalSellers} color="green" />
-              <AdminStatCard icon={<BadgeCheck className="h-5 w-5" />} label="Approved" value={stats.approvedSellers} color="emerald" />
-              <AdminStatCard icon={<Package className="h-5 w-5" />} label="Products" value={stats.totalProducts} color="purple" />
-              <AdminStatCard icon={<ShoppingCart className="h-5 w-5" />} label="Orders" value={stats.totalOrders} color="orange" />
-              <AdminStatCard icon={<DollarSign className="h-5 w-5" />} label="Revenue" value={formatCurrency(stats.totalRevenue || 0)} color="indigo" />
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-8">
+              <AdminStatCard 
+                icon={<Users className="h-5 w-5" />} 
+                label="Total Users" 
+                value={stats.totalUsers} 
+                color="green" 
+                trendData={[{v:10},{v:15},{v:13},{v:20},{v:25},{v:22},{v:30}]} 
+              />
+              <AdminStatCard 
+                icon={<Package className="h-5 w-5" />} 
+                label="Total Products" 
+                value={stats.totalProducts} 
+                color="purple" 
+                trendData={[{v:5},{v:8},{v:12},{v:10},{v:18},{v:24},{v:28}]} 
+              />
+              <AdminStatCard 
+                icon={<DollarSign className="h-5 w-5" />} 
+                label="Total Revenue" 
+                value={formatCurrency(stats.totalRevenue || 0)} 
+                color="yellow" 
+                trendData={[{v:100},{v:150},{v:130},{v:200},{v:250},{v:220},{v:350}]} 
+              />
             </div>
           )}
 
@@ -474,24 +479,25 @@ export default function AdminDashboard() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800">
-              <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Priority actions</h3>
-                <TrendingUp className="h-5 w-5 text-indigo-500" />
-              </div>
-              <div className="mt-4 space-y-3 text-sm">
-                <div className="flex items-center justify-between rounded-xl bg-slate-50 p-3 dark:bg-slate-700/50">
-                  <span className="text-slate-600 dark:text-slate-300">Pending seller reviews</span>
-                  <span className="font-semibold text-slate-900 dark:text-white">{stats.pendingSellersCount}</span>
-                </div>
-                <div className="flex items-center justify-between rounded-xl bg-slate-50 p-3 dark:bg-slate-700/50">
-                  <span className="text-slate-600 dark:text-slate-300">Orders needing attention</span>
-                  <span className="font-semibold text-slate-900 dark:text-white">{stats.pendingOrders}</span>
-                </div>
-                <div className="flex items-center justify-between rounded-xl bg-slate-50 p-3 dark:bg-slate-700/50">
-                  <span className="text-slate-600 dark:text-slate-300">Approved sellers</span>
-                  <span className="font-semibold text-slate-900 dark:text-white">{stats.approvedSellers}</span>
-                </div>
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800 row-span-2">
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">Revenue Overview</h3>
+              <div className="h-[250px] w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={[
+                    { name: 'Jan', revenue: 4000 },
+                    { name: 'Feb', revenue: 3000 },
+                    { name: 'Mar', revenue: 5000 },
+                    { name: 'Apr', revenue: 4500 },
+                    { name: 'May', revenue: 6000 },
+                    { name: 'Jun', revenue: 5500 },
+                  ]}>
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" />
+                    <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#6b7280', fontSize: 12}} dy={10} />
+                    <YAxis axisLine={false} tickLine={false} tick={{fill: '#6b7280', fontSize: 12}} dx={-10} tickFormatter={(value) => `৳${value}`} />
+                    <Tooltip cursor={{fill: 'rgba(0,0,0,0.05)'}} contentStyle={{borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)'}} />
+                    <Bar dataKey="revenue" fill="#4F46E5" radius={[4, 4, 0, 0]} barSize={32} />
+                  </BarChart>
+                </ResponsiveContainer>
               </div>
             </div>
           </div>
@@ -1094,64 +1100,58 @@ export default function AdminDashboard() {
 
           <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-x-auto">
             <table className="w-full min-w-[950px]">
-              <thead className="bg-slate-50 dark:bg-slate-700/50">
+              <thead className="bg-[#EEF2FF] dark:bg-slate-700/50">
                 <tr>
-                  <th className="text-left px-4 py-3 text-xs font-medium text-slate-500 uppercase">Order</th>
-                  <th className="text-left px-4 py-3 text-xs font-medium text-slate-500 uppercase">Amount</th>
-                  <th className="text-left px-4 py-3 text-xs font-medium text-slate-500 uppercase">Seller Accept</th>
-                  <th className="text-left px-4 py-3 text-xs font-medium text-slate-500 uppercase">Order Status</th>
-                  <th className="text-left px-4 py-3 text-xs font-medium text-slate-500 uppercase">Payment</th>
-                  <th className="text-left px-4 py-3 text-xs font-medium text-slate-500 uppercase">Actions</th>
+                  <th className="text-left px-4 py-3 text-sm font-bold text-slate-800 dark:text-white uppercase">User / Email</th>
+                  <th className="text-left px-4 py-3 text-sm font-bold text-slate-800 dark:text-white uppercase">Package / Items</th>
+                  <th className="text-left px-4 py-3 text-sm font-bold text-slate-800 dark:text-white uppercase">Booking Status</th>
+                  <th className="text-left px-4 py-3 text-sm font-bold text-slate-800 dark:text-white uppercase">Payment Status</th>
+                  <th className="text-left px-4 py-3 text-sm font-bold text-slate-800 dark:text-white uppercase">Amount</th>
+                  <th className="text-left px-4 py-3 text-sm font-bold text-slate-800 dark:text-white uppercase">Date</th>
+                  <th className="text-left px-4 py-3 text-sm font-bold text-slate-800 dark:text-white uppercase">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-700">
+              <tbody className="divide-y divide-slate-100 dark:divide-slate-700 bg-white dark:bg-slate-800">
                 {filteredOrders.length > 0 ? (
                   filteredOrders.map((o: any) => (
                     <React.Fragment key={o.id}>
                       <tr className="hover:bg-slate-50 dark:hover:bg-slate-700/30">
-                        <td className="px-4 py-3">
-                          <p className="text-sm font-medium text-slate-900 dark:text-white">{o.orderNumber}</p>
-                          <p className="text-xs text-slate-500">{o.items?.length || 0} items • {o.shippingCity || "Standard"}</p>
+                        <td className="px-4 py-4 align-top">
+                          <p className="text-sm font-medium text-slate-700 dark:text-white">{o.recipientName}</p>
+                          <p className="text-xs text-slate-500">{o.recipientEmail || o.recipientPhone || "N/A"}</p>
                         </td>
-                        <td className="px-4 py-3 text-sm font-medium text-slate-900 dark:text-white">{formatCurrency(o.totalAmount)}</td>
-                        <td className="px-4 py-3">
-                          <span className={`px-2 py-1 rounded-full text-xs font-bold uppercase ${
-                            o.sellerStatus === "accepted" ? "bg-blue-100 text-blue-700" :
-                            o.sellerStatus === "handed_over" ? "bg-indigo-100 text-indigo-700" :
-                            o.sellerStatus === "denied" ? "bg-rose-100 text-rose-700" :
-                            "bg-amber-100 text-amber-700"
+                        <td className="px-4 py-4 align-top">
+                          <p className="text-sm text-slate-700 dark:text-white line-clamp-2 max-w-[200px]">
+                            {o.items?.[0]?.productName || "Various Items"}
+                          </p>
+                        </td>
+                        <td className="px-4 py-4 align-top">
+                          <span className={`px-3 py-1 rounded-full text-[11px] font-bold text-white shadow-sm ${
+                            o.status === "delivered" ? "bg-[#22C55E]" :
+                            o.status === "cancelled" ? "bg-[#EF4444]" :
+                            "bg-[#EAB308]"
                           }`}>
-                            {o.sellerStatus || "pending"}
+                            {o.status || "pending"}
                           </span>
                         </td>
-                        <td className="px-4 py-3">
-                          <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                            o.status === "delivered" ? "bg-green-100 text-green-700" :
-                            o.status === "shipped" ? "bg-indigo-100 text-indigo-700" :
-                            o.status === "processing" ? "bg-blue-100 text-blue-700" :
-                            o.status === "cancelled" ? "bg-red-100 text-red-700" :
-                            "bg-yellow-100 text-yellow-700"
+                        <td className="px-4 py-4 align-top">
+                          <span className={`px-3 py-1 rounded-full text-[11px] font-bold text-white shadow-sm ${
+                            o.paymentStatus === "paid" ? "bg-[#22C55E]" :
+                            "bg-[#EF4444]"
                           }`}>
-                            {o.status}
+                            {o.paymentStatus === "paid" ? "succeeded" : "pending"}
                           </span>
                         </td>
-                        <td className="px-4 py-3">
-                          <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                            o.paymentStatus === "paid" ? "bg-green-100 text-green-700" :
-                            o.paymentStatus === "pending" ? "bg-yellow-100 text-yellow-700" :
-                            "bg-red-100 text-red-700"
-                          }`}>
-                            {o.paymentStatus}
-                          </span>
+                        <td className="px-4 py-4 align-top text-sm font-medium text-slate-700 dark:text-white">
+                          {formatCurrency(o.totalAmount)}
                         </td>
-                        <td className="px-4 py-3">
-                          <div className="flex flex-wrap gap-2">
-                            <button onClick={() => setExpandedOrderId(expandedOrderId === o.id ? null : o.id)} className="rounded-lg border border-slate-200 px-2.5 py-1 text-xs font-medium text-slate-700 hover:bg-slate-100">View</button>
-                            <button onClick={() => updateOrderStatus.mutate({ orderId: o.id, status: "processing" })} className="rounded-lg bg-blue-100 px-2.5 py-1 text-xs font-medium text-blue-700 hover:bg-blue-200">Process</button>
-                            <button onClick={() => updateOrderStatus.mutate({ orderId: o.id, status: "shipped" })} className="rounded-lg bg-indigo-100 px-2.5 py-1 text-xs font-medium text-indigo-700 hover:bg-indigo-200">Ship</button>
-                            <button onClick={() => updateOrderStatus.mutate({ orderId: o.id, status: "delivered" })} className="rounded-lg bg-green-100 px-2.5 py-1 text-xs font-medium text-green-700 hover:bg-green-200">Deliver</button>
-                            <button onClick={() => updateOrderStatus.mutate({ orderId: o.id, status: "cancelled" })} className="rounded-lg bg-red-100 px-2.5 py-1 text-xs font-medium text-red-700 hover:bg-red-200">Cancel</button>
-                            <button onClick={() => updateOrderPaymentStatus.mutate({ orderId: o.id, paymentStatus: "paid" })} className="rounded-lg bg-emerald-100 px-2.5 py-1 text-xs font-medium text-emerald-700 hover:bg-emerald-200">Pay</button>
+                        <td className="px-4 py-4 align-top text-sm text-slate-700 dark:text-slate-300">
+                          {new Date(o.createdAt).toLocaleDateString()}
+                        </td>
+                        <td className="px-4 py-4 align-top">
+                          <div className="flex flex-col gap-2">
+                            <button onClick={() => updateOrderStatus.mutate({ orderId: o.id, status: "processing" })} className="rounded bg-[#22C55E] px-3 py-1.5 text-xs font-bold text-white hover:bg-green-600 flex items-center gap-1 shadow-sm"><CheckCircle2 className="w-3.5 h-3.5"/> Confirm</button>
+                            <button onClick={() => updateOrderStatus.mutate({ orderId: o.id, status: "cancelled" })} className="rounded bg-[#EF4444] px-3 py-1.5 text-xs font-bold text-white hover:bg-red-600 flex items-center gap-1 shadow-sm"><XCircle className="w-3.5 h-3.5"/> Cancel</button>
                           </div>
                         </td>
                       </tr>
@@ -1846,28 +1846,46 @@ function AdminStatCard({
   label,
   value,
   color,
+  trendData,
 }: {
   icon: React.ReactNode;
   label: string;
   value: string | number;
   color: string;
+  trendData?: {v: number}[];
 }) {
   const colorMap: Record<string, string> = {
-    blue: "bg-blue-100 dark:bg-blue-900/30 text-blue-600",
-    green: "bg-green-100 dark:bg-green-900/30 text-green-600",
-    emerald: "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600",
-    purple: "bg-purple-100 dark:bg-purple-900/30 text-purple-600",
-    orange: "bg-orange-100 dark:bg-orange-900/30 text-orange-600",
-    indigo: "bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600",
+    blue: "bg-[#6366F1] text-white", // Purple-blue for Total Packages
+    emerald: "bg-[#10B981] text-white",
+    green: "bg-[#22C55E] text-white", // Green for Users
+    yellow: "bg-[#EAB308] text-white", // Yellow for Revenue
+    orange: "bg-[#EAB308] text-white", // Fallback to Yellow
+    red: "bg-[#EF4444] text-white", // Red for Bookings Today
+    indigo: "bg-[#EAB308] text-white", // Map revenue indigo to yellow
+    purple: "bg-[#6366F1] text-white",
   };
 
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4">
-      <div className={`inline-flex p-1.5 rounded-lg ${colorMap[color] || colorMap.blue} mb-2`}>
-        {icon}
+    <div className={`${colorMap[color] || colorMap.blue} rounded-xl shadow-md p-5 flex flex-col justify-between h-[120px] relative overflow-hidden group`}>
+      <div className="flex items-center justify-between z-10 relative">
+        <div className="flex flex-col">
+          <p className="text-sm font-medium text-white/90 mb-1">{label}</p>
+          <p className="text-2xl font-bold text-white tracking-tight leading-tight">{value}</p>
+        </div>
+        <div className="p-2 bg-white/20 rounded-full shrink-0">
+          {icon}
+        </div>
       </div>
-      <p className="text-lg xl:text-xl font-bold text-slate-900 dark:text-white tracking-tight">{value}</p>
-      <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">{label}</p>
+      
+      {trendData && trendData.length > 0 && (
+        <div className="absolute bottom-0 left-0 right-0 h-[50px] opacity-40 group-hover:opacity-60 transition-opacity">
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart data={trendData}>
+              <Line type="monotone" dataKey="v" stroke="#ffffff" strokeWidth={3} dot={false} isAnimationActive={true} />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+      )}
     </div>
   );
 }

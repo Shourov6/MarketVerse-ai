@@ -6,7 +6,6 @@ import {
   Star,
   Zap,
   ArrowRight,
-  ShoppingCart,
   Heart,
   Loader2,
   Search,
@@ -882,101 +881,93 @@ function ProductCard({
     : ((product.id * 23) % 200 + 15);
 
   return (
-    <div className="group bg-white dark:bg-slate-800/90 rounded-2xl shadow-sm hover:shadow-xl hover:border-indigo-300/80 dark:hover:border-indigo-500/50 transition-all duration-300 flex flex-col justify-between overflow-hidden border border-slate-200/80 dark:border-slate-700/70">
-      <div>
-        {/* Image Container */}
-        <Link to={`/product/${product.slug}`} className="block relative aspect-square overflow-hidden bg-slate-100 dark:bg-slate-700/50">
+    <div className="group flex flex-col gap-4 relative">
+      {/* Image Container with gray background */}
+      <div className="relative aspect-square rounded overflow-hidden bg-[#F5F5F5] dark:bg-slate-800 flex items-center justify-center p-6 group">
+        <Link to={`/product/${product.slug}`} className="block w-full h-full relative">
           <img
             src={product.imageUrl || "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500"}
             alt={product.name}
-            className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500 ease-out"
+            className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
             loading="lazy"
           />
-
-          {/* Badges Stack Top Left */}
-          <div className="absolute top-2.5 left-2.5 flex flex-col gap-1.5 items-start z-10">
-            {discount > 0 && (
-              <span className="px-2.5 py-1 bg-gradient-to-r from-rose-500 to-pink-600 text-white text-[11px] font-extrabold rounded-full shadow-md tracking-tight">
-                -{discount}%
-              </span>
-            )}
-            {isAiCurated && (
-              <span className="px-2.5 py-1 bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-[10px] font-bold rounded-full shadow-md flex items-center gap-1 backdrop-blur-md">
-                <Sparkles className="h-3 w-3 text-amber-300 animate-pulse" />
-                <span>AI Fit</span>
-              </span>
-            )}
-          </div>
-
-          {/* Action Button Top Right */}
-          <div className="absolute top-2.5 right-2.5 flex flex-col gap-1.5 z-10 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-200">
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                onAddToWishlist();
-              }}
-              className="p-2.5 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md text-slate-600 dark:text-slate-300 hover:text-rose-500 dark:hover:text-rose-400 rounded-full shadow-md hover:scale-110 transition-all"
-              aria-label="Add to wishlist"
-              title="Add to Wishlist"
-            >
-              <Heart className="h-4 w-4" />
-            </button>
-          </div>
         </Link>
 
-        {/* Content Body */}
-        <div className="p-3 sm:p-3.5 flex flex-col gap-1">
-          {/* Category & Seller */}
-          <div className="flex items-center justify-between text-[10px] font-semibold text-slate-500 dark:text-slate-400">
-            <span className="text-indigo-600 dark:text-indigo-400 font-bold truncate max-w-[55%]">
-              {product.categoryName || "General"}
+        {/* Badges Stack Top Left */}
+        <div className="absolute top-3 left-3 flex flex-col gap-2 z-10">
+          {discount > 0 && (
+            <span className="px-3 py-1 bg-[#DB4444] text-white text-xs rounded shadow-sm">
+              -{discount}%
             </span>
-            <span className="truncate max-w-[42%] text-right font-medium text-slate-400">
-              {product.sellerName || "Marketplace"}
+          )}
+          {isAiCurated && (
+            <span className="px-3 py-1 bg-green-500 text-white text-xs rounded shadow-sm">
+              NEW
             </span>
-          </div>
-
-          {/* Product Name */}
-          <Link to={`/product/${product.slug}`}>
-            <h3 className="font-semibold text-slate-900 dark:text-white text-xs sm:text-sm line-clamp-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors leading-snug">
-              {product.name}
-            </h3>
-          </Link>
-
-          {/* Rating */}
-          <div className="flex items-center gap-1.5 mt-0.5">
-            <div className="flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-400 text-[10px] font-extrabold border border-amber-200/60 dark:border-amber-900/40">
-              <Star className="h-3 w-3 text-amber-500 fill-amber-500" />
-              <span>{displayRating}</span>
-            </div>
-            <span className="text-[10px] text-slate-400 font-medium">
-              ({displayReviewCount})
-            </span>
-          </div>
+          )}
         </div>
+
+        {/* Action Buttons Top Right */}
+        <div className="absolute top-3 right-3 flex flex-col gap-2 z-10">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              onAddToWishlist();
+            }}
+            className="w-8 h-8 bg-white rounded-full flex items-center justify-center hover:bg-[#DB4444] hover:text-white transition-colors shadow-sm"
+            aria-label="Add to wishlist"
+          >
+            <Heart className="h-4 w-4" />
+          </button>
+          <Link
+            to={`/product/${product.slug}`}
+            className="w-8 h-8 bg-white rounded-full flex items-center justify-center hover:bg-[#DB4444] hover:text-white transition-colors shadow-sm"
+          >
+            <Search className="h-4 w-4" />
+          </Link>
+        </div>
+
+        {/* Add To Cart Hover Button */}
+        <button
+          onClick={onAddToCart}
+          className="absolute bottom-0 left-0 right-0 py-2.5 bg-black text-white text-sm font-medium w-full translate-y-full group-hover:translate-y-0 transition-transform duration-300 cursor-pointer"
+        >
+          Add To Cart
+        </button>
       </div>
 
-      {/* Footer: Price & Add to Cart */}
-      <div className="p-3 sm:p-3.5 pt-0 mt-auto flex items-center justify-between gap-1.5">
-        <div>
-          <div className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white leading-tight">
+      {/* Content Body */}
+      <div className="flex flex-col gap-1.5">
+        {/* Product Name */}
+        <Link to={`/product/${product.slug}`}>
+          <h3 className="font-medium text-black dark:text-white text-base truncate">
+            {product.name}
+          </h3>
+        </Link>
+
+        {/* Prices */}
+        <div className="flex items-center gap-3">
+          <span className="font-medium text-[#DB4444]">
             {formatCurrency(product.price)}
-          </div>
+          </span>
           {product.comparePrice && (
-            <span className="text-[10px] text-slate-400 line-through font-medium">
+            <span className="text-gray-400 line-through font-medium">
               {formatCurrency(product.comparePrice)}
             </span>
           )}
         </div>
 
-        <button
-          onClick={onAddToCart}
-          className="px-2.5 py-1.5 rounded-lg bg-[#5438DC] hover:bg-indigo-700 text-white font-bold text-xs flex items-center gap-1 shadow-sm hover:shadow-indigo-500/25 transition-all shrink-0 hover:-translate-y-0.5 cursor-pointer"
-          aria-label="Add to cart"
-        >
-          <ShoppingCart className="h-3.5 w-3.5" />
-          <span>Add</span>
-        </button>
+        {/* Rating */}
+        <div className="flex items-center gap-1.5">
+          <div className="flex text-[#FFAD33]">
+            {[1, 2, 3, 4, 5].map((star) => (
+              <Star key={star} className={`h-4 w-4 ${star <= Math.round(Number(displayRating)) ? 'fill-[#FFAD33]' : 'fill-gray-200 text-gray-200'}`} />
+            ))}
+          </div>
+          <span className="text-sm text-gray-500 font-medium">
+            ({displayReviewCount})
+          </span>
+        </div>
       </div>
     </div>
   );

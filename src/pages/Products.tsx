@@ -449,100 +449,93 @@ export default function Products() {
                 key={product.id}
                 data-product-name={product.name}
                 data-product-price={formatCurrency(product.price)}
-                className={`group bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 hover:border-indigo-400/80 dark:hover:border-indigo-500/60 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between overflow-hidden animate-scale-in stagger-${(index % 6) + 1}`}
+                className={`group flex flex-col gap-4 relative animate-scale-in stagger-${(index % 6) + 1}`}
               >
-                <div>
-                  {/* Image Container */}
-                  <Link
-                    to={`/product/${product.slug}`}
-                    className="block relative aspect-square overflow-hidden bg-slate-100 dark:bg-slate-800"
-                  >
+                {/* Image Container with gray background */}
+                <div className="relative aspect-square rounded overflow-hidden bg-[#F5F5F5] dark:bg-slate-800 flex items-center justify-center p-6 group">
+                  <Link to={`/product/${product.slug}`} className="block w-full h-full relative">
                     <img
                       src={imageUrl}
                       alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-500 ease-out"
+                      className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
                       loading="lazy"
                     />
-
-                    {/* Top Left Badges */}
-                    <div className="absolute top-3 left-3 z-10 flex flex-col gap-1.5 items-start">
-                      <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-slate-900/85 backdrop-blur-md text-white text-[10px] font-extrabold shadow-md border border-white/10">
-                        <Mic className="w-3 h-3 text-indigo-400" />
-                        Option #{index + 1}
-                      </span>
-                      {discount > 0 && (
-                        <span className="px-2.5 py-0.5 rounded-full bg-rose-600 text-white text-[10px] font-extrabold shadow-md tracking-tight">
-                          -{discount}%
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Wishlist Button Top Right */}
-                    <div className="absolute top-3 right-3 z-10">
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          addToWishlist.mutate({ productId: product.id });
-                        }}
-                        className="p-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md text-slate-600 dark:text-slate-300 hover:text-rose-500 dark:hover:text-rose-400 rounded-full shadow-md hover:scale-110 transition-all cursor-pointer"
-                        title="Add to Wishlist"
-                        aria-label="Add to Wishlist"
-                      >
-                        <Heart className="h-4 w-4" />
-                      </button>
-                    </div>
                   </Link>
 
-                  {/* Body Content */}
-                  <div className="p-4 sm:p-5 flex flex-col gap-1.5">
-                    <div className="flex items-center justify-between text-[11px] font-bold">
-                      <span className="text-indigo-600 dark:text-indigo-400 uppercase tracking-wider truncate max-w-[55%]">
-                        {(product as any).categoryName || "General"}
+                  {/* Top Left Badges */}
+                  <div className="absolute top-3 left-3 z-10 flex flex-col gap-2 items-start">
+                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded bg-[#DB4444] text-white text-[10px] font-bold shadow-sm">
+                      <Mic className="w-3 h-3 text-white" />
+                      Option #{index + 1}
+                    </span>
+                    {discount > 0 && (
+                      <span className="px-3 py-1 rounded bg-[#DB4444] text-white text-[10px] font-bold shadow-sm">
+                        -{discount}%
                       </span>
-                      <span className="text-slate-400 dark:text-slate-500 font-medium truncate max-w-[42%] text-right">
-                        {(product as any).sellerName || "Marketplace"}
-                      </span>
-                    </div>
-
-                    <Link to={`/product/${product.slug}`}>
-                      <h3 className="font-bold text-slate-900 dark:text-white text-sm sm:text-base line-clamp-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors leading-snug">
-                        {product.name}
-                      </h3>
-                    </Link>
-
-                    <div className="flex items-center gap-1.5 mt-0.5">
-                      <div className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-400 text-[11px] font-extrabold border border-amber-200/60 dark:border-amber-900/40">
-                        <Star className="h-3 w-3 text-amber-500 fill-amber-500" />
-                        <span>{displayRating}</span>
-                      </div>
-                      <span className="text-[11px] text-slate-400 font-medium">
-                        ({displayReviewCount})
-                      </span>
-                    </div>
+                    )}
                   </div>
+
+                  {/* Wishlist Button Top Right */}
+                  <div className="absolute top-3 right-3 z-10 flex flex-col gap-2">
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        addToWishlist.mutate({ productId: product.id });
+                      }}
+                      className="w-8 h-8 bg-white rounded-full flex items-center justify-center hover:bg-[#DB4444] hover:text-white transition-colors shadow-sm"
+                      title="Add to Wishlist"
+                      aria-label="Add to Wishlist"
+                    >
+                      <Heart className="h-4 w-4" />
+                    </button>
+                    <Link
+                      to={`/product/${product.slug}`}
+                      className="w-8 h-8 bg-white rounded-full flex items-center justify-center hover:bg-[#DB4444] hover:text-white transition-colors shadow-sm"
+                    >
+                      <Search className="h-4 w-4" />
+                    </Link>
+                  </div>
+
+                  {/* Add To Cart Hover Button */}
+                  <button
+                    onClick={() => addToCart.mutate({ productId: product.id })}
+                    className="absolute bottom-0 left-0 right-0 py-2.5 bg-black text-white text-sm font-medium w-full translate-y-full group-hover:translate-y-0 transition-transform duration-300 cursor-pointer"
+                  >
+                    Add To Cart
+                  </button>
                 </div>
 
-                {/* Card Footer: Price & Add Button */}
-                <div className="p-4 sm:p-5 pt-0 mt-auto flex items-center justify-between gap-2 border-t border-slate-100 dark:border-slate-800/80 pt-3">
-                  <div className="min-w-0">
-                    <div className="text-base sm:text-lg font-black text-slate-900 dark:text-white truncate">
+                {/* Body Content */}
+                <div className="flex flex-col gap-1.5">
+                  <Link to={`/product/${product.slug}`}>
+                    <h3 className="font-medium text-black dark:text-white text-base truncate">
+                      {product.name}
+                    </h3>
+                  </Link>
+
+                  {/* Prices */}
+                  <div className="flex items-center gap-3">
+                    <span className="font-medium text-[#DB4444]">
                       {formatCurrency(product.price)}
-                    </div>
+                    </span>
                     {product.comparePrice && (
-                      <span className="text-xs text-slate-400 line-through font-medium block truncate">
+                      <span className="text-gray-400 line-through font-medium">
                         {formatCurrency(product.comparePrice)}
                       </span>
                     )}
                   </div>
 
-                  <button
-                    onClick={() => addToCart.mutate({ productId: product.id })}
-                    className="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs flex items-center gap-1.5 shadow-md shadow-indigo-600/20 hover:shadow-indigo-600/35 transition-all shrink-0 cursor-pointer"
-                    aria-label="Add to cart"
-                  >
-                    <ShoppingCart className="h-3.5 w-3.5" />
-                    <span>Add</span>
-                  </button>
+                  {/* Rating */}
+                  <div className="flex items-center gap-1.5">
+                    <div className="flex text-[#FFAD33]">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Star key={star} className={`h-4 w-4 ${star <= Math.round(Number(displayRating)) ? 'fill-[#FFAD33]' : 'fill-gray-200 text-gray-200'}`} />
+                      ))}
+                    </div>
+                    <span className="text-sm text-gray-500 font-medium">
+                      ({displayReviewCount})
+                    </span>
+                  </div>
                 </div>
               </div>
             );

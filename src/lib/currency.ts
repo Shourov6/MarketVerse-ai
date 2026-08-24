@@ -6,11 +6,8 @@ export function formatCurrency(amount: number | string | null | undefined) {
     const clean = String(amount ?? 0).replace(/[^0-9.]/g, "");
     num = parseFloat(clean) || 0;
   }
-  return new Intl.NumberFormat("en-BD", {
-    style: "currency",
-    currency: "BDT",
-    currencyDisplay: "symbol",
+  return "৳" + num.toLocaleString("en-BD", {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
-  }).format(num);
+  });
 }
