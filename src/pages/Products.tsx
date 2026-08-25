@@ -16,7 +16,8 @@ import {
   X,
   Store,
 } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
+import { useVoiceStore } from "@/stores/useVoiceStore";
 
 export default function Products() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -25,6 +26,7 @@ export default function Products() {
   const initialFeatured = searchParams.get("featured") === "true" || undefined;
   const initialTrending = searchParams.get("trending") === "true" || undefined;
   const [searchInput, setSearchInput] = useState(initialSearch);
+  const [fetchLimit, setFetchLimit] = useState(50);
   const [sortBy, setSortBy] = useState("newest");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [showFilters, setShowFilters] = useState(false);
@@ -34,7 +36,7 @@ export default function Products() {
     categoryId: initialCategory,
     featured: initialFeatured,
     trending: initialTrending,
-    limit: 50,
+    limit: fetchLimit,
   });
 
   const { data: categories } = trpc.category.list.useQuery();
@@ -59,6 +61,11 @@ export default function Products() {
     setSearchInput(initialSearch);
   }, [initialSearch]);
 
+  // Reset to default page-size when filters/search context changes.
+  useEffect(() => {
+    setFetchLimit(50);
+  }, [initialSearch, initialCategory, initialFeatured, initialTrending]);
+
   const filteredProducts = data?.items || [];
 
   const sortedProducts = useMemo(() => {
@@ -74,33 +81,46 @@ export default function Products() {
   }, [filteredProducts, sortBy]);
 
   const lastAnnouncedSearchRef = useRef("");
+  const setVoiceProducts = useVoiceStore((state) => state.setVoiceProducts);
 
   // Synchronize loaded products with VoiceAssistant and announce search results
   useEffect(() => {
     if (typeof window === "undefined" || isLoading || !data) return;
 
-    const voiceProducts = sortedProducts.map((product, index) => ({
-      id: product.id,
-      name: product.name,
-      slug: product.slug,
-      price: formatCurrency(product.price),
-      image: (product as any).imageUrl || (product as any).images?.[0] || (product as any).image || "",
-      index: index + 1,
-    }));
-
-    window.dispatchEvent(new CustomEvent("voice-assistant-products", { detail: { items: voiceProducts } }));
+    // Dispatch to Zustand store
+    setVoiceProducts(sortedProducts);
 
     // If this is an active search query, speak the results and numbered options out loud!
     const query = (initialSearch || "").trim();
     if (query && lastAnnouncedSearchRef.current !== query) {
       lastAnnouncedSearchRef.current = query;
       if (sortedProducts.length > 0) {
-        const topFew = voiceProducts.slice(0, 4);
+        const topFew = sortedProducts.slice(0, 4).map((p, index) => ({
+          name: p.name,
+          price: formatCurrency(p.price),
+          index: index + 1
+        }));
+        const nextOptionStart = topFew.length + 1;
+        const nextOptionEnd = Math.min(nextOptionStart + 3, sortedProducts.length);
         const details = topFew
           .map((p) => `Option ${p.index}: ${p.name} for ${p.price}`)
           .join(". ");
-        const message = `Found ${sortedProducts.length} items for ${query}. ${details}. Say 'Select 1' or 'Option 1' to choose and proceed to Voice Checkout.`;
-        window.dispatchEvent(new CustomEvent("voice-assistant-announce", { detail: message }));
+        const continuationHint =
+          sortedProducts.length > topFew.length
+            ? `Say 'continue' to hear option ${nextOptionStart}${nextOptionEnd > nextOptionStart ? ` to ${nextOptionEnd}` : ""}, or say 'Select 1' or 'Option 1' to choose and proceed to Voice Checkout.`
+            : `Say 'Select 1' or 'Option 1' to choose and proceed to Voice Checkout.`;
+        const message = `Found ${sortedProducts.length} items for ${query}. ${details}. ${continuationHint}`;
+        if (typeof sessionStorage !== "undefined") {
+          sessionStorage.setItem("voice_announced_count", String(topFew.length));
+        }
+        window.dispatchEvent(
+          new CustomEvent("voice-assistant-announce", {
+            detail: {
+              message,
+              spokenProductCount: topFew.length,
+            },
+          })
+        );
       } else {
         const message = `No matching products were found for ${query}. Please try searching for another item.`;
         window.dispatchEvent(new CustomEvent("voice-assistant-announce", { detail: message }));
@@ -116,6 +136,9 @@ export default function Products() {
   };
 
   const hasActiveFilters = Boolean(initialSearch || initialCategory || initialFeatured || initialTrending);
+  const loadedCount = sortedProducts.length;
+  const totalCount = data?.total ?? loadedCount;
+  const canViewAll = totalCount > loadedCount;
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-8 animate-fade-up">
@@ -145,6 +168,19 @@ export default function Products() {
           <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
             {data?.total ?? sortedProducts.length} product{sortedProducts.length === 1 ? "" : "s"} available
           </p>
+          {canViewAll && (
+            <div className="mt-2 flex items-center gap-3 flex-wrap">
+              <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+                Showing {loadedCount} of {totalCount} products.
+              </p>
+              <button
+                onClick={() => setFetchLimit(Math.max(totalCount, 50))}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold transition-colors shadow-sm cursor-pointer"
+              >
+                View All {totalCount}
+              </button>
+            </div>
+          )}
         </div>
 
         {hasActiveFilters && (
@@ -449,93 +485,100 @@ export default function Products() {
                 key={product.id}
                 data-product-name={product.name}
                 data-product-price={formatCurrency(product.price)}
-                className={`group flex flex-col gap-4 relative animate-scale-in stagger-${(index % 6) + 1}`}
+                className={`group bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 hover:border-indigo-400/80 dark:hover:border-indigo-500/60 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between overflow-hidden animate-scale-in stagger-${(index % 6) + 1}`}
               >
-                {/* Image Container with gray background */}
-                <div className="relative aspect-square rounded overflow-hidden bg-[#F5F5F5] dark:bg-slate-800 flex items-center justify-center p-6 group">
-                  <Link to={`/product/${product.slug}`} className="block w-full h-full relative">
+                <div>
+                  {/* Image Container */}
+                  <Link
+                    to={`/product/${product.slug}`}
+                    className="block relative aspect-square overflow-hidden bg-slate-100 dark:bg-slate-800"
+                  >
                     <img
                       src={imageUrl}
                       alt={product.name}
-                      className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-500 ease-out"
                       loading="lazy"
                     />
+
+                    {/* Top Left Badges */}
+                    <div className="absolute top-3 left-3 z-10 flex flex-col gap-1.5 items-start">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-slate-900/85 backdrop-blur-md text-white text-[10px] font-extrabold shadow-md border border-white/10">
+                        <Mic className="w-3 h-3 text-indigo-400" />
+                        Option #{index + 1}
+                      </span>
+                      {discount > 0 && (
+                        <span className="px-2.5 py-0.5 rounded-full bg-rose-600 text-white text-[10px] font-extrabold shadow-md tracking-tight">
+                          -{discount}%
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Wishlist Button Top Right */}
+                    <div className="absolute top-3 right-3 z-10">
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          addToWishlist.mutate({ productId: product.id });
+                        }}
+                        className="p-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md text-slate-600 dark:text-slate-300 hover:text-rose-500 dark:hover:text-rose-400 rounded-full shadow-md hover:scale-110 transition-all cursor-pointer"
+                        title="Add to Wishlist"
+                        aria-label="Add to Wishlist"
+                      >
+                        <Heart className="h-4 w-4" />
+                      </button>
+                    </div>
                   </Link>
 
-                  {/* Top Left Badges */}
-                  <div className="absolute top-3 left-3 z-10 flex flex-col gap-2 items-start">
-                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded bg-[#DB4444] text-white text-[10px] font-bold shadow-sm">
-                      <Mic className="w-3 h-3 text-white" />
-                      Option #{index + 1}
-                    </span>
-                    {discount > 0 && (
-                      <span className="px-3 py-1 rounded bg-[#DB4444] text-white text-[10px] font-bold shadow-sm">
-                        -{discount}%
+                  {/* Body Content */}
+                  <div className="p-4 sm:p-5 flex flex-col gap-1.5">
+                    <div className="flex items-center justify-between text-[11px] font-bold">
+                      <span className="text-indigo-600 dark:text-indigo-400 uppercase tracking-wider truncate max-w-[55%]">
+                        {(product as any).categoryName || "General"}
                       </span>
-                    )}
-                  </div>
+                      <span className="text-slate-400 dark:text-slate-500 font-medium truncate max-w-[42%] text-right">
+                        {(product as any).sellerName || "Marketplace"}
+                      </span>
+                    </div>
 
-                  {/* Wishlist Button Top Right */}
-                  <div className="absolute top-3 right-3 z-10 flex flex-col gap-2">
-                    <button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        addToWishlist.mutate({ productId: product.id });
-                      }}
-                      className="w-8 h-8 bg-white rounded-full flex items-center justify-center hover:bg-[#DB4444] hover:text-white transition-colors shadow-sm"
-                      title="Add to Wishlist"
-                      aria-label="Add to Wishlist"
-                    >
-                      <Heart className="h-4 w-4" />
-                    </button>
-                    <Link
-                      to={`/product/${product.slug}`}
-                      className="w-8 h-8 bg-white rounded-full flex items-center justify-center hover:bg-[#DB4444] hover:text-white transition-colors shadow-sm"
-                    >
-                      <Search className="h-4 w-4" />
+                    <Link to={`/product/${product.slug}`}>
+                      <h3 className="font-bold text-slate-900 dark:text-white text-sm sm:text-base line-clamp-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors leading-snug">
+                        {product.name}
+                      </h3>
                     </Link>
-                  </div>
 
-                  {/* Add To Cart Hover Button */}
-                  <button
-                    onClick={() => addToCart.mutate({ productId: product.id })}
-                    className="absolute bottom-0 left-0 right-0 py-2.5 bg-black text-white text-sm font-medium w-full translate-y-full group-hover:translate-y-0 transition-transform duration-300 cursor-pointer"
-                  >
-                    Add To Cart
-                  </button>
+                    <div className="flex items-center gap-1.5 mt-0.5">
+                      <div className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-400 text-[11px] font-extrabold border border-amber-200/60 dark:border-amber-900/40">
+                        <Star className="h-3 w-3 text-amber-500 fill-amber-500" />
+                        <span>{displayRating}</span>
+                      </div>
+                      <span className="text-[11px] text-slate-400 font-medium">
+                        ({displayReviewCount})
+                      </span>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Body Content */}
-                <div className="flex flex-col gap-1.5">
-                  <Link to={`/product/${product.slug}`}>
-                    <h3 className="font-medium text-black dark:text-white text-base truncate">
-                      {product.name}
-                    </h3>
-                  </Link>
-
-                  {/* Prices */}
-                  <div className="flex items-center gap-3">
-                    <span className="font-medium text-[#DB4444]">
+                {/* Card Footer: Price & Add Button */}
+                <div className="p-4 sm:p-5 pt-0 mt-auto flex items-center justify-between gap-2 border-t border-slate-100 dark:border-slate-800/80 pt-3">
+                  <div className="min-w-0">
+                    <div className="text-base sm:text-lg font-black text-slate-900 dark:text-white truncate">
                       {formatCurrency(product.price)}
-                    </span>
+                    </div>
                     {product.comparePrice && (
-                      <span className="text-gray-400 line-through font-medium">
+                      <span className="text-xs text-slate-400 line-through font-medium block truncate">
                         {formatCurrency(product.comparePrice)}
                       </span>
                     )}
                   </div>
 
-                  {/* Rating */}
-                  <div className="flex items-center gap-1.5">
-                    <div className="flex text-[#FFAD33]">
-                      {[1, 2, 3, 4, 5].map((star) => (
-                        <Star key={star} className={`h-4 w-4 ${star <= Math.round(Number(displayRating)) ? 'fill-[#FFAD33]' : 'fill-gray-200 text-gray-200'}`} />
-                      ))}
-                    </div>
-                    <span className="text-sm text-gray-500 font-medium">
-                      ({displayReviewCount})
-                    </span>
-                  </div>
+                  <button
+                    onClick={() => addToCart.mutate({ productId: product.id })}
+                    className="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs flex items-center gap-1.5 shadow-md shadow-indigo-600/20 hover:shadow-indigo-600/35 transition-all shrink-0 cursor-pointer"
+                    aria-label="Add to cart"
+                  >
+                    <ShoppingCart className="h-3.5 w-3.5" />
+                    <span>Add</span>
+                  </button>
                 </div>
               </div>
             );

@@ -113,17 +113,14 @@ export class SlotCompletionEngine {
    */
   evaluateSlots(state: StylistSessionState): SlotCheckResult {
     console.log(`[RUNTIME-TRACE] [SlotCompletionEngine] ENTER evaluateSlots for session: ${state.sessionId}`);
-    console.log(`[RUNTIME-TRACE] [SlotCompletionEngine] Current State Snapshot:`, {
-      occasion: state.occasion,
-      role: state.event_role,
-      time: state.event_time,
-      setting: state.event_setting,
-      style: state.style,
-      budget: state.price_constraint || state.budget,
-      avoid_colors: state.avoid_colors,
-      owned_items: state.owned_items,
-      locked_items: state.locked_items,
-    });
+    
+    // Dynamic Q&A: If the user owns a shirt and wants a pant
+    const hasShirt = state.owned_items?.some(i => i.toLowerCase().includes("shirt"));
+    const wantsPant = state.locked_items?.some(i => i.toLowerCase().includes("pant")) || state.style?.toLowerCase().includes("pant"); // we might need target items from query
+    
+    // Check if we need to dynamically inject target-item based slots
+    // To do this properly, we should actually rely on the query understanding's `targetItems` which isn't fully passed in state, but wait, `StylistSessionState` tracks this.
+    // Let's modify the generic occasion flow to still trigger occasion first, but if occasion is set, we move to dynamic rules.
 
     if (!state.occasion) {
       console.log(`[RUNTIME-TRACE] [SlotCompletionEngine] Missing Slot: Occasion -> Returning Probing Question`);

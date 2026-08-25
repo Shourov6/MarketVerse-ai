@@ -224,6 +224,30 @@ export default function Cart() {
                       {formatCurrency((item.price ?? 0) * item.quantity)}
                     </span>
                   </div>
+                  {item.attributes && (
+                    <div className="flex items-center gap-2 mt-2">
+                      {(() => {
+                         try {
+                           const attr = typeof item.attributes === 'string' ? JSON.parse(item.attributes) : item.attributes;
+                           return (
+                             <>
+                               {attr.color && (
+                                 <span className="flex items-center gap-1.5 text-xs text-slate-500 font-medium bg-slate-100 dark:bg-slate-700/50 px-2 py-1 rounded">
+                                   <div className="w-3 h-3 rounded-full border border-slate-300" style={{ backgroundColor: attr.color }} />
+                                   {attr.color}
+                                 </span>
+                               )}
+                               {attr.size && (
+                                 <span className="text-xs text-slate-500 font-medium bg-slate-100 dark:bg-slate-700/50 px-2 py-1 rounded">
+                                   Size: {attr.size}
+                                 </span>
+                               )}
+                             </>
+                           )
+                         } catch(e) { return null; }
+                      })()}
+                    </div>
+                  )}
                   <div className="flex items-center gap-3 mt-1.5">
                     <p className="text-sm font-medium text-slate-500 dark:text-slate-400">
                       {formatCurrency(item.price ?? 0)} <span className="text-slate-400 font-normal">each</span>

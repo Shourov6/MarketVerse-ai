@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router";
 import { trpc } from "@/providers/trpc";
 import { useAuth } from "@/hooks/useAuth";
 import { Loader2, Eye, EyeOff, KeyRound, CheckCircle2, ArrowRight, ArrowLeft, Sparkles, Lock, ShieldCheck, Zap, Store, Mail, User } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 
 const demoAccounts = [
   {

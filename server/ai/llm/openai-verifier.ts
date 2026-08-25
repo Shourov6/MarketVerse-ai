@@ -66,7 +66,7 @@ Output ONLY valid JSON with keys: "isCorrect" (boolean), "correctedAnswer" (stri
         return { isCorrect: true, correctedAnswer: null, reasoning: "API Failed" }; // Pass-through on failure
       }
 
-      const data = await response.json();
+      const data = (await response.json()) as any;
       const content = data.choices[0].message.content;
       const parsed = JSON.parse(content) as VerificationResult;
 

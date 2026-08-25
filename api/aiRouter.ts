@@ -14,6 +14,7 @@ import { aiFeedback } from "../db/aiSchema.ts";
 import { eq, desc } from "../db/mysql.js";
 import { chatMessages } from "../db/schema.js"; // from old schema, assuming it still exists
 import type { Domain } from "../server/ai/classification/types.ts";
+import { getLLMGatewayProvider } from "../server/ai/providers/llm-gateway-provider.ts";
 
 export const aiRouter = new Hono();
 
@@ -91,12 +92,7 @@ function fallbackVoiceDecision(message: string) {
   };
 }
 
-async function routeVoiceCommandWithOpenAI(message: string, context: Record<string, any> = {}) {
-  const apiKey = process.env.OPENAI_API_KEY || "";
-  if (!apiKey) {
-    return null;
-  }
-
+async function routeVoiceCommandWithAI(message: string, context: Record<string, any> = {}) {
   try {
     const prompt = `You are Dev, the MarketVerse voice shopping assistant. Use the user command and the page/product context to decide the next action precisely.
 
@@ -125,30 +121,16 @@ Rules:
 - Else use a conversational/help intent.
 - Do not include markdown or explanation outside JSON.`;
 
-    const res = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        model: "gpt-4o-mini",
-        messages: [{ role: "system", content: prompt }],
-        response_format: { type: "json_object" },
-        temperature: 0.2,
-      }),
-    });
+    const provider = getLLMGatewayProvider();
+    const parsed = await provider.generateJSON<any>(
+      [{ role: "system", content: prompt }],
+      { temperature: 0.2 }
+    );
 
-    if (!res.ok) {
-      console.warn("[VoiceAI] OpenAI route failed:", res.status, res.statusText);
+    if (parsed.offline || parsed.error) {
       return null;
     }
 
-    const data = await res.json();
-    const raw = data?.choices?.[0]?.message?.content;
-    if (!raw) return null;
-
-    const parsed = JSON.parse(raw);
     return {
       intent: parsed.intent || "help",
       searchQuery: cleanVoiceSearchQuery(parsed.searchQuery),
@@ -156,10 +138,10 @@ Rules:
       selectedProduct: parsed.selectedProduct || null,
       responseText: parsed.responseText || "I can help with that.",
       confidence: typeof parsed.confidence === "number" ? parsed.confidence : 0.7,
-      reason: parsed.reason || "OpenAI voice routing",
+      reason: parsed.reason || "AI Gateway voice routing",
     };
   } catch (error) {
-    console.error("[VoiceAI] OpenAI voice routing error:", error);
+    console.error("[VoiceAI] AI Gateway voice routing error:", error);
     return null;
   }
 }
@@ -187,7 +169,7 @@ aiRouter.post("/chat", async (c) => {
   const isVoiceCommand = (String(domain || "").toLowerCase() === "voice") || context?.userIntent === "voice-assistant-command" || !!context?.currentTranscript;
 
   if (isVoiceCommand) {
-    const voiceDecision = await routeVoiceCommandWithOpenAI(String(message), context || {});
+    const voiceDecision = await routeVoiceCommandWithAI(String(message), context || {});
     const decision = voiceDecision || fallbackVoiceDecision(String(message));
     return c.json({
       success: true,

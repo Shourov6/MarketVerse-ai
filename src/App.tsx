@@ -43,7 +43,6 @@ export default function App() {
   return (
     <ErrorBoundary>
       <ScrollToTop />
-      <Toaster richColors position="top-right" closeButton />
       <Layout>
         <Routes>
           {/* Public Routes */}

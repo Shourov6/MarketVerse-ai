@@ -76,6 +76,26 @@ export class SessionService {
   }
 
   /**
+   * Get recent messages for a session to use as history context.
+   */
+  async getSessionHistory(sessionId: string, limit = 10) {
+    const db = getDb();
+    const records = await db
+      .select()
+      .from(chatMessages)
+      .where(eq(chatMessages.sessionId, sessionId))
+      .orderBy(desc(chatMessages.createdAt))
+      .limit(limit);
+
+    // Reverse to get chronological order for the context window
+    return records.reverse().map(r => ({
+      role: r.role,
+      message: r.content,
+      createdAt: r.createdAt
+    }));
+  }
+
+  /**
    * Get a user's recent sessions.
    */
   async getUserSessions(userId: number, limit = 10) {

@@ -1,9 +1,10 @@
 import { z } from "zod";
 import { createRouter, publicQuery, authedQuery } from "./middleware";
 import { getDb } from "./queries/connection";
-import { sellers, products, productImages, orders, orderItems, categories, inventory, reviews, notifications, users, sellerPayouts, sellerMessages } from "@db/schema";
-import { eq, desc, and, sql } from "@db/mysql";
+import { sellers, products, productImages, orders, orderItems, categories, inventory, reviews, notifications, users, sellerPayouts, sellerMessages, productVariants } from "@db/schema";
+import { eq, desc, and, sql, inArray } from "@db/mysql";
 import { notifyAdmins } from "./notificationRouter";
+import { getLLMGatewayProvider } from "../server/ai/providers/llm-gateway-provider.ts";
 
 async function getSellerByUserId(userId: number) {
   const db = getDb();
@@ -110,6 +111,7 @@ export const sellerRouter = createRouter({
         lowStockThreshold: (inventory as any).lowStockThreshold,
         warehouseLocation: (inventory as any).warehouseLocation,
         sku: (products as any).sku,
+        attributes: (products as any).attributes,
         imageUrl: (productImages as any).imageUrl,
         keywords: (products as any).tags,
         createdAt: (products as any).createdAt,
@@ -120,6 +122,20 @@ export const sellerRouter = createRouter({
       .leftJoin(productImages, and(eq(productImages.productId, products.id), eq(productImages.isPrimary, 1)))
       .where(eq(products.sellerId, sellerId))
       .orderBy(desc(products.createdAt));
+
+    // Fetch variants and images for these products
+    const productIds = productList.map((p: any) => p.id);
+    if (productIds.length === 0) return [];
+    
+    // For simplicity with this ORM, we'll fetch all variants for the seller's products and attach them in memory
+    const allVariants = await db.select().from(productVariants).where(inArray(productVariants.productId, productIds));
+    const allImages = await db.select().from(productImages).where(inArray(productImages.productId, productIds));
+
+    return productList.map((product: any) => ({
+      ...product,
+      variants: allVariants.filter((v: any) => v.productId === product.id),
+      images: allImages.filter((img: any) => img.productId === product.id).sort((a: any, b: any) => a.sortOrder - b.sortOrder),
+    }));
   }),
 
   createProduct: authedQuery
@@ -141,6 +157,12 @@ export const sellerRouter = createRouter({
         images: z.array(z.string()).min(1, "Minimum 1 photo is mandatory").max(4, "Maximum 4 photos allowed").optional(),
         imageUrl: z.string().optional(),
         keywords: z.string().optional(),
+        sizeType: z.string().optional(),
+        variants: z.array(z.object({
+          size: z.string(),
+          color: z.string().optional(),
+          quantity: z.number().int().min(0).default(0),
+        })).optional(),
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -164,6 +186,7 @@ export const sellerRouter = createRouter({
         sellerId: sellerRow[0].id,
         status: input.status,
         tags: input.keywords?.trim() || undefined,
+        attributes: JSON.stringify({ sizeType: input.sizeType || "" }),
       });
 
       const insertedProducts = await db.select().from(products).where(eq(products.slug, slug)).limit(1);
@@ -192,9 +215,22 @@ export const sellerRouter = createRouter({
         });
       }
 
+      let totalQuantity = input.quantity || 0;
+      if (input.variants && input.variants.length > 0) {
+        totalQuantity = input.variants.reduce((sum, v) => sum + v.quantity, 0);
+        for (const v of input.variants) {
+          await db.insert(productVariants).values({
+            productId: inserted[0].id,
+            size: v.size,
+            color: v.color || "",
+            quantity: v.quantity,
+          });
+        }
+      }
+
       await db.insert(inventory).values({
         productId: inserted[0].id,
-        quantity: input.quantity,
+        quantity: totalQuantity,
         lowStockThreshold: input.lowStockThreshold,
         warehouseLocation: input.warehouseLocation || undefined,
       });
@@ -222,6 +258,12 @@ export const sellerRouter = createRouter({
         images: z.array(z.string()).min(1, "Minimum 1 photo is mandatory").max(4, "Maximum 4 photos allowed").optional(),
         imageUrl: z.string().optional(),
         keywords: z.string().optional(),
+        sizeType: z.string().optional(),
+        variants: z.array(z.object({
+          size: z.string(),
+          color: z.string().optional(),
+          quantity: z.number().int().min(0).default(0),
+        })).optional(),
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -243,18 +285,53 @@ export const sellerRouter = createRouter({
       if (input.categoryId !== undefined) updatePayload.categoryId = input.categoryId;
       if (input.status !== undefined) updatePayload.status = input.status;
       if (input.sku !== undefined) updatePayload.sku = input.sku;
-      if (input.keywords !== undefined) updatePayload.tags = input.keywords.trim() || undefined;
+      if (input.sizeType !== undefined) {
+        let currentAttr = {};
+        try { currentAttr = JSON.parse(existing[0].attributes || "{}"); } catch(e){}
+        updatePayload.attributes = JSON.stringify({ ...currentAttr, sizeType: input.sizeType });
+      }
 
-      await db.update(products).set(updatePayload).where(eq(products.id, input.productId));
+      if (Object.keys(updatePayload).length > 0) {
+        if (input.keywords !== undefined) updatePayload.tags = input.keywords.trim() || undefined;
+        await db.update(products).set(updatePayload).where(eq(products.id, input.productId));
+      }
 
-      if (input.quantity !== undefined || input.lowStockThreshold !== undefined || input.warehouseLocation !== undefined) {
+      if (input.variants !== undefined) {
+        // Delete old variants
+        await db.delete(productVariants).where(eq(productVariants.productId, input.productId));
+        
+        let totalQuantity = input.quantity || 0;
+        if (input.variants.length > 0) {
+          totalQuantity = input.variants.reduce((sum, v) => sum + v.quantity, 0);
+          for (const v of input.variants) {
+            await db.insert(productVariants).values({
+              productId: input.productId,
+              size: v.size,
+              color: v.color || "",
+              quantity: v.quantity,
+            });
+          }
+        }
+        
+        // Update inventory total
+        const invPayload: Record<string, unknown> = { quantity: totalQuantity };
+        if (input.lowStockThreshold !== undefined) invPayload.lowStockThreshold = input.lowStockThreshold;
+        if (input.warehouseLocation !== undefined) invPayload.warehouseLocation = input.warehouseLocation;
+        
+        await db.update(inventory)
+          .set(invPayload)
+          .where(eq(inventory.productId, input.productId));
+      } else if (input.quantity !== undefined || input.lowStockThreshold !== undefined || input.warehouseLocation !== undefined) {
+        const invPayload: Record<string, unknown> = {};
+        if (input.quantity !== undefined) invPayload.quantity = input.quantity;
+        if (input.lowStockThreshold !== undefined) invPayload.lowStockThreshold = input.lowStockThreshold;
+        if (input.warehouseLocation !== undefined) invPayload.warehouseLocation = input.warehouseLocation;
+        
         const stock = await db.select().from(inventory).where(eq(inventory.productId, input.productId)).limit(1);
-        const inventoryPayload: Record<string, unknown> = {};
-        if (input.quantity !== undefined) inventoryPayload.quantity = input.quantity;
-        if (input.lowStockThreshold !== undefined) inventoryPayload.lowStockThreshold = input.lowStockThreshold;
-        if (input.warehouseLocation !== undefined) inventoryPayload.warehouseLocation = input.warehouseLocation || null;
         if (stock[0]) {
-          await db.update(inventory).set(inventoryPayload).where(eq(inventory.productId, input.productId));
+          await db.update(inventory)
+            .set(invPayload)
+            .where(eq(inventory.productId, input.productId));
         } else {
           await db.insert(inventory).values({
             productId: input.productId,
@@ -957,9 +1034,8 @@ export const sellerRouter = createRouter({
       const catLower = categoryName.toLowerCase();
       const defaultSku = `MKT-${categoryName.slice(0, 3).toUpperCase()}-${Math.floor(1000 + Math.random() * 9000)}`;
 
-      if (apiKey) {
-        try {
-          const prompt = `You are an expert e-commerce copywriter and SEO specialist for an online marketplace in Bangladesh named MarketVerse.
+      try {
+        const prompt = `You are an expert e-commerce copywriter and SEO specialist for an online marketplace in Bangladesh named MarketVerse.
 Generate professional product listing details for:
 Product Name: "${productName}"
 Category: "${categoryName}"
@@ -977,39 +1053,23 @@ Return a valid JSON object with the following fields:
 
 Return ONLY valid JSON with keys: "shortDescription", "description", "keywords", "sku".`;
 
-          const res = await fetch("https://api.openai.com/v1/chat/completions", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "Authorization": `Bearer ${apiKey}`,
-            },
-            body: JSON.stringify({
-              model: "gpt-4o-mini",
-              messages: [{ role: "system", content: prompt }],
-              response_format: { type: "json_object" },
-              temperature: 0.7,
-            }),
-          });
+        const provider = getLLMGatewayProvider();
+        const parsed = await provider.generateJSON<any>(
+          [{ role: "system", content: prompt }],
+          { temperature: 0.7 }
+        );
 
-          if (res.ok) {
-            const data = await res.json();
-            const content = data.choices?.[0]?.message?.content;
-            if (content) {
-              const parsed = JSON.parse(content);
-              return {
-                shortDescription: parsed.shortDescription || "",
-                description: parsed.description || "",
-                keywords: parsed.keywords || "",
-                sku: parsed.sku || defaultSku,
-                source: "openai",
-              };
-            }
-          } else {
-            console.warn(`[suggestProductDetails] OpenAI returned ${res.status}: ${res.statusText}`);
-          }
-        } catch (e) {
-          console.error("[suggestProductDetails] OpenAI generation error:", e);
+        if (!parsed.offline && !parsed.error) {
+          return {
+            shortDescription: parsed.shortDescription || "",
+            description: parsed.description || "",
+            keywords: parsed.keywords || "",
+            sku: parsed.sku || defaultSku,
+            source: "ai",
+          };
         }
+      } catch (e) {
+        console.error("[suggestProductDetails] AI generation error:", e);
       }
 
       // Fallback: Rule-based generation

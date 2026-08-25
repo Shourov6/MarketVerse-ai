@@ -168,8 +168,15 @@ app.post("/api/ai/stream-text", async (c) => {
 
       const sessions = getSessionService();
       await sessions.addMessage(sessionId || "default", "assistant", fullResponse);
-    } catch (err) {
+    } catch (err: any) {
       console.error("[Stream] Error:", err);
+      const errorMsg = err.message?.includes("429") || err.message?.includes("Max retries") 
+        ? "I'm currently receiving too many requests. Please try again in a moment."
+        : "I encountered an unexpected error processing your request. Please try again.";
+      await stream.write(errorMsg);
+      fullResponse += errorMsg;
+      const sessions = getSessionService();
+      await sessions.addMessage(sessionId || "default", "assistant", fullResponse);
     }
   });
 });

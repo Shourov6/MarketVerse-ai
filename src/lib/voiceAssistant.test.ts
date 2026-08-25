@@ -122,6 +122,8 @@ describe("Voice Assistant Helpers & Extraction", () => {
     expect(extractOptionNumber("ek number option")).toBe(1);
     expect(extractOptionNumber("dui number")).toBe(2);
     expect(extractOptionNumber("prothom product")).toBe(1);
+    expect(extractOptionNumber("select 12")).toBe(12);
+    expect(extractOptionNumber("option 18")).toBe(18);
     expect(extractOptionNumber("১")).toBe(1);
     expect(extractOptionNumber("২")).toBe(2);
     expect(extractOptionNumber("৩")).toBe(3);
@@ -139,6 +141,9 @@ describe("Voice Assistant Helpers & Extraction", () => {
 
     const sel2 = resolveVoiceProductSelection("option two", sampleProducts);
     expect(sel2?.selectedProduct?.name).toBe("Leather Shoes");
+
+    const sel12 = resolveVoiceProductSelection("select 12", Array.from({ length: 15 }, (_, idx) => ({ id: idx + 1, name: `Product ${idx + 1}`, slug: `product-${idx + 1}` })));
+    expect(sel12?.selectedProduct?.name).toBe("Product 12");
 
     const selBengali = resolveVoiceProductSelection("ek number", sampleProducts);
     expect(selBengali?.selectedProduct?.name).toBe("Smart Watch");

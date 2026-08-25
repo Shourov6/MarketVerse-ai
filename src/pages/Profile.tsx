@@ -24,7 +24,7 @@ import {
   Sparkles,
   Package,
 } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 
 export default function Profile() {
   const { user, isLoading } = useAuth();

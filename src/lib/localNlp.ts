@@ -198,10 +198,10 @@ const VOICE_RULES: Array<{
     confidence: 0.85,
     reason: "Matched greeting phrasing",
   },
-  // 19. Product Option Selection commands ("select 1", "option 2", "select option 1", "first one", "1", "2", "ek number ta")
+  // 19. Product Option Selection commands ("select 1", "option 2", "select option 12", "first one", "1", "2", "ek number ta")
   {
     label: "select_option",
-    regex: /^(?:select|choose|pick|buy|take)?\s*(?:option|number|item|no)?\s*([1-9]|10|one|two|three|four|five|six|seven|eight|nine|ten|first|second|third|fourth|fifth|1st|2nd|3rd|4th|5th|ek|dui|teen|tin|char|paach|pach|chhoy|saat|aat|noy)(?:\s*(?:number|no|option|item|ta|ti|one))?$|\b(?:select\s+(?:option\s+)?|choose\s+(?:option\s+)?|pick\s+(?:option\s+)?|option\s+|number\s+|item\s+|buy\s+option\s+|buy\s+item\s+|buy\s+number\s+)([1-9]|10|one|two|three|four|five|six|seven|eight|nine|ten|first|second|third|fourth|fifth|1st|2nd|3rd|4th|5th|ek|dui|teen|tin|char|paach|pach|chhoy|saat|aat|noy)\b|\b(first\s+one|second\s+one|third\s+one|1st\s+one|2nd\s+one|3rd\s+one|prothom\s+ta|ek\s+number\s+ta|dui\s+number\s+ta|tin\s+number\s+ta)\b/i,
+    regex: /^(?:select|choose|pick|buy|take)?\s*(?:option|number|item|no)?\s*([1-9]\d*|one|two|three|four|five|six|seven|eight|nine|ten|first|second|third|fourth|fifth|1st|2nd|3rd|4th|5th|ek|dui|teen|tin|char|paach|pach|chhoy|saat|aat|noy)(?:\s*(?:number|no|option|item|ta|ti|one))?$|\b(?:select\s+(?:option\s+)?|choose\s+(?:option\s+)?|pick\s+(?:option\s+)?|option\s+|number\s+|item\s+|buy\s+option\s+|buy\s+item\s+|buy\s+number\s+)([1-9]\d*|one|two|three|four|five|six|seven|eight|nine|ten|first|second|third|fourth|fifth|1st|2nd|3rd|4th|5th|ek|dui|teen|tin|char|paach|pach|chhoy|saat|aat|noy)\b|\b(first\s+one|second\s+one|third\s+one|1st\s+one|2nd\s+one|3rd\s+one|prothom\s+ta|ek\s+number\s+ta|dui\s+number\s+ta|tin\s+number\s+ta)\b/i,
     confidence: 0.98,
     reason: "Matched product option selection phrasing",
   },

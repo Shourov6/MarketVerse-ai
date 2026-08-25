@@ -155,6 +155,22 @@ export type Inventory = typeof inventory.$inferSelect;
 export type InsertInventory = typeof inventory.$inferInsert;
 
 // ============================================================
+// 6.5 PRODUCT VARIANTS
+// ============================================================
+export const productVariants = mysqlTable("product_variants", {
+  id: integer("id").primaryKey().notNull(),
+  productId: integer("product_id").notNull(),
+  size: text("size").notNull(),
+  color: text("color"),
+  quantity: integer("quantity").notNull().default(0),
+}, (table) => ({
+  productIdx: index("variant_product_idx").on(table.productId),
+}));
+
+export type ProductVariant = typeof productVariants.$inferSelect;
+export type InsertProductVariant = typeof productVariants.$inferInsert;
+
+// ============================================================
 // 7. CART
 // ============================================================
 export const carts = mysqlTable("carts", {
@@ -178,6 +194,7 @@ export const cartItems = mysqlTable("cart_items", {
   cartId: integer("cartId").notNull(),
   productId: integer("productId").notNull(),
   quantity: integer("quantity").default(1).notNull(),
+  attributes: text("attributes"),
   createdAt: integer("createdAt").default(NOW).notNull(),
 }, (table) => ({
   cartIdx: index("cartitem_cart_idx").on(table.cartId),
@@ -234,6 +251,7 @@ export const orderItems = mysqlTable("order_items", {
   quantity: integer("quantity").notNull(),
   unitPrice: real("unit_price").notNull(),
   totalPrice: real("total_price").notNull(),
+  attributes: text("attributes"),
   isReviewed: integer("is_reviewed").default(0).notNull(),
   createdAt: integer("createdAt").default(NOW).notNull(),
 }, (table) => ({

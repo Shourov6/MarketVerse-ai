@@ -55,20 +55,56 @@ export interface SSLCommerzValidateResponse {
 }
 
 const SSLCOMMERZ_SANDBOX_BASE = "https://sandbox.sslcommerz.com";
+const SSLCOMMERZ_LIVE_BASE = "https://securepay.sslcommerz.com";
+const PLACEHOLDER_VALUES = new Set([
+  "testbox",
+  "qwerty",
+  "your_merchant_store_id",
+  "your_merchant_password",
+  "merchant",
+  "demo",
+  "password",
+  "",
+]);
+
+function getSSLCommerzCredentials() {
+  const configuredStoreId = (process.env.SSLCOMMERZ_STORE_ID || "").trim();
+  const configuredStorePassword = (process.env.SSLCOMMERZ_STORE_PASSWORD || "").trim();
+  const hasValidMerchantCredentials =
+    !!configuredStoreId &&
+    !!configuredStorePassword &&
+    !PLACEHOLDER_VALUES.has(configuredStoreId.toLowerCase()) &&
+    !PLACEHOLDER_VALUES.has(configuredStorePassword.toLowerCase());
+
+  const isLive = hasValidMerchantCredentials && process.env.SSLCOMMERZ_IS_LIVE === "true";
+
+  return {
+    isLive,
+    storeId: hasValidMerchantCredentials ? configuredStoreId : "testbox",
+    storePasswd: hasValidMerchantCredentials ? configuredStorePassword : "qwerty",
+    hasValidMerchantCredentials,
+  };
+}
 
 export async function initiateSSLCommerzPayment(
   params: SSLCommerzInitParams
 ): Promise<SSLCommerzInitResponse> {
-  const storeId = process.env.SSLCOMMERZ_STORE_ID || params.storeId || "testbox";
-  const storePasswd = process.env.SSLCOMMERZ_STORE_PASSWORD || params.storePasswd || "qwerty";
-  const isLive = process.env.SSLCOMMERZ_IS_LIVE === "true";
+  const { storeId, storePasswd, isLive, hasValidMerchantCredentials } = getSSLCommerzCredentials();
+  const effectiveStoreId = params.storeId || storeId;
+  const effectiveStorePasswd = params.storePasswd || storePasswd;
 
-  const baseUrl = isLive ? "https://securepay.sslcommerz.com" : SSLCOMMERZ_SANDBOX_BASE;
+  if (!hasValidMerchantCredentials) {
+    console.warn(
+      "[SSLCommerz] No valid merchant credentials configured. Falling back to sandbox test credentials. Set SSLCOMMERZ_STORE_ID / SSLCOMMERZ_STORE_PASSWORD and enable live mode only in production."
+    );
+  }
+
+  const baseUrl = isLive ? SSLCOMMERZ_LIVE_BASE : SSLCOMMERZ_SANDBOX_BASE;
   const endpoint = `${baseUrl}/gwprocess/v4/api.php`;
 
   const formData = new URLSearchParams();
-  formData.append("store_id", storeId);
-  formData.append("store_passwd", storePasswd);
+  formData.append("store_id", effectiveStoreId);
+  formData.append("store_passwd", effectiveStorePasswd);
   formData.append("total_amount", params.totalAmount.toFixed(2));
   formData.append("currency", params.currency || "BDT");
   formData.append("tran_id", params.tranId);
@@ -115,11 +151,9 @@ export async function initiateSSLCommerzPayment(
 export async function validateSSLCommerzPayment(
   valId: string
 ): Promise<SSLCommerzValidateResponse> {
-  const storeId = process.env.SSLCOMMERZ_STORE_ID || "testbox";
-  const storePasswd = process.env.SSLCOMMERZ_STORE_PASSWORD || "qwerty";
-  const isLive = process.env.SSLCOMMERZ_IS_LIVE === "true";
+  const { storeId, storePasswd, isLive } = getSSLCommerzCredentials();
 
-  const baseUrl = isLive ? "https://securepay.sslcommerz.com" : SSLCOMMERZ_SANDBOX_BASE;
+  const baseUrl = isLive ? SSLCOMMERZ_LIVE_BASE : SSLCOMMERZ_SANDBOX_BASE;
   const endpoint = `${baseUrl}/validator/api/validationserverAPI.php?val_id=${encodeURIComponent(
     valId
   )}&store_id=${encodeURIComponent(storeId)}&store_passwd=${encodeURIComponent(

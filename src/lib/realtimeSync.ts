@@ -16,7 +16,8 @@ export type RealtimeEventType =
   | "SUPPORT_TICKET"
   | "USER_UPDATED"
   | "CATEGORY_UPDATED"
-  | "GLOBAL_REFRESH";
+  | "GLOBAL_REFRESH"
+  | "LOCAL_NOTIFICATION";
 
 export interface RealtimeMessage {
   type: RealtimeEventType;

@@ -47,22 +47,20 @@ export function extractSearchQuery(command: string): string | null {
 }
 
 export function extractOptionNumber(command: string): number | null {
-  const lower = command.toLowerCase().trim();
+  const normalized = convertBengaliDigitsToStandard(command).toLowerCase().trim();
 
-  // 1. Check for Bengali numerals: ০ ১ ২ ৩ ৪ ৫ ৬ ৭ ৮ ৯
   const bengaliDigitMap: Record<string, number> = {
     "১": 1, "২": 2, "৩": 3, "৪": 4, "৫": 5,
     "৬": 6, "৭": 7, "৮": 8, "৯": 9,
   };
   for (const [char, val] of Object.entries(bengaliDigitMap)) {
-    if (lower.includes(char)) {
+    if (normalized.includes(char)) {
       return val;
     }
   }
 
-  // 2. Word number map (English + Bengali + Banglish)
   const wordMap: Record<string, number> = {
-    "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
+    "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "10": 10, "11": 11, "12": 12, "13": 13, "14": 14, "15": 15, "16": 16, "17": 17, "18": 18, "19": 19, "20": 20,
     one: 1, first: 1, "1st": 1, ek: 1, prothom: 1,
     two: 2, second: 2, "2nd": 2, dui: 2, ditio: 2,
     three: 3, third: 3, "3rd": 3, teen: 3, tritio: 3, tin: 3,
@@ -74,9 +72,13 @@ export function extractOptionNumber(command: string): number | null {
     nine: 9, ninth: 9, "9th": 9, noy: 9,
   };
 
-  // Match "select 1", "option 1", "number 1", "item 1", "choose 1", "1 number", "1st option"
-  const matchNum = lower.match(
-    /\b(?:select|option|number|item|choose|cholo)?\s*([1-9]|one|two|three|four|five|six|seven|eight|nine|first|second|third|fourth|fifth|ek|dui|teen|tin|char|paach|pach|chhoy|saat|aat|noy)(?:\s*(?:number|no|option|item))?\b/i
+  const numberMatch = normalized.match(/\b(?:select|choose|pick|buy|take|option|number|item|no)?\s*(\d{1,2})\b/i);
+  if (numberMatch?.[1]) {
+    return Number(numberMatch[1]);
+  }
+
+  const matchNum = normalized.match(
+    /\b(?:select|option|number|item|choose|cholo)?\s*(one|two|three|four|five|six|seven|eight|nine|first|second|third|fourth|fifth|ek|dui|teen|tin|char|paach|pach|chhoy|saat|aat|noy)(?:\s*(?:number|no|option|item))?\b/i
   );
 
   if (matchNum?.[1]) {
@@ -87,7 +89,7 @@ export function extractOptionNumber(command: string): number | null {
   }
 
   for (const [word, val] of Object.entries(wordMap)) {
-    if (new RegExp(`\\b${word}\\b`, "i").test(lower)) {
+    if (new RegExp(`\\b${word}\\b`, "i").test(normalized)) {
       return val;
     }
   }
@@ -286,18 +288,29 @@ export function resolveVoiceProductSelection(
   const lower = command.toLowerCase().trim();
 
   const indexMap: Record<string, number> = {
-    "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "10": 10,
+    "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "10": 10, "11": 11, "12": 12, "13": 13, "14": 14, "15": 15, "16": 16, "17": 17, "18": 18, "19": 19, "20": 20,
     one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10,
     first: 1, second: 2, third: 3, fourth: 4, fifth: 5,
     "1st": 1, "2nd": 2, "3rd": 3, "4th": 4, "5th": 5,
+    to: 2, too: 2, for: 4,
     ek: 1, dui: 2, teen: 3, tin: 3, char: 4, paach: 5, pach: 5, chhoy: 6, saat: 7, aat: 8, noy: 9,
     prothom: 1, ditio: 2, tritio: 3,
   };
 
-  // 1. Direct ordinal / number patterns (e.g. "select 1", "option 2", "1st one", "item 3", "1")
+  const directNumberMatch = lower.match(/\b(?:select|choose|pick|buy|take)?\s*(?:option|number|item|no)?\s*(\d{1,2})\b/i);
+  if (directNumberMatch && directNumberMatch[1]) {
+    const selectedIndex = Number(directNumberMatch[1]) - 1;
+    if (selectedIndex >= 0 && selectedIndex < productItems.length) {
+      const selectedProduct = productItems[selectedIndex];
+      if (selectedProduct) {
+        return { selectedProduct, selectedIndex };
+      }
+    }
+  }
+
   const match =
-    lower.match(/\b(?:select|choose|pick|buy|take)?\s*(?:option|number|item|no)?\s*([1-9]|10|one|two|three|four|five|six|seven|eight|nine|ten|first|second|third|fourth|fifth|1st|2nd|3rd|4th|5th|ek|dui|teen|tin|char|paach|pach|chhoy|saat|aat|noy|prothom|ditio|tritio)(?:\s*(?:number|no|option|item|ta|ti|one))?\b/i) ||
-    lower.match(/^(?:option|number|item|select)?\s*([1-9]|10|one|two|three|four|five|six|seven|eight|nine|ten|first|second|third|fourth|fifth|1st|2nd|3rd|4th|5th|ek|dui|teen|tin|char|paach|pach|chhoy|saat|aat|noy|prothom|ditio|tritio)$/i);
+    lower.match(/\b(?:select|choose|pick|buy|take)?\s*(?:option|number|item|no)?\s*(one|two|to|too|three|four|for|five|six|seven|eight|nine|ten|first|second|third|fourth|fifth|1st|2nd|3rd|4th|5th|ek|dui|teen|tin|char|paach|pach|chhoy|saat|aat|noy|prothom|ditio|tritio)(?:\s*(?:number|no|option|item|ta|ti|one))?\b/i) ||
+    lower.match(/^(?:option|number|item|select)?\s*(one|two|to|too|three|four|for|five|six|seven|eight|nine|ten|first|second|third|fourth|fifth|1st|2nd|3rd|4th|5th|ek|dui|teen|tin|char|paach|pach|chhoy|saat|aat|noy|prothom|ditio|tritio)$/i);
 
   if (match && match[1]) {
     const raw = match[1].toLowerCase();

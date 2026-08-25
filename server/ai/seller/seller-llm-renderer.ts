@@ -5,7 +5,7 @@
  */
 
 import type { AIResponse, SellerContext } from "./types.ts";
-import { getOllamaClient } from "../llm/ollama-client.ts";
+import { getLLMGatewayProvider } from "../providers/llm-gateway-provider.ts";
 
 export class SellerLLMRenderer {
   /**
@@ -20,80 +20,39 @@ export class SellerLLMRenderer {
     context?: SellerContext,
     history?: { role: string; content: string }[]
   ): Promise<string> {
-    const apiKey = process.env.OPENAI_API_KEY || "";
-
-    // 1. Primary: OpenAI with Full Context
-    if (apiKey) {
-      try {
-        const fullContextSystemPrompt = this.buildFullContextSystemPrompt(response, context);
-        const messages: Array<{ role: "system" | "user" | "assistant"; content: string }> = [
-          { role: "system", content: fullContextSystemPrompt },
-        ];
-
-        // Append recent conversation history for deep contextual coherence
-        if (history && history.length > 0) {
-          for (const msg of history.slice(-6)) {
-            messages.push({
-              role: msg.role === "user" ? "user" : "assistant",
-              content: msg.content,
-            });
-          }
-        }
-
-        messages.push({
-          role: "user",
-          content: userQuery || "Analyze my product and give me comprehensive seller guidance.",
-        });
-
-        const res = await fetch("https://api.openai.com/v1/chat/completions", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${apiKey}`,
-          },
-          body: JSON.stringify({
-            model: "gpt-4o-mini",
-            messages,
-            temperature: 0.7,
-            max_tokens: 1000,
-          }),
-        });
-
-        if (res.ok) {
-          const data = await res.json();
-          const reply = data.choices?.[0]?.message?.content;
-          if (reply && typeof reply === "string" && reply.trim().length > 20) {
-            return reply.trim();
-          }
-        } else {
-          console.warn(`[SellerLLMRenderer] OpenAI API returned ${res.status}: ${res.statusText}`);
-        }
-      } catch (err) {
-        console.error("[SellerLLMRenderer] OpenAI generation error:", err);
-      }
-    }
-
-    // 2. Secondary: Local Ollama (if available)
-    const prompt = this.buildPrompt(response, userQuery);
     try {
-      const ollama = getOllamaClient();
-      const llmResult = await ollama.generate(
-        "qwen2.5:0.5b",
-        prompt,
-        {
-          system: "You are an expert Enterprise AI Seller Assistant. Answer the seller's specific query using the provided structured facts. Speak in a helpful, intelligent, natural tone. NEVER invent or alter numerical data, stock counts, prices, or SEO scores.",
-          temperature: 0.3,
-        }
-      );
+      const fullContextSystemPrompt = this.buildFullContextSystemPrompt(response, context);
+      const messages: Array<{ role: "system" | "user" | "assistant"; content: string }> = [
+        { role: "system", content: fullContextSystemPrompt },
+      ];
 
-      if (llmResult && typeof llmResult === "string" && llmResult.trim().length > 25) {
-        return llmResult.trim();
+      // Append recent conversation history for deep contextual coherence
+      if (history && history.length > 0) {
+        for (const msg of history.slice(-6)) {
+          messages.push({
+            role: msg.role === "user" ? "user" : "assistant",
+            content: msg.content,
+          });
+        }
       }
-    } catch {
-      // Local LLM warming up or offline — fallback to dynamic synthesis
+
+      messages.push({
+        role: "user",
+        content: userQuery || "Analyze my product and give me comprehensive seller guidance.",
+      });
+
+      const provider = getLLMGatewayProvider();
+      const reply = await provider.generate(messages as any, { temperature: 0.7, max_tokens: 1000 });
+      
+      // If the gateway returned the offline message, try dynamic synthesis
+      if (reply && typeof reply === "string" && reply.trim().length > 20 && !reply.includes("currently offline")) {
+        return reply.trim();
+      }
+    } catch (err) {
+      console.error("[SellerLLMRenderer] AI generation error:", err);
     }
 
-    // 3. Fallback: Dynamic semantic synthesis
+    // 2. Fallback: Dynamic semantic synthesis
     return this.renderDynamicSynthesis(response, userQuery);
   }
 

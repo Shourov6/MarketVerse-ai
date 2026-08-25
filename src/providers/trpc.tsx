@@ -91,6 +91,16 @@ export function TRPCProvider({ children }: { children: ReactNode }) {
           queryClient.invalidateQueries({ queryKey: [["notification", "unreadCount"]] });
           break;
 
+        case "LOCAL_NOTIFICATION":
+          queryClient.setQueryData([["notification", "list"]], (oldData: any) => {
+            if (!Array.isArray(oldData)) return [message.payload];
+            return [message.payload, ...oldData];
+          });
+          queryClient.setQueryData([["notification", "unreadCount"]], (oldData: any) => {
+            return (typeof oldData === 'number' ? oldData : 0) + 1;
+          });
+          break;
+
         case "CART_UPDATED":
           queryClient.invalidateQueries({ queryKey: [["cart", "get"]] });
           break;

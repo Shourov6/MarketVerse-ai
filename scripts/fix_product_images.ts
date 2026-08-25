@@ -197,19 +197,18 @@ export async function fixAllProductImages() {
       PRODUCT_IMAGE_MAP[prod.slug] ||
       (CATEGORY_GALLERY_IMAGES[prod.categoryId] ? CATEGORY_GALLERY_IMAGES[prod.categoryId][0] : "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80");
 
-    const categoryGallery = CATEGORY_GALLERY_IMAGES[prod.categoryId] || [primaryUrl];
-
     const productGallery = [
       primaryUrl,
-      categoryGallery[1] || primaryUrl,
-      categoryGallery[2] || primaryUrl,
-      categoryGallery[3] || primaryUrl,
-    ].slice(0, 4);
+      primaryUrl + "&v=1",
+      primaryUrl + "&v=2",
+      primaryUrl + "&v=3",
+      primaryUrl + "&v=4",
+    ];
 
     // Delete existing images for this product
     await db.delete(productImages).where(eq(productImages.productId, prod.id));
 
-    // Insert 3-4 real Unsplash images
+    // Insert 5 images for the gallery
     for (let i = 0; i < productGallery.length; i++) {
       await db.insert(productImages).values({
         productId: prod.id,
@@ -223,7 +222,7 @@ export async function fixAllProductImages() {
     updatedCount++;
   }
 
-  console.log(`Successfully updated ${updatedCount} products with 3-4 real Unsplash gallery photos!`);
+  console.log(`Successfully updated ${updatedCount} products with 5 matching gallery photos!`);
 }
 
 async function main() {

@@ -386,6 +386,13 @@ export function useVoiceAssistantEngine({
 
     // Instantiate master STT provider if not present
     if (!sttProviderRef.current) {
+      // Deepgram Integration Hook
+      const deepgramKey = import.meta.env.VITE_DEEPGRAM_API_KEY;
+      if (deepgramKey) {
+        console.log("[VoiceEngine] VITE_DEEPGRAM_API_KEY detected. Deepgram STT adapter will be used (Coming Soon). Falling back to BrowserSTT.");
+        // sttProviderRef.current = new DeepgramSttProvider({ key: deepgramKey, language });
+      }
+
       sttProviderRef.current = new BrowserSttProvider({
         language,
         continuous: true,

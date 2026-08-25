@@ -6,6 +6,7 @@ import {
   Star,
   Zap,
   ArrowRight,
+  ShoppingCart,
   Heart,
   Loader2,
   Search,
@@ -19,6 +20,7 @@ import {
   Flame,
   Store,
 } from "lucide-react";
+import { useVoiceStore } from "@/stores/useVoiceStore";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -40,6 +42,10 @@ export default function Home() {
     { limit: 8 },
     { refetchInterval: 2500 }
   );
+  const { data: flashSale, isLoading: flashSaleLoading } = trpc.product.getFlashSale.useQuery(
+    { limit: 8 },
+    { refetchInterval: 5000 }
+  );
   const { data: categories } = trpc.category.list.useQuery(undefined, {
     refetchInterval: 5000,
   });
@@ -60,6 +66,8 @@ export default function Home() {
     popularSearches.push("Smart Watch", "Air Max", "Leather Bag", "Earrings", "Diffuser");
   }
 
+  const setVoiceProducts = useVoiceStore((state) => state.setVoiceProducts);
+
   // Synchronize loaded home products with VoiceAssistant
   useEffect(() => {
     if (typeof window === "undefined" || (!featured && !trending)) return;
@@ -71,17 +79,9 @@ export default function Home() {
         seen.add(p.name);
         return true;
       })
-      .slice(0, 10)
-      .map((product: any, index: number) => ({
-        id: product.id,
-        name: product.name,
-        slug: product.slug,
-        price: formatCurrency(product.price),
-        image: product.imageUrl || product.images?.[0] || product.image || "",
-        index: index + 1,
-      }));
-
-    window.dispatchEvent(new CustomEvent("voice-assistant-products", { detail: { items: voiceProducts } }));
+      .slice(0, 10);
+  
+    setVoiceProducts(voiceProducts);
   }, [featured, trending]);
 
   // Dynamic category mapping directly from database queries
@@ -273,7 +273,7 @@ export default function Home() {
                                   key={product.id}
                                   onClick={() => {
                                     setIsSearchFocused(false);
-                                    navigate(`/product/${product.id}`);
+                                    navigate(`/product/${product.slug}`);
                                   }}
                                   className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-indigo-50/80 dark:hover:bg-indigo-950/40 cursor-pointer transition-colors group"
                                 >
@@ -620,8 +620,8 @@ export default function Home() {
               <Loader2 className="h-8 w-8 animate-spin text-purple-600" />
             </div>
           ) : mlRecommendations.length > 0 ? (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3.5 sm:gap-4 lg:gap-5">
-              {mlRecommendations.map((product: any) => (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5 sm:gap-4 lg:gap-5">
+              {mlRecommendations.slice(0, 5).map((product: any) => (
                 <ProductCard
                   key={product.id}
                   product={product}
@@ -638,6 +638,41 @@ export default function Home() {
           )}
         </div>
       </section>
+
+      {/* Flash Sale Products */}
+      {flashSale && flashSale.length > 0 && (
+        <section className="py-14 sm:py-20 bg-rose-50/50 dark:bg-rose-950/20 border-t border-b border-rose-100 dark:border-rose-900/30" aria-label="Flash sale products">
+          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="flex items-end justify-between mb-10">
+              <div>
+                <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 text-[10px] font-bold uppercase tracking-wider mb-1">
+                  <Zap className="h-3 w-3 text-rose-500 fill-rose-500" />
+                  Limited Time Offers
+                </div>
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
+                  Flash Sale 
+                  <span className="bg-rose-500 text-white text-xs px-2 py-0.5 rounded-md font-bold">40%+ OFF</span>
+                </h2>
+              </div>
+            </div>
+
+            {flashSaleLoading ? (
+              <div className="flex justify-center py-20">
+                <Loader2 className="h-8 w-8 animate-spin text-rose-600" />
+              </div>
+            ) : (
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5 sm:gap-4 lg:gap-5">
+                {flashSale.slice(0, 5).map((product: any) => (
+                  <ProductCard
+                    key={product.id}
+                    product={product}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* Featured Products */}
       <section className="py-14 sm:py-20 bg-white dark:bg-slate-900 border-t border-b border-slate-100 dark:border-slate-800/80" aria-label="Featured products">
@@ -666,8 +701,8 @@ export default function Home() {
               <Loader2 className="h-8 w-8 animate-spin text-indigo-600" />
             </div>
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3.5 sm:gap-4 lg:gap-5">
-              {featured?.map((product: any) => (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5 sm:gap-4 lg:gap-5">
+              {featured?.slice(0, 5).map((product: any) => (
                 <ProductCard
                   key={product.id}
                   product={product}
@@ -707,8 +742,8 @@ export default function Home() {
               <Loader2 className="h-8 w-8 animate-spin text-orange-600" />
             </div>
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3.5 sm:gap-4 lg:gap-5">
-              {trending?.map((product: any) => (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5 sm:gap-4 lg:gap-5">
+              {trending?.slice(0, 5).map((product: any) => (
                 <ProductCard
                   key={product.id}
                   product={product}
@@ -881,93 +916,101 @@ function ProductCard({
     : ((product.id * 23) % 200 + 15);
 
   return (
-    <div className="group flex flex-col gap-4 relative">
-      {/* Image Container with gray background */}
-      <div className="relative aspect-square rounded overflow-hidden bg-[#F5F5F5] dark:bg-slate-800 flex items-center justify-center p-6 group">
-        <Link to={`/product/${product.slug}`} className="block w-full h-full relative">
+    <div className="group bg-white dark:bg-slate-800/90 rounded-2xl shadow-sm hover:shadow-xl hover:border-indigo-300/80 dark:hover:border-indigo-500/50 transition-all duration-300 flex flex-col justify-between overflow-hidden border border-slate-200/80 dark:border-slate-700/70">
+      <div>
+        {/* Image Container */}
+        <Link to={`/product/${product.slug}`} className="block relative aspect-square overflow-hidden bg-slate-100 dark:bg-slate-700/50">
           <img
             src={product.imageUrl || "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500"}
             alt={product.name}
-            className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+            className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500 ease-out"
             loading="lazy"
           />
+
+          {/* Badges Stack Top Left */}
+          <div className="absolute top-2.5 left-2.5 flex flex-col gap-1.5 items-start z-10">
+            {discount > 0 && (
+              <span className="px-2.5 py-1 bg-gradient-to-r from-rose-500 to-pink-600 text-white text-[11px] font-extrabold rounded-full shadow-md tracking-tight">
+                -{discount}%
+              </span>
+            )}
+            {isAiCurated && (
+              <span className="px-2.5 py-1 bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-[10px] font-bold rounded-full shadow-md flex items-center gap-1 backdrop-blur-md">
+                <Sparkles className="h-3 w-3 text-amber-300 animate-pulse" />
+                <span>AI Fit</span>
+              </span>
+            )}
+          </div>
+
+          {/* Action Button Top Right */}
+          <div className="absolute top-2.5 right-2.5 flex flex-col gap-1.5 z-10 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-200">
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                onAddToWishlist();
+              }}
+              className="p-2.5 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md text-slate-600 dark:text-slate-300 hover:text-rose-500 dark:hover:text-rose-400 rounded-full shadow-md hover:scale-110 transition-all"
+              aria-label="Add to wishlist"
+              title="Add to Wishlist"
+            >
+              <Heart className="h-4 w-4" />
+            </button>
+          </div>
         </Link>
 
-        {/* Badges Stack Top Left */}
-        <div className="absolute top-3 left-3 flex flex-col gap-2 z-10">
-          {discount > 0 && (
-            <span className="px-3 py-1 bg-[#DB4444] text-white text-xs rounded shadow-sm">
-              -{discount}%
+        {/* Content Body */}
+        <div className="p-3 sm:p-3.5 flex flex-col gap-1">
+          {/* Category & Seller */}
+          <div className="flex items-center justify-between text-[10px] font-semibold text-slate-500 dark:text-slate-400">
+            <span className="text-indigo-600 dark:text-indigo-400 font-bold truncate max-w-[55%]">
+              {product.categoryName || "General"}
             </span>
-          )}
-          {isAiCurated && (
-            <span className="px-3 py-1 bg-green-500 text-white text-xs rounded shadow-sm">
-              NEW
+            <span className="truncate max-w-[42%] text-right font-medium text-slate-400">
+              {product.sellerName || "Marketplace"}
             </span>
-          )}
-        </div>
+          </div>
 
-        {/* Action Buttons Top Right */}
-        <div className="absolute top-3 right-3 flex flex-col gap-2 z-10">
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              onAddToWishlist();
-            }}
-            className="w-8 h-8 bg-white rounded-full flex items-center justify-center hover:bg-[#DB4444] hover:text-white transition-colors shadow-sm"
-            aria-label="Add to wishlist"
-          >
-            <Heart className="h-4 w-4" />
-          </button>
-          <Link
-            to={`/product/${product.slug}`}
-            className="w-8 h-8 bg-white rounded-full flex items-center justify-center hover:bg-[#DB4444] hover:text-white transition-colors shadow-sm"
-          >
-            <Search className="h-4 w-4" />
+          {/* Product Name */}
+          <Link to={`/product/${product.slug}`}>
+            <h3 className="font-semibold text-slate-900 dark:text-white text-xs sm:text-sm line-clamp-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors leading-snug">
+              {product.name}
+            </h3>
           </Link>
-        </div>
 
-        {/* Add To Cart Hover Button */}
-        <button
-          onClick={onAddToCart}
-          className="absolute bottom-0 left-0 right-0 py-2.5 bg-black text-white text-sm font-medium w-full translate-y-full group-hover:translate-y-0 transition-transform duration-300 cursor-pointer"
-        >
-          Add To Cart
-        </button>
+          {/* Rating */}
+          <div className="flex items-center gap-1.5 mt-0.5">
+            <div className="flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-400 text-[10px] font-extrabold border border-amber-200/60 dark:border-amber-900/40">
+              <Star className="h-3 w-3 text-amber-500 fill-amber-500" />
+              <span>{displayRating}</span>
+            </div>
+            <span className="text-[10px] text-slate-400 font-medium">
+              ({displayReviewCount})
+            </span>
+          </div>
+        </div>
       </div>
 
-      {/* Content Body */}
-      <div className="flex flex-col gap-1.5">
-        {/* Product Name */}
-        <Link to={`/product/${product.slug}`}>
-          <h3 className="font-medium text-black dark:text-white text-base truncate">
-            {product.name}
-          </h3>
-        </Link>
-
-        {/* Prices */}
-        <div className="flex items-center gap-3">
-          <span className="font-medium text-[#DB4444]">
+      {/* Footer: Price & Add to Cart */}
+      <div className="p-3 sm:p-3.5 pt-0 mt-auto flex items-center justify-between gap-1.5">
+        <div>
+          <div className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white leading-tight">
             {formatCurrency(product.price)}
-          </span>
+          </div>
           {product.comparePrice && (
-            <span className="text-gray-400 line-through font-medium">
+            <span className="text-[10px] text-slate-400 line-through font-medium">
               {formatCurrency(product.comparePrice)}
             </span>
           )}
         </div>
 
-        {/* Rating */}
-        <div className="flex items-center gap-1.5">
-          <div className="flex text-[#FFAD33]">
-            {[1, 2, 3, 4, 5].map((star) => (
-              <Star key={star} className={`h-4 w-4 ${star <= Math.round(Number(displayRating)) ? 'fill-[#FFAD33]' : 'fill-gray-200 text-gray-200'}`} />
-            ))}
-          </div>
-          <span className="text-sm text-gray-500 font-medium">
-            ({displayReviewCount})
-          </span>
-        </div>
+        <button
+          onClick={onAddToCart}
+          className="px-2.5 py-1.5 rounded-lg bg-[#5438DC] hover:bg-indigo-700 text-white font-bold text-xs flex items-center gap-1 shadow-sm hover:shadow-indigo-500/25 transition-all shrink-0 hover:-translate-y-0.5 cursor-pointer"
+          aria-label="Add to cart"
+        >
+          <ShoppingCart className="h-3.5 w-3.5" />
+          <span>Add</span>
+        </button>
       </div>
     </div>
   );

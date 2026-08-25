@@ -14,6 +14,7 @@
 import type { FashionRecommendation } from "./deterministic-fashion-engine";
 import type { StreamChunk } from "../llm/types";
 import type { Renderer } from "../renderers/types";
+import { LLMService } from "../llm/llm-service.ts";
 
 // ─── LLM Renderer Class ──────────────────────────────────────────────────────
 
@@ -23,8 +24,45 @@ export class LLMRenderer implements Renderer<FashionRecommendation> {
    */
   async render(
     rec: FashionRecommendation,
+    userMessage?: string,
     emotionalOpening?: string
   ): Promise<string> {
+
+    try {
+      const msg = (userMessage || "").toLowerCase();
+      const wantsTop = msg.match(/\b(top|shirt|panjabi|t-shirt|polo|kurta)\b/);
+      const wantsBottom = msg.match(/\b(pant|pants|bottom|bottoms|trousers|jeans|pajama|churidar)\b/);
+      const wantsFootwear = msg.match(/\b(shoes|footwear|sneakers|boots|sandals)\b/);
+
+      const isSpecific = wantsTop || wantsBottom || wantsFootwear;
+
+      const topText = (!isSpecific || wantsTop) ? `Top: ${rec.look.top.name} (${rec.look.top.reason})\n` : "";
+      const bottomText = (!isSpecific || wantsBottom) ? `Bottom: ${rec.look.bottom.name} (${rec.look.bottom.reason})\n` : "";
+      const footwearText = (!isSpecific || wantsFootwear) ? `Footwear: ${rec.look.footwear.name} (${rec.look.footwear.reason})\n` : "";
+
+      const systemPrompt = `You are a Fashion Stylist AI. Present the following recommendation naturally. Use Markdown.
+
+Recommendation:
+Occasion: ${rec.occasion}
+${topText}${bottomText}${footwearText}Match Score: ${rec.matchScore}/100
+Tips: ${rec.tips.join(", ")}
+
+User Request: "${userMessage || "Suggest an outfit."}"
+${emotionalOpening ? `Start your response with: ${emotionalOpening}` : ""}`;
+
+      const llm = new LLMService();
+      const response = await llm.chat([{ role: "system", content: systemPrompt }], {
+        temperature: 0.5,
+      });
+
+      if (response && response.message && response.message.content) {
+        return response.message.content.trim();
+      }
+    } catch (e) {
+      console.error("[LLMRenderer] LLM generation failed:", e);
+    }
+
+    // Fallback if OpenAI fails
     return this.templateFallback(rec, emotionalOpening);
   }
 
@@ -33,9 +71,10 @@ export class LLMRenderer implements Renderer<FashionRecommendation> {
    */
   async *streamRender(
     rec: FashionRecommendation,
+    userMessage?: string,
     emotionalOpening?: string
   ): AsyncGenerator<StreamChunk> {
-    yield { token: this.templateFallback(rec, emotionalOpening), done: true };
+    yield { token: await this.render(rec, userMessage, emotionalOpening), done: true };
   }
 
   // ── Private: Deterministic Template Fallback ────────────────────────────────

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router";
 import { trpc } from "@/providers/trpc";
-import { CheckCircle2, XCircle, Loader2, ArrowRight, ShoppingBag } from "lucide-react";
+import { CheckCircle2, XCircle, Loader2, ArrowRight, ShoppingBag, RefreshCcw, Home, Package } from "lucide-react";
 
 export default function PaymentCallback() {
   const [searchParams] = useSearchParams();
@@ -13,7 +13,6 @@ export default function PaymentCallback() {
 
   const [verifying, setVerifying] = useState(true);
   const [result, setResult] = useState<{ success: boolean; message: string; orderNumber?: string } | null>(null);
-
   const verifyMutation = trpc.order.verifySSLCommerz.useMutation({
     onSuccess: (data) => {
       setVerifying(false);
@@ -37,6 +36,15 @@ export default function PaymentCallback() {
       setResult({ success: false, message: "Invalid payment callback URL." });
     }
   }, [tranId, valId, statusParam]);
+
+  useEffect(() => {
+    if (result && !result.success) {
+      // Fall back to checkout on failure
+      setTimeout(() => {
+        navigate("/checkout");
+      }, 3000);
+    }
+  }, [result, navigate]);
 
   if (verifying) {
     return (
@@ -75,7 +83,9 @@ export default function PaymentCallback() {
             </div>
             <div className="flex justify-between">
               <span className="text-slate-500">Gateway Status:</span>
-              <span className="font-semibold text-emerald-600 dark:text-emerald-400">VALIDATED (Sandbox)</span>
+              <span className={`font-semibold ${isSuccess ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"}`}>
+                {isSuccess ? "VALIDATED (Sandbox)" : "FAILED / CANCELLED"}
+              </span>
             </div>
           </div>
         )}
@@ -86,19 +96,31 @@ export default function PaymentCallback() {
               onClick={() => navigate("/orders")}
               className="px-6 py-3 bg-indigo-600 text-white rounded-xl font-semibold hover:bg-indigo-700 transition-colors flex items-center justify-center gap-2"
             >
+              <Package className="h-4 w-4" />
               View My Orders
-              <ArrowRight className="h-4 w-4" />
             </button>
           ) : (
             <button
               onClick={() => navigate("/checkout")}
-              className="px-6 py-3 bg-indigo-600 text-white rounded-xl font-semibold hover:bg-indigo-700 transition-colors flex items-center justify-center gap-2"
+              className="px-6 py-3 bg-slate-900 dark:bg-slate-700 text-white rounded-xl font-semibold hover:bg-slate-800 dark:hover:bg-slate-600 transition-colors flex items-center justify-center gap-2"
             >
-              <ShoppingBag className="h-4 w-4" />
-              Try Again at Checkout
+              <RefreshCcw className="h-4 w-4" />
+              Try Again
             </button>
           )}
+
+          <button
+            onClick={() => navigate("/")}
+            className="px-6 py-3 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 rounded-xl font-semibold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors flex items-center justify-center gap-2"
+          >
+            <Home className="h-4 w-4" />
+            Return to Home
+          </button>
         </div>
+
+        {!isSuccess && (
+          <p className="mt-6 text-sm text-slate-500 animate-pulse">Redirecting you back to checkout...</p>
+        )}
       </div>
     </div>
   );

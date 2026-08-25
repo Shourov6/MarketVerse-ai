@@ -15,7 +15,7 @@ import {
   Package,
   Radio
 } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 import { broadcastLiveEvent } from "@/lib/realtimeSync";
 
 interface VoiceSelectedProduct {
@@ -46,6 +46,9 @@ const defaultVoiceProduct: VoiceSelectedProduct = {
   storeName: "Elegance Boutique",
 };
 
+const VOICE_VAT_RATE = 0.08;
+const VOICE_DELIVERY_FEE = 60;
+
 export default function VoiceCheckout() {
   const navigate = useNavigate();
   const [product, setProduct] = useState<VoiceSelectedProduct>(defaultVoiceProduct);
@@ -54,6 +57,11 @@ export default function VoiceCheckout() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [placedOrderId, setPlacedOrderId] = useState<string | null>(null);
+
+  const numericPrice = parseNumericPrice(product.price);
+  const taxAmount = Number((numericPrice * VOICE_VAT_RATE).toFixed(2));
+  const shippingAmount = VOICE_DELIVERY_FEE;
+  const totalAmount = Number((numericPrice + taxAmount + shippingAmount).toFixed(2));
 
   // Load product & stored phone from sessionStorage / localStorage
   useEffect(() => {
@@ -77,16 +85,11 @@ export default function VoiceCheckout() {
   // Announce page description on mount via VoiceAssistant global TTS engine
   useEffect(() => {
     if (product.name) {
-      const numericPrice = parseNumericPrice(product.price);
       const storedPhone = sessionStorage.getItem("voice_checkout_phone");
       const message =
         storedPhone && storedPhone.length >= 10
-          ? `Voice Checkout. You selected ${product.name} for ${numericPrice.toLocaleString()} Taka. Phone number ${storedPhone
-              .split("")
-              .join(
-                " "
-              )} is set. Say 'confirm order' to place your order, or say 'cancel' to return to products.`
-          : `Voice Checkout. You selected ${product.name} for ${numericPrice.toLocaleString()} Taka. Please speak your 11 digit mobile number to place your order, or say 'cancel' to return to products.`;
+          ? `Voice Checkout. You selected ${product.name}. Item subtotal is ${numericPrice.toLocaleString()} Taka. VAT at 8 percent is ${taxAmount.toLocaleString()} Taka. Delivery fee is ${shippingAmount.toLocaleString()} Taka. Total payable is ${totalAmount.toLocaleString()} Taka. Phone number ${storedPhone.split("").join(" ")} is set. Say 'confirm order' to place your order, or say 'cancel' to return to products.`
+          : `Voice Checkout. You selected ${product.name}. Item subtotal is ${numericPrice.toLocaleString()} Taka. VAT at 8 percent is ${taxAmount.toLocaleString()} Taka. Delivery fee is ${shippingAmount.toLocaleString()} Taka. Total payable is ${totalAmount.toLocaleString()} Taka. Please speak your 11 digit mobile number to place your order, or say 'cancel' to return to products.`;
 
       const timer = setTimeout(() => {
         window.dispatchEvent(
@@ -95,7 +98,7 @@ export default function VoiceCheckout() {
       }, 500);
       return () => clearTimeout(timer);
     }
-  }, [product]);
+  }, [product, numericPrice, shippingAmount, taxAmount, totalAmount]);
 
   const handleCancelCheckout = useCallback(() => {
     sessionStorage.removeItem("voice_checkout_product");
@@ -218,8 +221,10 @@ export default function VoiceCheckout() {
     handlePlaceOrderWithPhone(phone);
   };
 
-  const numericPrice = parseNumericPrice(product.price);
   const formattedPrice = numericPrice.toLocaleString();
+  const formattedTax = taxAmount.toLocaleString();
+  const formattedShipping = shippingAmount.toLocaleString();
+  const formattedTotal = totalAmount.toLocaleString();
 
   // BD Mobile Operator detection badge
   const getCarrierBadge = (num: string) => {
@@ -295,7 +300,7 @@ export default function VoiceCheckout() {
               </div>
               <div className="flex justify-between items-center text-sm">
                 <span className="text-slate-500 dark:text-slate-400">Payment:</span>
-                <span className="font-bold text-emerald-600 dark:text-emerald-400">Cash on Delivery (৳ {formattedPrice} BDT)</span>
+                <span className="font-bold text-emerald-600 dark:text-emerald-400">Cash on Delivery (৳ {formattedTotal} BDT)</span>
               </div>
             </div>
 
@@ -499,8 +504,12 @@ export default function VoiceCheckout() {
                     <span className="font-semibold">৳ {formattedPrice}</span>
                   </div>
                   <div className="flex justify-between text-slate-600 dark:text-slate-300">
+                    <span>VAT (8%)</span>
+                    <span className="font-semibold">৳ {formattedTax}</span>
+                  </div>
+                  <div className="flex justify-between text-slate-600 dark:text-slate-300">
                     <span>Delivery Fee</span>
-                    <span className="font-semibold text-emerald-600 dark:text-emerald-400">FREE (Voice Promo)</span>
+                    <span className="font-semibold">৳ {formattedShipping}</span>
                   </div>
                   <div className="flex justify-between text-slate-600 dark:text-slate-300">
                     <span>Payment Mode</span>
@@ -508,7 +517,7 @@ export default function VoiceCheckout() {
                   </div>
                   <div className="border-t border-slate-200 dark:border-slate-700 pt-2.5 flex justify-between text-sm font-bold text-slate-900 dark:text-white">
                     <span>Total Amount</span>
-                    <span className="text-emerald-600 dark:text-emerald-400 font-black">৳ {formattedPrice} BDT</span>
+                    <span className="text-emerald-600 dark:text-emerald-400 font-black">৳ {formattedTotal} BDT</span>
                   </div>
                 </div>
               </div>

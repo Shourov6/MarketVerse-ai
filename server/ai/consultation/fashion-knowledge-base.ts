@@ -122,8 +122,71 @@ export const FASHION_KNOWLEDGE_BASE = {
   ],
 
   thingsToAvoid: [
-    "✖ Avoid heavy, unbreathable synthetic polyester fabrics during Bangladeshi summer/monsoon.",
     "✖ Avoid clashing footwear: never wear casual sports running shoes with traditional Panjabis.",
     "✖ Avoid excessive heavy gold embroidery when attending as a casual guest.",
   ],
 };
+
+// ==========================================
+// NEW STRICT DETERMINISTIC RULES FROM KB
+// ==========================================
+
+export const SHIRT_TO_PANT_RULES: Record<string, { recommendedPantColors: string[], typicalUse: string }> = {
+  "White": {
+    recommendedPantColors: ["Black", "Navy", "Grey", "Beige", "Khaki"],
+    typicalUse: "Formal, office, smart-casual"
+  },
+  "Light Blue": {
+    recommendedPantColors: ["Navy", "Grey", "Black", "Beige", "Khaki"],
+    typicalUse: "Office, business-casual, smart-casual"
+  },
+  "Navy": {
+    recommendedPantColors: ["Grey", "Beige", "Khaki", "White", "Off-white"],
+    typicalUse: "Office, smart-casual, evening"
+  },
+  "Black": {
+    recommendedPantColors: ["Grey", "Charcoal", "Beige", "Cream", "Off-white"],
+    typicalUse: "Evening, smart-casual"
+  },
+  "Grey": {
+    recommendedPantColors: ["Black", "Navy", "Charcoal"],
+    typicalUse: "Office, formal, smart-casual"
+  },
+  "Beige": {
+    recommendedPantColors: ["Navy", "Brown", "Olive", "Dark Grey"],
+    typicalUse: "Smart-casual, daytime"
+  },
+  "Cream": {
+    recommendedPantColors: ["Navy", "Brown", "Olive", "Dark Grey"],
+    typicalUse: "Smart-casual, daytime"
+  },
+  "Olive": {
+    recommendedPantColors: ["Beige", "Khaki", "Cream", "Black", "Navy"],
+    typicalUse: "Casual, smart-casual"
+  },
+  "Maroon": {
+    recommendedPantColors: ["Black", "Grey", "Charcoal", "Beige"],
+    typicalUse: "Evening, smart-casual"
+  },
+  "Burgundy": {
+    recommendedPantColors: ["Black", "Grey", "Charcoal", "Beige"],
+    typicalUse: "Evening, smart-casual"
+  }
+};
+
+export const SHOES_MATCHING_RULES = [
+  { outfit: "White shirt + black trousers", primaryShoe: "Black leather formal shoes", alternative: "Black loafers for smart-casual" },
+  { outfit: "White shirt + navy trousers", primaryShoe: "Brown leather shoes/loafers", alternative: "Black shoes for a more formal look" },
+  { outfit: "Light blue shirt + grey trousers", primaryShoe: "Black or dark brown leather shoes", alternative: "Loafers for smart-casual" },
+  { outfit: "Navy shirt + beige trousers", primaryShoe: "Brown/tan loafers or leather shoes", alternative: "Clean white sneakers for casual" },
+  { outfit: "Black shirt + grey/charcoal trousers", primaryShoe: "Black shoes", alternative: "Minimal black sneakers for casual" },
+  { outfit: "Casual shirt + chinos", primaryShoe: "Clean sneakers or loafers", alternative: "Casual leather shoes" }
+];
+
+export const WATCH_MATCHING_RULES = [
+  { outfit: "Formal black/grey/navy outfit", watch: "Minimal silver/steel watch or black leather strap" },
+  { outfit: "White shirt + black trousers + black shoes", watch: "Silver/steel or black leather watch" },
+  { outfit: "White shirt + navy trousers + brown shoes", watch: "Brown leather strap with matching brown tone, or neutral steel" },
+  { outfit: "Beige/khaki smart-casual outfit", watch: "Brown leather, steel, or understated neutral watch" },
+  { outfit: "Casual sneakers outfit", watch: "Minimal steel, silicone, or clean sporty watch depending on style" }
+];

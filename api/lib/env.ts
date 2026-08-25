@@ -35,5 +35,7 @@ export const env = {
   sslcommerzStoreId: optional("SSLCOMMERZ_STORE_ID"),
   sslcommerzStorePassword: optional("SSLCOMMERZ_STORE_PASSWORD"),
   sslcommerzIsLive: optional("SSLCOMMERZ_IS_LIVE") === "true",
+  kimiAuthUrl: optional("KIMI_AUTH_URL", "https://auth.kimi.com"),
+  kimiOpenUrl: optional("KIMI_OPEN_URL", "https://open.kimi.com"),
 };
 

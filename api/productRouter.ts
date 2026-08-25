@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { createRouter, publicQuery } from "./middleware";
 import { getDb } from "./queries/connection";
-import { products, productImages, categories, sellers, inventory } from "@db/schema";
+import { products, productImages, categories, sellers, inventory, productVariants } from "@db/schema";
 import { eq, ne, like, and, desc, sql, or } from "@db/mysql";
 import { scoreProductForSearch } from "../src/lib/semanticSearch";
 
@@ -14,7 +14,7 @@ export const productRouter = createRouter({
         sellerId: z.number().optional(),
         featured: z.boolean().optional(),
         trending: z.boolean().optional(),
-        limit: z.number().min(1).max(100).default(20),
+        limit: z.number().min(1).max(500).default(20),
         offset: z.number().min(0).default(0),
       }).optional()
     )
@@ -48,7 +48,7 @@ export const productRouter = createRouter({
 
       const where = conditions.length > 0 ? and(...conditions) : undefined;
 
-      const items = await db
+      let query = db
         .select({
           id: products.id,
           name: products.name,
@@ -76,13 +76,28 @@ export const productRouter = createRouter({
         .leftJoin(categories, eq(categories.id, products.categoryId))
         .leftJoin(sellers, eq(sellers.id, products.sellerId))
         .where(where)
-        .orderBy(desc(products.createdAt))
-        .limit(input?.limit || 20)
-        .offset(input?.offset || 0);
+        .orderBy(desc(products.createdAt));
 
-      const rankedItems = input?.search
-        ? [...items].sort((a, b) => scoreProductForSearch(b, input.search || "") - scoreProductForSearch(a, input.search || ""))
-        : items;
+      if (!input?.search) {
+        query = query.limit(input?.limit || 20).offset(input?.offset || 0) as any;
+      }
+
+      const items = await query;
+
+      if (input?.search) {
+        const queryStr = input.search || "";
+        const scored = items.map(item => ({ ...item, _score: scoreProductForSearch(item, queryStr) }));
+        const filtered = scored.filter(item => item._score > 0).sort((a, b) => b._score - a._score);
+        
+        const offset = input?.offset || 0;
+        const limit = input?.limit || 20;
+        const paginated = filtered.slice(offset, offset + limit);
+
+        return {
+          items: paginated,
+          total: filtered.length,
+        };
+      }
 
       const countResult = await db
         .select({ count: sql<number>`count(*)` })
@@ -91,7 +106,7 @@ export const productRouter = createRouter({
         .where(where);
 
       return {
-        items: rankedItems,
+        items: items,
         total: countResult[0]?.count || 0,
       };
     }),
@@ -148,10 +163,16 @@ export const productRouter = createRouter({
         .where(eq(inventory.productId, input.id))
         .limit(1);
 
+      const variants = await db
+        .select()
+        .from(productVariants)
+        .where(eq(productVariants.productId, input.id));
+
       return {
         ...product[0],
         images,
         inventory: stock[0] || null,
+        variants,
       };
     }),
 
@@ -207,10 +228,16 @@ export const productRouter = createRouter({
         .where(eq(inventory.productId, product[0].id))
         .limit(1);
 
+      const variants = await db
+        .select()
+        .from(productVariants)
+        .where(eq(productVariants.productId, product[0].id));
+
       return {
         ...product[0],
         images,
         inventory: stock[0] || null,
+        variants,
       };
     }),
 
@@ -379,5 +406,44 @@ export const productRouter = createRouter({
       }
 
       return trending;
+    }),
+
+  getFlashSale: publicQuery
+    .input(z.object({ limit: z.number().default(8) }).optional())
+    .query(async ({ input }) => {
+      const db = getDb();
+      const limit = input?.limit || 8;
+
+      const flashSale = await db
+        .select({
+          id: products.id,
+          name: products.name,
+          slug: products.slug,
+          shortDescription: products.shortDescription,
+          price: products.price,
+          comparePrice: products.comparePrice,
+          imageUrl: productImages.imageUrl,
+          rating: products.rating,
+          reviewCount: products.reviewCount,
+          soldCount: products.soldCount,
+          categoryName: categories.name,
+          sellerName: sellers.businessName,
+        })
+        .from(products)
+        .leftJoin(productImages, and(eq(productImages.productId, products.id), eq(productImages.isPrimary, 1)))
+        .leftJoin(categories, eq(categories.id, products.categoryId))
+        .leftJoin(sellers, eq(sellers.id, products.sellerId))
+        .where(
+          and(
+            eq(products.status, "active"),
+            sql`${products.comparePrice} IS NOT NULL`,
+            sql`${products.comparePrice} > 0`,
+            sql`${products.price} < ${products.comparePrice} * 0.6`
+          )
+        )
+        .orderBy(desc(sql`(${products.comparePrice} - ${products.price}) / ${products.comparePrice}`))
+        .limit(limit);
+
+      return flashSale;
     }),
 });

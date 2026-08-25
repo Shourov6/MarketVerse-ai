@@ -6,6 +6,7 @@ import { resolveFashionPrompt } from "@/lib/fashionStylistUtils";
 import { generateFashionResponse } from "@/lib/fashionResponses";
 import type { StylistProfileContext } from "@/lib/fashionResponses";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import {
   Bot,
   Sparkles,
@@ -573,6 +574,7 @@ export default function FashionStylist() {
                       onQuickAction={(p) => quickAction(p)}
                       onFeedback={(key) => setCopiedText(key)}
                       feedbackState={copiedText}
+                      showFooter={msg.role === "assistant"}
                     />
                   )}
                 </div>
@@ -1309,217 +1311,47 @@ function StyleDisplay({ data }: { data: StyleData }) {
   );
 }
 
-function parseOutfitContent(content: string) {
-  if (!content) return null;
-  if (!content.includes("👕") && !content.includes("👖") && !content.includes("👞")) return null;
-
-  const lines = content.split("\n");
-  let occasion = "Style Recommendation";
-  let score = "85/100";
-  let tip: string | null = null;
-  let avoid: string | null = null;
-
-  let top: { name: string; desc: string } | null = null;
-  let bottom: { name: string; desc: string } | null = null;
-  let footwear: { name: string; desc: string } | null = null;
-
-  for (let idx = 0; idx < lines.length; idx++) {
-    const line = lines[idx].trim();
-    if (line.includes("Here's your look for") || line.includes("Here is your look for")) {
-      occasion = line.replace("✨", "").replace("Here's your look for", "").replace("Here is your look for", "").replace(".", "").trim();
-    }
-    if (line.includes("👕")) {
-      const name = line.replace("👕", "").replace(/\*\*/g, "").trim();
-      const desc = lines[idx + 1] ? lines[idx + 1].trim() : "";
-      top = { name, desc };
-    }
-    if (line.includes("👖")) {
-      const name = line.replace("👖", "").replace(/\*\*/g, "").trim();
-      const desc = lines[idx + 1] ? lines[idx + 1].trim() : "";
-      bottom = { name, desc };
-    }
-    if (line.includes("👞")) {
-      const name = line.replace("👞", "").replace(/\*\*/g, "").trim();
-      const desc = lines[idx + 1] ? lines[idx + 1].trim() : "";
-      footwear = { name, desc };
-    }
-    if (line.includes("Match Score:")) {
-      score = line.replace("⭐", "").replace("Match Score:", "").replace(/\*\*/g, "").trim();
-    }
-    if (line.includes("Styling Tip:")) {
-      tip = line.replace("💡", "").replace("Styling Tip:", "").replace(/\*\*/g, "").trim();
-    }
-    if (line.includes("Avoid:")) {
-      avoid = line.replace("✖", "").replace("Avoid:", "").replace(/\*\*/g, "").trim();
-    }
-  }
-
-  if (!top && !bottom) return null;
-
-  return { occasion, top, bottom, footwear, score, tip, avoid };
-}
-
 function RichLookCard({
   content,
   index,
   onQuickAction,
   onFeedback,
   feedbackState,
+  showFooter = true,
 }: {
   content: string;
   index: number;
   onQuickAction: (action: string) => void;
   onFeedback: (key: string) => void;
   feedbackState: string | null;
+  showFooter?: boolean;
 }) {
-  const parsed = parseOutfitContent(content);
-
-  if (!parsed) {
-    return (
-      <div className="text-sm prose prose-sm dark:prose-invert max-w-none space-y-3">
-        <ReactMarkdown>{content}</ReactMarkdown>
-      </div>
-    );
-  }
-
   return (
-    <div className="space-y-4 my-1">
-      {/* Header */}
-      <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-indigo-200/50 dark:border-indigo-800/50">
-        <div className="flex items-center gap-2">
-          <span className="p-1.5 rounded-lg bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
-            <Sparkles className="h-4 w-4 animate-pulse text-amber-400" />
-          </span>
-          <h4 className="font-extrabold text-slate-900 dark:text-white text-sm tracking-tight capitalize">
-            {parsed.occasion}
-          </h4>
-        </div>
-        <div className="px-3 py-1 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 rounded-full font-black text-xs shadow-sm flex items-center gap-1">
-          <Star className="h-3.5 w-3.5 fill-slate-950 text-slate-950" />
-          <span>Match Score: {parsed.score}</span>
-        </div>
-      </div>
-
-      {/* Item Cards Grid */}
-      <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-3">
-        {parsed.top && (
-          <div className="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-indigo-100 dark:border-indigo-900/60 shadow-sm hover:border-indigo-400 transition-all flex flex-col justify-between group">
-            <div>
-              <div className="flex items-center gap-2 mb-1.5 text-xs font-extrabold text-indigo-600 dark:text-indigo-400">
-                <span className="text-base group-hover:scale-110 transition-transform">👕</span> Top Wear
-              </div>
-              <p className="font-bold text-slate-900 dark:text-white text-xs leading-snug">
-                {parsed.top.name}
-              </p>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
-                {parsed.top.desc}
-              </p>
-            </div>
-          </div>
-        )}
-
-        {parsed.bottom && (
-          <div className="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-purple-100 dark:border-purple-900/60 shadow-sm hover:border-purple-400 transition-all flex flex-col justify-between group">
-            <div>
-              <div className="flex items-center gap-2 mb-1.5 text-xs font-extrabold text-purple-600 dark:text-purple-400">
-                <span className="text-base group-hover:scale-110 transition-transform">👖</span> Bottom Wear
-              </div>
-              <p className="font-bold text-slate-900 dark:text-white text-xs leading-snug">
-                {parsed.bottom.name}
-              </p>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
-                {parsed.bottom.desc}
-              </p>
-            </div>
-          </div>
-        )}
-
-        {parsed.footwear && (
-          <div className="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-emerald-100 dark:border-emerald-900/60 shadow-sm hover:border-emerald-400 transition-all flex flex-col justify-between group">
-            <div>
-              <div className="flex items-center gap-2 mb-1.5 text-xs font-extrabold text-emerald-600 dark:text-emerald-400">
-                <span className="text-base group-hover:scale-110 transition-transform">👞</span> Footwear
-              </div>
-              <p className="font-bold text-slate-900 dark:text-white text-xs leading-snug">
-                {parsed.footwear.name}
-              </p>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
-                {parsed.footwear.desc}
-              </p>
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* Tips & Warnings */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-        {parsed.tip && (
-          <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-900 dark:text-amber-200 flex items-start gap-2">
-            <span className="text-amber-500 shrink-0 text-sm">💡</span>
-            <div>
-              <span className="font-extrabold">Styling Tip: </span>
-              <span>{parsed.tip}</span>
-            </div>
-          </div>
-        )}
-        {parsed.avoid && (
-          <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-900 dark:text-rose-200 flex items-start gap-2">
-            <span className="text-rose-500 shrink-0 text-sm">✖</span>
-            <div>
-              <span className="font-extrabold">Avoid: </span>
-              <span>{parsed.avoid}</span>
-            </div>
-          </div>
-        )}
-      </div>
-
+    <div className="text-sm prose prose-sm dark:prose-invert max-w-none space-y-3">
+      <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+      
       {/* Interactive Footer Actions */}
+      {showFooter && (
       <div className="pt-3 border-t border-slate-200/80 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2.5">
         <div className="flex items-center gap-1.5 text-xs text-slate-500">
           <span className="font-semibold">Helpful?</span>
           <button
             onClick={() => onFeedback(`liked_${index}`)}
-            className={`p-1.5 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors ${feedbackState === `liked_${index}` ? "text-emerald-600 font-bold bg-emerald-50 dark:bg-emerald-950" : ""}`}
+            className={`p-1.5 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors ${feedbackState === 'liked_' + index ? "text-emerald-600 font-bold bg-emerald-50 dark:bg-emerald-950" : ""}`}
             title="Like"
           >
             👍
           </button>
           <button
             onClick={() => onFeedback(`disliked_${index}`)}
-            className={`p-1.5 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors ${feedbackState === `disliked_${index}` ? "text-rose-600 font-bold bg-rose-50 dark:bg-rose-950" : ""}`}
+            className={`p-1.5 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors ${feedbackState === 'disliked_' + index ? "text-rose-600 font-bold bg-rose-50 dark:bg-rose-950" : ""}`}
             title="Dislike"
           >
             👎
           </button>
         </div>
-
-        <div className="flex flex-wrap gap-1.5">
-          <button
-            onClick={() => onQuickAction("Try different colour")}
-            className="px-3 py-1.5 bg-gradient-to-r from-indigo-50 to-indigo-100 dark:from-indigo-950/80 dark:to-indigo-900/80 hover:from-indigo-100 hover:to-indigo-200 text-indigo-700 dark:text-indigo-300 rounded-full text-xs font-bold border border-indigo-200 dark:border-indigo-800 transition-all shadow-2xs hover:scale-105 active:scale-95 cursor-pointer"
-          >
-            🎨 Colour
-          </button>
-          <button
-            onClick={() => onQuickAction("Change only shoes")}
-            className="px-3 py-1.5 bg-gradient-to-r from-indigo-50 to-indigo-100 dark:from-indigo-950/80 dark:to-indigo-900/80 hover:from-indigo-100 hover:to-indigo-200 text-indigo-700 dark:text-indigo-300 rounded-full text-xs font-bold border border-indigo-200 dark:border-indigo-800 transition-all shadow-2xs hover:scale-105 active:scale-95 cursor-pointer"
-          >
-            👞 Shoes
-          </button>
-          <button
-            onClick={() => onQuickAction("Make it more premium")}
-            className="px-3 py-1.5 bg-gradient-to-r from-amber-50 to-amber-100 dark:from-amber-950/80 dark:to-amber-900/80 hover:from-amber-100 hover:to-amber-200 text-amber-700 dark:text-amber-300 rounded-full text-xs font-bold border border-amber-200 dark:border-amber-800 transition-all shadow-2xs hover:scale-105 active:scale-95 cursor-pointer"
-          >
-            💎 Make Premium
-          </button>
-          <button
-            onClick={() => onQuickAction("Try another combination")}
-            className="px-3 py-1.5 bg-gradient-to-r from-purple-50 to-purple-100 dark:from-purple-950/80 dark:to-purple-900/80 hover:from-purple-100 hover:to-purple-200 text-purple-700 dark:text-purple-300 rounded-full text-xs font-bold border border-purple-200 dark:border-purple-800 transition-all shadow-2xs hover:scale-105 active:scale-95 cursor-pointer"
-          >
-            🔄 Another Style
-          </button>
-        </div>
       </div>
+      )}
     </div>
   );
 }

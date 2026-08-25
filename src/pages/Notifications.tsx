@@ -19,6 +19,8 @@ const typeConfig: Record<string, { icon: React.ReactNode; color: string }> = {
   review: { icon: <Star className="h-5 w-5" />, color: "text-yellow-600 bg-yellow-100 dark:bg-yellow-900/30" },
 };
 
+const isNotificationUnread = (value: unknown) => Number(value ?? 0) === 0;
+
 export default function Notifications() {
   const navigate = useNavigate();
   const { data: notifications, isLoading } = trpc.notification.list.useQuery(undefined, {
@@ -83,24 +85,25 @@ export default function Notifications() {
       <div className="space-y-3">
         {notifications.map((n: any) => {
           const config = typeConfig[n.type] || typeConfig.system;
+          const unread = isNotificationUnread(n.isRead);
           return (
             <div
               key={n.id}
               onClick={() => {
-                if (!n.isRead) markRead.mutate({ id: n.id });
+                if (unread) markRead.mutate({ id: n.id });
                 if (n.link) navigate(n.link);
               }}
               className={`flex items-start gap-4 p-4 rounded-xl border transition-colors cursor-pointer ${
-                n.isRead
-                  ? "bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700"
-                  : "bg-indigo-50/50 dark:bg-indigo-900/10 border-indigo-200 dark:border-indigo-800"
+                unread
+                  ? "bg-indigo-50/50 dark:bg-indigo-900/10 border-indigo-200 dark:border-indigo-800"
+                  : "bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700"
               }`}
             >
               <div className={`shrink-0 p-2 rounded-lg ${config.color}`}>
                 {config.icon}
               </div>
               <div className="flex-1 min-w-0">
-                <p className={`font-medium text-sm ${n.isRead ? "text-slate-700 dark:text-slate-300" : "text-slate-900 dark:text-white"}`}>
+                <p className={`font-medium text-sm ${unread ? "text-slate-900 dark:text-white" : "text-slate-700 dark:text-slate-300"}`}>
                   {n.title}
                 </p>
                 {n.message && (
@@ -110,7 +113,7 @@ export default function Notifications() {
                   {n.createdAt ? new Date(n.createdAt).toLocaleDateString() : ""}
                 </p>
               </div>
-              {!n.isRead && (
+              {unread && (
                 <div className="shrink-0 w-2.5 h-2.5 bg-indigo-600 rounded-full mt-2" />
               )}
             </div>

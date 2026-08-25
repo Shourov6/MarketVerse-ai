@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams, Link } from "react-router";
 import { trpc } from "@/providers/trpc";
 import { useAuth } from "@/hooks/useAuth";
 import { formatCurrency } from "@/lib/currency";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 import { broadcastLiveEvent } from "@/lib/realtimeSync";
 import {
   AlertDialog,
@@ -361,7 +361,7 @@ export default function AdminDashboard() {
   ];
 
   return (
-    <div className="flex h-full overflow-hidden bg-slate-50 dark:bg-slate-950/50">
+    <div className="flex h-full overflow-hidden bg-[#F4F6FC] dark:bg-slate-950/50">
       {/* Mobile Sidebar Overlay */}
       {isMobileMenuOpen && (
         <div 
@@ -371,11 +371,11 @@ export default function AdminDashboard() {
       )}
 
       {/* Sidebar */}
-      <aside className={`fixed lg:static inset-y-0 left-0 z-50 lg:z-auto w-64 bg-slate-50 dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 transform transition-transform duration-300 ease-in-out flex flex-col ${
+      <aside className={`fixed lg:static inset-y-0 left-0 z-50 lg:z-auto w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 transform transition-transform duration-300 ease-in-out flex flex-col ${
         isMobileMenuOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
       }`}>
         <div className="p-6 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
-          <h2 className="text-xl font-bold text-[#4F46E5] dark:text-indigo-400">Admin Panel</h2>
+          <h2 className="text-xl font-bold text-[#5B6DF8] dark:text-indigo-400">Admin Panel</h2>
           <button className="lg:hidden p-2 text-slate-500" onClick={() => setIsMobileMenuOpen(false)}>
             <X className="w-5 h-5" />
           </button>
@@ -391,11 +391,11 @@ export default function AdminDashboard() {
               }}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
                 activeTab === tab.key
-                  ? "bg-[#E0E7FF] dark:bg-indigo-900/30 text-[#4F46E5] dark:text-indigo-400"
-                  : "text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 hover:text-slate-900 dark:hover:text-white"
+                  ? "bg-[#E0E7FF] dark:bg-indigo-900/30 text-[#5B6DF8] dark:text-indigo-400"
+                  : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-slate-900 dark:hover:text-white"
               }`}
             >
-              <div className={activeTab === tab.key ? "text-[#4F46E5] dark:text-indigo-400" : "text-slate-400 dark:text-slate-500"}>
+              <div className={activeTab === tab.key ? "text-[#5B6DF8] dark:text-indigo-400" : "text-slate-400 dark:text-slate-500"}>
                 {tab.icon}
               </div>
               {tab.label}
@@ -437,11 +437,18 @@ export default function AdminDashboard() {
           {activeTab === "overview" && (
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-8">
               <AdminStatCard 
-                icon={<Users className="h-5 w-5" />} 
-                label="Total Users" 
-                value={stats.totalUsers} 
-                color="green" 
-                trendData={[{v:10},{v:15},{v:13},{v:20},{v:25},{v:22},{v:30}]} 
+                icon={<DollarSign className="h-5 w-5" />} 
+                label="Total Revenue" 
+                value={formatCurrency(stats.totalRevenue || 0)} 
+                color="yellow" 
+                trendData={[{v:100},{v:150},{v:130},{v:200},{v:250},{v:220},{v:350}]} 
+              />
+              <AdminStatCard 
+                icon={<ShoppingCart className="h-5 w-5" />} 
+                label="Total Orders" 
+                value={stats.totalOrders} 
+                color="indigo" 
+                trendData={[{v:2},{v:5},{v:3},{v:8},{v:6},{v:12},{v:15}]} 
               />
               <AdminStatCard 
                 icon={<Package className="h-5 w-5" />} 
@@ -451,11 +458,25 @@ export default function AdminDashboard() {
                 trendData={[{v:5},{v:8},{v:12},{v:10},{v:18},{v:24},{v:28}]} 
               />
               <AdminStatCard 
-                icon={<DollarSign className="h-5 w-5" />} 
-                label="Total Revenue" 
-                value={formatCurrency(stats.totalRevenue || 0)} 
-                color="yellow" 
-                trendData={[{v:100},{v:150},{v:130},{v:200},{v:250},{v:220},{v:350}]} 
+                icon={<Users className="h-5 w-5" />} 
+                label="Total Users" 
+                value={stats.totalUsers} 
+                color="green" 
+                trendData={[{v:10},{v:15},{v:13},{v:20},{v:25},{v:22},{v:30}]} 
+              />
+              <AdminStatCard 
+                icon={<Store className="h-5 w-5" />} 
+                label="Total Sellers" 
+                value={stats.totalSellers} 
+                color="blue" 
+                trendData={[{v:1},{v:2},{v:2},{v:4},{v:5},{v:5},{v:8}]} 
+              />
+              <AdminStatCard 
+                icon={<Clock3 className="h-5 w-5" />} 
+                label="Pending Sellers" 
+                value={stats.pendingSellersCount} 
+                color="red" 
+                trendData={[{v:3},{v:5},{v:2},{v:1},{v:4},{v:2},{v:1}]} 
               />
             </div>
           )}
@@ -493,7 +514,7 @@ export default function AdminDashboard() {
                   ]}>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" />
                     <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#6b7280', fontSize: 12}} dy={10} />
-                    <YAxis axisLine={false} tickLine={false} tick={{fill: '#6b7280', fontSize: 12}} dx={-10} tickFormatter={(value) => `৳${value}`} />
+                    <YAxis axisLine={false} tickLine={false} tick={{fill: '#6b7280', fontSize: 12}} dx={-10} tickFormatter={(value) => `${value} BDT`} />
                     <Tooltip cursor={{fill: 'rgba(0,0,0,0.05)'}} contentStyle={{borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)'}} />
                     <Bar dataKey="revenue" fill="#4F46E5" radius={[4, 4, 0, 0]} barSize={32} />
                   </BarChart>
@@ -1139,7 +1160,7 @@ export default function AdminDashboard() {
                             o.paymentStatus === "paid" ? "bg-[#22C55E]" :
                             "bg-[#EF4444]"
                           }`}>
-                            {o.paymentStatus === "paid" ? "succeeded" : "pending"}
+                            {o.paymentStatus || "unknown"}
                           </span>
                         </td>
                         <td className="px-4 py-4 align-top text-sm font-medium text-slate-700 dark:text-white">

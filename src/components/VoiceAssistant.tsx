@@ -11,7 +11,9 @@ import {
 import { deriveLocalAction } from "../lib/localNlp";
 import { useVoiceAssistantEngine } from "../hooks/useVoiceAssistantEngine";
 import { VoiceDiagnosticsModal } from "./VoiceDiagnosticsModal";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
+import { useVoiceStore } from "@/stores/useVoiceStore";
+import { trpc } from "@/providers/trpc";
 
 // ── Page Descriptions with Contextual Action Hints ───────────────────────────
 
@@ -138,8 +140,34 @@ export function VoiceAssistant() {
   const navigate = useNavigate();
 
   const [showDiagnosticsModal, setShowDiagnosticsModal] = useState(false);
-  const [productItems, setProductItems] = useState<VoiceProductItem[]>([]);
+  const productItems = useVoiceStore((state) => state.currentProducts);
   const [lastReadProductIndex, setLastReadProductIndex] = useState(-1);
+  const lastReadProductIndexRef = useRef(-1);
+  const productListSignatureRef = useRef("");
+
+  useEffect(() => {
+    // Reset pagination only when the effective product list actually changes.
+    const nextSignature = productItems.map((item) => `${item.id}:${item.slug}`).join("|");
+    if (productListSignatureRef.current !== nextSignature) {
+      productListSignatureRef.current = nextSignature;
+      lastReadProductIndexRef.current = -1;
+      setLastReadProductIndex(-1);
+      if (typeof sessionStorage !== "undefined") {
+        sessionStorage.removeItem("voice_announced_count");
+      }
+    }
+  }, [productItems]);
+
+  useEffect(() => {
+    lastReadProductIndexRef.current = lastReadProductIndex;
+  }, [lastReadProductIndex]);
+
+  const utils = trpc.useUtils();
+  const addToCart = trpc.cart.add.useMutation({
+    onSuccess: () => {
+      utils.cart.get.invalidate();
+    }
+  });
 
   const processVoiceCommandRef = useRef<(text: string) => void>(() => {});
   const lastSpokenResponseRef = useRef("");
@@ -187,6 +215,52 @@ export function VoiceAssistant() {
     keepSttAlwaysOn: true, // keep STT active for entire app lifetime (only respond after wake-word)
   });
 
+  const speakProductBatch = useCallback(() => {
+    if (productItems.length === 0) {
+      speak("No products found on this page. Say 'search' followed by a product name to find items.", {
+        nextState: "LISTENING",
+      });
+      return;
+    }
+
+    let effectiveLastReadIndex = lastReadProductIndexRef.current;
+    if (effectiveLastReadIndex < 0 && typeof sessionStorage !== "undefined") {
+      const persistedAnnounced = Number(sessionStorage.getItem("voice_announced_count") || "0");
+      if (Number.isFinite(persistedAnnounced) && persistedAnnounced > 0) {
+        effectiveLastReadIndex = Math.min(persistedAnnounced, productItems.length) - 1;
+        lastReadProductIndexRef.current = effectiveLastReadIndex;
+        setLastReadProductIndex(effectiveLastReadIndex);
+      }
+    }
+
+    const startIndex = effectiveLastReadIndex + 1;
+    if (startIndex >= productItems.length) {
+      speak("You have reached the end of the product list. Say 'select' followed by an option number, or search for another product.", {
+        nextState: "LISTENING",
+      });
+      return;
+    }
+
+    const batch = productItems.slice(startIndex, startIndex + 4);
+    const batchText = batch
+      .map((item, offset) => `Option ${startIndex + offset + 1}: ${item.name} for ${item.price} Taka`)
+      .join(". ");
+    const hasMore = startIndex + batch.length < productItems.length;
+    const nextLastIndex = startIndex + batch.length - 1;
+    lastReadProductIndexRef.current = nextLastIndex;
+    setLastReadProductIndex(nextLastIndex);
+    if (typeof sessionStorage !== "undefined") {
+      sessionStorage.setItem("voice_announced_count", String(nextLastIndex + 1));
+    }
+    const continuationPrefix = startIndex > 0 ? `Continuing from option ${startIndex + 1}. ` : "";
+    const nextOptionStart = nextLastIndex + 2;
+    const nextOptionEnd = Math.min(nextOptionStart + 3, productItems.length);
+    speak(
+      `${continuationPrefix}${batchText}. ${hasMore ? `Say continue to hear option ${nextOptionStart}${nextOptionEnd > nextOptionStart ? ` to ${nextOptionEnd}` : ""}, or say select followed by an option number.` : "That is the end of the product list. Say select followed by an option number."}`,
+      { nextState: "LISTENING" }
+    );
+  }, [productItems, speak]);
+
   const diagnostics = getDiagnosticsData();
 
   // ── Core NLP Command Processor ───────────────────────────────────────────
@@ -197,10 +271,85 @@ export function VoiceAssistant() {
 
       console.log("[VoiceAssistant] Processing command:", cleaned);
 
+      if (/\b(continue|next|next four|more products|go on|keep going|resume|proceed)\b/i.test(cleaned)) {
+        speakProductBatch();
+        return;
+      }
+
+      // Prioritize deterministic local option selection before AI to avoid stale AI list-size assumptions.
+      const looksLikeOptionSelection =
+        /\b(select|choose|pick|option|number|item|buy|take)\b/i.test(cleaned) || /^\s*\d{1,2}\s*$/.test(cleaned);
+
+      if (location.pathname !== "/voice-checkout" && looksLikeOptionSelection) {
+        const effectiveItems = productItems.length > 0 ? productItems : scrapeDomProducts();
+        const selected = resolveVoiceProductSelection(cleaned, effectiveItems);
+        if (selected && selected.selectedProduct) {
+          sessionStorage.setItem("voice_checkout_product", JSON.stringify(selected.selectedProduct));
+          playAudioCue("SUCCESS");
+          speak(`Selected ${selected.selectedProduct.name}. Opening Voice Checkout.`, {
+            onEnd: () => navigate("/voice-checkout"),
+          });
+          return;
+        }
+
+        if (effectiveItems.length > 0) {
+          speak(
+            `Sorry, I didn't find that option. We have ${effectiveItems.length} products. Please choose a number from 1 to ${effectiveItems.length}.`,
+            { nextState: "LISTENING" }
+          );
+          return;
+        }
+      }
+
+      // 1. Handle Active Confirmations (Yes / No)
+      if (pendingConfirmation) {
+        const lower = cleaned.toLowerCase();
+        if (/\b(yes|yeah|sure|confirm|accept|ha|thik ache|proceed|ok|okay)\b/i.test(lower)) {
+          playAudioCue("SUCCESS");
+          pendingConfirmation.onConfirm();
+          setPendingConfirmation(null);
+          return;
+        } else if (/\b(no|cancel|stop|nah|na|bad dao|exit|close)\b/i.test(lower)) {
+          playAudioCue("CHIME");
+          pendingConfirmation.onCancel();
+          setPendingConfirmation(null);
+          speak("Cancelled.", { nextState: "LISTENING" });
+          return;
+        }
+      }
+
+      // 2. Handle Voice Checkout Context
+      if (location.pathname === "/voice-checkout") {
+        const phoneDigits = extractPhoneFromSpeech(cleaned);
+        if (phoneDigits && phoneDigits.length >= 10) {
+          window.dispatchEvent(
+            new CustomEvent("voice-checkout-phone-input", { detail: phoneDigits })
+          );
+          speak(`Got your number ${phoneDigits.split("").join(" ")}. Placing your cash on delivery order now.`, {
+            nextState: "LISTENING",
+          });
+          return;
+        }
+
+        if (/\b(confirm|place order|submit|order place koro|pay|buy)\b/i.test(cleaned)) {
+          window.dispatchEvent(new CustomEvent("voice-checkout-submit-order"));
+          return;
+        }
+
+        if (/\b(cancel|back|return|exit|abort)\b/i.test(cleaned)) {
+          window.dispatchEvent(new CustomEvent("voice-checkout-cancel"));
+          speak("Cancelled voice checkout. Returning to products.", { nextState: "LISTENING" });
+          return;
+        }
+      }
+
       const runAiIntentRouting = async () => {
         if (aiCommandRequestRef.current) aiCommandRequestRef.current.abort();
         const controller = new AbortController();
         aiCommandRequestRef.current = controller;
+
+        // Explicit timeout for AI routing to prevent hanging
+        const timeoutId = setTimeout(() => controller.abort(), 6000);
 
         try {
           const response = await fetch("/api/ai/chat", {
@@ -214,7 +363,7 @@ export function VoiceAssistant() {
               context: {
                 page: location.pathname,
                 pageDescription: getPageDescription(location.pathname),
-                productList: productItems.slice(0, 8),
+                productList: productItems.slice(0, 50),
                 routeHints: {
                   productPath: "/products",
                   cartPath: "/cart",
@@ -227,6 +376,7 @@ export function VoiceAssistant() {
               },
             }),
           });
+          clearTimeout(timeoutId);
 
           if (!response.ok) {
             throw new Error(`AI voice routing failed (${response.status})`);
@@ -261,7 +411,6 @@ export function VoiceAssistant() {
 
             if (normalized === "select_option" && decision.selectedProduct) {
               sessionStorage.setItem("voice_checkout_product", JSON.stringify(decision.selectedProduct));
-              localStorage.setItem("voice_checkout_product", JSON.stringify(decision.selectedProduct));
               playAudioCue("SUCCESS");
               speak(decision.responseText || `Selected ${decision.selectedProduct.name}. Opening Voice Checkout.`, {
                 onEnd: () => navigate("/voice-checkout"),
@@ -278,18 +427,7 @@ export function VoiceAssistant() {
             }
 
             if (normalized === "read_products") {
-              if (productItems.length === 0) {
-                speak(decision.responseText || "No products found on this page. Say 'search' followed by a product name to find items.", {
-                  nextState: "LISTENING",
-                });
-              } else {
-                const nextIdx = (lastReadProductIndex + 1) % productItems.length;
-                const item = productItems[nextIdx];
-                setLastReadProductIndex(nextIdx);
-                speak(decision.responseText || `Option ${nextIdx + 1}: ${item.name} for ${item.price} Taka. Say 'select ${nextIdx + 1}' to buy, or 'next' to hear the next item.`, {
-                  nextState: "LISTENING",
-                });
-              }
+              speakProductBatch();
               return true;
             }
 
@@ -321,47 +459,6 @@ export function VoiceAssistant() {
         return;
       }
 
-      // Handle active confirmations (Yes / No)
-      if (pendingConfirmation) {
-        const lower = cleaned.toLowerCase();
-        if (/\b(yes|yeah|sure|confirm|accept|ha|thik ache|proceed|ok|okay)\b/i.test(lower)) {
-          playAudioCue("SUCCESS");
-          pendingConfirmation.onConfirm();
-          setPendingConfirmation(null);
-          return;
-        } else if (/\b(no|cancel|stop|nah|na|bad dao|exit|close)\b/i.test(lower)) {
-          playAudioCue("CHIME");
-          pendingConfirmation.onCancel();
-          setPendingConfirmation(null);
-          speak("Cancelled.", { nextState: "LISTENING" });
-          return;
-        }
-      }
-
-      // Check for Voice Checkout Spoken Phone Number
-      if (location.pathname === "/voice-checkout") {
-        const phoneDigits = extractPhoneFromSpeech(cleaned);
-        if (phoneDigits && phoneDigits.length >= 10) {
-          window.dispatchEvent(
-            new CustomEvent("voice-checkout-phone-input", { detail: phoneDigits })
-          );
-          speak(`Got your number ${phoneDigits.split("").join(" ")}. Placing your cash on delivery order now.`, {
-            nextState: "LISTENING",
-          });
-          return;
-        }
-
-        if (/\b(confirm|place order|submit|order place koro|pay|buy)\b/i.test(cleaned)) {
-          window.dispatchEvent(new CustomEvent("voice-checkout-submit-order"));
-          return;
-        }
-
-        if (/\b(cancel|back|return|exit|abort)\b/i.test(cleaned)) {
-          window.dispatchEvent(new CustomEvent("voice-checkout-cancel"));
-          speak("Cancelled voice checkout. Returning to products.", { nextState: "LISTENING" });
-          return;
-        }
-      }
 
       // Action routing via Local NLP
       switch (localAction.intent) {
@@ -383,19 +480,11 @@ export function VoiceAssistant() {
           break;
 
         case "read_products":
-          if (productItems.length === 0) {
-            speak("No products found on this page. Say 'search' followed by a product name to find items.", {
-              nextState: "LISTENING",
-            });
-          } else {
-            const nextIdx = (lastReadProductIndex + 1) % productItems.length;
-            const item = productItems[nextIdx];
-            setLastReadProductIndex(nextIdx);
-            speak(
-              `Option ${nextIdx + 1}: ${item.name} for ${item.price} Taka. Say 'select ${nextIdx + 1}' to buy, or 'next' to hear the next item.`,
-              { nextState: "LISTENING" }
-            );
-          }
+          speakProductBatch();
+          break;
+
+        case "resume":
+          speakProductBatch();
           break;
 
         case "select_option": {
@@ -403,9 +492,8 @@ export function VoiceAssistant() {
           const selected = resolveVoiceProductSelection(cleaned, effectiveItems);
           if (selected && selected.selectedProduct) {
             sessionStorage.setItem("voice_checkout_product", JSON.stringify(selected.selectedProduct));
-            localStorage.setItem("voice_checkout_product", JSON.stringify(selected.selectedProduct));
             playAudioCue("SUCCESS");
-            speak(`Selected ${selected.selectedProduct.name} for ${selected.selectedProduct.price} Taka. Opening Voice Checkout.`, {
+            speak(`Selected ${selected.selectedProduct.name}. Opening Voice Checkout.`, {
               onEnd: () => navigate("/voice-checkout"),
             });
           } else {
@@ -485,6 +573,7 @@ export function VoiceAssistant() {
       }
     },
     [
+      addToCart,
       deactivateAssistant,
       lastReadProductIndex,
       location.pathname,
@@ -494,6 +583,7 @@ export function VoiceAssistant() {
       productItems,
       setPendingConfirmation,
       speak,
+      speakProductBatch,
     ]
   );
 
@@ -505,23 +595,25 @@ export function VoiceAssistant() {
     lastSpokenResponseRef.current = response;
   }, [response]);
 
-  // Listen for products catalogue from Products.tsx
-  useEffect(() => {
-    const handleProductList = (event: CustomEvent<{ items: VoiceProductItem[] }>) => {
-      const items = event.detail?.items || [];
-      setProductItems(items);
-    };
-
-    window.addEventListener("voice-assistant-products", handleProductList as EventListener);
-    return () => {
-      window.removeEventListener("voice-assistant-products", handleProductList as EventListener);
-    };
-  }, []);
-
   // Global Announcement Listener
   useEffect(() => {
-    const handleAnnouncement = (event: CustomEvent<string>) => {
-      const message = event.detail;
+    const handleAnnouncement = (
+      event: CustomEvent<string | { message: string; spokenProductCount?: number }>
+    ) => {
+      const detail = event.detail;
+      const message = typeof detail === "string" ? detail : detail?.message;
+      const spokenProductCount =
+        typeof detail === "object" && detail !== null ? detail.spokenProductCount : undefined;
+
+      if (typeof spokenProductCount === "number" && spokenProductCount > 0 && productItems.length > 0) {
+        const announcedLastIndex = Math.min(spokenProductCount, productItems.length) - 1;
+        lastReadProductIndexRef.current = Math.max(lastReadProductIndexRef.current, announcedLastIndex);
+        setLastReadProductIndex((prev) => Math.max(prev, announcedLastIndex));
+        if (typeof sessionStorage !== "undefined") {
+          sessionStorage.setItem("voice_announced_count", String(announcedLastIndex + 1));
+        }
+      }
+
       if (message) {
         toast.info(message, { duration: 5000 });
         speak(message);
@@ -532,7 +624,7 @@ export function VoiceAssistant() {
     return () => {
       window.removeEventListener("voice-assistant-announce", handleAnnouncement as EventListener);
     };
-  }, [speak]);
+  }, [productItems.length, speak]);
 
   // Global Keyboard Shortcuts (Alt + V = Toggle Voice, Alt + Shift + D = Diagnostics)
   useEffect(() => {

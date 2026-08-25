@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Star, X } from 'lucide-react';
 import { trpc } from "@/providers/trpc";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 
 export function ReviewModal({ order, onClose, onSuccess }: { order: any; onClose: () => void; onSuccess: () => void }) {
   const [selectedItem, setSelectedItem] = useState<any>(null);

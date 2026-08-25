@@ -64,7 +64,7 @@ export const notificationRouter = createRouter({
       const userId = (ctx.user as any).id;
       await db
         .update(notifications)
-        .set({ isRead: true })
+        .set({ isRead: 1 })
         .where(and(eq(notifications.id, input.id), eq(notifications.userId, userId)));
       return { success: true };
     }),
@@ -74,7 +74,7 @@ export const notificationRouter = createRouter({
     const userId = (ctx.user as any).id;
     await db
       .update(notifications)
-      .set({ isRead: true })
+      .set({ isRead: 1 })
       .where(eq(notifications.userId, userId));
     return { success: true };
   }),

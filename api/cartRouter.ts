@@ -31,6 +31,7 @@ export const cartRouter = createRouter({
         stock: (inventory as any).quantity,
         deliveryFeeInsideDhaka: (products as any).deliveryFeeInsideDhaka,
         deliveryFeeOutsideDhaka: (products as any).deliveryFeeOutsideDhaka,
+        attributes: (cartItems as any).attributes,
       })
       .from(cartItems)
       .leftJoin(products, eq(products.id, cartItems.productId))
@@ -53,7 +54,7 @@ export const cartRouter = createRouter({
   }),
 
   add: authedQuery
-    .input(z.object({ productId: z.number(), quantity: z.number().min(1).max(99).optional() }))
+    .input(z.object({ productId: z.number(), quantity: z.number().min(1).max(99).optional(), attributes: z.any().optional() }))
     .mutation(async ({ ctx, input }) => {
       const db = getDb();
       const userId = (ctx.user as any).id;
@@ -68,23 +69,27 @@ export const cartRouter = createRouter({
 
       const cartId = cart[0].id;
 
+      const attributesString = input.attributes ? JSON.stringify(input.attributes) : null;
+
       // Check if item already in cart
       const existing = await db
         .select()
         .from(cartItems)
-        .where(and(eq(cartItems.cartId, cartId), eq(cartItems.productId, input.productId)))
-        .limit(1);
+        .where(and(eq(cartItems.cartId, cartId), eq(cartItems.productId, input.productId)));
 
-      if (existing[0]) {
+      const match = existing.find(item => (item.attributes || null) === attributesString);
+
+      if (match) {
         await db
           .update(cartItems)
-          .set({ quantity: existing[0].quantity + quantity })
-          .where(eq(cartItems.id, existing[0].id));
+          .set({ quantity: match.quantity + quantity })
+          .where(eq(cartItems.id, match.id));
       } else {
         await db.insert(cartItems).values({
           cartId,
           productId: input.productId,
           quantity,
+          attributes: attributesString,
         });
       }
 

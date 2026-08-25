@@ -3,7 +3,7 @@ import { Link, useSearchParams } from "react-router";
 import { trpc } from "@/providers/trpc";
 import { useAuth } from "@/hooks/useAuth";
 import { formatCurrency } from "@/lib/currency";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 import { broadcastLiveEvent } from "@/lib/realtimeSync";
 import {
   ShoppingBag,
@@ -307,7 +307,7 @@ export default function Dashboard() {
   ];
 
   return (
-    <div className="flex h-[calc(100vh-64px)] overflow-hidden bg-slate-50 dark:bg-slate-950/50 animate-fade-in">
+    <div className="flex h-[calc(100vh-64px)] overflow-hidden bg-[#F4F6FC] dark:bg-slate-950/50 animate-fade-in">
       {/* Mobile Sidebar Overlay */}
       {isMobileMenuOpen && (
         <div 
@@ -337,11 +337,11 @@ export default function Dashboard() {
               }}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
                 activeTab === tab.key
-                  ? "bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400"
+                  ? "bg-[#E0E7FF] dark:bg-indigo-900/30 text-[#5B6DF8] dark:text-indigo-400"
                   : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-slate-900 dark:hover:text-white"
               }`}
             >
-              <div className={activeTab === tab.key ? "text-indigo-600 dark:text-indigo-400" : "text-slate-400 dark:text-slate-500"}>
+              <div className={activeTab === tab.key ? "text-[#5B6DF8] dark:text-indigo-400" : "text-slate-400 dark:text-slate-500"}>
                 {tab.icon}
               </div>
               {tab.label}
@@ -373,22 +373,22 @@ export default function Dashboard() {
       {/* Main Content */}
       <main className="flex-1 overflow-y-auto w-full">
         <div className="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto">
-          {/* Header Mobile Toggle */}
-          <div className="lg:hidden flex items-center gap-4 mb-6 pb-4 border-b border-slate-200 dark:border-slate-800">
-            <button
-              onClick={() => setIsMobileMenuOpen(true)}
-              className="p-2 -ml-2 rounded-lg text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
-            >
-              <Menu className="w-6 h-6" />
-            </button>
-            <h1 className="text-xl font-bold text-slate-900 dark:text-white">Customer Portal</h1>
-          </div>
-
-          <div className="hidden lg:block mb-8">
-            <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">
-              Welcome back, {(user as any)?.name || "Customer"}!
-            </h1>
-            <p className="text-slate-500 dark:text-slate-400">Manage orders, delivery addresses, and personal preferences.</p>
+          {/* Header Mobile & Desktop */}
+          <div className="flex items-center justify-between mb-8 pb-4 lg:pb-0 border-b lg:border-b-0 border-slate-200 dark:border-slate-800">
+            <div className="flex items-center gap-4">
+              <button
+                onClick={() => setIsMobileMenuOpen(true)}
+                className="lg:hidden p-2 -ml-2 rounded-lg text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
+              >
+                <Menu className="w-6 h-6" />
+              </button>
+              <div>
+                <h1 className="text-xl sm:text-3xl font-bold text-slate-900 dark:text-white">
+                  Welcome back, {(user as any)?.name || "Customer"}!
+                </h1>
+                <p className="text-slate-500 text-xs sm:text-sm mt-1">Manage orders, delivery addresses, and personal preferences.</p>
+              </div>
+            </div>
           </div>
 
           {/* Tab Content */}
@@ -402,23 +402,27 @@ export default function Dashboard() {
                   label="Total Orders"
                   value={totalOrders}
                   onClick={() => setActiveTab("orders")}
+                  color="blue"
                 />
                 <DashboardCard
                   icon={<TrendingUp className="h-5 w-5" />}
                   label="Total Spent"
                   value={formatCurrency(totalSpent)}
+                  color="yellow"
                 />
                 <DashboardCard
                   icon={<Heart className="h-5 w-5" />}
                   label="Wishlist Items"
                   value={wishlistCount}
                   onClick={() => setActiveTab("wishlist")}
+                  color="red"
                 />
                 <DashboardCard
                   icon={<Package className="h-5 w-5" />}
                   label="Cart Items"
                   value={cartCount}
                   link="/cart"
+                  color="emerald"
                 />
               </div>
 
@@ -1670,26 +1674,41 @@ function DashboardCard({
   value,
   link,
   onClick,
+  color = "blue",
 }: {
   icon: React.ReactNode;
   label: string;
   value: string | number;
   link?: string;
   onClick?: () => void;
+  color?: "blue" | "yellow" | "red" | "emerald";
 }) {
+  const colorMap: Record<string, string> = {
+    blue: "bg-[#6366F1]",
+    yellow: "bg-[#EAB308]",
+    red: "bg-[#EF4444]",
+    emerald: "bg-[#10B981]",
+  };
+
   const content = (
     <div 
       onClick={onClick}
-      className="glass-card rounded-3xl p-6 hover:-translate-y-1 transition-all cursor-pointer group hover:shadow-xl hover:shadow-indigo-500/10 animate-fade-up"
+      className={`${colorMap[color]} rounded-xl shadow-md p-5 flex flex-col justify-between h-[120px] relative overflow-hidden group hover:shadow-lg hover:-translate-y-1 transition-all cursor-pointer animate-fade-up`}
     >
-      <div className="flex items-center justify-between mb-4">
-        <div className="p-3 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-xl group-hover:scale-110 transition-transform">
+      <div className="flex items-center justify-between z-10 relative">
+        <div className="flex flex-col">
+          <p className="text-sm font-medium text-white/90 mb-1">{label}</p>
+          <p className="text-2xl font-bold text-white tracking-tight leading-tight">{value}</p>
+        </div>
+        <div className="p-2 bg-white/20 rounded-full shrink-0 text-white group-hover:scale-110 transition-transform">
           {icon}
         </div>
-        {(link || onClick) && <ChevronRight className="h-5 w-5 text-slate-400 group-hover:text-indigo-600 transition-colors" />}
       </div>
-      <p className="text-3xl font-black text-slate-900 dark:text-white tracking-tight mb-1">{value}</p>
-      <p className="text-sm font-semibold text-slate-500 dark:text-slate-400">{label}</p>
+      {(link || onClick) && (
+        <div className="absolute bottom-0 right-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity z-10">
+          <ChevronRight className="h-5 w-5 text-white/80" />
+        </div>
+      )}
     </div>
   );
 

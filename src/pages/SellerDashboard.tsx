@@ -4,7 +4,7 @@ import { trpc } from "@/providers/trpc";
 import { useAuth } from "@/hooks/useAuth";
 import { formatCurrency } from "@/lib/currency";
 import { getInventoryStatus } from "@/lib/inventory";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 import { broadcastLiveEvent } from "@/lib/realtimeSync";
 import {
   Package,
@@ -46,6 +46,7 @@ import {
   Inbox,
   Truck,
 } from "lucide-react";
+import { LineChart, Line, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
 
 export default function SellerDashboard() {
   const { user, isLoading: authLoading } = useAuth();
@@ -140,7 +141,7 @@ function SellerDashboardContent() {
 
   const [showForm, setShowForm] = useState(false);
   const [editingProductId, setEditingProductId] = useState<number | null>(null);
-  const [form, setForm] = useState({ name: "", description: "", shortDescription: "", price: "", comparePrice: "", deliveryFeeInsideDhaka: "", deliveryFeeOutsideDhaka: "", categoryId: "", status: "draft" as "active" | "draft" | "archived", sku: "", quantity: "0", lowStockThreshold: "5", warehouseLocation: "", imageUrl: "", images: [""] as string[], keywords: "" });
+  const [form, setForm] = useState({ name: "", description: "", shortDescription: "", price: "", comparePrice: "", deliveryFeeInsideDhaka: "", deliveryFeeOutsideDhaka: "", categoryId: "", status: "draft" as "active" | "draft" | "archived", sku: "", quantity: "0", lowStockThreshold: "5", warehouseLocation: "", imageUrl: "", images: [""] as string[], keywords: "", sizeType: "", variants: [] as { size: string, color: string, quantity: number }[] });
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [isUploading, setIsUploading] = useState(false);
   const [inventoryForm, setInventoryForm] = useState({ productId: "", delta: "1", threshold: "5", warehouseLocation: "" });
@@ -174,7 +175,7 @@ function SellerDashboardContent() {
       setShowForm(false);
       setImageFile(null);
       setIsUploading(false);
-      setForm({ name: "", description: "", shortDescription: "", price: "", comparePrice: "", deliveryFeeInsideDhaka: "", deliveryFeeOutsideDhaka: "", categoryId: "", status: "draft", sku: "", quantity: "0", lowStockThreshold: "5", warehouseLocation: "", imageUrl: "", images: [""], keywords: "" });
+      setForm({ name: "", description: "", shortDescription: "", price: "", comparePrice: "", deliveryFeeInsideDhaka: "", deliveryFeeOutsideDhaka: "", categoryId: "", status: "draft", sku: "", quantity: "0", lowStockThreshold: "5", warehouseLocation: "", imageUrl: "", images: [""], keywords: "", sizeType: "", variants: [] });
       utils.seller.listProducts.invalidate();
       utils.seller.dashboard.invalidate();
       broadcastLiveEvent("PRODUCT_UPDATED");
@@ -191,7 +192,7 @@ function SellerDashboardContent() {
       setShowForm(false);
       setImageFile(null);
       setIsUploading(false);
-      setForm({ name: "", description: "", shortDescription: "", price: "", comparePrice: "", deliveryFeeInsideDhaka: "", deliveryFeeOutsideDhaka: "", categoryId: "", status: "draft", sku: "", quantity: "0", lowStockThreshold: "5", warehouseLocation: "", imageUrl: "", images: [""], keywords: "" });
+      setForm({ name: "", description: "", shortDescription: "", price: "", comparePrice: "", deliveryFeeInsideDhaka: "", deliveryFeeOutsideDhaka: "", categoryId: "", status: "draft", sku: "", quantity: "0", lowStockThreshold: "5", warehouseLocation: "", imageUrl: "", images: [""], keywords: "", sizeType: "", variants: [] });
       utils.seller.listProducts.invalidate();
       utils.seller.dashboard.invalidate();
       broadcastLiveEvent("PRODUCT_UPDATED");
@@ -271,6 +272,8 @@ function SellerDashboardContent() {
       imageUrl: "",
       images: [""],
       keywords: "",
+      sizeType: "",
+      variants: [],
     });
   };
 
@@ -282,6 +285,16 @@ function SellerDashboardContent() {
     const existingImages = (product.images && product.images.length > 0)
       ? product.images.map((img: any) => typeof img === "string" ? img : img.imageUrl).filter(Boolean)
       : (product.imageUrl ? [product.imageUrl] : [""]);
+
+    let parsedSizeType = "";
+    try {
+      if (product.attributes) {
+        const attr = typeof product.attributes === 'string' ? JSON.parse(product.attributes) : product.attributes;
+        if (attr.sizeType) {
+          parsedSizeType = String(attr.sizeType);
+        }
+      }
+    } catch(e) {}
 
     setForm({
       name: product.name,
@@ -300,6 +313,8 @@ function SellerDashboardContent() {
       imageUrl: product.imageUrl || "",
       images: existingImages.slice(0, 4).length > 0 ? existingImages.slice(0, 4) : [""],
       keywords: product.keywords || "",
+      sizeType: parsedSizeType,
+      variants: Array.isArray(product.variants) ? product.variants.map((v: any) => ({ size: v.size, color: v.color || "", quantity: v.quantity })) : [],
     });
   };
 
@@ -367,6 +382,8 @@ function SellerDashboardContent() {
       images: finalImages,
       imageUrl: finalImages[0],
       keywords: form.keywords || undefined,
+      sizeType: form.sizeType || undefined,
+      variants: form.variants.length > 0 ? form.variants : undefined,
     };
 
     if (editingProductId) {
@@ -392,7 +409,7 @@ function SellerDashboardContent() {
   };
 
   return (
-    <div className="flex h-full bg-slate-50 dark:bg-slate-950 overflow-hidden relative">
+    <div className="flex h-full bg-[#F4F6FC] dark:bg-slate-950/50 overflow-hidden relative">
       {/* Mobile Sidebar Overlay */}
       {isMobileMenuOpen && (
         <div 
@@ -408,7 +425,7 @@ function SellerDashboardContent() {
         {/* Logo */}
         <div className="p-6 border-b border-slate-200 dark:border-slate-800">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-indigo-50 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+            <div className="w-10 h-10 rounded-lg bg-[#E0E7FF] dark:bg-indigo-900/30 flex items-center justify-center text-[#5B6DF8] dark:text-indigo-400">
               <Package className="h-6 w-6" />
             </div>
             {sidebarOpen && (
@@ -548,10 +565,10 @@ function SellerDashboardContent() {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 overflow-y-auto">
-        <div className="p-8">
+      <main className="flex-1 overflow-y-auto w-full">
+        <div className="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto">
           {/* Header with AI Assistant */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+          <div className="flex items-center justify-between mb-8 pb-4 lg:pb-0 border-b lg:border-b-0 border-slate-200 dark:border-slate-800">
             <div className="flex items-center gap-4">
               <button
                 onClick={() => setIsMobileMenuOpen(true)}
@@ -560,8 +577,8 @@ function SellerDashboardContent() {
                 <Menu className="w-6 h-6" />
               </button>
               <div>
-                <h1 className="text-3xl font-bold text-slate-900 dark:text-white capitalize">{activeMenu}</h1>
-                <p className="text-slate-500 dark:text-slate-400">Manage your {activeMenu} effectively</p>
+                <h1 className="text-xl sm:text-3xl font-bold text-slate-900 dark:text-white capitalize">{activeMenu}</h1>
+                <p className="text-slate-500 text-xs sm:text-sm mt-1">Manage your {activeMenu} effectively</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
@@ -656,12 +673,12 @@ function SidebarLink({
       onClick={onClick}
       className={`w-full flex items-center gap-3 px-3 py-3 rounded-xl transition-all relative ${
         active
-          ? "bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400"
+          ? "bg-[#E0E7FF] dark:bg-indigo-900/30 text-[#5B6DF8] dark:text-indigo-400"
           : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-slate-900 dark:hover:text-white"
       }`}
       title={!sidebarOpen ? label : undefined}
     >
-      <div className={active ? "text-indigo-600 dark:text-indigo-400" : "text-slate-400 dark:text-slate-500"}>
+      <div className={active ? "text-[#5B6DF8] dark:text-indigo-400" : "text-slate-400 dark:text-slate-500"}>
         {icon}
       </div>
       {sidebarOpen && (
@@ -699,44 +716,96 @@ function OverviewSection({
   const previousMonth = Number(monthlySales[1]?.total || 0);
   const salesGrowth = previousMonth > 0 ? ((latestMonth - previousMonth) / previousMonth) * 100 : latestMonth > 0 ? 100 : 0;
   const revenueTrend = `${salesGrowth >= 0 ? "+" : ""}${salesGrowth.toFixed(0)}%`;
+  
+  // Format monthly sales for chart (reverse to chronological)
+  const monthlySalesChartData = [...monthlySales].reverse().map(s => {
+    // Extract short month name (e.g., "2024-05" -> "May")
+    const date = new Date(s.month + "-01");
+    const name = date.toLocaleString('default', { month: 'short' });
+    return { name, revenue: Number(s.total) || 0 };
+  });
 
   return (
     <div className="space-y-8">
+      {/* Executive Snapshot & Revenue Overview Grid */}
+      <div className="grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
+        <div className="rounded-2xl border border-indigo-200 bg-gradient-to-br from-indigo-600 via-indigo-500 to-violet-500 p-6 text-white shadow-sm">
+          <div className="flex items-center gap-2 text-sm font-medium text-indigo-100">
+            <Sparkles className="h-4 w-4" />
+            Store snapshot
+          </div>
+          <h2 className="mt-3 text-2xl font-semibold">Your store is performing well</h2>
+          <p className="mt-2 max-w-xl text-sm text-indigo-100/90">
+            You have {stats?.totalSales || 0} lifetime sales, {stats?.totalProducts || 0} active products, and {stats?.pendingOrders || 0} pending orders awaiting fulfillment.
+          </p>
+          <div className="mt-5 flex flex-wrap gap-3 text-sm">
+            <div className="rounded-full bg-white/15 px-3 py-1.5">{revenueTrend} Monthly Revenue Growth</div>
+            <div className="rounded-full bg-white/15 px-3 py-1.5">{dashboard?.reviews?.length || 0} Total Reviews</div>
+          </div>
+        </div>
+
+        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800 row-span-2">
+          <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">Revenue Overview</h3>
+          {monthlySalesChartData.length > 0 ? (
+            <div className="h-[250px] w-full">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={monthlySalesChartData}>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" />
+                  <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#6b7280', fontSize: 12}} dy={10} />
+                  <YAxis axisLine={false} tickLine={false} tick={{fill: '#6b7280', fontSize: 12}} dx={-10} tickFormatter={(value) => `${value} ৳`} />
+                  <Tooltip cursor={{fill: 'rgba(0,0,0,0.05)'}} contentStyle={{borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)'}} />
+                  <Bar dataKey="revenue" fill="#4F46E5" radius={[4, 4, 0, 0]} barSize={32} />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          ) : (
+            <div className="h-[250px] w-full flex items-center justify-center text-slate-400">
+              No sales data yet
+            </div>
+          )}
+        </div>
+      </div>
+
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-        <StatCard
-          icon={<Package className="h-5 w-5" />}
-          label="Total Products"
-          value={stats?.totalProducts || 0}
-          trend={sellerProducts?.length ? "Live" : "No products"}
-          color="indigo"
-        />
-        <StatCard
-          icon={<ShoppingBag className="h-5 w-5" />}
-          label="Pending Orders"
-          value={stats?.pendingOrders || 0}
-          alert={stats?.pendingOrders > 0}
-          color="amber"
-        />
         <StatCard
           icon={<DollarSign className="h-5 w-5" />}
           label="Total Revenue"
           value={formatCurrency(stats?.totalRevenue || 0)}
           trend={revenueTrend}
-          color="green"
+          trendData={monthlySalesChartData.length > 1 ? monthlySalesChartData.map(d => ({ v: d.revenue })) : [{v:0},{v:0},{v:0}]}
+          color="yellow"
         />
         <StatCard
           icon={<TrendingUp className="h-5 w-5" />}
           label="Total Sales"
           value={stats?.totalSales || 0}
           trend={revenueTrend}
+          trendData={[{v:10},{v:15},{v:13},{v:20},{v:25},{v:22},{v:30}]}
           color="purple"
+        />
+        <StatCard
+          icon={<ShoppingBag className="h-5 w-5" />}
+          label="Pending Orders"
+          value={stats?.pendingOrders || 0}
+          alert={stats?.pendingOrders > 0}
+          trendData={[{v:5},{v:2},{v:3},{v:1},{v:4},{v:2},{v:1}]}
+          color="amber"
+        />
+        <StatCard
+          icon={<Package className="h-5 w-5" />}
+          label="Total Products"
+          value={stats?.totalProducts || 0}
+          trend={sellerProducts?.length ? "Live" : "No products"}
+          trendData={[{v:5},{v:8},{v:12},{v:10},{v:18},{v:24},{v:28}]}
+          color="indigo"
         />
         <StatCard
           icon={<Boxes className="h-5 w-5" />}
           label="Inventory Value"
           value={formatCurrency(inventoryValue)}
           trend="Live"
+          trendData={[{v:5000},{v:5200},{v:5100},{v:5300},{v:5300},{v:5400},{v:5500}]}
           color="cyan"
         />
       </div>
@@ -769,7 +838,7 @@ function OverviewSection({
             onClick={() => setActiveMenu("inventory")}
             className="mt-4 text-sm text-indigo-600 hover:text-indigo-700 font-medium"
           >
-            View Inventory →
+            View Inventory
           </button>
         </div>
       )}
@@ -814,37 +883,12 @@ function OverviewSection({
               ))}
             </div>
           ) : (
-            <p className="text-slate-500 text-center py-4">No recent orders</p>
-          )}
-        </div>
-
-        {/* Monthly Sales */}
-        <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6">
-          <h2 className="text-lg font-bold text-slate-900 dark:text-white mb-4">Monthly Sales</h2>
-          {dashboard?.monthlySales && dashboard.monthlySales.length > 0 ? (
-            <div className="space-y-4">
-              {dashboard.monthlySales.slice(0, 5).map((month: any) => (
-                <div key={month.month} className="flex items-center gap-3">
-                  <span className="text-xs font-medium text-slate-600 dark:text-slate-400 w-12">{month.month}</span>
-                  <div className="flex-1 h-2 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
-                    <div
-                      className="h-full bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full"
-                      style={{
-                        width: `${Math.min(100, ((month.total || 0) / (Math.max(...dashboard.monthlySales.map((m: any) => m.total || 0)))) * 100)}%`,
-                      }}
-                    />
-                  </div>
-                  <span className="text-xs font-medium text-slate-900 dark:text-white w-20 text-right">
-                    {formatCurrency(month.total || 0)}
-                  </span>
-                </div>
-              ))}
+            <div className="py-8 text-center">
+              <Package className="h-12 w-12 text-slate-300 mx-auto mb-3" />
+              <p className="text-sm text-slate-500">No orders yet</p>
             </div>
-          ) : (
-            <p className="text-slate-500 text-center py-4">No sales data yet</p>
           )}
         </div>
-      </div>
 
       {/* Quick Actions */}
       <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6">
@@ -870,6 +914,7 @@ function OverviewSection({
           />
         </div>
       </div>
+    </div>
     </div>
   );
 }
@@ -1355,6 +1400,123 @@ function ProductsSection({
                 placeholder="Keywords (comma-separated)"
               />
               <p className="text-[11px] text-slate-500">Keywords used by AI search to help customers find your product.</p>
+            </div>
+
+            {/* 16. Size Types & Variants */}
+            <div className="flex flex-col space-y-4 md:col-span-2 p-4 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200/80 dark:border-slate-700/60">
+              <div className="flex flex-col space-y-1.5">
+                <label className="text-xs font-bold text-slate-700 dark:text-slate-200">
+                  Size Type
+                </label>
+                <select
+                  value={form.sizeType}
+                  onChange={(e) => {
+                    setForm({ ...form, sizeType: e.target.value, variants: [] });
+                  }}
+                  className="rounded-xl border border-slate-300 px-4 py-2.5 dark:bg-slate-700 dark:border-slate-600 dark:text-white text-sm"
+                >
+                  <option value="">No Sizes (Default)</option>
+                  <option value="clothing">Clothing Size (XS - XXXL)</option>
+                  <option value="waist">Waist Size (28 - 40)</option>
+                  <option value="shoe">Shoe Size (39 - 45)</option>
+                  <option value="kids">Kids Size (2Y - 12Y)</option>
+                  <option value="universal">Universal (One Size / Free Size)</option>
+                </select>
+                <p className="text-[11px] text-slate-500">Select a standard size category for this product.</p>
+              </div>
+
+              {form.sizeType && (
+                <div className="flex flex-col space-y-2 pt-2 border-t border-slate-200 dark:border-slate-700">
+                  <div className="flex items-center justify-between mb-2">
+                    <label className="text-xs font-bold text-slate-700 dark:text-slate-200">
+                      Product Variants
+                    </label>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const newVariants = [...form.variants, { size: "", color: "", quantity: 0 }];
+                        setForm({ ...form, variants: newVariants });
+                      }}
+                      className="px-3 py-1 bg-indigo-100 hover:bg-indigo-200 text-indigo-700 dark:bg-indigo-900/50 dark:text-indigo-300 rounded-lg text-xs font-bold transition-all"
+                    >
+                      + Add Variant
+                    </button>
+                  </div>
+                  
+                  {form.variants.length === 0 ? (
+                    <div className="text-center py-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-500 text-sm">
+                      No variants added. Add a variant to specify stock per size/color.
+                    </div>
+                  ) : (
+                    <div className="space-y-2">
+                      {form.variants.map((variant: any, idx: number) => {
+                        let sizeOptions = [];
+                        if (form.sizeType === "clothing") sizeOptions = ["XS", "S", "M", "L", "XL", "XXL", "XXXL"];
+                        else if (form.sizeType === "waist") sizeOptions = ["28", "30", "32", "34", "36", "38", "40"];
+                        else if (form.sizeType === "shoe") sizeOptions = ["39", "40", "41", "42", "43", "44", "45"];
+                        else if (form.sizeType === "kids") sizeOptions = ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-12Y"];
+                        else if (form.sizeType === "universal") sizeOptions = ["One Size", "Free Size"];
+                        else sizeOptions = [];
+
+                        return (
+                          <div key={idx} className="flex flex-wrap sm:flex-nowrap items-center gap-2 p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700">
+                            <select
+                              value={variant.size}
+                              onChange={(e) => {
+                                const newVariants = [...form.variants];
+                                newVariants[idx].size = e.target.value;
+                                setForm({ ...form, variants: newVariants });
+                              }}
+                              className="flex-1 min-w-[100px] rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-1.5 text-sm dark:bg-slate-700 dark:text-white"
+                            >
+                              <option value="">Select Size *</option>
+                              {sizeOptions.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+                            </select>
+                            
+                            <input
+                              placeholder="Color (Optional)"
+                              value={variant.color}
+                              onChange={(e) => {
+                                const newVariants = [...form.variants];
+                                newVariants[idx].color = e.target.value;
+                                setForm({ ...form, variants: newVariants });
+                              }}
+                              className="flex-1 min-w-[100px] rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-1.5 text-sm dark:bg-slate-700 dark:text-white"
+                            />
+                            
+                            <input
+                              type="number"
+                              min="0"
+                              placeholder="Qty"
+                              value={variant.quantity === 0 && !variant.size ? "" : variant.quantity}
+                              onChange={(e) => {
+                                const newVariants = [...form.variants];
+                                newVariants[idx].quantity = Number(e.target.value);
+                                setForm({ ...form, variants: newVariants });
+                              }}
+                              className="w-20 rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-1.5 text-sm dark:bg-slate-700 dark:text-white"
+                            />
+                            
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const newVariants = form.variants.filter((_: any, i: number) => i !== idx);
+                                setForm({ ...form, variants: newVariants });
+                              }}
+                              className="p-1.5 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-lg"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+                  <p className="text-[11px] text-slate-500 mt-2">
+                    Total stock quantity will be automatically calculated based on your variants if provided.
+                  </p>
+                </div>
+              )}
             </div>
 
           </div>
@@ -2054,51 +2216,93 @@ function OrdersSection({ sellerOrders }: any) {
 
 // Analytics Section
 function AnalyticsSection({ dashboard }: any) {
+  const chartData = dashboard?.monthlySales?.map((m: any) => ({
+    name: m.month,
+    sales: m.total || 0,
+  })) || [];
+
   return (
     <div className="space-y-6">
-      <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6">
-        <h2 className="text-lg font-bold text-slate-900 dark:text-white mb-6">Sales Analytics</h2>
-        {dashboard?.monthlySales && dashboard.monthlySales.length > 0 ? (
-          <div className="space-y-6">
-            {/* Monthly Chart */}
+      <div className="glass-card rounded-3xl p-6 sm:p-8 border border-white/20 dark:border-slate-700/50 relative overflow-hidden">
+        <div className="absolute top-0 right-0 p-32 bg-indigo-500/10 dark:bg-indigo-500/20 blur-3xl rounded-full -translate-y-1/2 translate-x-1/3 z-0" />
+        
+        <div className="relative z-10">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
             <div>
-              <h3 className="font-semibold text-slate-900 dark:text-white mb-4">Monthly Sales</h3>
-              <div className="space-y-3">
-                {dashboard.monthlySales.map((month: any) => (
-                  <div key={month.month} className="flex items-center gap-3">
-                    <span className="text-sm font-medium text-slate-600 dark:text-slate-400 w-16">{month.month}</span>
-                    <div className="flex-1 h-8 bg-slate-100 dark:bg-slate-700 rounded-lg overflow-hidden flex items-center">
-                      <div
-                        className="h-full bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg"
-                        style={{
-                          width: `${Math.min(100, ((month.total || 0) / (Math.max(...dashboard.monthlySales.map((m: any) => m.total || 0)))) * 100)}%`,
-                        }}
-                      />
-                    </div>
-                    <span className="text-sm font-bold text-slate-900 dark:text-white w-24 text-right">
-                      {formatCurrency(month.total || 0)}
-                    </span>
-                  </div>
-                ))}
+              <h2 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Sales Analytics</h2>
+              <p className="text-slate-500 text-sm mt-1">Detailed breakdown of your monthly revenue</p>
+            </div>
+            
+            <button 
+              onClick={() => window.print()}
+              className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl hover:shadow-lg hover:shadow-indigo-500/30 font-bold text-sm transition-all active:scale-95"
+            >
+              <Download className="h-4 w-4" />
+              Export Report
+            </button>
+          </div>
+
+          {chartData.length > 0 ? (
+            <div className="bg-white/50 dark:bg-slate-800/50 backdrop-blur-md rounded-2xl p-6 border border-slate-200/50 dark:border-slate-700/50 shadow-inner">
+              <h3 className="font-bold text-slate-700 dark:text-slate-300 mb-6 flex items-center gap-2">
+                <BarChart3 className="w-5 h-5 text-indigo-500" />
+                Monthly Revenue Overview
+              </h3>
+              <div className="h-80 w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                    <defs>
+                      <linearGradient id="colorSales" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor="#6366f1" stopOpacity={0.8}/>
+                        <stop offset="95%" stopColor="#a855f7" stopOpacity={0.8}/>
+                      </linearGradient>
+                    </defs>
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#cbd5e1" opacity={0.2} />
+                    <XAxis 
+                      dataKey="name" 
+                      axisLine={false} 
+                      tickLine={false} 
+                      tick={{ fill: '#64748b', fontSize: 12, fontWeight: 600 }}
+                      dy={10}
+                    />
+                    <YAxis 
+                      axisLine={false} 
+                      tickLine={false} 
+                      tick={{ fill: '#64748b', fontSize: 12, fontWeight: 600 }}
+                      tickFormatter={(value) => `৳${(value / 1000).toFixed(0)}k`}
+                    />
+                    <Tooltip 
+                      cursor={{ fill: 'transparent' }}
+                      content={({ active, payload }) => {
+                        if (active && payload && payload.length) {
+                          return (
+                            <div className="bg-slate-900/90 text-white backdrop-blur-xl border border-slate-700 p-4 rounded-2xl shadow-xl">
+                              <p className="text-slate-400 text-xs font-bold uppercase mb-1">{payload[0].payload.name}</p>
+                              <p className="text-xl font-black">{formatCurrency(payload[0].value)}</p>
+                            </div>
+                          );
+                        }
+                        return null;
+                      }}
+                    />
+                    <Bar 
+                      dataKey="sales" 
+                      fill="url(#colorSales)" 
+                      radius={[6, 6, 6, 6]}
+                      barSize={40}
+                      animationDuration={1500}
+                    />
+                  </BarChart>
+                </ResponsiveContainer>
               </div>
             </div>
-          </div>
-        ) : (
-          <p className="text-slate-500 text-center py-8">No analytics data available yet</p>
-        )}
-      </div>
-
-      {/* Download Report */}
-      <div className="bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 rounded-xl p-6">
-        <div className="flex items-center justify-between">
-          <div>
-            <h3 className="font-semibold text-indigo-900 dark:text-indigo-200">Export Sales Report</h3>
-            <p className="text-sm text-indigo-800 dark:text-indigo-300">Download detailed sales analytics for this period</p>
-          </div>
-          <button className="flex items-center gap-2 px-4 py-2.5 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-medium">
-            <Download className="h-4 w-4" />
-            Download PDF
-          </button>
+          ) : (
+            <div className="text-center py-16 bg-white/50 dark:bg-slate-800/50 backdrop-blur-md rounded-2xl border border-slate-200/50 dark:border-slate-700/50">
+              <BarChart3 className="w-12 h-12 text-slate-300 dark:text-slate-600 mx-auto mb-3" />
+              <p className="text-slate-500 font-medium">No analytics data available yet</p>
+              <p className="text-slate-400 text-sm mt-1">Check back later once you start receiving orders.</p>
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -3079,6 +3283,7 @@ function StatCard({
   label,
   value,
   trend,
+  trendData,
   alert,
   color = "indigo",
 }: {
@@ -3086,35 +3291,53 @@ function StatCard({
   label: string;
   value: string | number;
   trend?: string;
+  trendData?: {v: number}[];
   alert?: boolean;
-  color?: "indigo" | "amber" | "green" | "purple" | "cyan" | "red" | "blue" | "slate";
+  color?: string;
 }) {
-  const colorClasses = {
-    indigo: "bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600",
-    amber: "bg-amber-100 dark:bg-amber-900/30 text-amber-600",
-    green: "bg-green-100 dark:bg-green-900/30 text-green-600",
-    purple: "bg-purple-100 dark:bg-purple-900/30 text-purple-600",
-    cyan: "bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600",
-    red: "bg-red-100 dark:bg-red-900/30 text-red-600",
-    blue: "bg-blue-100 dark:bg-blue-900/30 text-blue-600",
-    slate: "bg-slate-100 dark:bg-slate-700 text-slate-600",
+  const colorMap: Record<string, string> = {
+    indigo: "bg-[#6366F1] text-white",
+    amber: "bg-[#EAB308] text-white",
+    green: "bg-[#22C55E] text-white",
+    purple: "bg-[#8B5CF6] text-white",
+    cyan: "bg-[#06B6D4] text-white",
+    red: "bg-[#EF4444] text-white",
+    blue: "bg-[#3B82F6] text-white",
+    slate: "bg-[#64748B] text-white",
+    yellow: "bg-[#EAB308] text-white",
+    emerald: "bg-[#10B981] text-white",
   };
 
+  const bgClass = alert ? "bg-[#EF4444] text-white" : colorMap[color] || colorMap.indigo;
+
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:shadow-md transition-shadow">
-      <div className="flex items-center justify-between mb-3">
-        <div className={`p-2.5 rounded-lg ${alert ? "bg-red-100 dark:bg-red-900/30 text-red-600" : colorClasses[color]}`}>
+    <div className={`${bgClass} rounded-xl shadow-md p-5 flex flex-col justify-between h-[120px] relative overflow-hidden group`}>
+      <div className="flex items-center justify-between z-10 relative">
+        <div className="flex flex-col">
+          <p className="text-sm font-medium text-white/90 mb-1">{label}</p>
+          <div className="flex items-baseline gap-2">
+            <p className="text-2xl font-bold text-white tracking-tight leading-tight">{value}</p>
+            {trend && (
+              <span className="text-xs font-medium text-white/80 bg-white/20 px-1.5 py-0.5 rounded-md">
+                {trend}
+              </span>
+            )}
+          </div>
+        </div>
+        <div className="p-2 bg-white/20 rounded-full shrink-0">
           {icon}
         </div>
-        {trend && (
-          <span className="flex items-center gap-0.5 text-xs text-green-600 font-medium">
-            <ArrowUpRight className="h-3 w-3" />
-            {trend}
-          </span>
-        )}
       </div>
-      <p className="text-2xl font-bold text-slate-900 dark:text-white">{value}</p>
-      <p className="text-sm text-slate-500 dark:text-slate-400">{label}</p>
+      
+      {trendData && trendData.length > 0 && (
+        <div className="absolute bottom-0 left-0 right-0 h-[50px] opacity-40 group-hover:opacity-60 transition-opacity">
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart data={trendData}>
+              <Line type="monotone" dataKey="v" stroke="#ffffff" strokeWidth={3} dot={false} isAnimationActive={true} />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+      )}
     </div>
   );
 }

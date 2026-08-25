@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { createRouter, authedQuery, publicQuery } from "./middleware";
 import { getDb } from "./queries/connection";
-import { orders, orderItems, carts, cartItems, products, productImages, sellers, notifications } from "@db/schema";
+import { orders, orderItems, carts, cartItems, products, sellers, notifications, productImages, users, productVariants, inventory } from "@db/schema";
 import { eq, desc, and, sql } from "@db/mysql";
 import { notifyAdmins } from "./notificationRouter";
 import { buildDemoPaymentNote, generateDemoPaymentReference, generateDemoTrackingNumber } from "./lib/demoPayments";
@@ -173,6 +173,7 @@ export const orderRouter = createRouter({
           id: (cartItems as any).id,
           productId: (cartItems as any).productId,
           quantity: (cartItems as any).quantity,
+          attributes: (cartItems as any).attributes,
           price: (products as any).price,
           sellerId: (products as any).sellerId,
           deliveryFeeInsideDhaka: (products as any).deliveryFeeInsideDhaka,
@@ -245,7 +246,28 @@ export const orderRouter = createRouter({
           quantity: item.quantity,
           unitPrice: unitPrice,
           totalPrice: unitPrice * item.quantity,
+          attributes: item.attributes,
         });
+
+        // Decrement variant stock
+        if (item.attributes) {
+          try {
+            const attr = JSON.parse(item.attributes);
+            if (attr.size || attr.color) {
+               const variants = await db.select().from(productVariants).where(eq(productVariants.productId, item.productId));
+               const match = variants.find((v: any) => (!attr.size || v.size === attr.size) && (!attr.color || v.color === attr.color));
+               if (match) {
+                 await db.update(productVariants).set({ quantity: Math.max(0, match.quantity - item.quantity) }).where(eq(productVariants.id, match.id));
+               }
+            }
+          } catch(e) {}
+        }
+
+        // Decrement overall inventory
+        const inv = await db.select().from(inventory).where(eq(inventory.productId, item.productId)).limit(1);
+        if (inv[0]) {
+           await db.update(inventory).set({ quantity: Math.max(0, inv[0].quantity - item.quantity) }).where(eq(inventory.id, inv[0].id));
+        }
       }
 
       // 1. Send order notification to Sellers
@@ -653,8 +675,15 @@ export const orderRouter = createRouter({
 
       const order = orderRows[0];
       const statusLower = (input.status || "").toLowerCase();
+      const sandboxDemoMode =
+        (process.env.SSLCOMMERZ_IS_LIVE || "false") !== "true" ||
+        !(process.env.SSLCOMMERZ_STORE_ID || "").trim() ||
+        !(process.env.SSLCOMMERZ_STORE_PASSWORD || "").trim();
 
-      if (statusLower.includes("fail") || statusLower.includes("cancel") || statusLower.includes("unattempted")) {
+      if (
+        !sandboxDemoMode &&
+        (statusLower.includes("fail") || statusLower.includes("cancel") || statusLower.includes("unattempted"))
+      ) {
         await db
           .update(orders)
           .set({ paymentStatus: "failed", status: "cancelled", updatedAt: Date.now() })
