@@ -17,11 +17,11 @@
  * 14. ticket_status
  */
 
-import { getDb } from "../../../api/queries/connection";
-import { orders, orderItems, products } from "../../../db/schema";
-import { escalationTickets } from "../../../db/aiSchema";
-import { eq, desc, like } from "../../../db/mysql";
-import type { SupportIntent } from "./fast-support-intent-engine";
+import { getDb } from "../../../api/queries/connection.ts";
+import { orders, orderItems, products } from "../../../db/schema.ts";
+import { escalationTickets } from "../../../db/aiSchema.ts";
+import { eq, desc, like } from "../../../db/mysql.ts";
+import type { SupportIntent } from "./fast-support-intent-engine.ts";
 
 export interface ToolExecutionResult {
   success: boolean;

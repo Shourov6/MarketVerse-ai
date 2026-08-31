@@ -10,9 +10,9 @@
  * and cross-session memory.
  */
 
-import { getDb } from "../../../api/queries/connection.js";
-import { memoryEntities } from "../../../db/aiSchema.js";
-import { eq, and, desc } from "../../../db/mysql.js";
+import { getDb } from "../../../api/queries/connection.ts";
+import { memoryEntities } from "../../../db/aiSchema.ts";
+import { eq, and, desc } from "../../../db/mysql.ts";
 import { getLLMService } from "../llm/llm-service.ts";
 import type { ExtractedEntity, EntityType } from "./types.ts";
 

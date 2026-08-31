@@ -8,15 +8,15 @@
  * Completely replaces monolithic decision logic.
  */
 
-import { getFastSupportIntentEngine, type SupportIntent } from "./fast-support-intent-engine";
-import { getSupportStateManager } from "./support-state-manager";
-import { OrderEngine, type OrderEngineResult } from "./engines/order-engine";
-import { ReturnEngine, type ReturnEngineResult } from "./engines/return-engine";
-import { PaymentEngine, type PaymentEngineResult } from "./engines/payment-engine";
-import { WarrantyEngine, type WarrantyEngineResult } from "./engines/warranty-engine";
-import { EscalationEngine, type EscalationEngineResult } from "./engines/escalation-engine";
-import { getDeterministicPolicyEngine } from "./deterministic-policy-engine";
-import { getFTS5KnowledgeEngine } from "./fts5-knowledge-engine";
+import { getFastSupportIntentEngine, type SupportIntent } from "./fast-support-intent-engine.ts";
+import { getSupportStateManager } from "./support-state-manager.ts";
+import { OrderEngine, type OrderEngineResult } from "./engines/order-engine.ts";
+import { ReturnEngine, type ReturnEngineResult } from "./engines/return-engine.ts";
+import { PaymentEngine, type PaymentEngineResult } from "./engines/payment-engine.ts";
+import { WarrantyEngine, type WarrantyEngineResult } from "./engines/warranty-engine.ts";
+import { EscalationEngine, type EscalationEngineResult } from "./engines/escalation-engine.ts";
+import { getDeterministicPolicyEngine } from "./deterministic-policy-engine.ts";
+import { getFTS5KnowledgeEngine } from "./fts5-knowledge-engine.ts";
 
 export interface WorkflowOrchestrationResult {
   intent: SupportIntent;

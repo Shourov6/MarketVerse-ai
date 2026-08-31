@@ -11,7 +11,7 @@ import { RecommendOutfitTool } from "./recommend-outfit.ts";
 import { KnowledgeSearchTool } from "./knowledge-search.ts";
 import { SellerAnalyticsTool } from "./seller-analytics.ts";
 import type { AITool, ToolContext, ToolResult } from "./tool-types.ts";
-import { getDb } from "../../../api/queries/connection.js";
+import { getDb } from "../../../api/queries/connection.ts";
 
 export class ToolRegistry {
   private tools: AITool[] = [];

@@ -6,9 +6,9 @@
  * and handles relative follow-up phrases like "cancel it", "change address", "same order".
  */
 
-import { getDb } from "../../../api/queries/connection";
-import { memoryEntities } from "../../../db/aiSchema";
-import { eq, and } from "../../../db/mysql";
+import { getDb } from "../../../api/queries/connection.ts";
+import { memoryEntities } from "../../../db/aiSchema.ts";
+import { eq, and } from "../../../db/mysql.ts";
 
 export interface SupportSessionState {
   sessionId: string;

@@ -4,8 +4,8 @@
  * Handles human admin ticket escalation and priority queue routing.
  */
 
-import { getDb } from "../../../../api/queries/connection";
-import { escalationTickets, ticketMessages } from "../../../../db/aiSchema";
+import { getDb } from "../../../../api/queries/connection.ts";
+import { escalationTickets, ticketMessages } from "../../../../db/aiSchema.ts";
 
 export interface EscalationEngineResult {
   success: boolean;

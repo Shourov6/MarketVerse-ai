@@ -7,9 +7,9 @@
 
 import { getEntityExtractor } from "./entity-extractor.ts";
 import { getSummarizer } from "./summarizer.ts";
-import { getDb } from "../../../api/queries/connection.js";
-import { chatMessages } from "../../../db/schema.js";
-import { eq, desc } from "../../../db/mysql.js";
+import { getDb } from "../../../api/queries/connection.ts";
+import { chatMessages } from "../../../db/schema.ts";
+import { eq, desc } from "../../../db/mysql.ts";
 import type { MemoryContext } from "./types.ts";
 import type { ChatMessage } from "../llm/types.ts";
 

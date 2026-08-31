@@ -4,7 +4,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { trpc } from "@/providers/trpc";
 import { formatCurrency } from "@/lib/currency";
 import { determineDeliveryZone } from "@/lib/deliveryFees";
-import { SSLCommerzModal } from "@/components/SSLCommerzModal";
+
 import { broadcastLiveEvent } from "@/lib/realtimeSync";
 import {
   CreditCard,
@@ -31,7 +31,6 @@ export default function Checkout() {
   });
 
   const [orderPlaced, setOrderPlaced] = useState(false);
-  const [sslModalData, setSslModalData] = useState<{ isOpen: boolean; tranId: string; orderId: number } | null>(null);
   const [form, setForm] = useState({
     fullName: "",
     email: "",
@@ -47,13 +46,15 @@ export default function Checkout() {
   const initiateSSLCommerz = trpc.order.initiateSSLCommerz.useMutation({
     onSuccess: (result) => {
       utils.cart.get.invalidate();
-      if (result.tranId) {
-        setSslModalData({
-          isOpen: true,
-          tranId: result.tranId,
-          orderId: result.orderId,
-        });
+      if (result.success && result.gatewayUrl) {
+        // Redirect to real SSLCommerz payment gateway
+        window.location.href = result.gatewayUrl;
+      } else {
+        toast.error("Failed to initiate payment. Please try again.");
       }
+    },
+    onError: (error) => {
+      toast.error(error.message || "Payment initiation failed");
     },
   });
 
@@ -263,7 +264,7 @@ export default function Checkout() {
               {/* Payment Options Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {[
-                  { value: "sslcommerz", label: "SSLCommerz Gateway", icon: "💳", tag: "bKash / Nagad / Cards / Rocket", badge: "Instant Pay" },
+                  { value: "sslcommerz", label: "Pay Online", tag: "bKash / Nagad / Cards / Rocket", badge: "Verified by" },
                   { value: "cod", label: "Cash on Delivery", icon: "💵", tag: "Pay at Doorstep" },
                 ].map((method) => (
                   <label
@@ -284,11 +285,18 @@ export default function Checkout() {
                     />
                     <div className="min-w-0 flex-1">
                       <span className="font-bold text-sm text-slate-900 dark:text-white flex items-center justify-between gap-1.5">
-                        <span className="truncate"><span>{method.icon}</span> {method.label}</span>
+                        <span className="truncate">{method.label}</span>
                         {method.badge && (
-                          <span className="bg-indigo-100 text-indigo-700 dark:bg-indigo-900/60 dark:text-indigo-300 text-[10px] px-1.5 py-0.5 rounded font-semibold shrink-0">
-                            {method.badge}
-                          </span>
+                          method.value === "sslcommerz" ? (
+                            <span className="flex shrink-0 flex-col items-end leading-none">
+                              <span className="text-[9px] font-medium text-slate-400 dark:text-slate-500">{method.badge}</span>
+                              <span className="mt-0.5 rounded bg-[#173f8a] px-1.5 py-0.5 text-[9px] font-black tracking-wide text-white">SSLCOMMERZ</span>
+                            </span>
+                          ) : (
+                            <span className="bg-indigo-100 text-indigo-700 dark:bg-indigo-900/60 dark:text-indigo-300 text-[10px] px-1.5 py-0.5 rounded font-semibold shrink-0">
+                              {method.badge}
+                            </span>
+                          )
                         )}
                       </span>
                       <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 truncate">{method.tag}</p>
@@ -312,9 +320,9 @@ export default function Checkout() {
                   Initiating Gateway...
                 </>
               ) : form.paymentMethod === "sslcommerz" ? (
-                `Pay with SSLCommerz - ${formatCurrency(total)}`
+                "Order Now"
               ) : (
-                `Place Order - ${formatCurrency(total)}`
+                "Order Now"
               )}
             </button>
           </form>
@@ -373,25 +381,7 @@ export default function Checkout() {
         </div>
       </div>
 
-      {sslModalData && (
-        <SSLCommerzModal
-          isOpen={sslModalData.isOpen}
-          onClose={() => setSslModalData(null)}
-          tranId={sslModalData.tranId}
-          orderId={sslModalData.orderId}
-          totalAmount={total}
-          customerName={form.fullName || "Customer"}
-          customerPhone={form.accountNumber || "01700000000"}
-          onSuccess={(tranId) => {
-            setSslModalData(null);
-            navigate(`/payment-callback?status=success&tran_id=${tranId}`);
-          }}
-          onCancel={(tranId) => {
-            setSslModalData(null);
-            navigate(`/payment-callback?status=cancel&tran_id=${tranId}`);
-          }}
-        />
-      )}
+
     </div>
   );
 }

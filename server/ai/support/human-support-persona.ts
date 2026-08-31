@@ -5,8 +5,8 @@
  * empathetic customer support dialogue matching senior e-commerce executive standards.
  */
 
-import type { SupportIntent } from "./fast-support-intent-engine";
-import type { StructuredSupportResponse } from "./support-response-composer";
+import type { SupportIntent } from "./fast-support-intent-engine.ts";
+import type { StructuredSupportResponse } from "./support-response-composer.ts";
 
 export class HumanSupportPersona {
   formatDialogue(

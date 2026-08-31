@@ -14,21 +14,21 @@
  * 10. Explainability Audit Logging (< 1ms)
  */
 
-import { getFastSupportIntentEngine } from "./fast-support-intent-engine";
-import { getSupportStateManager } from "./support-state-manager";
-import { getSupportToolDispatcher } from "./support-tool-dispatcher";
-import { getDeterministicPolicyEngine } from "./deterministic-policy-engine";
-import { getFTS5KnowledgeEngine } from "./fts5-knowledge-engine";
-import { getCustomer360ProfileEngine } from "./customer-360-profile-engine";
-import { getSuccessIntelligenceEngine } from "./success-intelligence-engine";
-import { getPredictiveAssistanceEngine } from "./predictive-assistance-engine";
-import { getSuccessRecommendationEngine } from "./success-recommendation-engine";
-import { getSmartConversationPlanner } from "./smart-conversation-planner";
-import { getLoyaltyRetentionEngine } from "./loyalty-retention-engine";
-import { getExplainabilityEngine } from "./explainability-engine";
-import { getWorkflowOrchestrator } from "./workflow-orchestrator";
-import { getSupportResponseComposer } from "./response-composer";
-import { getSupportLLMRenderer } from "./support-llm-renderer";
+import { getFastSupportIntentEngine } from "./fast-support-intent-engine.ts";
+import { getSupportStateManager } from "./support-state-manager.ts";
+import { getSupportToolDispatcher } from "./support-tool-dispatcher.ts";
+import { getDeterministicPolicyEngine } from "./deterministic-policy-engine.ts";
+import { getFTS5KnowledgeEngine } from "./fts5-knowledge-engine.ts";
+import { getCustomer360ProfileEngine } from "./customer-360-profile-engine.ts";
+import { getSuccessIntelligenceEngine } from "./success-intelligence-engine.ts";
+import { getPredictiveAssistanceEngine } from "./predictive-assistance-engine.ts";
+import { getSuccessRecommendationEngine } from "./success-recommendation-engine.ts";
+import { getSmartConversationPlanner } from "./smart-conversation-planner.ts";
+import { getLoyaltyRetentionEngine } from "./loyalty-retention-engine.ts";
+import { getExplainabilityEngine } from "./explainability-engine.ts";
+import { getWorkflowOrchestrator } from "./workflow-orchestrator.ts";
+import { getSupportResponseComposer } from "./response-composer.ts";
+import { getSupportLLMRenderer } from "./support-llm-renderer.ts";
 
 export interface FastSupportEngineResult {
   content: string;

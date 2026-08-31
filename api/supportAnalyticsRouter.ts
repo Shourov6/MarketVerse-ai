@@ -11,8 +11,8 @@
  *  - Audit Logs
  */
 
-import { createRouter, publicProcedure } from "./middleware.js";
-import { getExplainabilityEngine } from "../server/ai/support/explainability-engine.js";
+import { createRouter, publicProcedure } from "./middleware.ts";
+import { getExplainabilityEngine } from "../server/ai/support/explainability-engine.ts";
 
 export const supportAnalyticsRouter = createRouter({
   getDashboardMetrics: publicProcedure.query(async () => {

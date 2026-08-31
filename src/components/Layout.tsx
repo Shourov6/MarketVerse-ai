@@ -163,7 +163,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       {!isAuthRoute && (
         <div className="bg-[#5438DC] text-white text-center text-xs py-2.5 px-4 font-medium tracking-wide">
           <span>
-            Free shipping on orders over BDT 5,000 | AI-Powered Recommendations | Voice Navigation Available
+            Free shipping on orders over BDT 500 | AI-Powered Recommendations | Voice Navigation Available
           </span>
         </div>
       )}

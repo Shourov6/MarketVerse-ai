@@ -195,7 +195,7 @@ export class RAGPipeline {
     const { query, domain, memory, sessionId = "default-session", toolResults = [], retrievalOptions = {} } = req;
 
     if (domain === "support") {
-      const { getFastSupportEngine } = await import("../support/fast-support-engine.js");
+      const { getFastSupportEngine } = await import("../support/fast-support-engine.ts");
       const fastSupportEngine = getFastSupportEngine();
       const res = await fastSupportEngine.processQuery(sessionId, query);
 

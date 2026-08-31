@@ -5,9 +5,9 @@
  * Tracks occasion, role, timing, setting, style, budget, avoid_colors, owned_items, locked_items.
  */
 
-import { getDb } from "../../../api/queries/connection.js";
-import { memoryEntities } from "../../../db/aiSchema.js";
-import { eq, and } from "../../../db/mysql.js";
+import { getDb } from "../../../api/queries/connection.ts";
+import { memoryEntities } from "../../../db/aiSchema.ts";
+import { eq, and } from "../../../db/mysql.ts";
 
 export interface StylistSessionState {
   sessionId: string;

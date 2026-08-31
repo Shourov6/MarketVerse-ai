@@ -4,7 +4,7 @@
  * Deterministic electronic warranty lookup and service center policy verification.
  */
 
-import { getDeterministicPolicyEngine } from "../deterministic-policy-engine";
+import { getDeterministicPolicyEngine } from "../deterministic-policy-engine.ts";
 
 export interface WarrantyEngineResult {
   success: boolean;

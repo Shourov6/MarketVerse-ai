@@ -277,6 +277,26 @@ export interface VoiceProductItem {
   index?: number;
 }
 
+export function isExplicitVoiceProductSelectionCommand(command: string): boolean {
+  const lower = command.toLowerCase().trim();
+  if (!lower) return false;
+
+  const pureNumberPattern = /^\s*\d{1,2}\s*$/;
+  const explicitSelectionPattern =
+    /(?:^|\s)(?:select|choose|pick|option|number|item)\b/i;
+  const explicitSelectionWithIndexPattern =
+    /(?:^|\s)(?:select|choose|pick|buy|take)\s+(?:option\s+|number\s+|item\s+)?(?:\d{1,2}|one|two|three|four|five|six|seven|eight|nine|ten|first|second|third|fourth|fifth|ek|dui|teen|tin|char|paach|pach|chhoy|saat|aat|noy|prothom|ditio|tritio)\b/i;
+  const explicitOptionReferencePattern =
+    /(?:^|\s)(?:option|number|item)\s+(?:\d{1,2}|one|two|three|four|five|six|seven|eight|nine|ten|first|second|third|fourth|fifth|ek|dui|teen|tin|char|paach|pach|chhoy|saat|aat|noy|prothom|ditio|tritio)\b/i;
+
+  return (
+    pureNumberPattern.test(lower) ||
+    explicitSelectionPattern.test(lower) ||
+    explicitSelectionWithIndexPattern.test(lower) ||
+    explicitOptionReferencePattern.test(lower)
+  );
+}
+
 export function resolveVoiceProductSelection(
   command: string,
   productItems: VoiceProductItem[]
@@ -292,7 +312,8 @@ export function resolveVoiceProductSelection(
     one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10,
     first: 1, second: 2, third: 3, fourth: 4, fifth: 5,
     "1st": 1, "2nd": 2, "3rd": 3, "4th": 4, "5th": 5,
-    to: 2, too: 2, for: 4,
+    // Intentionally do NOT map common filler words to option numbers.
+    // "to", "for", and similar words are common in shopping requests like "I want to buy shoes" and must not trigger product picking.
     ek: 1, dui: 2, teen: 3, tin: 3, char: 4, paach: 5, pach: 5, chhoy: 6, saat: 7, aat: 8, noy: 9,
     prothom: 1, ditio: 2, tritio: 3,
   };
@@ -309,8 +330,8 @@ export function resolveVoiceProductSelection(
   }
 
   const match =
-    lower.match(/\b(?:select|choose|pick|buy|take)?\s*(?:option|number|item|no)?\s*(one|two|to|too|three|four|for|five|six|seven|eight|nine|ten|first|second|third|fourth|fifth|1st|2nd|3rd|4th|5th|ek|dui|teen|tin|char|paach|pach|chhoy|saat|aat|noy|prothom|ditio|tritio)(?:\s*(?:number|no|option|item|ta|ti|one))?\b/i) ||
-    lower.match(/^(?:option|number|item|select)?\s*(one|two|to|too|three|four|for|five|six|seven|eight|nine|ten|first|second|third|fourth|fifth|1st|2nd|3rd|4th|5th|ek|dui|teen|tin|char|paach|pach|chhoy|saat|aat|noy|prothom|ditio|tritio)$/i);
+    lower.match(/\b(?:select|choose|pick|buy|take)?\s*(?:option|number|item|no)?\s*(one|two|three|four|five|six|seven|eight|nine|ten|first|second|third|fourth|fifth|1st|2nd|3rd|4th|5th|ek|dui|teen|tin|char|paach|pach|chhoy|saat|aat|noy|prothom|ditio|tritio)(?:\s*(?:number|no|option|item|ta|ti|one))?\b/i) ||
+    lower.match(/^(?:option|number|item|select)?\s*(one|two|three|four|five|six|seven|eight|nine|ten|first|second|third|fourth|fifth|1st|2nd|3rd|4th|5th|ek|dui|teen|tin|char|paach|pach|chhoy|saat|aat|noy|prothom|ditio|tritio)$/i);
 
   if (match && match[1]) {
     const raw = match[1].toLowerCase();

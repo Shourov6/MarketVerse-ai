@@ -5,9 +5,9 @@
  * 100% deterministic database queries (<20ms).
  */
 
-import { getDb } from "../../../../api/queries/connection";
-import { orders, orderItems, products } from "../../../../db/schema";
-import { eq, desc } from "../../../../db/mysql";
+import { getDb } from "../../../../api/queries/connection.ts";
+import { orders, orderItems, products } from "../../../../db/schema.ts";
+import { eq, desc } from "../../../../db/mysql.ts";
 
 export interface OrderEngineResult {
   success: boolean;

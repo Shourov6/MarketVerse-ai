@@ -10,8 +10,8 @@
  * - Instant sub-50ms fallback to rawFallbackText if LLM is offline or busy.
  */
 
-import { getLLMService } from "../llm/llm-service";
-import type { Renderer, UnifiedAIResponse } from "../renderers/types";
+import { getLLMService } from "../llm/llm-service.ts";
+import type { Renderer, UnifiedAIResponse } from "../renderers/types.ts";
 
 const SUPPORT_RENDERER_SYSTEM_PROMPT = `You are a senior customer support executive. Convert the provided structured AI response JSON into a warm, empathetic response.
 

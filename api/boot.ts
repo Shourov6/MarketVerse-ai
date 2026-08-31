@@ -59,6 +59,14 @@ app.get("/health", async (c) => {
   }
 });
 
+app.get("/payment-callback", (c) => {
+  const indexPath = path.join(process.cwd(), "index.html");
+  if (!fs.existsSync(indexPath)) {
+    return c.text("Frontend entry point is unavailable.", 503);
+  }
+  return c.html(fs.readFileSync(indexPath, "utf-8"));
+});
+
 // ── OAuth callback ────────────────────────────────────────────
 app.get(Paths.oauthCallback, createOAuthCallbackHandler());
 

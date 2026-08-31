@@ -6,6 +6,7 @@ import {
   convertBengaliDigitsToStandard,
   extractVoiceCommand,
   resolveVoiceProductSelection,
+  isExplicitVoiceProductSelectionCommand,
 } from "../components/voiceAssistantHelpers";
 
 describe("Voice NLP & Intent Classification", () => {
@@ -147,6 +148,20 @@ describe("Voice Assistant Helpers & Extraction", () => {
 
     const selBengali = resolveVoiceProductSelection("ek number", sampleProducts);
     expect(selBengali?.selectedProduct?.name).toBe("Smart Watch");
+  });
+
+  it("does not treat shopping intent phrases as numbered product selection", () => {
+    const products = [
+      { id: 1, name: "Running Shoes", slug: "running-shoes" },
+      { id: 2, name: "Leather Boots", slug: "leather-boots" },
+    ];
+
+    expect(isExplicitVoiceProductSelectionCommand("I want to buy shoes")).toBe(false);
+    expect(isExplicitVoiceProductSelectionCommand("I want to purchase shoes")).toBe(false);
+    expect(isExplicitVoiceProductSelectionCommand("buy running shoes")).toBe(false);
+    expect(isExplicitVoiceProductSelectionCommand("please select 1")).toBe(true);
+    expect(isExplicitVoiceProductSelectionCommand("buy option 2")).toBe(true);
+    expect(resolveVoiceProductSelection("please select 1", products)?.selectedProduct?.name).toBe("Running Shoes");
   });
 
   it("converts Bengali digits and spoken phone words to standardized phone numbers", () => {

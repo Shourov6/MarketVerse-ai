@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import "./App.css";
 import { Layout } from "./components/Layout";
 import { ErrorBoundary } from "./components/ErrorBoundary";
-import { Toaster } from "sonner";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";

@@ -70,11 +70,13 @@ export const productRouter = createRouter({
           sellerName: sellers.businessName,
           description: products.description,
           tags: products.tags,
+          quantity: inventory.quantity,
         })
         .from(products)
         .leftJoin(productImages, and(eq(productImages.productId, products.id), eq(productImages.isPrimary, 1)))
         .leftJoin(categories, eq(categories.id, products.categoryId))
         .leftJoin(sellers, eq(sellers.id, products.sellerId))
+        .leftJoin(inventory, eq(inventory.productId, products.id))
         .where(where)
         .orderBy(desc(products.createdAt));
 

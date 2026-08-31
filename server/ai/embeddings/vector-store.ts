@@ -13,9 +13,9 @@
  *  - For production scale (>100k), migrate to a dedicated vector DB (pgvector, Qdrant, etc.)
  */
 
-import { getDb } from "../../../api/queries/connection.js";
-import { aiEmbeddings } from "../../../db/aiSchema.js";
-import { eq, and } from "../../../db/mysql.js";
+import { getDb } from "../../../api/queries/connection.ts";
+import { aiEmbeddings } from "../../../db/aiSchema.ts";
+import { eq, and } from "../../../db/mysql.ts";
 import { cosineSimilarity } from "./embedding-service.ts";
 import type { EmbeddingCollection, VectorSearchResult } from "./types.ts";
 

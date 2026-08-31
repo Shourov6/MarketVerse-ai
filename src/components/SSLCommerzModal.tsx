@@ -79,7 +79,7 @@ export function SSLCommerzModal({
             </div>
             <div>
               <h3 className="font-bold text-base leading-tight">SSLCOMMERZ Payment Gateway</h3>
-              <p className="text-xs text-blue-100/80">Secured 128-bit SSL Encryption (Sandbox)</p>
+              <p className="text-xs text-blue-100/80">Secured with 128-bit SSL Encryption</p>
             </div>
           </div>
           <button
@@ -152,8 +152,8 @@ export function SSLCommerzModal({
                   bK
                 </div>
                 <div className="text-xs text-pink-900 dark:text-pink-200">
-                  <p className="font-bold">bKash Direct Sandbox Payment</p>
-                  <p className="text-[11px] opacity-80">Enter your test bKash account number and PIN to complete payment.</p>
+                  <p className="font-bold">bKash Payment</p>
+                  <p className="text-[11px] opacity-80">Enter your bKash account number and PIN to complete payment.</p>
                 </div>
               </div>
 
@@ -172,7 +172,7 @@ export function SSLCommerzModal({
 
               <div>
                 <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                  bKash PIN (Sandbox Demo)
+                  bKash PIN
                 </label>
                 <input
                   type="password"
@@ -193,7 +193,7 @@ export function SSLCommerzModal({
                 </div>
                 <div className="text-xs text-amber-900 dark:text-amber-200">
                   <p className="font-bold">Nagad & Rocket Mobile Banking</p>
-                  <p className="text-[11px] opacity-80">Instant OTP payment verification in sandbox mode.</p>
+                  <p className="text-[11px] opacity-80">Instant OTP payment verification.</p>
                 </div>
               </div>
 
@@ -230,7 +230,7 @@ export function SSLCommerzModal({
                 <Shield className="h-6 w-6 text-indigo-600 shrink-0" />
                 <div className="text-xs text-indigo-900 dark:text-indigo-200">
                   <p className="font-bold">Visa / Mastercard / DBBL Nexus</p>
-                  <p className="text-[11px] opacity-80">Test card pre-loaded for instant sandbox testing.</p>
+                  <p className="text-[11px] opacity-80">Secure card payment for instant verification.</p>
                 </div>
               </div>
 
@@ -302,7 +302,7 @@ export function SSLCommerzModal({
 
           <div className="flex items-center justify-center gap-1.5 text-[11px] text-slate-400 pt-1">
             <Lock className="h-3 w-3" />
-            SSLCommerz Sandbox Test Environment
+            Secured by SSLCommerz
           </div>
         </div>
       </div>

@@ -4,9 +4,9 @@
  * Handles CRUD operations for ChatSessions and ChatMessages.
  */
 
-import { getDb } from "../../../api/queries/connection.js";
-import { chatSessions, chatMessages } from "../../../db/schema.js";
-import { eq, desc } from "../../../db/mysql.js";
+import { getDb } from "../../../api/queries/connection.ts";
+import { chatSessions, chatMessages } from "../../../db/schema.ts";
+import { eq, desc } from "../../../db/mysql.ts";
 import type { MessageRole } from "../llm/types.ts";
 
 export class SessionService {

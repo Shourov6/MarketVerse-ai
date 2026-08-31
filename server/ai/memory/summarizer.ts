@@ -5,9 +5,9 @@
  * short-term memory grows too large. Embeds the summary for RAG retrieval.
  */
 
-import { getDb } from "../../../api/queries/connection.js";
-import { chatMessages } from "../../../db/schema.js";
-import { eq, desc, and, gt } from "../../../db/mysql.js";
+import { getDb } from "../../../api/queries/connection.ts";
+import { chatMessages } from "../../../db/schema.ts";
+import { eq, desc, and, gt } from "../../../db/mysql.ts";
 
 const SUMMARY_THRESHOLD = 15; // Summarize when there are 15 new messages
 

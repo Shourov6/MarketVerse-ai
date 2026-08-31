@@ -1,5 +1,5 @@
-import { getDb } from "../../../api/queries/connection.js";
-import { supportLearning } from "../../../db/schema.js";
+import { getDb } from "../../../api/queries/connection.ts";
+import { supportLearning } from "../../../db/schema.ts";
 
 interface VerificationResult {
   isCorrect: boolean;
@@ -12,9 +12,9 @@ export class OpenAIVerifier {
   private endpoint = "https://api.openai.com/v1/chat/completions";
 
   constructor(apiKey?: string) {
-    this.apiKey = apiKey || process.env.OPENAI_API_KEY || "";
+    this.apiKey = apiKey || process.env.LLM_API_KEY || process.env.OPENAI_API_KEY || "";
     if (!this.apiKey) {
-      console.warn("[OpenAIVerifier] Warning: OPENAI_API_KEY environment variable is not set.");
+      console.warn("[OpenAIVerifier] Warning: LLM_API_KEY / OPENAI_API_KEY environment variable is not set.");
     }
   }
 

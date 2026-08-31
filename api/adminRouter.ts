@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
-import { createRouter, adminQuery } from "./middleware";
+import { createRouter, adminQuery, adminMutation } from "./middleware";
 import { getDb } from "./queries/connection";
 import {
   users,
@@ -192,12 +192,28 @@ export const adminRouter = createRouter({
       .select({
         id: orders.id,
         orderNumber: orders.orderNumber,
+        userId: orders.userId,
         totalAmount: orders.totalAmount,
         status: orders.status,
         paymentStatus: orders.paymentStatus,
         createdAt: orders.createdAt,
+        shippingFullName: orders.shippingFullName,
+        shippingAddress: orders.shippingAddress,
+        shippingCity: orders.shippingCity,
+        shippingDistrict: orders.shippingDistrict,
+        shippingPostalCode: orders.shippingPostalCode,
+        shippingLandmark: orders.shippingLandmark,
+        lastEditedBy: orders.lastEditedBy,
+        lastEditedAt: orders.lastEditedAt,
+        courierName: orders.courierName,
+        trackingNumber: orders.trackingNumber,
+        estimatedDeliveryDays: orders.estimatedDeliveryDays,
+        recipientName: orders.shippingFullName,
+        recipientEmail: users.email,
+        recipientPhone: users.phone,
       })
       .from(orders)
+      .leftJoin(users, eq(users.id, orders.userId))
       .orderBy(desc(orders.createdAt));
 
     const ordersWithItems = await Promise.all(
@@ -243,7 +259,37 @@ export const adminRouter = createRouter({
       return { success: true };
     }),
 
-  updateOrderStatus: adminQuery
+  updateOrderShippingDetails: adminQuery
+    .input(z.object({
+      orderId: z.number(),
+      fullName: z.string().optional(),
+      address: z.string().optional(),
+      district: z.string().optional(),
+      postalCode: z.string().optional(),
+      landmark: z.string().optional(),
+      editedBy: z.string().min(1),
+    }))
+    .mutation(async ({ input }) => {
+      const db = getDb();
+      const orderRows = await db.select().from(orders).where(eq(orders.id, input.orderId)).limit(1);
+      if (!orderRows[0]) throw new Error("Order not found");
+
+      await db.update(orders).set({
+        shippingFullName: input.fullName?.trim() || orderRows[0].shippingFullName || undefined,
+        shippingAddress: input.address?.trim() || orderRows[0].shippingAddress || undefined,
+        shippingCity: input.district?.trim() || orderRows[0].shippingCity || undefined,
+        shippingDistrict: input.district?.trim() || orderRows[0].shippingDistrict || undefined,
+        shippingPostalCode: input.postalCode?.trim() || orderRows[0].shippingPostalCode || undefined,
+        shippingLandmark: input.landmark?.trim() || orderRows[0].shippingLandmark || undefined,
+        lastEditedBy: input.editedBy,
+        lastEditedAt: Date.now(),
+        updatedAt: Date.now(),
+      }).where(eq(orders.id, input.orderId));
+
+      return { success: true };
+    }),
+
+  updateOrderStatus: adminMutation
     .input(z.object({ orderId: z.number(), status: z.string() }))
     .mutation(async ({ input }) => {
       const db = getDb();

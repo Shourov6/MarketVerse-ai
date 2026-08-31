@@ -2,9 +2,9 @@
  * Track Order Tool
  */
 
-import { getDb } from "../../../api/queries/connection.js";
-import { orders } from "../../../db/schema.js";
-import { eq } from "../../../db/mysql.js";
+import { getDb } from "../../../api/queries/connection.ts";
+import { orders } from "../../../db/schema.ts";
+import { eq } from "../../../db/mysql.ts";
 import type { AITool, ToolContext, ToolResult } from "./tool-types.ts";
 import { getMemoryManager } from "../memory/memory-manager.ts";
 

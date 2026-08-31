@@ -22,9 +22,60 @@ import { getSupportResponseComposer } from "../support/response-composer.ts";
 import { getSupportLLMRenderer } from "../support/support-llm-renderer.ts";
 
 export class ConversationManager {
+  private async resolveDomain(message: string, requestedDomain?: string): Promise<"support" | "fashion" | "gadgets" | "general" | "voice" | "seller" | "recommendation"> {
+    const lower = message.toLowerCase();
+    const explicitDomain = requestedDomain && requestedDomain !== "support" ? requestedDomain : null;
+
+    if (explicitDomain === "fashion" || explicitDomain === "gadgets" || explicitDomain === "general" || explicitDomain === "voice" || explicitDomain === "seller" || explicitDomain === "recommendation") {
+      return explicitDomain;
+    }
+
+    const waistFitSignals = /(waist\s*(size|measurement)|pant\s*size|trouser\s*size|jeans\s*size|shirt\s*size|size\s*\d{2,3}\b|\b\d{2,3}\b\s*(inch|inches|waist|size))/i;
+    if (waistFitSignals.test(lower) && /(shirt|pant|trouser|jeans|waist|outfit|dress|saree|kurta|matching)/i.test(lower)) {
+      return "fashion";
+    }
+
+    const supportSignals = /(order|refund|return|cancel|delivery|shipping|tracking|payment|account|login|password|invoice|support|customer service|ticket|complaint|replace|exchange|cancel my order|track my order)/i;
+    if (supportSignals.test(lower)) {
+      return "support";
+    }
+
+    const fashionSignals = /(shirt|dress|kurta|saree|pant|trouser|jeans|outfit|style|fashion|matching|occasion|wedding|eid|panjabi|shoes|watch|color|look|pair with|match with|dress code|waist)/i;
+    if (fashionSignals.test(lower)) {
+      return "fashion";
+    }
+
+    const gadgetsSignals = /(laptop|pc build|gaming pc|gpu|rtx|gtx|ram|ssd|processor|intel|ryzen|monitor|motherboard|video editing|programming|coding|specs|tech|gadget|phone|headphone|tablet|smartwatch)/i;
+    if (gadgetsSignals.test(lower)) {
+      return "gadgets";
+    }
+
+    const generalSignals = /(buy|shop|recommend|find|compare|product|best|looking for|need a|want a|look for)/i;
+    if (generalSignals.test(lower)) {
+      return "general";
+    }
+
+    return "support";
+  }
+
+  private normalizeMessageForDomain(message: string, domain: string, chatHistory: Array<{ role: string; content: string }> = []): string {
+    const trimmed = message.trim();
+    if (domain !== "fashion" || !trimmed) return message;
+
+    const recentAssistant = [...chatHistory].reverse().find((item) => item.role === "assistant");
+    const hasWaistPrompt = recentAssistant && /waist size|waist|pant\s*size|trouser\s*size|jeans\s*size/i.test(recentAssistant.content);
+    const looksLikeWaistSize = /^(?:[0-9]{2,3})(?:\s*(?:in|inch|inches|cm))?$/i.test(trimmed);
+
+    if (hasWaistPrompt && looksLikeWaistSize) {
+      return `I need pants in waist size ${trimmed}.`;
+    }
+
+    return message;
+  }
+
   private async buildSystemPrompt(domain: string): Promise<string> {
-    const { getDb } = await import("../../../api/queries/connection.js");
-    const { products, productImages, categories } = await import("../../../db/schema.js");
+    const { getDb } = await import("../../../api/queries/connection.ts");
+    const { products, productImages, categories } = await import("../../../db/schema.ts");
     const { eq, sql, desc } = await import("drizzle-orm");
     const db = getDb();
     
@@ -91,21 +142,42 @@ Instructions:
    * Process a user message and generate a response (non-streaming).
    */
   async chat(req: ChatRequest): Promise<ChatResult> {
-    const sessionId = await this.setupSession(req);
-    const { message, userId, domain = "support" } = req;
+    const { message, userId } = req;
+    const resolvedDomain = await this.resolveDomain(message, req.domain);
+    const sessionId = await this.setupSession({ ...req, domain: resolvedDomain });
+    const domain = resolvedDomain;
+
+    if (domain === "support") {
+      const sessions = getSessionService();
+      await sessions.addMessage(sessionId, "user", message.trim());
+      const supportEngine = getFastSupportEngine();
+      const supportResult = await supportEngine.processQuery(sessionId, message, userId);
+      const msgId = await sessions.addMessage(sessionId, "assistant", supportResult.content);
+
+      return {
+        messageId: msgId,
+        sessionId,
+        content: supportResult.content,
+        intent: supportResult.intent,
+        domain: "support",
+      };
+    }
 
     const sessions = getSessionService();
-    
-    // Save user message
-    await sessions.addMessage(sessionId, "user", message);
-    
-    // Fetch history
     const historyItems = await sessions.getSessionHistory(sessionId, 8);
     const chatHistory = historyItems.map(h => ({ role: h.role as "user"|"assistant"|"system", content: h.message }));
+    const normalizedMessage = this.normalizeMessageForDomain(message, domain, chatHistory);
+
+    // Save user message
+    await sessions.addMessage(sessionId, "user", normalizedMessage);
+    
+    // Fetch updated history after save
+    const updatedHistoryItems = await sessions.getSessionHistory(sessionId, 8);
+    const updatedChatHistory = updatedHistoryItems.map(h => ({ role: h.role as "user"|"assistant"|"system", content: h.message }));
     
     // Fetch entire catalog (or limited) to provide to LLM
-    const { getDb } = await import("../../../api/queries/connection.js");
-    const { products } = await import("../../../db/schema.js");
+    const { getDb } = await import("../../../api/queries/connection.ts");
+    const { products } = await import("../../../db/schema.ts");
     const db = getDb();
     
     // Quick fallback try catch to fetch products
@@ -142,7 +214,7 @@ Instructions:
     
     const messages: any[] = [
       { role: "system", content: systemPrompt },
-      ...chatHistory
+      ...updatedChatHistory
     ];
     
     // Generate response
@@ -165,9 +237,21 @@ Instructions:
   async *chatStream(req: ChatRequest): AsyncGenerator<StreamChunk> {
     const t0 = Date.now();
     console.log(`[PERF-TRACE] [chatStream] START at 0ms`);
-    const sessionId = await this.setupSession(req);
+    const { message, userId } = req;
+    const resolvedDomain = await this.resolveDomain(message, req.domain);
+    const sessionId = await this.setupSession({ ...req, domain: resolvedDomain });
     console.log(`[PERF-TRACE] [chatStream] setupSession took ${Date.now() - t0}ms`);
-    const { message, userId, domain = "support" } = req;
+    const domain = resolvedDomain;
+
+    if (domain === "support") {
+      const sessions = getSessionService();
+      await sessions.addMessage(sessionId, "user", message.trim());
+      const supportEngine = getFastSupportEngine();
+      const supportResult = await supportEngine.processQuery(sessionId, message, userId);
+      await sessions.addMessage(sessionId, "assistant", supportResult.content);
+      yield { token: supportResult.content, done: true };
+      return;
+    }
 
     const sessions = getSessionService();
     const memoryManager = getMemoryManager();
@@ -178,17 +262,20 @@ Instructions:
     const followupResolver = getFollowupResolver();
     const stateManager = getStylistStateManager();
 
-    
-    // Save user message
-    await sessions.addMessage(sessionId, "user", message);
-    
-    // Fetch history
     const historyItems = await sessions.getSessionHistory(sessionId, 8);
     const chatHistory = historyItems.map(h => ({ role: h.role as "user"|"assistant"|"system", content: h.message }));
+    const normalizedMessage = this.normalizeMessageForDomain(message, domain, chatHistory);
+    
+    // Save user message
+    await sessions.addMessage(sessionId, "user", normalizedMessage);
+    
+    // Fetch updated history after save
+    const updatedHistoryItems = await sessions.getSessionHistory(sessionId, 8);
+    const updatedChatHistory = updatedHistoryItems.map(h => ({ role: h.role as "user"|"assistant"|"system", content: h.message }));
     
     // Fetch entire catalog (or limited) to provide to LLM
-    const { getDb } = await import("../../../api/queries/connection.js");
-    const { products } = await import("../../../db/schema.js");
+    const { getDb } = await import("../../../api/queries/connection.ts");
+    const { products } = await import("../../../db/schema.ts");
     const db = getDb();
     
     // Quick fallback try catch to fetch products
@@ -224,7 +311,7 @@ Instructions:
     
     const messages: any[] = [
       { role: "system", content: systemPrompt },
-      ...chatHistory
+      ...updatedChatHistory
     ];
     
     // Stream response

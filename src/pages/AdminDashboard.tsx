@@ -144,6 +144,38 @@ export default function AdminDashboard() {
     onError: (err) => toast.error(err.message || "Failed to delete product"),
   });
 
+  const updateOrderShippingDetails = trpc.admin.updateOrderShippingDetails.useMutation({
+    onSuccess: () => {
+      toast.success("Order delivery details updated successfully.");
+      setEditingOrderId(null);
+      setOrderEditDraft({ orderId: 0, fullName: "", address: "", district: "", postalCode: "", landmark: "" });
+      setIsOrderEditSubmitting(false);
+      utils.admin.orders.invalidate();
+    },
+    onError: (err) => {
+      setIsOrderEditSubmitting(false);
+      toast.error(err.message || "Failed to update order shipping details");
+    },
+  });
+
+  const saveOrderShippingEdit = () => {
+    if (!orderEditDraft.orderId || !orderEditDraft.fullName || !orderEditDraft.address || !orderEditDraft.district) {
+      toast.error("Full name, address, and district are required.");
+      return;
+    }
+
+    setIsOrderEditSubmitting(true);
+    updateOrderShippingDetails.mutate({
+      orderId: orderEditDraft.orderId,
+      fullName: orderEditDraft.fullName,
+      address: orderEditDraft.address,
+      district: orderEditDraft.district,
+      postalCode: orderEditDraft.postalCode,
+      landmark: orderEditDraft.landmark,
+      editedBy: user?.name || "Admin",
+    });
+  };
+
   const deleteCategoryMutation = trpc.admin.deleteCategory.useMutation({
     onSuccess: () => {
       toast.success("Category deleted successfully");
@@ -156,6 +188,10 @@ export default function AdminDashboard() {
   const [editingCategory, setEditingCategory] = useState<any | null>(null);
   const [showCategoryModal, setShowCategoryModal] = useState(false);
   const [ticketSectionTab, setTicketSectionTab] = useState<"waiting" | "solved">("waiting");
+  const [orderEditDraft, setOrderEditDraft] = useState({ orderId: 0, fullName: "", address: "", district: "", postalCode: "", landmark: "" });
+  const [editingOrderId, setEditingOrderId] = useState<number | null>(null);
+  const [isOrderEditSubmitting, setIsOrderEditSubmitting] = useState(false);
+  const bangladeshDistricts = ["Dhaka", "Faridpur", "Gazipur", "Gopalganj", "Jamalpur", "Kishoreganj", "Madaripur", "Manikganj", "Munshiganj", "Mymensingh", "Narayanganj", "Narsingdi", "Netrokona", "Rajbari", "Shariatpur", "Sherpur", "Tangail", "Bogura", "Joypurhat", "Naogaon", "Natore", "Chapainawabganj", "Pabna", "Rajshahi", "Sirajganj", "Dinajpur", "Gaibandha", "Kurigram", "Lalmonirhat", "Nilphamari", "Panchagarh", "Rangpur", "Thakurgaon", "Bagerhat", "Chuadanga", "Jessore", "Jhenaidah", "Khulna", "Kushtia", "Magura", "Meherpur", "Narail", "Satkhira", "Barishal", "Bhola", "Jhalokati", "Patuakhali", "Pirojpur", "Bandarban", "Brahmanbaria", "Chandpur", "Chattogram", "Cumilla", "Cox's Bazar", "Feni", "Khagrachhari", "Lakshmipur", "Noakhali", "Rangamati", "Habiganj", "Maulvibazar", "Sunamganj", "Sylhet", "Narshingdi", "Barguna"];
 
   // Admin Search & Filter States
   const [userSearchQuery, setUserSearchQuery] = useState("");
@@ -286,15 +322,23 @@ export default function AdminDashboard() {
     onError: (err) => toast.error(err.message || "Failed to update product status"),
   });
   const updateOrderStatus = trpc.admin.updateOrderStatus.useMutation({
-    onSuccess: () => {
+    onSuccess: async () => {
       toast.success("Order status updated!");
       setExpandedOrderId(null);
       utils.admin.dashboard.invalidate();
-      utils.admin.orders.invalidate();
+      await utils.admin.orders.invalidate();
       broadcastLiveEvent("ORDER_STATUS_CHANGED");
     },
     onError: (err) => toast.error(err.message || "Failed to update order status"),
   });
+
+  const handleOrderStatusChange = async (orderId: number, status: string) => {
+    try {
+      await updateOrderStatus.mutateAsync({ orderId, status });
+    } catch {
+      // The mutation callback displays the server error.
+    }
+  };
 
   if (isLoading) {
     return (
@@ -1171,11 +1215,19 @@ export default function AdminDashboard() {
                         </td>
                         <td className="px-4 py-4 align-top">
                           <div className="flex flex-col gap-2">
-                            <button onClick={() => updateOrderStatus.mutate({ orderId: o.id, status: "processing" })} className="rounded bg-[#22C55E] px-3 py-1.5 text-xs font-bold text-white hover:bg-green-600 flex items-center gap-1 shadow-sm"><CheckCircle2 className="w-3.5 h-3.5"/> Confirm</button>
-                            <button onClick={() => updateOrderStatus.mutate({ orderId: o.id, status: "cancelled" })} className="rounded bg-[#EF4444] px-3 py-1.5 text-xs font-bold text-white hover:bg-red-600 flex items-center gap-1 shadow-sm"><XCircle className="w-3.5 h-3.5"/> Cancel</button>
+                            <button disabled={updateOrderStatus.isPending} onClick={() => void handleOrderStatusChange(o.id, "processing")} className="rounded bg-[#22C55E] px-3 py-1.5 text-xs font-bold text-white hover:bg-green-600 disabled:cursor-wait disabled:opacity-60 flex items-center gap-1 shadow-sm"><CheckCircle2 className="w-3.5 h-3.5"/> Confirm</button>
+                            <button disabled={updateOrderStatus.isPending} onClick={() => void handleOrderStatusChange(o.id, "cancelled")} className="rounded bg-[#EF4444] px-3 py-1.5 text-xs font-bold text-white hover:bg-red-600 disabled:cursor-wait disabled:opacity-60 flex items-center gap-1 shadow-sm"><XCircle className="w-3.5 h-3.5"/> Cancel</button>
+                            <button onClick={() => { setEditingOrderId(o.id); setOrderEditDraft({ orderId: o.id, fullName: o.shippingFullName || "", address: o.shippingAddress || "", district: o.shippingDistrict || o.shippingCity || "", postalCode: o.shippingPostalCode || "", landmark: o.shippingLandmark || "" }); }} className="rounded border border-slate-300 dark:border-slate-600 px-3 py-1.5 text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700">Edit Order</button>
                           </div>
                         </td>
                       </tr>
+                      {(o.lastEditedBy || o.lastEditedAt) && (
+                        <tr>
+                          <td colSpan={7} className="px-4 pb-3 text-[11px] text-slate-500 dark:text-slate-400">
+                            Last edited by {o.lastEditedBy || "system"} on {o.lastEditedAt ? new Date(o.lastEditedAt).toLocaleString() : "recently"}
+                          </td>
+                        </tr>
+                      )}
                       {expandedOrderId === o.id && (
                         <tr key={`${o.id}-details`}>
                           <td colSpan={6} className="bg-slate-50 px-4 py-4 dark:bg-slate-700/40">
@@ -1207,6 +1259,57 @@ export default function AdminDashboard() {
                 )}
               </tbody>
             </table>
+          </div>
+        </div>
+      )}
+
+      {editingOrderId !== null && (
+        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl max-w-2xl w-full p-6 space-y-5 shadow-2xl border border-slate-200 dark:border-slate-700">
+            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
+              <div>
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white">Edit Order Delivery Details</h3>
+                <p className="text-xs text-slate-500">Update the customer shipping information for this order.</p>
+              </div>
+              <button onClick={() => setEditingOrderId(null)} className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-slate-700">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="md:col-span-2">
+                <label className="block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300 mb-1.5">Full Name</label>
+                <input value={orderEditDraft.fullName} onChange={(e) => setOrderEditDraft({ ...orderEditDraft, fullName: e.target.value })} className="w-full rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2.5 text-sm" placeholder="Customer full name" />
+              </div>
+              <div className="md:col-span-2">
+                <label className="block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300 mb-1.5">Full Address</label>
+                <textarea value={orderEditDraft.address} onChange={(e) => setOrderEditDraft({ ...orderEditDraft, address: e.target.value })} className="w-full rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2.5 text-sm min-h-[88px]" placeholder="House number, road, area, block, etc." />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300 mb-1.5">District</label>
+                <select value={orderEditDraft.district} onChange={(e) => setOrderEditDraft({ ...orderEditDraft, district: e.target.value })} className="w-full rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2.5 text-sm">
+                  <option value="">Select district</option>
+                  {bangladeshDistricts.map((district) => (
+                    <option key={district} value={district}>{district}</option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300 mb-1.5">Post Code</label>
+                <input value={orderEditDraft.postalCode} onChange={(e) => setOrderEditDraft({ ...orderEditDraft, postalCode: e.target.value })} className="w-full rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2.5 text-sm" placeholder="e.g. 1207" />
+              </div>
+              <div className="md:col-span-2">
+                <label className="block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300 mb-1.5">Landmark / Area Note (Optional)</label>
+                <input value={orderEditDraft.landmark} onChange={(e) => setOrderEditDraft({ ...orderEditDraft, landmark: e.target.value })} className="w-full rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2.5 text-sm" placeholder="Near Metro Rail, beside school, etc." />
+              </div>
+            </div>
+
+            <div className="flex justify-end gap-3 pt-2">
+              <button type="button" onClick={() => setEditingOrderId(null)} className="px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-200">Cancel</button>
+              <button type="button" onClick={saveOrderShippingEdit} disabled={isOrderEditSubmitting} className="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-medium disabled:opacity-70">
+                {isOrderEditSubmitting ? "Saving..." : "Save Changes"}
+              </button>
+            </div>
           </div>
         </div>
       )}

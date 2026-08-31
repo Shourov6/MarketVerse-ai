@@ -5,7 +5,7 @@
  * 100% deterministic TypeScript logic (<5ms).
  */
 
-import { getDeterministicPolicyEngine } from "../deterministic-policy-engine";
+import { getDeterministicPolicyEngine } from "../deterministic-policy-engine.ts";
 
 export interface ReturnEngineResult {
   success: boolean;

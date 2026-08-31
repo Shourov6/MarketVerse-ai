@@ -334,8 +334,8 @@ export const orderRouter = createRouter({
         totalAmount,
         taxAmount,
         shippingAmount,
-        status: "pending",
-        sellerStatus: "pending",
+        status: "processing",
+        sellerStatus: "accepted",
         estimatedDeliveryDays: 2,
         estimatedDeliveryDate: Date.now() + 2 * 86400000,
         paymentStatus: "pending",
@@ -647,9 +647,14 @@ export const orderRouter = createRouter({
         return { success: true, gatewayUrl, orderId, tranId };
       }
 
-      // Fallback: simulated success redirect URL for seamless demo testing
-      const mockGatewayUrl = `${callbackBase}?status=success&tran_id=${tranId}&val_id=VALIDATED_SANDBOX_DEMO`;
-      return { success: true, gatewayUrl: mockGatewayUrl, orderId, tranId };
+      // Only use fallback mock gateway in sandbox mode (non-live)
+      if ((process.env.SSLCOMMERZ_IS_LIVE || "") === "true") {
+        const mockGatewayUrl = `${callbackBase}?status=success&tran_id=${tranId}&val_id=VALIDATED_SANDBOX_DEMO`;
+        return { success: true, gatewayUrl: mockGatewayUrl, orderId, tranId };
+      }
+
+      // In live mode, if SSLCommerz fails to initiate payment, return error
+      return { success: false, message: "Failed to initiate SSLCommerz payment. Please try again." };
     }),
 
   verifySSLCommerz: publicQuery
@@ -670,25 +675,56 @@ export const orderRouter = createRouter({
         .limit(1);
 
       if (!orderRows[0]) {
-        return { success: false, message: "Order not found" };
+        return { success: false, message: "Order not found. Please check your transaction ID." };
       }
 
       const order = orderRows[0];
       const statusLower = (input.status || "").toLowerCase();
-      const sandboxDemoMode =
-        (process.env.SSLCOMMERZ_IS_LIVE || "false") !== "true" ||
-        !(process.env.SSLCOMMERZ_STORE_ID || "").trim() ||
-        !(process.env.SSLCOMMERZ_STORE_PASSWORD || "").trim();
+      const isSuccess = statusLower.includes("success") || statusLower === "completed" || statusLower === "valid";
+      const isCancelled = statusLower.includes("cancel");
+      const isFailed = statusLower.includes("fail") || statusLower.includes("error") || statusLower.includes("unattempted");
 
-      if (
-        !sandboxDemoMode &&
-        (statusLower.includes("fail") || statusLower.includes("cancel") || statusLower.includes("unattempted"))
-      ) {
+      // Handle payment failure or cancellation
+      if (isCancelled || isFailed) {
         await db
           .update(orders)
-          .set({ paymentStatus: "failed", status: "cancelled", updatedAt: Date.now() })
+          .set({ 
+            paymentStatus: isCancelled ? "cancelled" : "failed", 
+            status: "pending", 
+            updatedAt: Date.now() 
+          })
           .where(eq(orders.id, order.id));
-        return { success: false, message: "Payment was cancelled or failed.", orderNumber: order.orderNumber };
+
+        const failureReason = isCancelled 
+          ? "Payment was cancelled. Your order is still in your cart and ready to checkout again."
+          : "Payment failed due to transaction error. Please try again with valid payment details.";
+
+        // Notify user of payment failure
+        if (order.userId) {
+          await db.insert(notifications).values({
+            userId: order.userId,
+            title: `❌ Payment ${isCancelled ? "Cancelled" : "Failed"} #${order.orderNumber}`,
+            message: failureReason,
+            type: "order",
+            isRead: 0,
+            link: "/checkout",
+          });
+        }
+
+        return { 
+          success: false, 
+          message: failureReason,
+          orderNumber: order.orderNumber 
+        };
+      }
+
+      // Handle payment success
+      if (!isSuccess) {
+        return { 
+          success: false, 
+          message: "Invalid payment status. Unable to verify transaction.", 
+          orderNumber: order.orderNumber 
+        };
       }
 
       // Mark payment as paid

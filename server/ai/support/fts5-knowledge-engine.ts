@@ -5,9 +5,9 @@
  * Supports Banglish synonym expansion and question normalization without heavy LLM vector embeddings.
  */
 
-import { getDb } from "../../../api/queries/connection";
-import { supportKnowledge } from "../../../db/schema";
-import { or, like } from "../../../db/mysql";
+import { getDb } from "../../../api/queries/connection.ts";
+import { supportKnowledge } from "../../../db/schema.ts";
+import { or, like } from "../../../db/mysql.ts";
 
 export interface KnowledgeMatch {
   id: number;

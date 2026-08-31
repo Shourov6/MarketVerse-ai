@@ -44,7 +44,7 @@ export const brainRouter = createRouter({
         if (ctx.user) {
           context.userId = (ctx.user as any).id;
           try {
-            const { getDb } = await import("./queries/connection.js");
+            const { getDb } = await import("./queries/connection.ts");
             const { sellers } = await import("@db/schema");
             const { eq } = await import("@db/mysql");
             const db = getDb();

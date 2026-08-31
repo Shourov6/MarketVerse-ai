@@ -195,7 +195,7 @@ export default function Products() {
       </div>
 
       {/* Control Bar: Search + Filter Toggle + Sort + View Mode */}
-      <div className="flex flex-wrap items-center justify-between gap-3 mb-6 p-2 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm sticky top-20 z-40">
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-6 p-2 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-md">
         <div className="flex-1 min-w-[220px]">
           <div className="relative">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
@@ -385,6 +385,12 @@ export default function Products() {
               product.reviewCount !== undefined && product.reviewCount !== null
                 ? product.reviewCount
                 : (product.id * 23) % 180 + 12;
+            const stockQuantity = Math.max(0, Number((product as any).quantity ?? (product as any).stock ?? 0));
+            const stockStatus = stockQuantity === 0
+              ? { label: "Out of Stock", className: "bg-rose-50 text-rose-700 dark:bg-rose-950/50 dark:text-rose-300 border-rose-200/70 dark:border-rose-900/50" }
+              : stockQuantity <= 5
+                ? { label: `Only ${stockQuantity} left`, className: "bg-amber-50 text-amber-700 dark:bg-amber-950/50 dark:text-amber-300 border-amber-200/70 dark:border-amber-900/50" }
+                : { label: "In Stock", className: "bg-emerald-50 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300 border-emerald-200/70 dark:border-emerald-900/50" };
 
             if (viewMode === "list") {
               return (
@@ -438,6 +444,10 @@ export default function Products() {
                       </span>
                     </div>
 
+                    <span className={`inline-flex w-fit items-center rounded-full border px-2 py-0.5 text-[10px] font-bold ${stockStatus.className}`}>
+                      {stockStatus.label}
+                    </span>
+
                     {product.shortDescription && (
                       <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">
                         {product.shortDescription}
@@ -468,7 +478,11 @@ export default function Products() {
                       </button>
                       <button
                         onClick={() => addToCart.mutate({ productId: product.id })}
-                        className="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold text-xs flex items-center gap-2 shadow-md hover:shadow-indigo-500/25 transition-all cursor-pointer"
+                        disabled={stockQuantity === 0}
+                        className={`px-4 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 transition-all ${stockQuantity === 0
+                          ? "cursor-not-allowed bg-slate-200 text-slate-500 dark:bg-slate-700 dark:text-slate-400"
+                          : "cursor-pointer bg-indigo-600 text-white shadow-md hover:bg-indigo-700 hover:shadow-indigo-500/25"
+                          }`}
                       >
                         <ShoppingCart className="h-4 w-4" />
                         <span>Add to Cart</span>
@@ -491,7 +505,7 @@ export default function Products() {
                   {/* Image Container */}
                   <Link
                     to={`/product/${product.slug}`}
-                    className="block relative aspect-square overflow-hidden bg-slate-100 dark:bg-slate-800"
+                    className="block relative aspect-[4/3] overflow-hidden bg-slate-100 dark:bg-slate-800"
                   >
                     <img
                       src={imageUrl}
@@ -530,9 +544,9 @@ export default function Products() {
                   </Link>
 
                   {/* Body Content */}
-                  <div className="p-4 sm:p-5 flex flex-col gap-1.5">
+                  <div className="p-3 sm:p-4 flex flex-col gap-1.5">
                     <div className="flex items-center justify-between text-[11px] font-bold">
-                      <span className="text-indigo-600 dark:text-indigo-400 uppercase tracking-wider truncate max-w-[55%]">
+                      <span className="inline-flex max-w-[55%] items-center truncate rounded-full border border-indigo-200/70 bg-indigo-50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-indigo-700 dark:border-indigo-800/70 dark:bg-indigo-950/50 dark:text-indigo-300">
                         {(product as any).categoryName || "General"}
                       </span>
                       <span className="text-slate-400 dark:text-slate-500 font-medium truncate max-w-[42%] text-right">
@@ -555,17 +569,21 @@ export default function Products() {
                         ({displayReviewCount})
                       </span>
                     </div>
+
+                    <span className={`inline-flex w-fit items-center rounded-full border px-2 py-0.5 text-[10px] font-bold ${stockStatus.className}`}>
+                      {stockStatus.label}
+                    </span>
                   </div>
                 </div>
 
                 {/* Card Footer: Price & Add Button */}
-                <div className="p-4 sm:p-5 pt-0 mt-auto flex items-center justify-between gap-2 border-t border-slate-100 dark:border-slate-800/80 pt-3">
+                <div className="p-3 sm:p-4 mt-auto flex items-end justify-between gap-2 border-t border-slate-100 dark:border-slate-800/80 pt-2.5">
                   <div className="min-w-0">
-                    <div className="text-base sm:text-lg font-black text-slate-900 dark:text-white truncate">
+                    <div className="text-lg sm:text-xl font-black text-slate-900 dark:text-white truncate">
                       {formatCurrency(product.price)}
                     </div>
                     {product.comparePrice && (
-                      <span className="text-xs text-slate-400 line-through font-medium block truncate">
+                      <span className="text-[11px] text-slate-400 dark:text-slate-500 line-through font-medium block truncate">
                         {formatCurrency(product.comparePrice)}
                       </span>
                     )}
@@ -573,7 +591,11 @@ export default function Products() {
 
                   <button
                     onClick={() => addToCart.mutate({ productId: product.id })}
-                    className="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs flex items-center gap-1.5 shadow-md shadow-indigo-600/20 hover:shadow-indigo-600/35 transition-all shrink-0 cursor-pointer"
+                    disabled={stockQuantity === 0}
+                    className={`px-3.5 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 transition-all shrink-0 ${stockQuantity === 0
+                      ? "cursor-not-allowed bg-slate-200 text-slate-500 dark:bg-slate-700 dark:text-slate-400"
+                      : "cursor-pointer bg-indigo-600 text-white shadow-md shadow-indigo-600/20 hover:bg-indigo-700 hover:shadow-indigo-600/35"
+                      }`}
                     aria-label="Add to cart"
                   >
                     <ShoppingCart className="h-3.5 w-3.5" />

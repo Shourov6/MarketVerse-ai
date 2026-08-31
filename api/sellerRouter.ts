@@ -91,7 +91,7 @@ export const sellerRouter = createRouter({
 
     const sellerId = (seller as any).id;
 
-    return db
+    const productList = await db
       .select({
         id: (products as any).id,
         name: (products as any).name,
@@ -123,11 +123,9 @@ export const sellerRouter = createRouter({
       .where(eq(products.sellerId, sellerId))
       .orderBy(desc(products.createdAt));
 
-    // Fetch variants and images for these products
     const productIds = productList.map((p: any) => p.id);
     if (productIds.length === 0) return [];
-    
-    // For simplicity with this ORM, we'll fetch all variants for the seller's products and attach them in memory
+
     const allVariants = await db.select().from(productVariants).where(inArray(productVariants.productId, productIds));
     const allImages = await db.select().from(productImages).where(inArray(productImages.productId, productIds));
 
@@ -171,8 +169,11 @@ export const sellerRouter = createRouter({
       const sellerRow = await db.select().from(sellers).where(eq(sellers.userId, userId)).limit(1);
       if (!sellerRow[0]) throw new Error("Seller profile not found");
 
-      const slug = input.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-      await db.insert(products).values({
+      const baseSlug = input.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "product";
+      const existingSlug = await db.select({ id: products.id }).from(products).where(eq(products.slug, baseSlug)).limit(1);
+      const slug = existingSlug[0] ? `${baseSlug}-${Date.now()}` : baseSlug;
+
+      const insertResult = await db.insert(products).values({
         name: input.name,
         slug,
         description: input.description,
@@ -189,8 +190,8 @@ export const sellerRouter = createRouter({
         attributes: JSON.stringify({ sizeType: input.sizeType || "" }),
       });
 
-      const insertedProducts = await db.select().from(products).where(eq(products.slug, slug)).limit(1);
-      const inserted = insertedProducts;
+      const productId = Number((insertResult as any)?.[0]?.insertId);
+      if (!productId) throw new Error("Product could not be saved");
 
       const imageList = (input.images && input.images.length > 0)
         ? input.images.filter(Boolean).slice(0, 4)
@@ -208,7 +209,7 @@ export const sellerRouter = createRouter({
 
       for (let i = 0; i < normalizedImages.length; i++) {
         await db.insert(productImages).values({
-          productId: inserted[0].id,
+          productId,
           imageUrl: normalizedImages[i],
           isPrimary: i === 0 ? 1 : 0,
           sortOrder: i,
@@ -220,7 +221,7 @@ export const sellerRouter = createRouter({
         totalQuantity = input.variants.reduce((sum, v) => sum + v.quantity, 0);
         for (const v of input.variants) {
           await db.insert(productVariants).values({
-            productId: inserted[0].id,
+            productId,
             size: v.size,
             color: v.color || "",
             quantity: v.quantity,
@@ -229,12 +230,13 @@ export const sellerRouter = createRouter({
       }
 
       await db.insert(inventory).values({
-        productId: inserted[0].id,
+        productId,
         quantity: totalQuantity,
         lowStockThreshold: input.lowStockThreshold,
         warehouseLocation: input.warehouseLocation || undefined,
       });
 
+      const inserted = await db.select().from(products).where(eq(products.id, productId)).limit(1);
       return inserted[0];
     }),
 
@@ -618,6 +620,46 @@ export const sellerRouter = createRouter({
     };
   }),
 
+  updateOrderShippingDetails: authedQuery
+    .input(z.object({
+      orderId: z.number(),
+      fullName: z.string().optional(),
+      address: z.string().optional(),
+      district: z.string().optional(),
+      postalCode: z.string().optional(),
+      landmark: z.string().optional(),
+      editedBy: z.string().min(1),
+    }))
+    .mutation(async ({ ctx, input }) => {
+      const db = getDb();
+      const userId = (ctx.user as any).id;
+      const seller = await getSellerByUserId(userId);
+      if (!seller) throw new Error("Seller profile not found");
+
+      const orderRows = await db
+        .select()
+        .from(orders)
+        .innerJoin(orderItems, eq(orderItems.orderId, orders.id))
+        .where(and(eq(orders.id, input.orderId), eq(orderItems.sellerId, seller.id)))
+        .limit(1);
+
+      if (!orderRows[0]) throw new Error("Order not found for this seller");
+
+      await db.update(orders).set({
+        shippingFullName: input.fullName?.trim() || orderRows[0].orders.shippingFullName || undefined,
+        shippingAddress: input.address?.trim() || orderRows[0].orders.shippingAddress || undefined,
+        shippingCity: input.district?.trim() || orderRows[0].orders.shippingCity || undefined,
+        shippingDistrict: input.district?.trim() || orderRows[0].orders.shippingDistrict || undefined,
+        shippingPostalCode: input.postalCode?.trim() || orderRows[0].orders.shippingPostalCode || undefined,
+        shippingLandmark: input.landmark?.trim() || orderRows[0].orders.shippingLandmark || undefined,
+        lastEditedBy: input.editedBy,
+        lastEditedAt: Date.now(),
+        updatedAt: Date.now(),
+      }).where(eq(orders.id, input.orderId));
+
+      return { success: true };
+    }),
+
   getOrders: authedQuery.query(async ({ ctx }) => {
     const db = getDb();
     const userId = (ctx.user as any).id;
@@ -640,9 +682,15 @@ export const sellerRouter = createRouter({
         notes: (orders as any).notes,
         paymentStatus: (orders as any).paymentStatus,
         createdAt: (orders as any).createdAt,
+        shippingFullName: (orders as any).shippingFullName,
         shippingAddress: (orders as any).shippingAddress,
         shippingCity: (orders as any).shippingCity,
+        shippingDistrict: (orders as any).shippingDistrict,
         shippingCountry: (orders as any).shippingCountry,
+        shippingPostalCode: (orders as any).shippingPostalCode,
+        shippingLandmark: (orders as any).shippingLandmark,
+        lastEditedBy: (orders as any).lastEditedBy,
+        lastEditedAt: (orders as any).lastEditedAt,
       })
       .from(orders)
       .innerJoin(orderItems, eq(orderItems.orderId, orders.id))
@@ -1027,7 +1075,7 @@ export const sellerRouter = createRouter({
       })
     )
     .mutation(async ({ input }) => {
-      const apiKey = process.env.OPENAI_API_KEY || "";
+      const apiKey = process.env.LLM_API_KEY || process.env.OPENAI_API_KEY || "";
       const categoryName = input.categoryName || "General";
       const productName = input.productName?.trim() || `${categoryName} Product`;
       const priceText = input.price ? `Target Price: BDT ${input.price}` : "";
@@ -1065,7 +1113,7 @@ Return ONLY valid JSON with keys: "shortDescription", "description", "keywords",
             description: parsed.description || "",
             keywords: parsed.keywords || "",
             sku: parsed.sku || defaultSku,
-            source: "ai",
+            source: apiKey ? "llm" : "ai",
           };
         }
       } catch (e) {

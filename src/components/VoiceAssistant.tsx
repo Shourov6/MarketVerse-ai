@@ -5,6 +5,7 @@ import {
   cleanTranscript,
   extractPhoneFromSpeech,
   resolveVoiceProductSelection,
+  isExplicitVoiceProductSelectionCommand,
   type VoiceProductItem,
   normalizeVoiceActionDecision,
 } from "./voiceAssistantHelpers";
@@ -277,8 +278,7 @@ export function VoiceAssistant() {
       }
 
       // Prioritize deterministic local option selection before AI to avoid stale AI list-size assumptions.
-      const looksLikeOptionSelection =
-        /\b(select|choose|pick|option|number|item|buy|take)\b/i.test(cleaned) || /^\s*\d{1,2}\s*$/.test(cleaned);
+      const looksLikeOptionSelection = isExplicitVoiceProductSelectionCommand(cleaned);
 
       if (location.pathname !== "/voice-checkout" && looksLikeOptionSelection) {
         const effectiveItems = productItems.length > 0 ? productItems : scrapeDomProducts();

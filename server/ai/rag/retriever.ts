@@ -10,9 +10,9 @@
 
 import { getVectorStore } from "../embeddings/vector-store.ts";
 import { getEmbeddingService } from "../embeddings/embedding-service.ts";
-import { getDb } from "../../../api/queries/connection.js";
-import { supportKnowledge, products } from "../../../db/schema.js";
-import { or, like } from "../../../db/mysql.js";
+import { getDb } from "../../../api/queries/connection.ts";
+import { supportKnowledge, products } from "../../../db/schema.ts";
+import { or, like } from "../../../db/mysql.ts";
 import type { RetrievedContext, RetrievalOptions } from "./types.ts";
 
 export class Retriever {

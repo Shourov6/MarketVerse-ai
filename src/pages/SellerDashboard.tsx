@@ -107,7 +107,8 @@ export default function SellerDashboard() {
 
 // Seller Dashboard Content Component - Only rendered if user is a seller
 function SellerDashboardContent() {
-  const { logout } = useAuth();
+  const { logout, user: authUser } = useAuth();
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -170,14 +171,14 @@ function SellerDashboardContent() {
 
   const utils = trpc.useUtils();
   const createProduct = trpc.seller.createProduct.useMutation({
-    onSuccess: () => {
+    onSuccess: async () => {
       toast.success("Product created successfully!");
       setShowForm(false);
       setImageFile(null);
       setIsUploading(false);
       setForm({ name: "", description: "", shortDescription: "", price: "", comparePrice: "", deliveryFeeInsideDhaka: "", deliveryFeeOutsideDhaka: "", categoryId: "", status: "draft", sku: "", quantity: "0", lowStockThreshold: "5", warehouseLocation: "", imageUrl: "", images: [""], keywords: "", sizeType: "", variants: [] });
-      utils.seller.listProducts.invalidate();
-      utils.seller.dashboard.invalidate();
+      await utils.seller.listProducts.invalidate();
+      await utils.seller.dashboard.invalidate();
       broadcastLiveEvent("PRODUCT_UPDATED");
     },
     onError: (err) => {
@@ -319,6 +320,12 @@ function SellerDashboardContent() {
   };
 
   const submitProduct = async () => {
+    if (!authUser || (authUser as any).role !== "seller") {
+      toast.error("Please sign in as a seller before creating products.");
+      navigate("/login");
+      return;
+    }
+
     if (!form.name || !form.price || !form.categoryId) {
       toast.error("Please fill in all mandatory fields (Name, Price, Category)");
       return;
@@ -386,10 +393,15 @@ function SellerDashboardContent() {
       variants: form.variants.length > 0 ? form.variants : undefined,
     };
 
-    if (editingProductId) {
-      updateProduct.mutate({ productId: editingProductId, ...payload });
-    } else {
-      createProduct.mutate(payload);
+    try {
+      if (editingProductId) {
+        await updateProduct.mutateAsync({ productId: editingProductId, ...payload });
+      } else {
+        await createProduct.mutateAsync(payload);
+      }
+    } catch {
+    } finally {
+      setIsUploading(false);
     }
   };
 
@@ -1020,7 +1032,13 @@ function ProductsSection({
 
       {/* Add/Edit Product Form */}
       {showForm && (
-        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-md dark:border-slate-700 dark:bg-slate-800 animate-in fade-in duration-200">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            void submitProduct();
+          }}
+          className="rounded-2xl border border-slate-200 bg-white p-6 shadow-md dark:border-slate-700 dark:bg-slate-800 animate-in fade-in duration-200"
+        >
           <div className="mb-6 flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-4">
             <div>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white">
@@ -1522,6 +1540,7 @@ function ProductsSection({
           </div>
           <div className="mt-6 flex gap-3">
             <button
+              type="button"
               onClick={() => {
                 setShowForm(false);
                 setImageFile(null);
@@ -1532,7 +1551,7 @@ function ProductsSection({
               Cancel
             </button>
             <button
-              onClick={submitProduct}
+              type="submit"
               disabled={isUploading}
               className="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium flex items-center"
             >
@@ -1546,7 +1565,7 @@ function ProductsSection({
               )}
             </button>
           </div>
-        </div>
+        </form>
       )}
 
       {/* Products List */}
@@ -1848,7 +1867,43 @@ function OrdersSection({ sellerOrders }: any) {
   const [trackingNumberInput, setTrackingNumberInput] = useState("");
   const [orderSearchQuery, setOrderSearchQuery] = useState("");
   const [orderStatusFilter, setOrderStatusFilter] = useState("all");
+  const [orderEditDraft, setOrderEditDraft] = useState({ orderId: 0, fullName: "", address: "", district: "", postalCode: "", landmark: "" });
+  const [editingOrderId, setEditingOrderId] = useState<number | null>(null);
+  const [isOrderEditSubmitting, setIsOrderEditSubmitting] = useState(false);
+  const bangladeshDistricts = ["Dhaka", "Faridpur", "Gazipur", "Gopalganj", "Jamalpur", "Kishoreganj", "Madaripur", "Manikganj", "Munshiganj", "Mymensingh", "Narayanganj", "Narsingdi", "Netrokona", "Rajbari", "Shariatpur", "Sherpur", "Tangail", "Bogura", "Joypurhat", "Naogaon", "Natore", "Chapainawabganj", "Pabna", "Rajshahi", "Sirajganj", "Dinajpur", "Gaibandha", "Kurigram", "Lalmonirhat", "Nilphamari", "Panchagarh", "Rangpur", "Thakurgaon", "Bagerhat", "Chuadanga", "Jessore", "Jhenaidah", "Khulna", "Kushtia", "Magura", "Meherpur", "Narail", "Satkhira", "Barishal", "Bhola", "Jhalokati", "Patuakhali", "Pirojpur", "Bandarban", "Brahmanbaria", "Chandpur", "Chattogram", "Cumilla", "Cox's Bazar", "Feni", "Khagrachhari", "Lakshmipur", "Noakhali", "Rangamati", "Habiganj", "Maulvibazar", "Sunamganj", "Sylhet", "Narshingdi", "Barguna"];
   const utils = trpc.useUtils();
+
+  const updateOrderShippingDetails = trpc.seller.updateOrderShippingDetails.useMutation({
+    onSuccess: () => {
+      toast.success("Order delivery details updated successfully.");
+      setEditingOrderId(null);
+      setOrderEditDraft({ orderId: 0, fullName: "", address: "", district: "", postalCode: "", landmark: "" });
+      setIsOrderEditSubmitting(false);
+      utils.seller.getOrders.invalidate();
+    },
+    onError: (err) => {
+      setIsOrderEditSubmitting(false);
+      toast.error(err.message || "Failed to update order shipping details");
+    },
+  });
+
+  const saveOrderShippingEdit = () => {
+    if (!orderEditDraft.orderId || !orderEditDraft.fullName || !orderEditDraft.address || !orderEditDraft.district) {
+      toast.error("Full name, address, and district are required.");
+      return;
+    }
+
+    setIsOrderEditSubmitting(true);
+    updateOrderShippingDetails.mutate({
+      orderId: orderEditDraft.orderId,
+      fullName: orderEditDraft.fullName,
+      address: orderEditDraft.address,
+      district: orderEditDraft.district,
+      postalCode: orderEditDraft.postalCode,
+      landmark: orderEditDraft.landmark,
+      editedBy: "Seller",
+    });
+  };
 
   const acceptOrderMutation = trpc.seller.acceptOrder.useMutation({
     onSuccess: () => {
@@ -1962,11 +2017,12 @@ function OrdersSection({ sellerOrders }: any) {
             return (
               <div className="space-y-4">
                 {filtered.map((order: any) => {
-                  const isPending = order.sellerStatus === "pending" && order.status !== "cancelled";
+                  const isPending = order.sellerStatus === "pending" && order.status !== "cancelled" && order.status !== "processing";
                   const isAccepted = (order.sellerStatus === "accepted" || order.status === "processing") && order.sellerStatus !== "handed_over" && order.sellerStatus !== "denied" && order.status !== "cancelled";
                   const isHandedOver = order.sellerStatus === "handed_over" || order.status === "shipped";
                   const isDelivered = order.status === "delivered";
                   const isCancelled = order.sellerStatus === "denied" || order.status === "cancelled";
+                  const canHandover = (order.sellerStatus === "accepted" || order.status === "processing") && !isHandedOver && !isCancelled && !isDelivered;
 
                   return (
                     <div
@@ -2029,7 +2085,7 @@ function OrdersSection({ sellerOrders }: any) {
                             </div>
                           )}
 
-                          {isAccepted && (
+                          {(isAccepted || canHandover) && (
                             <button
                               onClick={() => {
                                 setHandoverOrderId(order.id);
@@ -2042,6 +2098,23 @@ function OrdersSection({ sellerOrders }: any) {
                               Handover for Delivery
                             </button>
                           )}
+
+                          <button
+                            onClick={() => {
+                              setEditingOrderId(order.id);
+                              setOrderEditDraft({
+                                orderId: order.id,
+                                fullName: order.shippingFullName || "",
+                                address: order.shippingAddress || "",
+                                district: order.shippingDistrict || order.shippingCity || "",
+                                postalCode: order.shippingPostalCode || "",
+                                landmark: order.shippingLandmark || "",
+                              });
+                            }}
+                            className="px-3 py-1.5 border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg text-xs font-semibold"
+                          >
+                            Edit Order
+                          </button>
 
                           {isHandedOver && (
                             <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 rounded-lg text-xs font-bold border border-indigo-200 dark:border-indigo-800">
@@ -2082,6 +2155,12 @@ function OrdersSection({ sellerOrders }: any) {
                           Total: {formatCurrency(order.totalAmount)}
                         </p>
                       </div>
+
+                      {(order.lastEditedBy || order.lastEditedAt) && (
+                        <div className="text-[11px] text-slate-500 dark:text-slate-400 border-t border-slate-100 dark:border-slate-800 pt-2">
+                          Last edited by {order.lastEditedBy || "system"} on {order.lastEditedAt ? new Date(order.lastEditedAt).toLocaleString() : "recently"}
+                        </div>
+                      )}
                     </div>
                   );
                 })}
@@ -2094,6 +2173,57 @@ function OrdersSection({ sellerOrders }: any) {
           );
         })()}
       </div>
+
+      {editingOrderId !== null && (
+        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl max-w-2xl w-full p-6 space-y-5 shadow-2xl border border-slate-200 dark:border-slate-700">
+            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
+              <div>
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white">Edit Order Delivery Details</h3>
+                <p className="text-xs text-slate-500">Fill in the missing full address for this order.</p>
+              </div>
+              <button onClick={() => setEditingOrderId(null)} className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-slate-700">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="md:col-span-2">
+                <label className="block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300 mb-1.5">Full Name</label>
+                <input value={orderEditDraft.fullName} onChange={(e) => setOrderEditDraft({ ...orderEditDraft, fullName: e.target.value })} className="w-full rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2.5 text-sm" placeholder="Customer full name" />
+              </div>
+              <div className="md:col-span-2">
+                <label className="block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300 mb-1.5">Full Address</label>
+                <textarea value={orderEditDraft.address} onChange={(e) => setOrderEditDraft({ ...orderEditDraft, address: e.target.value })} className="w-full rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2.5 text-sm min-h-[88px]" placeholder="House number, road, area, block, etc." />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300 mb-1.5">District</label>
+                <select value={orderEditDraft.district} onChange={(e) => setOrderEditDraft({ ...orderEditDraft, district: e.target.value })} className="w-full rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2.5 text-sm">
+                  <option value="">Select district</option>
+                  {bangladeshDistricts.map((district) => (
+                    <option key={district} value={district}>{district}</option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300 mb-1.5">Post Code</label>
+                <input value={orderEditDraft.postalCode} onChange={(e) => setOrderEditDraft({ ...orderEditDraft, postalCode: e.target.value })} className="w-full rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2.5 text-sm" placeholder="e.g. 1207" />
+              </div>
+              <div className="md:col-span-2">
+                <label className="block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300 mb-1.5">Landmark / Area Note (Optional)</label>
+                <input value={orderEditDraft.landmark} onChange={(e) => setOrderEditDraft({ ...orderEditDraft, landmark: e.target.value })} className="w-full rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2.5 text-sm" placeholder="Near Metro Rail, beside school, etc." />
+              </div>
+            </div>
+
+            <div className="flex justify-end gap-3 pt-2">
+              <button type="button" onClick={() => setEditingOrderId(null)} className="px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-200">Cancel</button>
+              <button type="button" onClick={saveOrderShippingEdit} disabled={isOrderEditSubmitting} className="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-medium disabled:opacity-70">
+                {isOrderEditSubmitting ? "Saving..." : "Save Changes"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Handover for Delivery Modal */}
       {handoverOrderId !== null && targetHandoverOrder && (

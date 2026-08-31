@@ -478,9 +478,41 @@ export function getPool(): mysql.Pool {
 
 const createdTables = new Set<string>();
 
+async function ensureColumnDefinitions(pool: mysql.Pool, table: TableDef) {
+  const [columns] = (await pool.query(`SHOW COLUMNS FROM ${quoteIdentifier(table.tableName)}`)) as [Array<{ Field: string }>, unknown];
+  const existingColumns = new Set(columns.map((column) => column.Field));
+
+  for (const col of table.columnList) {
+    if (existingColumns.has(col.name)) continue;
+
+    let typeDef = "VARCHAR(255)";
+    if (col.columnType === "integer") {
+      typeDef = col.primaryKey ? "BIGINT AUTO_INCREMENT" : "BIGINT";
+    } else if (col.columnType === "real") {
+      typeDef = "DOUBLE";
+    } else if (col.columnType === "text") {
+      typeDef = col.primaryKey || col.unique ? "VARCHAR(255)" : "LONGTEXT";
+    }
+
+    let colSql = `${quoteIdentifier(col.name)} ${typeDef}`;
+    if (col.primaryKey) { colSql += " PRIMARY KEY"; }
+    if (col.notNull && !col.primaryKey) { colSql += " NOT NULL"; }
+    if (col.unique && !col.primaryKey) { colSql += " UNIQUE"; }
+
+    try {
+      await pool.query(`ALTER TABLE ${quoteIdentifier(table.tableName)} ADD COLUMN ${colSql};`);
+    } catch (err) {
+      console.error(`Error adding column ${table.tableName}.${col.name}:`, err);
+    }
+  }
+}
+
 export async function ensureSchema(pool: mysql.Pool) {
   for (const table of registeredTables) {
-    if (createdTables.has(table.tableName)) continue;
+    if (createdTables.has(table.tableName)) {
+      await ensureColumnDefinitions(pool, table);
+      continue;
+    }
 
     const colDefinitions: string[] = [];
 
@@ -511,6 +543,7 @@ export async function ensureSchema(pool: mysql.Pool) {
     const createSql = `CREATE TABLE IF NOT EXISTS ${quoteIdentifier(table.tableName)} (\n  ${colDefinitions.join(",\n  ")}\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;`;
     try {
       await pool.query(createSql);
+      await ensureColumnDefinitions(pool, table);
       createdTables.add(table.tableName);
     } catch (err) {
       console.error(`Error creating table ${table.tableName}:`, err);

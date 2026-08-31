@@ -5,7 +5,7 @@
  * and generates dynamic context-aware quick action buttons for the frontend chat interface.
  */
 
-import type { SupportIntent } from "./fast-support-intent-engine";
+import type { SupportIntent } from "./fast-support-intent-engine.ts";
 
 export interface QuickActionButton {
   label: string;

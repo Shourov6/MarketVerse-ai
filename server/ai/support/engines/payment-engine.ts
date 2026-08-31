@@ -4,7 +4,7 @@
  * Deterministic handling of bKash, Nagad, Rocket, Credit Card, and Cash on Delivery (COD) refund timelines and payment verification.
  */
 
-import { getDeterministicPolicyEngine } from "../deterministic-policy-engine";
+import { getDeterministicPolicyEngine } from "../deterministic-policy-engine.ts";
 
 export interface PaymentEngineResult {
   success: boolean;

@@ -7,10 +7,10 @@
  * Produces a clean, authoritative SupportDecisionResult JSON object for the LLM renderer.
  */
 
-import { getFastSupportIntentEngine, SupportIntent } from "./fast-support-intent-engine";
-import { getSupportStateManager } from "./support-state-manager";
-import { getSupportToolDispatcher } from "./support-tool-dispatcher";
-import { getDeterministicPolicyEngine } from "./deterministic-policy-engine";
+import { getFastSupportIntentEngine, SupportIntent } from "./fast-support-intent-engine.ts";
+import { getSupportStateManager } from "./support-state-manager.ts";
+import { getSupportToolDispatcher } from "./support-tool-dispatcher.ts";
+import { getDeterministicPolicyEngine } from "./deterministic-policy-engine.ts";
 import { getFTS5KnowledgeEngine } from "./fts5-knowledge-engine";
 import { getCustomer360ProfileEngine } from "./customer-360-profile-engine";
 import { getSuccessIntelligenceEngine } from "./success-intelligence-engine";

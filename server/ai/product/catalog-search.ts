@@ -1,6 +1,6 @@
-import { getDb } from "../../../api/queries/connection.js";
-import { products, productImages } from "../../../db/schema.js";
-import { like, and, or, sql, eq } from "../../../db/mysql.js";
+import { getDb } from "../../../api/queries/connection.ts";
+import { products, productImages } from "../../../db/schema.ts";
+import { like, and, or, sql, eq } from "../../../db/mysql.ts";
 
 export interface SearchCriteria {
   keywords: string[];

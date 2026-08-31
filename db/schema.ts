@@ -219,12 +219,17 @@ export const orders = mysqlTable("orders", {
   paymentStatus: text("payment_status").default("pending").notNull(),
   paymentMethod: text("payment_method"),
   paymentReference: text("payment_reference"),
+  shippingFullName: text("shipping_full_name"),
   shippingAddress: text("shipping_address"),
   shippingCity: text("shipping_city"),
+  shippingDistrict: text("shipping_district"),
   shippingCountry: text("shipping_country"),
   shippingPostalCode: text("shipping_postal_code"),
+  shippingLandmark: text("shipping_landmark"),
   trackingNumber: text("tracking_number"),
   sellerStatus: text("seller_status").default("pending").notNull(), // "pending" | "accepted" | "denied" | "handed_over"
+  lastEditedBy: text("last_edited_by"),
+  lastEditedAt: integer("last_edited_at"),
   courierName: text("courier_name"), // e.g. "Pathao Express", "Steadfast Courier", "Paperfly"
   estimatedDeliveryDays: integer("estimated_delivery_days"), // 1-2 inside city, 3-5 outside city
   estimatedDeliveryDate: integer("estimated_delivery_date"),

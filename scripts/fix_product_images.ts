@@ -230,7 +230,10 @@ async function main() {
   process.exit(0);
 }
 
-main().catch((err) => {
-  console.error("Failed to fix images:", err);
-  process.exit(1);
-});
+const isMainModule = process.argv[1]?.endsWith("fix_product_images.ts");
+if (isMainModule) {
+  main().catch((err) => {
+    console.error("Failed to fix images:", err);
+    process.exit(1);
+  });
+}

@@ -2,9 +2,9 @@
  * Seller Analytics Tool
  */
 
-import { getDb } from "../../../api/queries/connection.js";
-import { orderItems, products } from "../../../db/schema.js";
-import { eq, sql, desc, and, inArray } from "../../../db/mysql.js";
+import { getDb } from "../../../api/queries/connection.ts";
+import { orderItems, products } from "../../../db/schema.ts";
+import { eq, sql, desc, and, inArray } from "../../../db/mysql.ts";
 import type { AITool, ToolContext, ToolResult } from "./tool-types.ts";
 
 export class SellerAnalyticsTool implements AITool {

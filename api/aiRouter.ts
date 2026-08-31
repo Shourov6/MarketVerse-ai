@@ -9,10 +9,10 @@ import "dotenv/config";
 import { Hono } from "hono";
 import { getConversationManager } from "../server/ai/conversation/conversation-manager.ts";
 import { getSessionService } from "../server/ai/conversation/session-service.ts";
-import { getDb } from "./queries/connection.js";
+import { getDb } from "./queries/connection.ts";
 import { aiFeedback } from "../db/aiSchema.ts";
-import { eq, desc } from "../db/mysql.js";
-import { chatMessages } from "../db/schema.js"; // from old schema, assuming it still exists
+import { eq, desc } from "../db/mysql.ts";
+import { chatMessages } from "../db/schema.ts"; // from old schema, assuming it still exists
 import type { Domain } from "../server/ai/classification/types.ts";
 import { getLLMGatewayProvider } from "../server/ai/providers/llm-gateway-provider.ts";
 

@@ -9,9 +9,9 @@
  *  - Past Support Satisfaction (CSAT Score)
  */
 
-import { getDb } from "../../../api/queries/connection";
-import { memoryEntities } from "../../../db/aiSchema";
-import { eq, and } from "../../../db/mysql";
+import { getDb } from "../../../api/queries/connection.ts";
+import { memoryEntities } from "../../../db/aiSchema.ts";
+import { eq, and } from "../../../db/mysql.ts";
 
 export interface Customer360Profile {
   userId: number;

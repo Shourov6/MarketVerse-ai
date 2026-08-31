@@ -349,7 +349,7 @@ export default function Cart() {
 
             <div className="mt-6 flex items-center justify-center gap-2 text-xs font-medium text-slate-500 bg-slate-50 dark:bg-slate-800/50 py-2.5 rounded-lg border border-slate-100 dark:border-slate-700">
               <Package className="h-4 w-4 text-emerald-500" />
-              Free shipping on orders over BDT 5,000
+              Free shipping on orders over BDT 500
             </div>
           </div>
         </div>
