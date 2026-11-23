@@ -41,7 +41,7 @@ function createLocalEnv() {
   const env = {
     NODE_ENV: "development",
     PORT: "5173",
-    DATABASE_URL: "mysql://root:password@127.0.0.1:3306/ecommerce_db",
+    DATABASE_URL: "postgresql://postgres:YOUR_DATABASE_PASSWORD@db.YOUR_PROJECT_REF.supabase.co:5432/postgres?sslmode=require",
     APP_ID: "marketverse-local",
     APP_SECRET: randomBytes(32).toString("hex"),
     CORS_ORIGIN: "*",
@@ -75,24 +75,36 @@ function createLocalEnv() {
 }
 
 async function waitForDatabase(databaseUrl) {
-  const { createConnection } = await import("mysql2/promise");
+  if (
+    !/^postgres(?:ql)?:\/\//i.test(databaseUrl) ||
+    /YOUR_DATABASE_PASSWORD|YOUR_PROJECT_REF/.test(databaseUrl)
+  ) {
+    throw new Error(
+      "Set DATABASE_URL in .env to your Supabase PostgreSQL connection string from Project Settings → Database → Connect."
+    );
+  }
+
+  const { Pool } = await import("pg");
+  const pool = new Pool({ connectionString: databaseUrl, max: 1, connectionTimeoutMillis: 10_000 });
   const deadline = Date.now() + 60_000;
   let lastError;
 
-  while (Date.now() < deadline) {
-    try {
-      const connection = await createConnection(databaseUrl);
-      await connection.query("SELECT 1");
-      await connection.end();
-      console.log("MySQL is ready.");
-      return;
-    } catch (error) {
-      lastError = error;
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+  try {
+    while (Date.now() < deadline) {
+      try {
+        await pool.query("SELECT 1");
+        console.log("Supabase PostgreSQL is ready.");
+        return;
+      } catch (error) {
+        lastError = error;
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+      }
     }
+  } finally {
+    await pool.end();
   }
 
-  throw new Error(`MySQL was not ready after 60 seconds: ${lastError?.message || "unknown error"}`);
+  throw new Error(`PostgreSQL was not ready after 60 seconds: ${lastError?.message || "unknown error"}`);
 }
 
 function prepareOllama() {
@@ -127,23 +139,15 @@ async function main() {
   const env = createLocalEnv();
   run(npmCommand, ["ci"]);
 
-  if (commandExists("docker")) {
-    try {
-      run("docker", ["compose", "up", "-d", "db"]);
-      await waitForDatabase(env.DATABASE_URL);
-    } catch (error) {
-      console.warn(`Docker database setup was skipped: ${error.message}`);
-    }
-  } else {
-    console.warn("Docker was not found. A MySQL 8 server must already be running at DATABASE_URL.");
-  }
+  await waitForDatabase(env.DATABASE_URL);
 
   prepareOllama();
 
   try {
+    run(npmCommand, ["run", "db:push"]);
     run(npmCommand, ["run", "db:seed"]);
   } catch (error) {
-    throw new Error("Database seeding failed. Start MySQL or Docker, verify DATABASE_URL in .env, then run npm run db:seed.", { cause: error });
+    throw new Error("Database initialization failed. Verify DATABASE_URL in .env and rerun npm run setup.", { cause: error });
   }
 
   if (!env.OPENAI_API_KEY) {

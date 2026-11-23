@@ -1,19 +1,19 @@
 import {
-  mysqlTable,
+  pgTable,
   integer,
   text,
   real,
   index,
   sql,
-} from "./mysql.ts";
+} from "./postgres.ts";
 
-// ─── Timestamps helper (MySQL millisecond timestamp) ──────────────────────────
-const NOW = sql`ROUND(UNIX_TIMESTAMP(NOW(3)) * 1000)`;
+// ─── Timestamps helper (millisecond Unix timestamp) ───────────────────────────
+const NOW = sql`(EXTRACT(EPOCH FROM clock_timestamp()) * 1000)::BIGINT`;
 
 // ============================================================
 // 1. USERS (extends auth users)
 // ============================================================
-export const users = mysqlTable("users", {
+export const users = pgTable("users", {
   id: integer("id").primaryKey().notNull(),
   unionId: text("unionId").notNull().unique(),
   name: text("name"),
@@ -38,7 +38,7 @@ export type InsertUser = typeof users.$inferInsert;
 // ============================================================
 // 2. SELLERS
 // ============================================================
-export const sellers = mysqlTable("sellers", {
+export const sellers = pgTable("sellers", {
   id: integer("id").primaryKey().notNull(),
   userId: integer("userId").notNull(),
   businessName: text("business_name").notNull(),
@@ -63,7 +63,7 @@ export type InsertSeller = typeof sellers.$inferInsert;
 // ============================================================
 // 3. CATEGORIES
 // ============================================================
-export const categories = mysqlTable("categories", {
+export const categories = pgTable("categories", {
   id: integer("id").primaryKey().notNull(),
   name: text("name").notNull(),
   slug: text("slug").notNull().unique(),
@@ -80,7 +80,7 @@ export type InsertCategory = typeof categories.$inferInsert;
 // ============================================================
 // 4. PRODUCTS
 // ============================================================
-export const products = mysqlTable("products", {
+export const products = pgTable("products", {
   id: integer("id").primaryKey().notNull(),
   name: text("name").notNull(),
   slug: text("slug").notNull().unique(),
@@ -120,7 +120,7 @@ export type InsertProduct = typeof products.$inferInsert;
 // ============================================================
 // 5. PRODUCT IMAGES
 // ============================================================
-export const productImages = mysqlTable("product_images", {
+export const productImages = pgTable("product_images", {
   id: integer("id").primaryKey().notNull(),
   productId: integer("productId").notNull(),
   imageUrl: text("image_url").notNull(),
@@ -138,7 +138,7 @@ export type InsertProductImage = typeof productImages.$inferInsert;
 // ============================================================
 // 6. INVENTORY
 // ============================================================
-export const inventory = mysqlTable("inventory", {
+export const inventory = pgTable("inventory", {
   id: integer("id").primaryKey().notNull(),
   productId: integer("productId").notNull(),
   quantity: integer("quantity").default(0).notNull(),
@@ -157,7 +157,7 @@ export type InsertInventory = typeof inventory.$inferInsert;
 // ============================================================
 // 6.5 PRODUCT VARIANTS
 // ============================================================
-export const productVariants = mysqlTable("product_variants", {
+export const productVariants = pgTable("product_variants", {
   id: integer("id").primaryKey().notNull(),
   productId: integer("product_id").notNull(),
   size: text("size").notNull(),
@@ -173,7 +173,7 @@ export type InsertProductVariant = typeof productVariants.$inferInsert;
 // ============================================================
 // 7. CART
 // ============================================================
-export const carts = mysqlTable("carts", {
+export const carts = pgTable("carts", {
   id: integer("id").primaryKey().notNull(),
   userId: integer("userId").notNull(),
   sessionId: text("session_id"),
@@ -189,7 +189,7 @@ export type InsertCart = typeof carts.$inferInsert;
 // ============================================================
 // 8. CART ITEMS
 // ============================================================
-export const cartItems = mysqlTable("cart_items", {
+export const cartItems = pgTable("cart_items", {
   id: integer("id").primaryKey().notNull(),
   cartId: integer("cartId").notNull(),
   productId: integer("productId").notNull(),
@@ -207,7 +207,7 @@ export type InsertCartItem = typeof cartItems.$inferInsert;
 // ============================================================
 // 9. ORDERS
 // ============================================================
-export const orders = mysqlTable("orders", {
+export const orders = pgTable("orders", {
   id: integer("id").primaryKey().notNull(),
   orderNumber: text("order_number").notNull().unique(),
   userId: integer("userId").notNull(),
@@ -243,7 +243,7 @@ export type InsertOrder = typeof orders.$inferInsert;
 // ============================================================
 // 10. ORDER ITEMS
 // ============================================================
-export const orderItems = mysqlTable("order_items", {
+export const orderItems = pgTable("order_items", {
   id: integer("id").primaryKey().notNull(),
   orderId: integer("orderId").notNull(),
   productId: integer("productId").notNull(),
@@ -266,7 +266,7 @@ export type InsertOrderItem = typeof orderItems.$inferInsert;
 // ============================================================
 // 11. REVIEWS
 // ============================================================
-export const reviews = mysqlTable("reviews", {
+export const reviews = pgTable("reviews", {
   id: integer("id").primaryKey().notNull(),
   productId: integer("productId").notNull(),
   userId: integer("userId").notNull(),
@@ -289,7 +289,7 @@ export type InsertReview = typeof reviews.$inferInsert;
 // ============================================================
 // 12. WISHLIST
 // ============================================================
-export const wishlist = mysqlTable("wishlist", {
+export const wishlist = pgTable("wishlist", {
   id: integer("id").primaryKey().notNull(),
   userId: integer("userId").notNull(),
   productId: integer("productId").notNull(),
@@ -305,7 +305,7 @@ export type InsertWishlistItem = typeof wishlist.$inferInsert;
 // ============================================================
 // 13. NOTIFICATIONS
 // ============================================================
-export const notifications = mysqlTable("notifications", {
+export const notifications = pgTable("notifications", {
   id: integer("id").primaryKey().notNull(),
   userId: integer("userId").notNull(),
   title: text("title").notNull(),
@@ -324,7 +324,7 @@ export type InsertNotification = typeof notifications.$inferInsert;
 // ============================================================
 // 14. SUPPORT LEARNING - AI Self-Improvement Data
 // ============================================================
-export const supportLearning = mysqlTable("support_learning", {
+export const supportLearning = pgTable("support_learning", {
   id: integer("id").primaryKey().notNull(),
   question: text("question").notNull(),
   answer: text("answer").notNull(),
@@ -350,7 +350,7 @@ export type InsertSupportLearning = typeof supportLearning.$inferInsert;
 // ============================================================
 // 15. SUPPORT KNOWLEDGE BASE - Curated Knowledge for AI
 // ============================================================
-export const supportKnowledge = mysqlTable("support_knowledge", {
+export const supportKnowledge = pgTable("support_knowledge", {
   id: integer("id").primaryKey().notNull(),
   question: text("question").notNull(),
   answer: text("answer").notNull(),
@@ -375,7 +375,7 @@ export type InsertSupportKnowledge = typeof supportKnowledge.$inferInsert;
 // ============================================================
 // 16. CHAT SESSIONS (For Persistent UI Chat)
 // ============================================================
-export const chatSessions = mysqlTable("chat_sessions", {
+export const chatSessions = pgTable("chat_sessions", {
   id: text("id").primaryKey().notNull(), // UUID
   userId: integer("userId"),
   sessionType: text("session_type").notNull(), // 'stylist', 'support'
@@ -392,7 +392,7 @@ export type InsertChatSession = typeof chatSessions.$inferInsert;
 // ============================================================
 // 17. CHAT MESSAGES
 // ============================================================
-export const chatMessages = mysqlTable("chat_messages", {
+export const chatMessages = pgTable("chat_messages", {
   id: integer("id").primaryKey().notNull(),
   sessionId: text("sessionId").notNull(),
   role: text("role").notNull(), // 'user', 'assistant'
@@ -410,7 +410,7 @@ export type InsertChatMessage = typeof chatMessages.$inferInsert;
 // ============================================================
 // 18. STYLIST PROFILES
 // ============================================================
-export const stylistProfiles = mysqlTable("stylist_profiles", {
+export const stylistProfiles = pgTable("stylist_profiles", {
   id: integer("id").primaryKey().notNull(),
   userId: integer("userId").notNull().unique(),
   gender: text("gender"), // "male", "female", "non-binary", "prefer-not-to-say"
@@ -428,7 +428,7 @@ export type InsertStylistProfile = typeof stylistProfiles.$inferInsert;
 // ============================================================
 // 19. SELLER PAYOUTS
 // ============================================================
-export const sellerPayouts = mysqlTable("seller_payouts", {
+export const sellerPayouts = pgTable("seller_payouts", {
   id: integer("id").primaryKey().notNull(),
   sellerId: integer("sellerId").notNull(),
   amount: real("amount").notNull(),
@@ -444,7 +444,7 @@ export type InsertSellerPayout = typeof sellerPayouts.$inferInsert;
 // ============================================================
 // 21. SELLER MESSAGES
 // ============================================================
-export const sellerMessages = mysqlTable("seller_messages", {
+export const sellerMessages = pgTable("seller_messages", {
   id: integer("id").primaryKey().notNull(),
   sellerId: integer("sellerId").notNull(),
   customerId: integer("customerId"),
@@ -464,7 +464,7 @@ export type InsertSellerMessage = typeof sellerMessages.$inferInsert;
 // ============================================================
 // 22. USER ADDRESSES
 // ============================================================
-export const userAddresses = mysqlTable("user_addresses", {
+export const userAddresses = pgTable("user_addresses", {
   id: integer("id").primaryKey().notNull(),
   userId: integer("userId").notNull(),
   title: text("title").notNull(),
@@ -479,5 +479,3 @@ export const userAddresses = mysqlTable("user_addresses", {
 
 export type UserAddress = typeof userAddresses.$inferSelect;
 export type InsertUserAddress = typeof userAddresses.$inferInsert;
-
-

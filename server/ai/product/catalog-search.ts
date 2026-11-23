@@ -1,6 +1,6 @@
 import { getDb } from "../../../api/queries/connection.js";
 import { products, productImages } from "../../../db/schema.js";
-import { like, and, or, sql, eq } from "../../../db/mysql.js";
+import { like, and, or, sql, eq } from "../../../db/postgres.js";
 
 export interface SearchCriteria {
   keywords: string[];

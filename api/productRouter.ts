@@ -2,7 +2,7 @@ import { z } from "zod";
 import { createRouter, publicQuery } from "./middleware";
 import { getDb } from "./queries/connection";
 import { products, productImages, categories, sellers, inventory, productVariants } from "@db/schema";
-import { eq, ne, like, and, desc, sql, or } from "@db/mysql";
+import { eq, ne, like, and, desc, sql, or } from "@db/postgres";
 import { scoreProductForSearch } from "../src/lib/semanticSearch";
 
 export const productRouter = createRouter({

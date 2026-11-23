@@ -15,7 +15,7 @@
 
 import { getDb } from "../../../api/queries/connection.js";
 import { aiEmbeddings } from "../../../db/aiSchema.js";
-import { eq, and } from "../../../db/mysql.js";
+import { eq, and } from "../../../db/postgres.js";
 import { cosineSimilarity } from "./embedding-service.ts";
 import type { EmbeddingCollection, VectorSearchResult } from "./types.ts";
 

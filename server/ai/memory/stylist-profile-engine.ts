@@ -6,9 +6,8 @@
  * Generates personalized Style DNA profiles.
  */
 
-import { db } from "../../../db";
-import { stylistProfiles, aiFeedback, memoryEntities } from "../../../db/schema";
-import { eq, and } from "drizzle-orm";
+import { getDb, eq } from "../../../db/postgres.js";
+import { stylistProfiles, aiFeedback } from "../../../db/schema";
 
 export interface StyleDNA {
   userId: number;
@@ -27,6 +26,7 @@ export class StylistProfileEngine {
    */
   async getUserProfile(userId: number): Promise<StyleDNA> {
     try {
+      const db = getDb();
       const rows = await db.select().from(stylistProfiles).where(eq(stylistProfiles.userId, userId));
       const profile = rows[0];
 
@@ -63,6 +63,7 @@ export class StylistProfileEngine {
    */
   async recordFeedback(sessionId: string, userId: number | null, feedback: "liked" | "disliked", comment?: string) {
     try {
+      const db = getDb();
       await db.insert(aiFeedback).values({
         sessionId,
         userId: userId || 1,

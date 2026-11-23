@@ -11,7 +11,7 @@ import { getConversationManager } from "../server/ai/conversation/conversation-m
 import { getSessionService } from "../server/ai/conversation/session-service.ts";
 import { getDb } from "./queries/connection.js";
 import { aiFeedback } from "../db/aiSchema.ts";
-import { eq, desc } from "../db/mysql.js";
+import { eq, desc } from "../db/postgres.js";
 import { chatMessages } from "../db/schema.js"; // from old schema, assuming it still exists
 import type { Domain } from "../server/ai/classification/types.ts";
 import { getLLMGatewayProvider } from "../server/ai/providers/llm-gateway-provider.ts";

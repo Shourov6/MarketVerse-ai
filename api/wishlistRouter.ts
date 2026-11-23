@@ -2,7 +2,7 @@ import { z } from "zod";
 import { createRouter, authedQuery } from "./middleware";
 import { getDb } from "./queries/connection";
 import { wishlist, products, productImages, categories, sellers } from "@db/schema";
-import { eq, and, desc } from "@db/mysql";
+import { eq, and, desc } from "@db/postgres";
 
 export const wishlistRouter = createRouter({
   list: authedQuery.query(async ({ ctx }) => {

@@ -4,7 +4,7 @@
 
 import { getDb } from "../../../api/queries/connection.js";
 import { orderItems, products } from "../../../db/schema.js";
-import { eq, sql, desc, and, inArray } from "../../../db/mysql.js";
+import { eq, sql, desc, and, inArray } from "../../../db/postgres.js";
 import type { AITool, ToolContext, ToolResult } from "./tool-types.ts";
 
 export class SellerAnalyticsTool implements AITool {

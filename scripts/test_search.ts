@@ -1,17 +1,20 @@
-import { db } from "../server/db";
-import { products } from "../server/db/schema";
-import { sql } from "drizzle-orm";
+import { closePool, getDb, like, or } from "../db/postgres.js";
+import { products } from "../db/schema.js";
 
 async function run() {
-  const query = "Electronics";
-  const res = await db.query.products.findMany({
-    where: (products, { ilike, or }) => or(
-      ilike(products.name, `%${query}%`),
-      ilike(products.description, `%${query}%`)
-    ),
-  });
-  console.log("Found", res.length, "items.");
-  process.exit(0);
+  try {
+    const query = "Electronics";
+    const res = await getDb()
+      .select()
+      .from(products)
+      .where(or(like(products.name, `%${query}%`), like(products.description, `%${query}%`)));
+    console.log("Found", res.length, "items.");
+  } finally {
+    await closePool();
+  }
 }
 
-run();
+run().catch(error => {
+  console.error(error);
+  process.exitCode = 1;
+});

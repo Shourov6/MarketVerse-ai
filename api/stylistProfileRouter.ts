@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { createRouter, authedQuery } from "./middleware";
-import { eq } from "../db/mysql";
+import { eq } from "../db/postgres";
 import * as schema from "../db/schema";
 import { getDb } from "./queries/connection";
 

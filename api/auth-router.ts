@@ -9,7 +9,7 @@ import { createRouter, publicQuery, authedQuery } from "./middleware";
 import { signSessionToken } from "./auth/session";
 import { getDb } from "./queries/connection";
 import * as schema from "@db/schema";
-import { eq, and } from "@db/mysql";
+import { eq, and } from "@db/postgres";
 import { findUserByPhone } from "./queries/users";
 import { notifyAdmins } from "./notificationRouter";
 import { sendOtpEmail } from "./lib/mailer";

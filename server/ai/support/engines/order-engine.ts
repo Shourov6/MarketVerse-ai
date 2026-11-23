@@ -7,7 +7,7 @@
 
 import { getDb } from "../../../../api/queries/connection";
 import { orders, orderItems, products } from "../../../../db/schema";
-import { eq, desc } from "../../../../db/mysql";
+import { eq, desc } from "../../../../db/postgres";
 
 export interface OrderEngineResult {
   success: boolean;

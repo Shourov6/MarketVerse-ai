@@ -3,7 +3,7 @@ import { z } from "zod";
 import { buildFallbackOutfitRecommendation, buildFallbackColorMatching } from "../src/lib/fashionStylistUtils";
 import { getDb } from "./queries/connection";
 import { inventory, products } from "../db/schema";
-import { lte, eq } from "../db/mysql";
+import { lte, eq } from "../db/postgres";
 
 export const trpcAiRouter = createRouter({
   getOutfitRecommendation: publicProcedure
@@ -172,7 +172,7 @@ export const trpcAiRouter = createRouter({
         if (seller[0]) sellerId = seller[0].id;
       }
 
-      const { and } = await import("../db/mysql");
+      const { and } = await import("../db/postgres");
       const condition = sellerId
         ? and(lte(inventory.quantity, 5), eq(products.sellerId, sellerId))
         : lte(inventory.quantity, 5);

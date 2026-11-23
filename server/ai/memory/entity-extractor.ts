@@ -12,7 +12,7 @@
 
 import { getDb } from "../../../api/queries/connection.js";
 import { memoryEntities } from "../../../db/aiSchema.js";
-import { eq, and, desc } from "../../../db/mysql.js";
+import { eq, and, desc } from "../../../db/postgres.js";
 import { getLLMService } from "../llm/llm-service.ts";
 import type { ExtractedEntity, EntityType } from "./types.ts";
 

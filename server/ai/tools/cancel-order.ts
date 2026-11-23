@@ -4,7 +4,7 @@
 
 import { getDb } from "../../../api/queries/connection.js";
 import { orders } from "../../../db/schema.js";
-import { eq } from "../../../db/mysql.js";
+import { eq } from "../../../db/postgres.js";
 import type { AITool, ToolContext, ToolResult } from "./tool-types.ts";
 import { getMemoryManager } from "../memory/memory-manager.ts";
 

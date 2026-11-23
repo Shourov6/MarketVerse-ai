@@ -2,7 +2,7 @@ import { z } from "zod";
 import { createRouter, publicQuery, authedQuery } from "./middleware";
 import { getDb } from "./queries/connection";
 import { sellers, products, productImages, orders, orderItems, categories, inventory, reviews, notifications, users, sellerPayouts, sellerMessages, productVariants } from "@db/schema";
-import { eq, desc, and, sql, inArray } from "@db/mysql";
+import { eq, desc, and, sql, inArray } from "@db/postgres";
 import { notifyAdmins } from "./notificationRouter";
 import { getLLMGatewayProvider } from "../server/ai/providers/llm-gateway-provider.ts";
 
@@ -496,15 +496,15 @@ export const sellerRouter = createRouter({
 
     const monthlySales = await db
       .select({
-        month: sql<string>`DATE_FORMAT(FROM_UNIXTIME(${orders.createdAt} / 1000), '%Y-%m')` as any,
+        month: sql<string>`TO_CHAR(TO_TIMESTAMP(${orders.createdAt} / 1000.0), 'YYYY-MM')` as any,
         total: sql<number>`sum(${orderItems.totalPrice})` as any,
         count: sql<number>`count(*)` as any,
       })
       .from(orders)
       .innerJoin(orderItems, eq(orderItems.orderId, orders.id))
       .where(eq(orderItems.sellerId, sellerId))
-      .groupBy(sql`DATE_FORMAT(FROM_UNIXTIME(${orders.createdAt} / 1000), '%Y-%m')`)
-      .orderBy(desc(sql`DATE_FORMAT(FROM_UNIXTIME(${orders.createdAt} / 1000), '%Y-%m')`) as any)
+      .groupBy(sql`TO_CHAR(TO_TIMESTAMP(${orders.createdAt} / 1000.0), 'YYYY-MM')`)
+      .orderBy(desc(sql`TO_CHAR(TO_TIMESTAMP(${orders.createdAt} / 1000.0), 'YYYY-MM')`) as any)
       .limit(12);
 
     const reviewsData = await db

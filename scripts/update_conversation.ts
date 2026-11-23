@@ -7,7 +7,7 @@ let content = fs.readFileSync(targetFile, "utf-8");
 const replacementMethod = `  private async buildSystemPrompt(domain: string): Promise<string> {
     const { getDb } = await import("../../../api/queries/connection.js");
     const { products, productImages, categories } = await import("../../../db/schema.js");
-    const { eq, sql, desc } = await import("drizzle-orm");
+    const { eq, sql, desc } = await import("../../../db/postgres.js");
     const db = getDb();
     
     let catalogContext = "";

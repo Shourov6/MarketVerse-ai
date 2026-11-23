@@ -2,7 +2,7 @@ import { z } from "zod";
 import { createRouter, authedQuery, publicQuery } from "./middleware";
 import { getDb } from "./queries/connection";
 import { orders, orderItems, carts, cartItems, products, sellers, notifications, productImages, users, productVariants, inventory } from "@db/schema";
-import { eq, desc, and, sql } from "@db/mysql";
+import { eq, desc, and, sql } from "@db/postgres";
 import { notifyAdmins } from "./notificationRouter";
 import { buildDemoPaymentNote, generateDemoPaymentReference, generateDemoTrackingNumber } from "./lib/demoPayments";
 import { determineDeliveryZone } from "../src/lib/deliveryFees";

@@ -13,7 +13,7 @@ import {
   notifications,
 } from "@db/schema";
 import { escalationTickets, ticketMessages } from "@db/aiSchema";
-import { eq, ne, and, desc, asc, sql } from "@db/mysql";
+import { eq, ne, and, desc, asc, sql } from "@db/postgres";
 
 export const adminRouter = createRouter({
   dashboard: adminQuery.query(async () => {
@@ -66,10 +66,10 @@ export const adminRouter = createRouter({
         productCount: sql<number>`count(${products.id})`,
       }).from(products).leftJoin(categories, eq(categories.id, products.categoryId)).groupBy(categories.id, categories.name).orderBy(desc(sql`count(${products.id})`)).limit(5),
       db.select({
-        month: sql<string>`DATE_FORMAT(FROM_UNIXTIME(${orders.createdAt} / 1000), '%Y-%m')`,
+        month: sql<string>`TO_CHAR(TO_TIMESTAMP(${orders.createdAt} / 1000.0), 'YYYY-MM')`,
         revenue: sql<number>`sum(${orders.totalAmount})`,
         orders: sql<number>`count(*)`,
-      }).from(orders).where(eq(orders.paymentStatus, "paid")).groupBy(sql`DATE_FORMAT(FROM_UNIXTIME(${orders.createdAt} / 1000), '%Y-%m')`).orderBy(desc(sql`DATE_FORMAT(FROM_UNIXTIME(${orders.createdAt} / 1000), '%Y-%m')`)).limit(12),
+      }).from(orders).where(eq(orders.paymentStatus, "paid")).groupBy(sql`TO_CHAR(TO_TIMESTAMP(${orders.createdAt} / 1000.0), 'YYYY-MM')`).orderBy(desc(sql`TO_CHAR(TO_TIMESTAMP(${orders.createdAt} / 1000.0), 'YYYY-MM')`)).limit(12),
       db.select().from(sellers).where(eq(sellers.status, "pending")).orderBy(desc(sellers.createdAt)),
     ]);
 

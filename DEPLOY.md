@@ -1,6 +1,6 @@
 # AI-Powered Multi-Vendor E-Commerce — Deployment Guide
 
-> Full-stack platform: React + Vite frontend · Hono + tRPC backend · MySQL database · Local AI features
+> Full-stack platform: React + Vite frontend · Hono + tRPC backend · Supabase PostgreSQL · Local AI features
 
 ---
 
@@ -20,7 +20,7 @@ Share these with your QA team **after the app is live**:
 
 ## 🚀 Option A — Railway (Recommended for Quick Testing)
 
-Railway gives you a public URL + MySQL in < 5 minutes, free tier available.
+Railway gives you a public app URL. Use a Supabase project for PostgreSQL.
 
 ### 1. Push to GitHub
 ```bash
@@ -36,9 +36,10 @@ git push -u origin main
 2. Choose **Deploy from GitHub repo** → select your repo
 3. Railway auto-detects Node.js and uses `railway.json`
 
-### 3. Add MySQL database
-1. In your Railway project → **+ New** → **Database** → **MySQL**
-2. Click the MySQL service → **Variables** tab → copy the `DATABASE_URL`
+### 3. Create a Supabase database
+1. Create a project at [supabase.com](https://supabase.com).
+2. In the Supabase dashboard, open **Project Settings → Database → Connect** and copy a PostgreSQL connection URI.
+3. Use a session pooler URI if your app host cannot reach the direct database host.
 
 ### 4. Set environment variables
 In your Railway web service → **Variables** tab, add:
@@ -46,7 +47,7 @@ In your Railway web service → **Variables** tab, add:
 | Variable | Value |
 |----------|-------|
 | `NODE_ENV` | `production` |
-| `DATABASE_URL` | *(paste from MySQL service)* |
+| `DATABASE_URL` | *(paste the server-side URI from Supabase)* |
 | `APP_SECRET` | *(generate: `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`)* |
 | `APP_ID` | `ecommerce_prod` |
 | `OWNER_UNION_ID` | `local:01700000006` |
@@ -69,14 +70,11 @@ Railway auto-deploys on every push. Visit your Railway URL to open the app.
    - **Start Command**: `npm run start`
    - **Health Check Path**: `/health`
 
-### 3. Add a MySQL database
-Render offers PostgreSQL free but not MySQL. Use one of:
-- **PlanetScale** (MySQL-compatible, free tier): [planetscale.com](https://planetscale.com)
-- **Railway MySQL** (free tier): create just the DB on Railway, use the connection URL on Render
-- **Aiven** (free MySQL tier): [aiven.io](https://aiven.io)
+### 3. Configure Supabase PostgreSQL
+Create a Supabase project and copy its PostgreSQL connection URI from **Project Settings → Database → Connect**.
 
 ### 4. Set environment variables
-Same variables as Railway (see table above), plus set `DATABASE_URL` to your remote MySQL URL.
+Set the same environment variables as Railway (see table above), including Supabase's server-side `DATABASE_URL`.
 
 ---
 
@@ -91,19 +89,11 @@ sudo apt install -y nodejs
 # Install PM2
 npm install -g pm2
 
-# Install MySQL 8
-sudo apt install -y mysql-server
-sudo mysql_secure_installation
+# Use Supabase for hosted PostgreSQL; no local database installation is required.
 ```
 
 ### Database setup
-```sql
--- Connect as root: sudo mysql
-CREATE DATABASE ecommerce_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-CREATE USER 'ecommerce'@'localhost' IDENTIFIED BY 'STRONG_PASSWORD';
-GRANT ALL PRIVILEGES ON ecommerce_db.* TO 'ecommerce'@'localhost';
-FLUSH PRIVILEGES;
-```
+Set `DATABASE_URL` to the server-side connection URI from Supabase **Project Settings → Database → Connect**. Keep the URI out of browser variables and source control.
 
 ### Deploy the app
 ```bash
@@ -157,7 +147,7 @@ sudo certbot --nginx -d yourdomain.com
 |----------|----------|-------------|
 | `NODE_ENV` | Yes | Must be `production` |
 | `PORT` | No | Server port (default: `3000`) |
-| `DATABASE_URL` | Yes | `mysql://user:pass@host:3306/dbname` |
+| `DATABASE_URL` | Yes | Supabase server-side PostgreSQL connection URI |
 | `APP_SECRET` | Yes | JWT signing secret (32+ random chars) |
 | `APP_ID` | No | OAuth app identifier (default: `local_app_id`) |
 | `CORS_ORIGIN` | No | Comma-separated allowed origins (default: `*`) |
@@ -216,4 +206,4 @@ Once deployed, verify these endpoints:
 | Build command | `npm run build` |
 | Start command | `npm run start` |
 | Node requirement | Node.js 18+ |
-| DB requirement | MySQL 8.0+ |
+| DB requirement | Supabase PostgreSQL |

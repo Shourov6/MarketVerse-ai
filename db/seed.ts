@@ -1,6 +1,7 @@
 import { randomBytes, scryptSync } from "node:crypto";
 import { getDb } from "../api/queries/connection.ts";
-import { eq } from "./mysql.ts";
+import { closePool } from "./postgres.ts";
+import { eq } from "./postgres.ts";
 import {
   users,
   sellers,
@@ -37,49 +38,17 @@ function buildPasswordHash(password: string) {
 async function seed() {
   const db = getDb();
   const isForce = process.argv.includes("--force");
-  const pool = db.raw();
 
   if (!isForce) {
-    try {
-      const [userRows]: any = await pool.query("SELECT COUNT(*) as count FROM users");
-      if (userRows && userRows[0] && userRows[0].count > 0) {
-        console.log("ℹ️ Database already contains user and seller data. Preserving existing records.");
-        console.log("   (To force re-seeding, run: npm run db:seed -- --force)");
-        return;
-      }
-    } catch (_err) {
-      // Tables might not exist yet, proceed with schema creation and seed
+    const userRows = await db.execute("SELECT COUNT(*) AS count FROM users");
+    if (userRows[0]?.count > 0) {
+      console.log("ℹ️ Database already contains user and seller data. Preserving existing records.");
+      console.log("   (To force re-seeding, run: npm run db:seed -- --force)");
+      return;
     }
   }
 
-  // Reset existing tables in MySQL
-  const [tables]: any = await pool.query("SHOW TABLES");
-  if (tables.length > 0) {
-    await pool.query("SET FOREIGN_KEY_CHECKS = 0");
-    for (const row of tables) {
-      const tableName = Object.values(row)[0] as string;
-      await pool.query(`TRUNCATE TABLE \`${tableName}\``);
-    }
-    await pool.query("SET FOREIGN_KEY_CHECKS = 1");
-  }
-
-  // Ensure user_addresses table exists in MySQL
-  try {
-    await pool.query(`
-      CREATE TABLE IF NOT EXISTS \`user_addresses\` (
-        \`id\` INT AUTO_INCREMENT PRIMARY KEY,
-        \`userId\` INT NOT NULL,
-        \`title\` VARCHAR(255) NOT NULL,
-        \`recipient_name\` VARCHAR(255) NOT NULL,
-        \`address\` TEXT NOT NULL,
-        \`city\` VARCHAR(255) NOT NULL,
-        \`country\` VARCHAR(255) NOT NULL DEFAULT 'Bangladesh',
-        \`phone\` VARCHAR(50) NULL,
-        \`is_primary\` INT NOT NULL DEFAULT 0,
-        \`createdAt\` BIGINT NOT NULL
-      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-    `);
-  } catch (e: any) {}
+  await db.clear();
 
   // ============================================================
   // 1. CREATE USERS
@@ -925,10 +894,9 @@ async function seed() {
   console.log(`- ${wishlistData.length} wishlist items`);
   console.log(`- ${escalationTicketData.length} escalation tickets`);
 
-  process.exit(0);
 }
 
 seed().catch((error) => {
   console.error("Seed error:", error);
-  process.exit(1);
-});
+  process.exitCode = 1;
+}).finally(() => closePool());

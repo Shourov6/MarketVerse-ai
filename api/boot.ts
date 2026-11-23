@@ -50,7 +50,7 @@ app.route("/api/ai", aiRouter);
 app.get("/health", async (c) => {
   try {
     // Quick DB connectivity check
-    const { getDb } = await import("../db/mysql");
+    const { getDb } = await import("../db/postgres");
     const db = getDb();
     await (db as any).raw().query("SELECT 1");
     return c.json({ status: "ok", db: "connected", ts: new Date().toISOString() }, 200);

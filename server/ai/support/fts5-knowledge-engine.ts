@@ -7,7 +7,7 @@
 
 import { getDb } from "../../../api/queries/connection";
 import { supportKnowledge } from "../../../db/schema";
-import { or, like } from "../../../db/mysql";
+import { or, like } from "../../../db/postgres";
 
 export interface KnowledgeMatch {
   id: number;

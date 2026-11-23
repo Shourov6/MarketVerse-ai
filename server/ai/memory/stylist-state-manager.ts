@@ -7,7 +7,7 @@
 
 import { getDb } from "../../../api/queries/connection.js";
 import { memoryEntities } from "../../../db/aiSchema.js";
-import { eq, and } from "../../../db/mysql.js";
+import { eq, and } from "../../../db/postgres.js";
 
 export interface StylistSessionState {
   sessionId: string;

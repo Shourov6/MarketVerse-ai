@@ -1,6 +1,6 @@
 import { getDb } from "../api/queries/connection";
 import { products, productImages } from "../db/schema";
-import { eq } from "../db/mysql";
+import { eq } from "../db/postgres";
 
 export const PRODUCT_IMAGE_MAP: Record<string, string> = {
   // Electronics (categoryId 1)

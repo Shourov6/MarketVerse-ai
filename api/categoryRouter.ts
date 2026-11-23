@@ -2,7 +2,7 @@ import { z } from "zod";
 import { createRouter, publicQuery } from "./middleware";
 import { getDb } from "./queries/connection";
 import { categories, products, productImages } from "@db/schema";
-import { eq, desc, sql, and } from "@db/mysql";
+import { eq, desc, sql, and } from "@db/postgres";
 
 export const categoryRouter = createRouter({
   list: publicQuery.query(async () => {

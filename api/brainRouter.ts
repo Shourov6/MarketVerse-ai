@@ -46,7 +46,7 @@ export const brainRouter = createRouter({
           try {
             const { getDb } = await import("./queries/connection.js");
             const { sellers } = await import("@db/schema");
-            const { eq } = await import("@db/mysql");
+            const { eq } = await import("@db/postgres");
             const db = getDb();
             const seller = await db.select().from(sellers).where(eq(sellers.userId, (ctx.user as any).id)).limit(1);
             if (seller[0]) {

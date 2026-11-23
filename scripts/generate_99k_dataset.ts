@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { getDb } from "../api/queries/connection.ts";
 import * as schema from "../db/schema.ts";
-import { eq } from "../db/mysql.ts";
+import { eq } from "../db/postgres.ts";
 
 // 100 E-Commerce Categories across 10 main verticals
 const CATEGORIES = [

@@ -1,4 +1,4 @@
-import { eq } from "@db/mysql";
+import { eq } from "@db/postgres";
 import * as schema from "@db/schema";
 import { getDb } from "./connection";
 import { env } from "../lib/env";
@@ -24,7 +24,7 @@ export async function findUserByPhone(phone: string) {
 export async function upsertUser(data: any) {
   const values = { ...data };
   const updateSet: any = {
-    lastSignInAt: new Date(),
+    lastSignInAt: Date.now(),
     ...data,
   };
 
@@ -40,5 +40,5 @@ export async function upsertUser(data: any) {
   await getDb()
     .insert(schema.users)
     .values(values)
-    .onDuplicateKeyUpdate({ set: updateSet });
+    .onConflictDoUpdate({ target: schema.users.unionId, set: updateSet });
 }

@@ -2,7 +2,7 @@ import { z } from "zod";
 import { createRouter, authedQuery } from "./middleware";
 import { getDb } from "./queries/connection";
 import { notifications, users } from "@db/schema";
-import { eq, desc, and } from "@db/mysql";
+import { eq, desc, and } from "@db/postgres";
 
 export async function notifyAdmins(data: {
   title: string;

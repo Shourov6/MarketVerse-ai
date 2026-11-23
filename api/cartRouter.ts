@@ -2,7 +2,7 @@ import { z } from "zod";
 import { createRouter, authedQuery } from "./middleware";
 import { getDb } from "./queries/connection";
 import { carts, cartItems, products, productImages, inventory } from "@db/schema";
-import { eq, and } from "@db/mysql";
+import { eq, and } from "@db/postgres";
 
 export const cartRouter = createRouter({
   get: authedQuery.query(async ({ ctx }) => {

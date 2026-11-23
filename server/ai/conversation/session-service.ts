@@ -6,7 +6,7 @@
 
 import { getDb } from "../../../api/queries/connection.js";
 import { chatSessions, chatMessages } from "../../../db/schema.js";
-import { eq, desc } from "../../../db/mysql.js";
+import { eq, desc } from "../../../db/postgres.js";
 import type { MessageRole } from "../llm/types.ts";
 
 export class SessionService {

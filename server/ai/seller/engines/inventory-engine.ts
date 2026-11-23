@@ -6,7 +6,7 @@
 import type { InventoryEngineResult, SellerContext } from "../types.ts";
 import { getDb } from "../../../../api/queries/connection.ts";
 import { inventory, products } from "../../../../db/schema.ts";
-import { lte, eq, and } from "../../../../db/mysql.ts";
+import { lte, eq, and } from "../../../../db/postgres.ts";
 
 export class InventoryEngine {
   async analyze(context: SellerContext): Promise<InventoryEngineResult> {

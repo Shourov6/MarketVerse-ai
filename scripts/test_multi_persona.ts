@@ -1,6 +1,6 @@
-import { getDb } from "../db/mysql.ts";
+import { getDb } from "../db/postgres.ts";
 import { users, sellers, products, orders, orderItems, reviews } from "../db/schema.ts";
-import { eq, desc } from "../db/mysql.ts";
+import { eq, desc } from "../db/postgres.ts";
 
 async function runTest() {
   console.log("==================================================");

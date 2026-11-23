@@ -1,20 +1,22 @@
 /**
- * MarketVerse Enterprise MySQL Database Driver & ORM Layer
+ * PostgreSQL database driver and compatibility query layer for Supabase.
  * 
- * Provides high-performance, type-safe MySQL database operations powered by `mysql2/promise`.
+ * PostgreSQL is used by Supabase and local PostgreSQL installations.
  * Features:
- *  - Automatic Connection Pooling with keep-alive & auto-reconnect
+ *  - Connection pooling with `pg`
  *  - Type-safe Drizzle-compatible Table/Column Schema builder
- *  - Automatic table creation & schema synchronization on startup
- *  - Thread-safe transactions, raw query access, and parameterized statement escaping
+ *  - Automatic table creation on startup
+ *  - Parameterized queries and transaction support
  */
 
-import mysql from "mysql2/promise";
+import { AsyncLocalStorage } from "node:async_hooks";
+import { Pool, types, type PoolClient, type QueryResult } from "pg";
 import { env } from "../api/lib/env.ts";
 
-type SqlFragment = {
+type SqlFragment<T = unknown> = {
   sql: string;
   params: unknown[];
+  readonly _type?: T;
 };
 
 type ColumnBuilder = {
@@ -63,9 +65,10 @@ type JoinClause = {
   condition: SqlFragment;
 };
 
-type SelectSelection = Record<string, any> | undefined;
-
-type QueryResult = Array<any>;
+// Query result columns are dynamic because table selections are assembled at runtime.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type DynamicValue = any;
+type SelectSelection = Record<string, DynamicValue> | undefined;
 
 const registeredTables: TableDef[] = [];
 
@@ -91,7 +94,7 @@ function quoteIdentifier(identifier: string): string {
       identifier = String(identifier);
     }
   }
-  return "`" + identifier.replace(/`/g, "``") + "`";
+  return `"${identifier.replace(/"/g, '""')}"`;
 }
 
 function renderValue(value: unknown): SqlFragment {
@@ -195,13 +198,14 @@ export function real(name: string) {
 
 export function index(_name: string) {
   return {
-    on(..._columns: Column[]) {
+    on(...columns: Column[]) {
+      void columns;
       return { name: _name };
     },
   };
 }
 
-export function mysqlTable(
+export function pgTable(
   name: string,
   columns: Record<string, ColumnBuilder>,
   extras?: (table: Record<string, Column>) => unknown
@@ -233,19 +237,12 @@ export function mysqlTable(
   return tableDef;
 }
 
-// Export alias for backward compatibility
-export const sqliteTable = mysqlTable;
-
-export function sql<T = unknown>(strings: TemplateStringsArray, ...values: unknown[]): SqlFragment {
+export function sql<T = unknown>(strings: TemplateStringsArray, ...values: unknown[]): SqlFragment<T> {
   let sqlText = "";
   const params: unknown[] = [];
 
   for (let index = 0; index < strings.length; index += 1) {
-    let str = strings[index];
-    // Convert SQLite julianday timestamps expression to MySQL ROUND(UNIX_TIMESTAMP() * 1000)
-    if (str.includes("julianday('now')")) {
-      str = str.replace(/\(cast\(\(julianday\('now'\) - 2440587\.5\)\*86400000 as integer\)\)/gi, "ROUND(UNIX_TIMESTAMP() * 1000)");
-    }
+    const str = strings[index];
     sqlText += str;
     if (index < values.length) {
       const rendered = renderValue(values[index]);
@@ -263,7 +260,7 @@ export function eq(left: unknown, right: unknown): SqlFragment {
   const renderedLeft = renderValue(left);
   const renderedRight = renderNullable(right);
   return {
-    sql: `${renderedLeft.sql} = ${renderedRight.sql}`,
+    sql: `${renderedLeft.sql} ${right === null || right === undefined ? "IS" : "="} ${renderedRight.sql}`,
     params: [...renderedLeft.params, ...renderedRight.params],
   };
 }
@@ -272,7 +269,7 @@ export function ne(left: unknown, right: unknown): SqlFragment {
   const renderedLeft = renderValue(left);
   const renderedRight = renderNullable(right);
   return {
-    sql: `${renderedLeft.sql} != ${renderedRight.sql}`,
+    sql: `${renderedLeft.sql} ${right === null || right === undefined ? "IS NOT" : "<>"} ${renderedRight.sql}`,
     params: [...renderedLeft.params, ...renderedRight.params],
   };
 }
@@ -281,7 +278,7 @@ export function like(left: unknown, pattern: unknown): SqlFragment {
   const renderedLeft = renderValue(left);
   const renderedRight = renderNullable(pattern);
   return {
-    sql: `${renderedLeft.sql} LIKE ${renderedRight.sql}`,
+    sql: `${renderedLeft.sql} ILIKE ${renderedRight.sql}`,
     params: [...renderedLeft.params, ...renderedRight.params],
   };
 }
@@ -369,13 +366,24 @@ function normalizeBooleanValue(value: unknown) {
   return value;
 }
 
+function normalizeColumnValue(value: unknown, column?: Column) {
+  if (value instanceof Date && column?.columnType === "integer") {
+    return value.getTime();
+  }
+  return normalizeBooleanValue(value);
+}
+
 function evaluateDefaultValue(column: Column) {
   if (column.defaultValue === undefined) {
     return undefined;
   }
 
   if (isSqlFragment(column.defaultValue)) {
-    if (column.defaultValue.sql.includes("julianday") || column.defaultValue.sql.includes("UNIX_TIMESTAMP")) {
+    if (
+      column.defaultValue.sql.includes("julianday") ||
+      column.defaultValue.sql.includes("UNIX_TIMESTAMP") ||
+      column.defaultValue.sql.includes("EXTRACT(EPOCH")
+    ) {
       return Date.now();
     }
     return column.defaultValue;
@@ -402,9 +410,9 @@ function applyRowDefaults(table: TableDef, row: Record<string, unknown>): Record
   return nextRow;
 }
 
-function mapDatabaseRow(table: TableDef, row: Record<string, any>) {
+function mapDatabaseRow(table: TableDef, row: Record<string, unknown>): DynamicValue {
   if (!row) return row;
-  const mapped: Record<string, any> = {};
+  const mapped: Record<string, unknown> = {};
 
   for (const column of table.columnList) {
     const val = row[column.name] !== undefined ? row[column.name] : row[column.propertyName];
@@ -443,83 +451,171 @@ function renderSelection(selection: SelectSelection, baseTable?: TableDef): SqlF
   return { sql: parts.join(", "), params };
 }
 
-let poolInstance: mysql.Pool | null = null;
+types.setTypeParser(20, (value) => Number(value));
 
-export function getPool(): mysql.Pool {
-  if (!poolInstance) {
-    const url = env.databaseUrl;
-    if (url.startsWith("mysql://")) {
-      const parsed = new URL(url);
-      poolInstance = mysql.createPool({
-        host: parsed.hostname || "localhost",
-        port: Number(parsed.port) || 3306,
-        user: decodeURIComponent(parsed.username || "root"),
-        password: decodeURIComponent(parsed.password || ""),
-        database: parsed.pathname.replace(/^\//, "") || "ecommerce_db",
-        waitForConnections: true,
-        connectionLimit: 20,
-        queueLimit: 0,
-      });
+type PgExecutionResult = [DynamicValue[], { insertId: number; affectedRows: number }];
+
+export function toPostgresSql(sqlText: string): string {
+  const normalizedSql = sqlText
+    .replace(/`([^`]+)`/g, (_match, identifier: string) => quoteIdentifier(identifier))
+    .replace(/ROUND\(UNIX_TIMESTAMP\(NOW\(3\)\) \* 1000\)/gi, "(EXTRACT(EPOCH FROM clock_timestamp()) * 1000)::BIGINT");
+
+  let parameterIndex = 0;
+  let quote: "'" | '"' | null = null;
+  let convertedSql = "";
+
+  for (let index = 0; index < normalizedSql.length; index += 1) {
+    const character = normalizedSql[index];
+    if (quote) {
+      convertedSql += character;
+      if (character === quote) {
+        if (normalizedSql[index + 1] === quote) {
+          convertedSql += normalizedSql[index + 1];
+          index += 1;
+        } else {
+          quote = null;
+        }
+      }
+    } else if (character === "'" || character === '"') {
+      quote = character;
+      convertedSql += character;
+    } else if (character === "?") {
+      convertedSql += `$${++parameterIndex}`;
     } else {
-      poolInstance = mysql.createPool({
-        host: process.env.MYSQL_HOST || "localhost",
-        port: Number(process.env.MYSQL_PORT) || 3306,
-        user: process.env.MYSQL_USER || "root",
-        password: process.env.MYSQL_PASSWORD || "Mafia666",
-        database: process.env.MYSQL_DATABASE || "ecommerce_db",
-        waitForConnections: true,
-        connectionLimit: 20,
-        queueLimit: 0,
-      });
+      convertedSql += character;
     }
+  }
+
+  return convertedSql;
+}
+
+class PostgresPool {
+  private readonly pool: Pool;
+  private readonly transactionClient = new AsyncLocalStorage<PoolClient>();
+
+  constructor(connectionString: string) {
+    if (!/^postgres(?:ql)?:\/\//i.test(connectionString)) {
+      throw new Error("DATABASE_URL must be a PostgreSQL connection string from your Supabase project.");
+    }
+
+    this.pool = new Pool({ connectionString, max: 10, idleTimeoutMillis: 30_000 });
+    this.pool.on("error", (error) => {
+      console.error("[Database] Unexpected PostgreSQL pool error:", error);
+    });
+  }
+
+  async query(sqlText: string, params: unknown[] = []): Promise<PgExecutionResult> {
+    const statement = toPostgresSql(sqlText);
+    const client = this.transactionClient.getStore();
+    const result: QueryResult = await (client ?? this.pool).query(statement, params as never[]);
+    return [
+      result.rows,
+      {
+        insertId: Number(result.rows[0]?.id ?? 0),
+        affectedRows: result.rowCount ?? 0,
+      },
+    ];
+  }
+
+  async transaction<T>(callback: () => T | Promise<T>): Promise<T> {
+    const client = await this.pool.connect();
+    try {
+      await client.query("BEGIN");
+      const result = await this.transactionClient.run(client, callback);
+      await client.query("COMMIT");
+      return result;
+    } catch (error) {
+      await client.query("ROLLBACK");
+      throw error;
+    } finally {
+      client.release();
+    }
+  }
+
+  async clearManagedData(tableNames: string[]) {
+    if (tableNames.length === 0) return;
+    const tables = tableNames.map((name) => quoteIdentifier(name)).join(", ");
+    await this.query(`TRUNCATE TABLE ${tables} RESTART IDENTITY CASCADE`);
+  }
+
+  async end() {
+    await this.pool.end();
+  }
+}
+
+let poolInstance: PostgresPool | null = null;
+
+export function getPool(): PostgresPool {
+  if (!poolInstance) {
+    poolInstance = new PostgresPool(env.databaseUrl);
   }
   return poolInstance;
 }
 
-const createdTables = new Set<string>();
+export async function closePool() {
+  if (!poolInstance) return;
+  const pool = poolInstance;
+  poolInstance = null;
+  await pool.end();
+}
 
-export async function ensureSchema(pool: mysql.Pool) {
-  for (const table of registeredTables) {
-    if (createdTables.has(table.tableName)) continue;
+let schemaPromise: Promise<void> | null = null;
 
-    const colDefinitions: string[] = [];
-
-    for (const col of table.columnList) {
-      let typeDef = "VARCHAR(255)";
-      if (col.columnType === "integer") {
-        typeDef = col.primaryKey ? "BIGINT AUTO_INCREMENT" : "BIGINT";
-      } else if (col.columnType === "real") {
-        typeDef = "DOUBLE";
-      } else if (col.columnType === "text") {
-        typeDef = col.primaryKey || col.unique ? "VARCHAR(255)" : "LONGTEXT";
-      }
-
-      let colSql = `${quoteIdentifier(col.name)} ${typeDef}`;
-      if (col.primaryKey) {
-        colSql += " PRIMARY KEY";
-      }
-      if (col.notNull && !col.primaryKey) {
-        colSql += " NOT NULL";
-      }
-      if (col.unique && !col.primaryKey) {
-        colSql += " UNIQUE";
-      }
-
-      colDefinitions.push(colSql);
-    }
-
-    const createSql = `CREATE TABLE IF NOT EXISTS ${quoteIdentifier(table.tableName)} (\n  ${colDefinitions.join(",\n  ")}\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;`;
-    try {
-      await pool.query(createSql);
-      createdTables.add(table.tableName);
-    } catch (err) {
-      console.error(`Error creating table ${table.tableName}:`, err);
-    }
+function defaultSql(value: unknown): string | undefined {
+  if (isSqlFragment(value)) {
+    return toPostgresSql(value.sql);
   }
+  if (typeof value === "string") {
+    return `'${value.replace(/'/g, "''")}'`;
+  }
+  if (typeof value === "number") {
+    return String(value);
+  }
+  if (typeof value === "boolean") {
+    return value ? "TRUE" : "FALSE";
+  }
+  return undefined;
+}
+
+export async function ensureSchema(pool: PostgresPool) {
+  if (!schemaPromise) {
+    schemaPromise = (async () => {
+      for (const table of registeredTables) {
+        const colDefinitions = table.columnList.map((col) => {
+          let typeDef = "TEXT";
+          if (col.columnType === "integer") {
+            typeDef = col.primaryKey ? "BIGSERIAL" : "BIGINT";
+          } else if (col.columnType === "real") {
+            typeDef = "DOUBLE PRECISION";
+          }
+
+          let colSql = `${quoteIdentifier(col.name)} ${typeDef}`;
+          if (col.primaryKey) colSql += " PRIMARY KEY";
+          if (col.notNull && !col.primaryKey) colSql += " NOT NULL";
+          if (col.unique && !col.primaryKey) colSql += " UNIQUE";
+          const defaultValue = defaultSql(col.defaultValue);
+          if (defaultValue !== undefined) colSql += ` DEFAULT ${defaultValue}`;
+          return colSql;
+        });
+
+        await pool.query(
+          `CREATE TABLE IF NOT EXISTS ${quoteIdentifier(table.tableName)} (${colDefinitions.join(", ")})`
+        );
+        await pool.query(
+          `ALTER TABLE ${quoteIdentifier(table.tableName)} ENABLE ROW LEVEL SECURITY`
+        );
+      }
+    })().catch((error) => {
+      schemaPromise = null;
+      throw error;
+    });
+  }
+
+  await schemaPromise;
 }
 
 class SelectQuery {
-  private readonly pool: mysql.Pool;
+  private readonly pool: PostgresPool;
   private readonly selection: SelectSelection;
   private baseTable?: TableDef;
   private joins: JoinClause[] = [];
@@ -529,7 +625,7 @@ class SelectQuery {
   private limitValue?: number;
   private offsetValue?: number;
 
-  constructor(pool: mysql.Pool, selection?: SelectSelection) {
+  constructor(pool: PostgresPool, selection?: SelectSelection) {
     this.pool = pool;
     this.selection = selection;
   }
@@ -556,7 +652,7 @@ class SelectQuery {
     return this;
   }
 
-  groupBy(...clauses: Array<any>) {
+  groupBy(...clauses: unknown[]) {
     this.groupByClauses.push(
       ...clauses.map((clause) =>
         isColumn(clause)
@@ -569,7 +665,7 @@ class SelectQuery {
     return this;
   }
 
-  orderBy(...clauses: Array<any>) {
+  orderBy(...clauses: unknown[]) {
     for (const clause of clauses) {
       if (clause && typeof clause === "object" && "sql" in clause && typeof clause.sql === "string") {
         this.orderByClauses.push(clause as OrderBy);
@@ -632,10 +728,10 @@ class SelectQuery {
     return { sql: parts.join(" "), params };
   }
 
-  async all() {
+  async all(): Promise<DynamicValue[]> {
     await ensureSchema(this.pool);
     const { sql: querySql, params } = this.toSQL();
-    const [rows] = (await this.pool.query(querySql, params)) as [QueryResult, any];
+    const [rows] = await this.pool.query(querySql, params);
 
     if (!this.selection && this.baseTable) {
       return rows.map((row) => mapDatabaseRow(this.baseTable as TableDef, applyRowDefaults(this.baseTable as TableDef, row)));
@@ -643,27 +739,27 @@ class SelectQuery {
     return rows;
   }
 
-  async get() {
+  async get(): Promise<DynamicValue | undefined> {
     const rows = await this.all();
     return rows[0];
   }
 
-  then<TResult1 = any, TResult2 = never>(
-    onfulfilled?: ((value: any) => TResult1 | PromiseLike<TResult1>) | null,
-    onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | null
+  then<TResult1 = DynamicValue[], TResult2 = never>(
+    onfulfilled?: ((value: DynamicValue[]) => TResult1 | PromiseLike<TResult1>) | null,
+    onrejected?: ((reason: unknown) => TResult2 | PromiseLike<TResult2>) | null
   ) {
     return Promise.resolve(this.all()).then(onfulfilled, onrejected);
   }
 }
 
 class InsertQuery {
-  private readonly pool: mysql.Pool;
+  private readonly pool: PostgresPool;
   private readonly table: TableDef;
   private valuesData: Record<string, unknown> | Record<string, unknown>[] = {};
   private conflictTarget?: Column;
   private conflictSet?: Record<string, unknown>;
 
-  constructor(pool: mysql.Pool, table: TableDef) {
+  constructor(pool: PostgresPool, table: TableDef) {
     this.pool = pool;
     this.table = table;
   }
@@ -674,13 +770,17 @@ class InsertQuery {
   }
 
   onDuplicateKeyUpdate(options: { set: Record<string, unknown> }) {
-    this.conflictTarget = this.table.columns.id ?? this.table.columnList[0];
+    this.conflictTarget = this.table.columns.unionId ?? this.table.columns.id ?? this.table.columnList[0];
     this.conflictSet = options.set;
     return this;
   }
 
-  onConflictDoUpdate(options: { target: Column | Column[]; set: Record<string, unknown> }) {
-    this.conflictTarget = Array.isArray(options.target) ? options.target[0] : options.target;
+  onConflictDoUpdate(options: { target: unknown; set: Record<string, unknown> }) {
+    const target = Array.isArray(options.target) ? options.target[0] : options.target;
+    if (!isColumn(target)) {
+      throw new Error("onConflictDoUpdate requires a database column as its conflict target");
+    }
+    this.conflictTarget = target;
     this.conflictSet = options.set;
     return this;
   }
@@ -710,7 +810,7 @@ class InsertQuery {
       insertColumns.map((column) => {
         const schemaColumn = this.table.columnList.find((candidate) => candidate.name === column);
         const rawVal = schemaColumn ? row[schemaColumn.propertyName] : row[column];
-        return normalizeBooleanValue(isSqlFragment(rawVal) ? rawVal.params[0] ?? null : rawVal);
+        return normalizeColumnValue(isSqlFragment(rawVal) ? rawVal.params[0] ?? null : rawVal, schemaColumn);
       })
     );
 
@@ -718,35 +818,56 @@ class InsertQuery {
 
     if (this.conflictTarget && this.conflictSet) {
       const updateAssignments = Object.entries(this.conflictSet)
-        .map(([key]) => `${quoteIdentifier(key)} = ?`)
+        .map(([key]) => {
+          const column = this.table.columns[key];
+          const name = column?.name ?? key;
+          const valueColumnIsInserted = insertColumns.includes(name);
+          if (valueColumnIsInserted) {
+            return `${quoteIdentifier(name)} = EXCLUDED.${quoteIdentifier(name)}`;
+          }
+          const value = this.conflictSet?.[key];
+          params.push(
+            normalizeColumnValue(
+              isSqlFragment(value) ? value.params[0] ?? null : value,
+              column
+            )
+          );
+          return `${quoteIdentifier(name)} = ?`;
+        })
         .join(", ");
-      sqlText += ` ON DUPLICATE KEY UPDATE ${updateAssignments}`;
-      params.push(
-        ...Object.values(this.conflictSet).map((value) =>
-          normalizeBooleanValue(isSqlFragment(value) ? value.params[0] ?? null : value)
-        )
-      );
+      sqlText += ` ON CONFLICT (${quoteIdentifier(this.conflictTarget.name)}) DO UPDATE SET ${updateAssignments}`;
     }
 
-    const [result] = (await this.pool.query(sqlText, params)) as [any, any];
-    return [{ insertId: Number(result.insertId), changes: Number(result.affectedRows) }];
+    sqlText += ` RETURNING ${quoteIdentifier(this.table.columns.id?.name ?? this.table.columnList[0].name)}`;
+    const [, result] = await this.pool.query(sqlText, params);
+    const idColumn = this.table.columns.id;
+    if (
+      idColumn?.columnType === "integer" &&
+      insertColumns.includes(idColumn.name)
+    ) {
+      await this.pool.query(
+        `SELECT setval(pg_get_serial_sequence($1, 'id'), GREATEST(COALESCE((SELECT MAX(${quoteIdentifier(idColumn.name)}) FROM ${quoteIdentifier(this.table.tableName)}), 1), 1), true)`,
+        [this.table.tableName]
+      );
+    }
+    return [{ insertId: result.insertId, changes: result.affectedRows }];
   }
 
-  then<TResult1 = any, TResult2 = never>(
-    onfulfilled?: ((value: any) => TResult1 | PromiseLike<TResult1>) | null,
-    onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | null
+  then<TResult1 = Array<{ insertId: number; changes: number }>, TResult2 = never>(
+    onfulfilled?: ((value: Array<{ insertId: number; changes: number }>) => TResult1 | PromiseLike<TResult1>) | null,
+    onrejected?: ((reason: unknown) => TResult2 | PromiseLike<TResult2>) | null
   ) {
     return Promise.resolve(this.execute()).then(onfulfilled, onrejected);
   }
 }
 
 class UpdateQuery {
-  private readonly pool: mysql.Pool;
+  private readonly pool: PostgresPool;
   private readonly table: TableDef;
   private setValues: Record<string, unknown> = {};
   private whereClause?: SqlFragment;
 
-  constructor(pool: mysql.Pool, table: TableDef) {
+  constructor(pool: PostgresPool, table: TableDef) {
     this.pool = pool;
     this.table = table;
   }
@@ -771,32 +892,35 @@ class UpdateQuery {
         return `${quoteIdentifier(schemaColumn ? schemaColumn.name : key)} = ?`;
       })
       .join(", ");
-    const params = Object.entries(this.setValues).map(([_key, value]) => {
-      return normalizeBooleanValue(isSqlFragment(value) ? value.params[0] ?? null : value);
+    const params = Object.entries(this.setValues).map(([key, value]) => {
+      return normalizeColumnValue(
+        isSqlFragment(value) ? value.params[0] ?? null : value,
+        this.table.columns[key]
+      );
     });
     let sqlText = `UPDATE ${quoteIdentifier(this.table.tableName)} SET ${assignments}`;
     if (this.whereClause) {
       sqlText += ` WHERE ${this.whereClause.sql}`;
       params.push(...this.whereClause.params);
     }
-    const [result] = (await this.pool.query(sqlText, params)) as [any, any];
-    return { changes: Number(result.affectedRows) };
+    const [, result] = await this.pool.query(sqlText, params);
+    return { changes: result.affectedRows };
   }
 
-  then<TResult1 = any, TResult2 = never>(
-    onfulfilled?: ((value: any) => TResult1 | PromiseLike<TResult1>) | null,
-    onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | null
+  then<TResult1 = { changes: number }, TResult2 = never>(
+    onfulfilled?: ((value: { changes: number }) => TResult1 | PromiseLike<TResult1>) | null,
+    onrejected?: ((reason: unknown) => TResult2 | PromiseLike<TResult2>) | null
   ) {
     return Promise.resolve(this.execute()).then(onfulfilled, onrejected);
   }
 }
 
 class DeleteQuery {
-  private readonly pool: mysql.Pool;
+  private readonly pool: PostgresPool;
   private readonly table: TableDef;
   private whereClause?: SqlFragment;
 
-  constructor(pool: mysql.Pool, table: TableDef) {
+  constructor(pool: PostgresPool, table: TableDef) {
     this.pool = pool;
     this.table = table;
   }
@@ -816,13 +940,13 @@ class DeleteQuery {
       sqlText += ` WHERE ${this.whereClause.sql}`;
       params.push(...this.whereClause.params);
     }
-    const [result] = (await this.pool.query(sqlText, params)) as [any, any];
-    return { changes: Number(result.affectedRows) };
+    const [, result] = await this.pool.query(sqlText, params);
+    return { changes: result.affectedRows };
   }
 
-  then<TResult1 = any, TResult2 = never>(
-    onfulfilled?: ((value: any) => TResult1 | PromiseLike<TResult1>) | null,
-    onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | null
+  then<TResult1 = { changes: number }, TResult2 = never>(
+    onfulfilled?: ((value: { changes: number }) => TResult1 | PromiseLike<TResult1>) | null,
+    onrejected?: ((reason: unknown) => TResult2 | PromiseLike<TResult2>) | null
   ) {
     return Promise.resolve(this.execute()).then(onfulfilled, onrejected);
   }
@@ -830,7 +954,6 @@ class DeleteQuery {
 
 export function getDb() {
   const pool = getPool();
-  ensureSchema(pool).catch((err) => console.error("Error ensuring schema:", err));
 
   return {
     select(selection?: SelectSelection) {
@@ -851,19 +974,26 @@ export function getDb() {
       const [rows] = await pool.query(query.sql, query.params);
       return rows;
     },
+    async initialize() {
+      await ensureSchema(pool);
+    },
+    async clear() {
+      await ensureSchema(pool);
+      await pool.clearManagedData(registeredTables.map((table) => table.tableName));
+    },
     async prepare(sqlText: string) {
       await ensureSchema(pool);
       return {
         async run(...params: unknown[]) {
-          const [result] = (await pool.query(sqlText, params)) as [any, any];
-          return { lastInsertRowid: Number(result.insertId), changes: Number(result.affectedRows) };
+          const [rows, result] = await pool.query(sqlText, params);
+          return { lastInsertRowid: result.insertId, insertId: result.insertId, changes: result.affectedRows, rows };
         },
         async get(...params: unknown[]) {
-          const [rows] = (await pool.query(sqlText, params)) as [any[], any];
+          const [rows] = await pool.query(sqlText, params);
           return rows[0];
         },
         async all(...params: unknown[]) {
-          const [rows] = (await pool.query(sqlText, params)) as [any[], any];
+          const [rows] = await pool.query(sqlText, params);
           return rows;
         },
       };
@@ -871,19 +1001,9 @@ export function getDb() {
     raw() {
       return pool;
     },
-    async transaction<T>(callback: (connection?: mysql.PoolConnection) => T | Promise<T>) {
-      const connection = await pool.getConnection();
-      await connection.beginTransaction();
-      try {
-        const result = await callback(connection);
-        await connection.commit();
-        return result;
-      } catch (err) {
-        await connection.rollback();
-        throw err;
-      } finally {
-        connection.release();
-      }
+    async transaction<T>(callback: () => T | Promise<T>) {
+      await ensureSchema(pool);
+      return pool.transaction(callback);
     },
   };
 }

@@ -10,7 +10,7 @@ MarketVerse is a Node.js 20+ full-stack application.
 - HTTP server: Hono in `api/boot.ts`
 - Typed API: tRPC under `/api/trpc`
 - Synchronous AI API: `/api/ai/chat`
-- Database: MySQL 8 through `mysql2/promise`
+- Database: Supabase PostgreSQL through `pg`
 - Optional AI provider: OpenAI through `OPENAI_API_KEY`
 - Optional local model provider: Ollama through `OLLAMA_URL`
 
@@ -29,14 +29,14 @@ The setup command:
 1. Verifies Node.js 20+.
 2. Creates `.env` only when it does not already exist.
 3. Installs the exact dependency versions with `npm ci`.
-4. Starts the MySQL service with Docker Compose when Docker is available.
-5. Waits for MySQL to accept connections.
+4. Checks the Supabase PostgreSQL connection configured in `.env`.
+5. Waits for PostgreSQL to accept connections.
 6. Seeds the database without overwriting an existing populated database.
 7. Warns if `OPENAI_API_KEY` is empty.
 8. Pulls `qwen2.5:3b-instruct` and `nomic-embed-text` when Ollama is installed.
 9. Starts the development server.
 
-If Docker is unavailable, install MySQL 8 yourself and set `DATABASE_URL` in `.env` before running setup. Ollama is also an OS-level prerequisite for the local LLM path; install it from [ollama.com](https://ollama.com), then rerun setup to download the models.
+Set `DATABASE_URL` in `.env` to your Supabase PostgreSQL connection URI before running setup. Ollama is also an OS-level prerequisite for the local LLM path; install it from [ollama.com](https://ollama.com), then rerun setup to download the models.
 
 ## Daily Commands
 
@@ -51,7 +51,8 @@ If Docker is unavailable, install MySQL 8 yourself and set `DATABASE_URL` in `.e
 | `npm test` | Vitest tests |
 | `npm run db:seed` | Seed an empty database; preserves populated data |
 | `npm run db:seed -- --force` | Destructively reset and reseed the database |
-| `docker compose up -d db` | Start only the local MySQL container |
+| `npm run db:push` | Create the application tables in Supabase PostgreSQL |
+| `docker compose up -d db` | Start only the local PostgreSQL container |
 | `docker compose down` | Stop local containers; named database data remains |
 
 ## Environment
@@ -83,7 +84,7 @@ Never place secrets in `VITE_*` variables unless they are intentionally public. 
 - `src/`: browser UI, pages, hooks, providers, and browser utilities.
 - `api/`: HTTP bootstrap, tRPC routers, auth, payments, and API adapters.
 - `server/ai/`: server-side AI orchestration, classification, memory, tools, RAG, and LLM adapters.
-- `db/`: MySQL schema, connection layer, AI schema, and seed/clear utilities.
+- `db/`: PostgreSQL schema, connection layer, AI schema, and seed/clear utilities.
 - `contracts/`: shared API constants, errors, and types.
 - `scripts/`: intentional maintenance and data-generation commands. Setup is `scripts/setup.mjs`.
 - `public/`: static assets and runtime uploads.
@@ -98,9 +99,9 @@ When changing behavior, start at the owning boundary: UI in `src`, HTTP wiring i
 
 Stop the process using port 5173, then run `npm run dev` again. The project intentionally uses strict port binding so a wrong server is not mistaken for MarketVerse.
 
-### MySQL connection fails
+### PostgreSQL connection fails
 
-Check that Docker is running and execute `docker compose up -d db`, or verify the host, port, user, password, and database in `DATABASE_URL`. Then run `npm run db:seed`.
+Verify the Supabase URI, password, and SSL option in `DATABASE_URL`. For an isolated local database, start the PostgreSQL container with `docker compose up -d db`.
 
 ### AI returns a fallback
 
@@ -118,7 +119,7 @@ npm run build
 npm run start
 ```
 
-For the complete MySQL-backed production stack:
+For the complete locally containerized production stack:
 
 ```bash
 docker compose up --build

@@ -8,7 +8,7 @@
 
 import { getDb } from "../../../api/queries/connection";
 import { memoryEntities } from "../../../db/aiSchema";
-import { eq, and } from "../../../db/mysql";
+import { eq, and } from "../../../db/postgres";
 
 export interface SupportSessionState {
   sessionId: string;

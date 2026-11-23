@@ -2,7 +2,7 @@ import { z } from "zod";
 import { createRouter, publicQuery } from "./middleware";
 import { getDb } from "./queries/connection";
 import { escalationTickets, ticketMessages } from "@db/aiSchema";
-import { eq, desc, asc } from "@db/mysql";
+import { eq, desc, asc } from "@db/postgres";
 import { notifyAdmins } from "./notificationRouter";
 
 export const supportRouter = createRouter({

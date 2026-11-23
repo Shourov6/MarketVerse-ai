@@ -20,7 +20,7 @@
 import { getDb } from "../../../api/queries/connection";
 import { orders, orderItems, products } from "../../../db/schema";
 import { escalationTickets } from "../../../db/aiSchema";
-import { eq, desc, like } from "../../../db/mysql";
+import { eq, desc, like } from "../../../db/postgres";
 import type { SupportIntent } from "./fast-support-intent-engine";
 
 export interface ToolExecutionResult {

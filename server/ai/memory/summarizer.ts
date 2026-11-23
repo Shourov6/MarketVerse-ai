@@ -7,7 +7,7 @@
 
 import { getDb } from "../../../api/queries/connection.js";
 import { chatMessages } from "../../../db/schema.js";
-import { eq, desc, and, gt } from "../../../db/mysql.js";
+import { eq, desc, and, gt } from "../../../db/postgres.js";
 
 const SUMMARY_THRESHOLD = 15; // Summarize when there are 15 new messages
 

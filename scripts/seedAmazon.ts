@@ -1,6 +1,6 @@
 import { getDb } from "../api/queries/connection";
 import { categories, products, productImages, sellers, productVariants, inventory } from "../db/schema";
-import { sql } from "@db/mysql";
+import { sql } from "@db/postgres";
 import * as dotenv from "dotenv";
 
 dotenv.config();

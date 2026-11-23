@@ -8,7 +8,7 @@ This is a full-stack e-commerce platform built with:
 - React + TypeScript + Vite for the frontend
 - Hono for the backend API layer
 - tRPC for typed API routes
-- MySQL via mysql2 for relational database persistence
+- Supabase PostgreSQL via `pg` for relational database persistence
 - Schema definitions: `db/schema.ts`
 - Seed data: `db/seed.ts`
 
@@ -36,13 +36,13 @@ This is a full-stack e-commerce platform built with:
 1. Vite serves the frontend and Hono API locally on port 5173.
 2. The Hono server handles API requests and serves the app in production.
 3. tRPC routes are exposed under `/api/trpc`.
-4. MySQL 8 is initialized and seeded locally using Docker Compose or an existing MySQL server.
+4. Supabase PostgreSQL is initialized and seeded using the configured database connection.
 
 ## Scripts
 
 Use these commands from the project root:
 
-- `npm run setup` – create environment, install dependencies, prepare MySQL, seed data, and start development
+- `npm run setup` – install dependencies, check the Supabase connection, seed data, and start development
 - `npm install` – install dependencies manually
 - `npm run dev` – start the Vite/Hono development app
 - `npm run dev:all` – seed the database and start the app
@@ -55,7 +55,7 @@ Use these commands from the project root:
 Copy `.env.example` to `.env` and fill in the required values.
 
 Key variables:
-- `DATABASE_URL` – MySQL connection URL, commonly `mysql://root:password@127.0.0.1:3306/ecommerce_db`
+- `DATABASE_URL` – server-side Supabase PostgreSQL connection URI
 - `APP_ID` and `APP_SECRET` – backend auth-related values
 - `KIMI_AUTH_URL` and `KIMI_OPEN_URL` – Kimi integration endpoints
 - `OWNER_UNION_ID` – admin role assignment on first login
@@ -68,8 +68,7 @@ Key variables:
 
 ## Notes
 
-- The project uses MySQL for local development. Docker Compose is the reproducible default.
+- The project uses Supabase PostgreSQL by default. Docker Compose provides an optional local PostgreSQL database.
 - The schema is created automatically from the table definitions in `db/schema.ts`.
 - The seed script generates demo users, categories, sellers, products, orders, reviews, notifications, and support knowledge entries.
-
 

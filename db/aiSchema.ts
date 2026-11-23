@@ -16,21 +16,21 @@
  */
 
 import {
-  mysqlTable,
+  pgTable,
   integer,
   text,
   real,
   index,
   sql,
-} from "./mysql.ts";
+} from "./postgres.ts";
 
-// ─── Timestamps helper (MySQL millisecond timestamp) ──────────────────────────
-const NOW = sql`ROUND(UNIX_TIMESTAMP(NOW(3)) * 1000)`;
+// ─── Timestamps helper (millisecond Unix timestamp) ───────────────────────────
+const NOW = sql`(EXTRACT(EPOCH FROM clock_timestamp()) * 1000)::BIGINT`;
 
 // ============================================================
 // 1. AI EMBEDDINGS — Unified vector store for all collections
 // ============================================================
-export const aiEmbeddings = mysqlTable("ai_embeddings", {
+export const aiEmbeddings = pgTable("ai_embeddings", {
   id: integer("id").primaryKey().notNull(),
   /** Which collection this embedding belongs to */
   collection: text("collection").notNull(), // "knowledge" | "products" | "intents" | "chat_summaries"
@@ -58,7 +58,7 @@ export type InsertAIEmbedding = typeof aiEmbeddings.$inferInsert;
 // ============================================================
 // 2. CONVERSATION SUMMARIES — Long-term memory
 // ============================================================
-export const conversationSummaries = mysqlTable("conversation_summaries", {
+export const conversationSummaries = pgTable("conversation_summaries", {
   id: integer("id").primaryKey().notNull(),
   /** Chat session ID */
   sessionId: text("session_id").notNull(),
@@ -84,7 +84,7 @@ export type InsertConversationSummary = typeof conversationSummaries.$inferInser
 // ============================================================
 // 3. MEMORY ENTITIES — Extracted entities per session/user
 // ============================================================
-export const memoryEntities = mysqlTable("memory_entities", {
+export const memoryEntities = pgTable("memory_entities", {
   id: integer("id").primaryKey().notNull(),
   sessionId: text("session_id").notNull(),
   userId: integer("user_id"),
@@ -110,7 +110,7 @@ export type InsertMemoryEntity = typeof memoryEntities.$inferInsert;
 // ============================================================
 // 4. TOOL EXECUTIONS — History of tool calls
 // ============================================================
-export const toolExecutions = mysqlTable("tool_executions", {
+export const toolExecutions = pgTable("tool_executions", {
   id: integer("id").primaryKey().notNull(),
   sessionId: text("session_id").notNull(),
   userId: integer("user_id"),
@@ -139,7 +139,7 @@ export type InsertToolExecution = typeof toolExecutions.$inferInsert;
 // ============================================================
 // 5. AI METRICS — Performance and usage tracking
 // ============================================================
-export const aiMetrics = mysqlTable("ai_metrics", {
+export const aiMetrics = pgTable("ai_metrics", {
   id: integer("id").primaryKey().notNull(),
   /** Component: "llm" | "embedding" | "vector_search" | "tool" | "rag" | "total" */
   component: text("component").notNull(),
@@ -162,7 +162,7 @@ export type InsertAIMetric = typeof aiMetrics.$inferInsert;
 // ============================================================
 // 6. INTENT EXAMPLES — Training data for intent classification
 // ============================================================
-export const intentExamples = mysqlTable("intent_examples", {
+export const intentExamples = pgTable("intent_examples", {
   id: integer("id").primaryKey().notNull(),
   /** Domain: "support" | "fashion" | "voice" | "seller" | "recommendation" */
   domain: text("domain").notNull(),
@@ -187,7 +187,7 @@ export type InsertIntentExample = typeof intentExamples.$inferInsert;
 // ============================================================
 // 7. ESCALATION TICKETS — Human handoff (kept from old schema)
 // ============================================================
-export const escalationTickets = mysqlTable("escalation_tickets", {
+export const escalationTickets = pgTable("escalation_tickets", {
   id: integer("id").primaryKey().notNull(),
   ticketNumber: text("ticket_number").notNull().unique(),
   sessionId: text("session_id").notNull(),
@@ -216,7 +216,7 @@ export type InsertEscalationTicket = typeof escalationTickets.$inferInsert;
 // ============================================================
 // 8. AI FEEDBACK — User feedback on AI responses
 // ============================================================
-export const aiFeedback = mysqlTable("ai_feedback", {
+export const aiFeedback = pgTable("ai_feedback", {
   id: integer("id").primaryKey().notNull(),
   sessionId: text("session_id").notNull(),
   userId: integer("user_id"),
@@ -240,7 +240,7 @@ export type InsertAIFeedback = typeof aiFeedback.$inferInsert;
 // ============================================================
 // 9. TICKET MESSAGES — Live Admin to Customer Chat Messages
 // ============================================================
-export const ticketMessages = mysqlTable("ticket_messages", {
+export const ticketMessages = pgTable("ticket_messages", {
   id: integer("id").primaryKey().notNull(),
   ticketId: integer("ticket_id").notNull(),
   senderType: text("sender_type").notNull(), // "user" | "admin" | "system"

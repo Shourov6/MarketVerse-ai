@@ -17,8 +17,8 @@ graph TD
         AICopilot["AI Multi-Agent Engines & OpenAI GPT-4o-mini"]
     end
     
-    subgraph Data_Layer["100% MySQL Database Layer"]
-        MySQLPool["MySQL2 Connection Pool & Auto-Reconnect"]
+    subgraph Data_Layer["Supabase PostgreSQL Database"]
+        PostgreSQLPool["PostgreSQL Connection Pool"]
         DrizzleSchema["Typed Schema (Users, Sellers, Products, Orders, Reviews)"]
     end
     
@@ -32,8 +32,8 @@ graph TD
     Client -->|WebSocket| WS
     Hono --> TRPC
     TRPC --> AICopilot
-    TRPC --> MySQLPool
-    MySQLPool --> DrizzleSchema
+    TRPC --> PostgreSQLPool
+    PostgreSQLPool --> DrizzleSchema
     TRPC --> SSLCommerz
     TRPC --> SMTP
     AICopilot --> OpenAI
@@ -42,7 +42,7 @@ graph TD
 ### Core Technologies
 - **Frontend**: React 19, TypeScript, Vite, Tailwind CSS, Radix UI, Lucide Icons, Sonner.
 - **Backend**: Hono, tRPC v11, SuperJSON, WebSocket (`ws`), Node.js (ESM).
-- **Database**: **100% MySQL 8.0+** using `mysql2/promise` with auto-reconnecting connection pool.
+- **Database**: Supabase PostgreSQL using `pg`; database credentials stay on the backend.
 - **AI & Intelligence**: OpenAI `gpt-4o-mini`, Vector Search, Multi-Engine Seller Copilot V2, Deterministic SEO & Pricing Engines.
 - **Payments**: SSLCommerz (bKash, Nagad, Rocket, Cards) & Cash on Delivery (COD).
 
@@ -63,7 +63,7 @@ graph TD
 │   ├── auth-router.ts       # Authentication, session tokens, profile & addresses
 │   └── lib/                 # Payment, mailer, and environment helpers
 ├── db/                      # Database Schema & Migrations
-│   ├── mysql.ts             # MySQL connection pool, table builders, and query executor
+│   ├── postgres.ts          # PostgreSQL connection pool, schema builder, and query executor
 │   ├── schema.ts            # E-commerce schema (Users, Products, Orders, Reviews, etc.)
 │   ├── aiSchema.ts          # AI memory, vector embeddings, and session state tables
 │   ├── seed.ts              # Automated database seeding utility
@@ -78,7 +78,7 @@ graph TD
 │   └── lib/                 # Utility functions (currency, formatting, inventory)
 ├── scripts/                 # Maintenance, migration, and automation scripts
 ├── Dockerfile               # Production multi-stage Docker build
-└── docker-compose.yml       # Complete stack with MySQL 8.0 container
+└── docker-compose.yml       # Local PostgreSQL option
 ```
 
 ---
@@ -87,23 +87,39 @@ graph TD
 
 ### 1. Prerequisites
 - **Node.js**: v20.x or v22.x LTS
-- **Docker Desktop** with Compose, or **MySQL 8.0+** running locally
+- A Supabase project, or Docker Desktop with Compose for local PostgreSQL
 
 ### 2. Environment Setup
-The recommended setup is one command:
+For Supabase, create a project and configure `DATABASE_URL` in `.env` (copy `.env.example` as a starting point). If using the included local PostgreSQL container instead, run `docker compose up -d db` and set `DATABASE_URL=postgresql://postgres:password@localhost:5432/postgres`. Then run the setup command:
 
 ```bash
 npm run setup
 ```
 
-This creates `.env`, installs dependencies, starts MySQL when Docker is available, seeds the database, and starts the development server. To configure it manually, copy `.env.example` to `.env` and fill in the values:
+This installs dependencies, checks the configured PostgreSQL connection, creates the schema, seeds demo data, and starts the development server. Get the Supabase URI from **Project Settings → Database → Connect**:
 
-`npm run dev` alone only starts Vite. It does not install Node.js, MySQL, Docker, Ollama, or AI model weights. Install Ollama separately; `npm run setup` pulls `qwen2.5:3b-instruct` and `nomic-embed-text` when Ollama is available.
+```env
+DATABASE_URL=postgresql://postgres:YOUR_DATABASE_PASSWORD@db.YOUR_PROJECT_REF.supabase.co:5432/postgres?sslmode=require
+```
+
+If your hosting provider cannot reach Supabase's direct database host, copy the session pooler URI from the same **Connect** panel instead. URL-encode special characters in the password. Keep this URI server-side: never prefix it with `VITE_` or place it in browser code.
+
+If you prefer manual setup instead of `npm run setup`:
+
+```bash
+npm run db:push
+npm run db:seed
+npm run dev
+```
+
+`db:push` creates the application tables in Supabase and enables Row Level Security without adding public access policies. The backend connects with the database URI; the frontend does not connect directly to PostgreSQL. Supabase Auth is optional—the app currently handles its own authentication.
+
+`npm run dev` alone only starts Vite. It does not install Node.js, PostgreSQL, Docker, Ollama, or AI model weights. Install Ollama separately; `npm run setup` pulls `qwen2.5:3b-instruct` and `nomic-embed-text` when Ollama is available.
 
 The large generated corpus under `db/dataset/` is intentionally excluded from Git. Dataset-dependent seed and ingestion scripts require the data to be generated or supplied locally.
 ```env
-# Database Connection (MySQL)
-DATABASE_URL=mysql://root:password@localhost:3306/ecommerce_db
+# Supabase PostgreSQL connection URI (server-side only; never use a VITE_ prefix)
+DATABASE_URL=postgresql://postgres:YOUR_DATABASE_PASSWORD@db.YOUR_PROJECT_REF.supabase.co:5432/postgres?sslmode=require
 
 # Security & App
 APP_SECRET=your_super_secret_key_32_characters_long
@@ -134,8 +150,9 @@ Visit **`http://localhost:5173`** (Vite Dev) or **`http://localhost:3000`** (Ful
 
 | Command | Description |
 |---------|-------------|
+| `npm run db:push` | Creates the application tables in Supabase PostgreSQL |
 | `npm run db:seed` | Populates default categories, demo accounts, and test stores |
-| `npm run db:clear` | Safely wipes dummy product/order data for a clean slate |
+| `npm run db:clear` | Destructively clears all managed application tables |
 | `npm run check` | Runs TypeScript compilation checks across the whole codebase |
 
 ---
@@ -157,11 +174,11 @@ Visit **`http://localhost:5173`** (Vite Dev) or **`http://localhost:3000`** (Ful
 docker compose up -d --build
 ```
 This automatically boots:
-- MySQL 8.0 with persistent data storage
+- PostgreSQL 16 with persistent data storage (or set `DATABASE_URL` to Supabase)
 - Production-bundled Node.js backend & frontend on port 3000
 
 ### Option B: Cloud Platforms (Railway / Render / VPS)
-1. Set `DATABASE_URL` pointing to your hosted MySQL instance.
+1. Set `DATABASE_URL` to your Supabase PostgreSQL connection URI.
 2. Build and start:
 ```bash
 npm run build
@@ -172,6 +189,7 @@ npm run start
 
 ## 🔒 Security & Best Practices
 - **Parameterized SQL**: All database queries are parameter-escaped to prevent SQL injection.
+- **Database migration**: Existing MySQL data is not copied automatically; export/import it separately if you need to preserve it.
 - **Role-Based Middleware**: Access control on all sensitive endpoints (Admin, Seller, Customer).
 - **Zero Dummy Data**: Clean schema design with dynamic database-backed reviews and verified purchases.
 

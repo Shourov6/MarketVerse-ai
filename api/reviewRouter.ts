@@ -2,7 +2,7 @@ import { z } from "zod";
 import { createRouter, publicQuery, authedQuery } from "./middleware";
 import { getDb } from "./queries/connection";
 import { reviews, users, products, orderItems } from "@db/schema";
-import { eq, desc, sql } from "@db/mysql";
+import { eq, desc, sql } from "@db/postgres";
 
 export const reviewRouter = createRouter({
   listRecent: publicQuery
